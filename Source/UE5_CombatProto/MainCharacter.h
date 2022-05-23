@@ -1,0 +1,165 @@
+// Copyright Kalevi Toivanen 2022.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/PlayerController.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Animation/AnimMontage.h"
+
+#include "MainCharacter.generated.h"
+
+// Interface for animations
+UINTERFACE(MinimalAPI, Blueprintable)
+class UCharacterAnimationInterface : public UInterface
+{
+	GENERATED_BODY()
+};
+
+class ICharacterAnimationInterface
+{
+	GENERATED_BODY()
+public:
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+		float GetMovementInputStrength();
+};
+
+// Main character class
+UCLASS()
+class UE5_COMBATPROTO_API AMainCharacter : public ACharacter, public ICharacterAnimationInterface
+{
+	GENERATED_BODY()
+
+public:
+	// Sets default values for this character's properties
+	AMainCharacter();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool MainCharacterDebug = false;
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// Implementation for character animation interface
+	float GetMovementInputStrength_Implementation();
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	// Component pointers
+	UPROPERTY(EditAnywhere)
+		UCameraComponent* Camera;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		USpringArmComponent* CameraBoom;
+
+	// Attack Montages
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
+		UAnimMontage* FastAttack = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
+		UAnimMontage* StrongAttack = nullptr;
+
+	// Input axis/action names
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Names")
+		FName MoveForwardName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Names")
+		FName MoveRightName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Names")
+		FName LookUpName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Names")
+		FName LookRightName;
+
+	// Movement input data
+	UPROPERTY(BlueprintReadOnly, Category = "Data")
+		float MovementInputStrength = 0.0f;
+	UPROPERTY(BlueprintReadOnly, Category = "Data")
+		FVector MovementInputVector;
+
+	// Camera input data
+	UPROPERTY(BlueprintReadOnly, Category = "Data")
+		FVector CameraInputVector;
+
+	// Movement switch
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
+		bool PlayerHasMovementControl = true;
+	// Camera switch
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
+		bool PlayerHasCameraControl = true;
+	// Character facing switch
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
+		bool PlayerHasRotationControl = true;
+
+	// Attack logic functions and variables
+	bool CanStartFastAttack = true;
+	bool CanStartStrongAttack = true;
+
+	bool FastAttackCoolingDown = false;
+	bool StrongAttackCoolingDown = false;
+	float FastAttackCooldownTimer = 0.0f;
+	float StrongAttackCooldownTimer = 0.0f;
+
+	bool ShouldContinueFastAttack = false;
+	bool ShouldContinueStrongAttack = false;
+
+	FName CurrentFastAttackSection;
+	FName CurrentFastAttackSectionCache;
+	FName CurrentStrongAttackSection;
+	FName CurrentStrongAttackSectionCache;
+
+	void StartFastAttack();
+	void StartStrongAttack();
+
+	void CheckFastAttackPressed();
+	void CheckStrongAttackPressed();
+	
+	void ContinueFastAttack();
+	void ContinueStrongAttack();
+
+	void TransToStrongAttack();
+	void TransToFastAttack();
+
+	void EndAttack();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+private:
+	APlayerController* PlayerController = Cast<APlayerController>(GetController());
+
+	UCharacterMovementComponent* CharacterMovement = Cast<UCharacterMovementComponent>(GetMovementComponent());
+
+	// Input
+	void MoveForwardBind(float Axis);
+	void MoveRightBind(float Axis);
+	void LookUpBind(float Axis);
+	void LookRightBind(float Axis);
+
+	// Action1 input
+	void Action1PressedBind();
+	void Action1ReleasedBind();
+	bool Action1Pressed = false;
+	bool Action1PressedCache = false;
+	bool Action1WasPressed = false;
+
+	// Action2 input
+	void Action2PressedBind();
+	void Action2ReleasedBind();
+	bool Action2Pressed = false;
+	bool Action2PressedCache = false;
+	bool Action2WasPressed = false;
+
+	FRotator CharacterFacing;
+
+	// For camera smoothing
+	float PitchAmount = 0.0f;
+	float YawAmount = 0.0f;
+
+	// Basic functions
+	void Movement(bool Enabled = true);
+	void CameraMovement(float DeltaTime, float Smoothing = 0.0f, bool Enabled = true);
+	void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true);
+};

@@ -1,0 +1,8 @@
+Breadcrumbs 'RHIThread'
+Context 1/3
+	00 Scene
+	01 UpdateGlobalDistanceField
+	02 Clipmap:0 CacheType:MostlyStatic
+Context 2/3
+	00 Scene
+	01 UpdateDistanceFieldAtlas

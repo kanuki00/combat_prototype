@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Animation/AnimMontage.h"
+#include "CombatInterface.h"
 
 #include "MainCharacter.generated.h"
 
@@ -30,7 +31,7 @@ public:
 
 // Main character class
 UCLASS()
-class UE5_COMBATPROTO_API AMainCharacter : public ACharacter, public ICharacterAnimationInterface
+class UE5_COMBATPROTO_API AMainCharacter : public ACharacter, public ICharacterAnimationInterface, public ICombatInterface
 {
 	GENERATED_BODY()
 

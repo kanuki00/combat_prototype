@@ -10,7 +10,6 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Animation/AnimMontage.h"
-#include "CombatInterface.h"
 #include "BaseCharacter.h"
 
 #include "MainCharacter.generated.h"
@@ -22,7 +21,7 @@ class UCharacterAnimationInterface : public UInterface
 	GENERATED_BODY()
 };
 
-class ICharacterAnimationInterface
+class UE5_COMBATPROTO_API ICharacterAnimationInterface
 {
 	GENERATED_BODY()
 public:

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UObject/Interface.h"
 #include "CombatInterface.generated.h"
 
 UINTERFACE(MinimalAPI, Blueprintable)
@@ -11,17 +12,15 @@ class UCombatInterface : public UInterface
 	GENERATED_BODY()
 };
 
-class ICombatInterface
+class UE5_COMBATPROTO_API ICombatInterface
 {
 	GENERATED_BODY()
-public:
-	// Blueprint only interface functions
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-		int BP_GetMaxHealth();
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-		int BP_GetHealth();
 
-	// C++ interface functions
-	virtual int GetMaxHealth();
-	virtual int GetHealth();
+public:
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	int GetMaxHealth();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	int GetHealth();
 };

@@ -2,7 +2,7 @@
 
 
 #include "FastAttackCheckNotifyState.h"
-#include "MainCharacter.h"
+#include "../Characters/MainCharacter.h"
 
 
 void UFastAttackCheckNotifyState::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration, const FAnimNotifyEventReference& EventReference)

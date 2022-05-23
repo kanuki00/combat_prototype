@@ -32,6 +32,7 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 }
 
+// Base implementation of health getting
 int ABaseCharacter::GetMaxHealth()
 {
 	return MaxHealth;
@@ -41,5 +42,4 @@ int ABaseCharacter::GetHealth()
 {
 	return Health;
 }
-
 

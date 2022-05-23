@@ -37,6 +37,7 @@ AMainCharacter::AMainCharacter()
 	CharacterMovement->JumpZVelocity = 1000.0f;
 	CharacterMovement->GravityScale = 3.0f;
 
+	// Basecharacter
 	// Initial health
 	MaxHealth = 200;
 	Health = 200;

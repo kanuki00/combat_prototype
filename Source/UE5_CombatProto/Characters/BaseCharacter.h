@@ -4,12 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "CombatInterface.h"
-
 #include "BaseCharacter.generated.h"
 
 UCLASS()
-class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter, public ICombatInterface
+class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -33,7 +31,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	virtual int GetMaxHealth() override;
-	virtual int GetHealth() override;
+	// Functions for getting health of character, can be overwritten by child.
+	UFUNCTION()
+	virtual int GetMaxHealth();
+
+	UFUNCTION()
+	virtual int GetHealth();
 
 };

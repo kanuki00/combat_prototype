@@ -1,8 +1,8 @@
-Log started at 23/05/2022 19.18.30 (2022-05-23T16:18:30Z)
+Log started at 23/05/2022 21.17.28 (2022-05-23T18:17:28Z)
 No config file at C:\Users\kanuki\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
 Configuration will be read from:
   C:\Users\kanuki\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
-Log file: C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Saved\Logs\UnrealVersionSelector-2022.05.23-19.18.30.log
+Log file: C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Saved\Logs\UnrealVersionSelector-2022.05.23-21.17.28.log
 
 Note: Android toolchain NDK r21b recommended
 Linux using Manual SDK v19_clang-11.0.1-centos7
@@ -31,6 +31,7 @@ Found Visual Studio toolchain: C:\Program Files\Microsoft Visual Studio\2022\Com
 Found Visual Studio toolchain: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133 (Family=14.29.30133, FamilyRank=0, Version=14.29.30133, Is64Bit=True, Preview=False, Architecture=x64, Error=False, Redist=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Redist\MSVC\14.29.30133)
 Skipping C:\Program Files\Epic Games\UE_5.0\Engine\Intermediate\Build\BuildRules\UE5Rules.dll: File is installed
 Skipping C:\Program Files\Epic Games\UE_5.0\Engine\Intermediate\Build\BuildRules\UE5ProgramRules.dll: File is installed
+Compiling C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\BuildRules\UE5_CombatProtoModuleRules.dll: Assembly does not exist
 Binding IntelliSense data...
 @progress 'Binding IntelliSense data...' 0%
 Enabling plugin 'ModelingToolsEditorMode' (referenced via UE5_CombatProto.uproject)
@@ -179,9 +180,9 @@ Writing project files...
 @progress 'Writing project files...' 33%
 @progress 'Writing project files...' 67%
 @progress 'Writing project files...' 100%
-WriteFileIfChanged() wrote 0 changed files of 2 requested writes.
+WriteFileIfChanged() wrote 2 changed files of 2 requested writes.
 Timeline:
 
 [ 0.000]
-[ 0.000](+3.076) <unknown>
-[ 3.076]
+[ 0.000](+4.349) <unknown>
+[ 4.349]

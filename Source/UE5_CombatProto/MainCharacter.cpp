@@ -36,6 +36,10 @@ AMainCharacter::AMainCharacter()
 
 	CharacterMovement->JumpZVelocity = 1000.0f;
 	CharacterMovement->GravityScale = 3.0f;
+
+	// Initial health
+	MaxHealth = 200;
+	Health = 200;
 }
 
 // Called when the game starts or when spawned

@@ -6,7 +6,8 @@
 
 APlayerHud::APlayerHud()
 {
-	MainCharacter = Cast<AMainCharacter>(PlayerOwner);
+	//MainCharacter = Cast<AMainCharacter>(PlayerOwner);
 
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Yellow, TEXT("O"));
+	//float hpr = MainCharacter->Execute_GetActorCurrentHealth() / MainCharacter->Execute_GetActorMaxHealth();
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Yellow, FString::SanitizeFloat(hpr));
 }

@@ -15,8 +15,13 @@ class ICombatInterface
 {
 	GENERATED_BODY()
 public:
+	// Blueprint only interface functions
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-		int GetActorMaxHealth();
+		int BP_GetMaxHealth();
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-		int GetActorCurrentHealth();
+		int BP_GetHealth();
+
+	// C++ interface functions
+	virtual int GetMaxHealth();
+	virtual int GetHealth();
 };

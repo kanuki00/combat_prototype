@@ -17,7 +17,4 @@ class UE5_COMBATPROTO_API APlayerHud : public AHUD
 public:
 	APlayerHud();
 
-	// Reference to the player
-	AMainCharacter* MainCharacter;
-	
 };

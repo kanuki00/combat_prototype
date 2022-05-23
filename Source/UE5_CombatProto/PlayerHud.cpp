@@ -2,12 +2,13 @@
 
 
 #include "PlayerHud.h"
+#include "CombatInterface.h"
 
 
 APlayerHud::APlayerHud()
 {
-	//MainCharacter = Cast<AMainCharacter>(PlayerOwner);
-
-	//float hpr = MainCharacter->Execute_GetActorCurrentHealth() / MainCharacter->Execute_GetActorMaxHealth();
-	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Yellow, FString::SanitizeFloat(hpr));
+	if (false)//(PlayerOwner->GetClass()->ImplementsInterface(UCombatInterface::StaticClass()))
+	{
+		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Yellow, TEXT("Hud: owner implements!"));
+	}
 }

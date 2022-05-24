@@ -25,6 +25,11 @@ AWeapon::AWeapon()
 void AWeapon::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetOwner(GetInstigator());
+
+	//FString own = GetOwner()->GetName();
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, own);
 	
 }
 
@@ -33,5 +38,29 @@ void AWeapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	// Weapon checks every frame what actors it is overlapping. Excludes owner from list.
+	TArray<AActor*> OverlapsTemp;
+	OverlappedActors.Empty();
+	Collision->GetOverlappingActors(OverlapsTemp);
+	if (OverlapsTemp.Num() > 0)
+	{
+		for (int i = 0; i < OverlapsTemp.Num(); i++)
+		{
+			if (OverlapsTemp[i] != GetOwner())
+			{
+				OverlappedActors.Emplace(OverlapsTemp[i]);
+			}
+		}
+
+		if (OverlappedActors.Num() > 0)
+		{
+			FString a = OverlappedActors[0]->GetName();
+			if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, a);
+		}
+	}
+}
+
+void AWeapon::NotifyActorBeginOverlap(AActor* OtherActor)
+{
 }
 

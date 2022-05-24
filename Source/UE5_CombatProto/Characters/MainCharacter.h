@@ -93,6 +93,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
 		bool PlayerHasRotationControl = true;
 
+	virtual void SetCharacterRotationEnabled(bool NewRotate = true) override;
+
 	// Attack logic functions and variables
 	bool CanStartFastAttack = true;
 	bool CanStartStrongAttack = true;

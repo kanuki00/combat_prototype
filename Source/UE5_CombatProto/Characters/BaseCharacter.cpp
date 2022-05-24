@@ -48,3 +48,7 @@ void ABaseCharacter::SetApplyDamageEnabled(bool NewDamage)
 	CanApplyDamage = NewDamage;
 }
 
+void ABaseCharacter::SetCharacterRotationEnabled(bool NewRotate)
+{
+}
+

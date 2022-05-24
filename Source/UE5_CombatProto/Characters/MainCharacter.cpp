@@ -372,4 +372,13 @@ void AMainCharacter::EndAttack()
 	CanStartStrongAttack = true;
 	FastAttackCoolingDown = true; 
 	StrongAttackCoolingDown = true;
+
+	PlayerHasRotationControl = true;
+}
+
+/////////////////////////////////////////////////////////////////
+
+void AMainCharacter::SetCharacterRotationEnabled(bool NewRotate)
+{
+	PlayerHasRotationControl = NewRotate;
 }

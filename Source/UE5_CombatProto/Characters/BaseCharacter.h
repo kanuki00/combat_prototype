@@ -46,4 +46,7 @@ public:
 	UFUNCTION()
 	void SetApplyDamageEnabled(bool NewDamage = true);
 
+	UFUNCTION()
+	virtual void SetCharacterRotationEnabled(bool NewRotate = true);
+
 };

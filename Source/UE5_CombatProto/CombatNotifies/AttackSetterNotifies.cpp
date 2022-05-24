@@ -6,15 +6,27 @@
 
 void UEnableCharacterRotation::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+	ABaseCharacter* Character;
+	if (Cast<ABaseCharacter>(MeshComp->GetOwner()))
+	{
+		Character = Cast<ABaseCharacter>(MeshComp->GetOwner());
+		Character->SetCharacterRotationEnabled(true);
+	}
 }
 
 void UDisableCharacterRotation::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
-
+	ABaseCharacter* Character;
+	if (Cast<ABaseCharacter>(MeshComp->GetOwner()))
+	{
+		Character = Cast<ABaseCharacter>(MeshComp->GetOwner());
+		Character->SetCharacterRotationEnabled(false);
+	}
 }
 
 void UEnableDamageDealing::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+	// Enabling character's damage dealing
 	ABaseCharacter* Character;
 	if (Cast<ABaseCharacter>(MeshComp->GetOwner()))
 	{
@@ -25,6 +37,7 @@ void UEnableDamageDealing::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenc
 
 void UDisableDamageDealing::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+	// Disabling character's damage dealing
 	ABaseCharacter* Character;
 	if (Cast<ABaseCharacter>(MeshComp->GetOwner()))
 	{

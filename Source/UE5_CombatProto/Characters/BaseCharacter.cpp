@@ -43,3 +43,8 @@ int ABaseCharacter::GetHealth()
 	return Health;
 }
 
+void ABaseCharacter::SetApplyDamageEnabled(bool NewDamage)
+{
+	CanApplyDamage = NewDamage;
+}
+

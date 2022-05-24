@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "../CombatInterface.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS()
@@ -24,6 +25,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 		int Health = 100;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		bool CanApplyDamage = true;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -31,11 +35,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	// Functions for getting health of character, can be overwritten by child.
+	// Functions for getting health of character.
 	UFUNCTION()
-	virtual int GetMaxHealth();
+	int GetMaxHealth();
 
 	UFUNCTION()
-	virtual int GetHealth();
+	int GetHealth();
+
+	// For setting damage dealing to enabled or disabled.
+	UFUNCTION()
+	void SetApplyDamageEnabled(bool NewDamage = true);
 
 };

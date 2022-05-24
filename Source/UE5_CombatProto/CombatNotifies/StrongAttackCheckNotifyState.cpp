@@ -12,7 +12,8 @@ void UStrongAttackCheckNotifyState::NotifyTick(USkeletalMeshComponent* MeshComp,
 {
 	if (Cast<AMainCharacter>(MeshComp->GetOwner())) {
 		AMainCharacter* Player = Cast<AMainCharacter>(MeshComp->GetOwner());
-		Player->CheckStrongAttackPressed();
+		//Player->CheckStrongAttackPressed();
+		Player->CheckAttackPressed();
 	}
 }
 
@@ -20,6 +21,7 @@ void UStrongAttackCheckNotifyState::NotifyEnd(USkeletalMeshComponent* MeshComp, 
 {
 	if (Cast<AMainCharacter>(MeshComp->GetOwner())) {
 		AMainCharacter* Player = Cast<AMainCharacter>(MeshComp->GetOwner());
-		Player->ContinueStrongAttack();
+		//Player->ContinueStrongAttack();
+		Player->ContinueAttack();
 	}
 }

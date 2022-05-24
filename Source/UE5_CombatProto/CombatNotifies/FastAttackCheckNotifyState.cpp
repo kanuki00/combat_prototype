@@ -18,7 +18,8 @@ void UFastAttackCheckNotifyState::NotifyTick(USkeletalMeshComponent* MeshComp, U
 {
 	if (Cast<AMainCharacter>(MeshComp->GetOwner())) {
 		AMainCharacter* Player = Cast<AMainCharacter>(MeshComp->GetOwner());
-		Player->CheckFastAttackPressed();
+		//Player->CheckFastAttackPressed();
+		Player->CheckAttackPressed();
 	}
 }
 
@@ -26,6 +27,7 @@ void UFastAttackCheckNotifyState::NotifyEnd(USkeletalMeshComponent* MeshComp, UA
 {
 	if (Cast<AMainCharacter>(MeshComp->GetOwner())) {
 		AMainCharacter* Player = Cast<AMainCharacter>(MeshComp->GetOwner());
-		Player->ContinueFastAttack();
+		//Player->ContinueFastAttack();
+		Player->ContinueAttack();
 	}
 }

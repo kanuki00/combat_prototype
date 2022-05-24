@@ -233,7 +233,10 @@ void AMainCharacter::StartStrongAttack()
 	CanStartFastAttack = false;
 }
 
+
+
 // Executed by notifystate tick over some time, only one bool can be true.
+/*
 void AMainCharacter::CheckFastAttackPressed()
 {
 	if (Action1WasPressed)
@@ -260,9 +263,25 @@ void AMainCharacter::CheckStrongAttackPressed()
 		ShouldContinueFastAttack = true;
 	}
 }
+*/
+void AMainCharacter::CheckAttackPressed()
+{
+	if (Action1WasPressed)
+	{
+		ShouldContinueFastAttack = true;
+		ShouldContinueStrongAttack = false;
+	}
+	else if (Action2WasPressed)
+	{
+		ShouldContinueFastAttack = false;
+		ShouldContinueStrongAttack = true;
+	}
+}
 
+/*
 void AMainCharacter::ContinueFastAttack()
 {
+	//GetMesh()->GetAnimInstance()->Montage_IsPlaying(FastAttack);
 	if (ShouldContinueFastAttack)
 	{
 		// DEBUG
@@ -317,6 +336,54 @@ void AMainCharacter::ContinueStrongAttack()
 	else
 	{
 		if(StrongAttack) StopAnimMontage(StrongAttack);
+		ShouldContinueStrongAttack = false;
+		EndAttack();
+	}
+}
+*/
+
+void AMainCharacter::ContinueAttack()
+{
+	if (ShouldContinueFastAttack)
+	{
+		if (GetMesh()->GetAnimInstance()->Montage_IsPlaying(StrongAttack))
+		{
+			StopAnimMontage(StrongAttack);
+			ShouldContinueFastAttack = false;
+			ShouldContinueStrongAttack = false;
+			CurrentStrongAttackSectionCache = CurrentStrongAttackSection;
+			TransToFastAttack();
+		}
+		else {
+			ShouldContinueFastAttack = false;
+			ShouldContinueStrongAttack = false;
+		}
+	}
+	else if (ShouldContinueStrongAttack)
+	{
+		if (GetMesh()->GetAnimInstance()->Montage_IsPlaying(FastAttack))
+		{
+			StopAnimMontage(FastAttack);
+			ShouldContinueFastAttack = false;
+			ShouldContinueStrongAttack = false;
+			CurrentFastAttackSectionCache = CurrentFastAttackSection;
+			TransToStrongAttack();
+		}
+		else {
+			ShouldContinueFastAttack = false;
+			ShouldContinueStrongAttack = false;
+		}
+	}
+	else {
+		if (GetMesh()->GetAnimInstance()->Montage_IsPlaying(FastAttack))
+		{
+			StopAnimMontage(FastAttack);
+		}
+		else if (GetMesh()->GetAnimInstance()->Montage_IsPlaying(StrongAttack))
+		{
+			StopAnimMontage(StrongAttack);
+		}
+		ShouldContinueFastAttack = false;
 		ShouldContinueStrongAttack = false;
 		EndAttack();
 	}

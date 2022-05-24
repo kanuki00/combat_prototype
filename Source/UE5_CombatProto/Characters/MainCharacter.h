@@ -126,11 +126,14 @@ public:
 	void StartFastAttack();
 	void StartStrongAttack();
 
-	void CheckFastAttackPressed();
-	void CheckStrongAttackPressed();
+	//void CheckFastAttackPressed();
+	//void CheckStrongAttackPressed();
+	void CheckAttackPressed();
 	
-	void ContinueFastAttack();
-	void ContinueStrongAttack();
+	// Deprecated, use ContinueAttack()
+	//void ContinueFastAttack();
+	//void ContinueStrongAttack();
+	void ContinueAttack();
 
 	void TransToStrongAttack();
 	void TransToFastAttack();

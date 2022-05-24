@@ -4,6 +4,7 @@
 #include "Math/Vector.h"
 #include "Math/Rotator.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AMainCharacter::AMainCharacter()
@@ -43,6 +44,52 @@ AMainCharacter::AMainCharacter()
 	Health = 200;
 }
 
+void AMainCharacter::GetNewTarget()
+{
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
+	Target = AllTargets[0];
+}
+
+void AMainCharacter::ClearTarget()
+{
+	AllTargets.Empty();
+	Target = nullptr;
+}
+
+void AMainCharacter::LookAtTarget(bool Enabled)
+{
+	if (Enabled && Target != nullptr)
+	{
+		
+		FVector TargetLoc = Target->GetActorLocation();
+		FVector CamLoc = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
+		FVector VecToTarget = FVector(TargetLoc - CamLoc).GetSafeNormal();
+		FRotator CamRot = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation();
+		FVector CamFV = UKismetMathLibrary::GetForwardVector(CamRot);
+		FVector CamRV = UKismetMathLibrary::GetRightVector(CamRot);
+
+
+
+		float HozLikeness = UKismetMathLibrary::Dot_VectorVector(VecToTarget, CamFV);
+		if (UKismetMathLibrary::Dot_VectorVector(VecToTarget, CamRV) > 0)
+		{HozLikeness *= -1;}
+
+
+		// Debug
+		if (GEngine) GEngine->AddOnScreenDebugMessage(1, 1, FColor::Green, FString::SanitizeFloat(HozLikeness));
+
+		if (HozLikeness < -0.05)
+		{
+			//GetController()->SetControlRotation(FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + 1.0f, GetControlRotation().Roll));
+		}
+		else if (HozLikeness > 0.05)
+		{
+			//GetController()->SetControlRotation(FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw - 1.0f, GetControlRotation().Roll));
+			//AddControllerYawInput(-100.0f);
+		}
+	}
+}
+
 // Called when the game starts or when spawned
 void AMainCharacter::BeginPlay()
 {
@@ -62,7 +109,9 @@ void AMainCharacter::Tick(float DeltaTime)
 
 	Movement(PlayerHasMovementControl);
 	CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
-	RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl);
+	RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, TargetPressed);
+
+	LookAtTarget(TargetPressed);
 
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
 	MovementInputStrength = FMath::Clamp(MovementInputVector.Length(), 0.0f, 1.0f);
@@ -142,15 +191,21 @@ void AMainCharacter::CameraMovement(float DeltaTime, float Smoothing, bool Enabl
 	}
 }
 
-// Rotate character completely to latest movement input direction
-void AMainCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled)
+void AMainCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, bool Targeting)
 {
 	if (Enabled)
 	{
-		if (MovementInputVector.Length() > 0.0f)
+		if (Targeting && Target)
 		{
-			FVector Target = this->GetActorLocation() + FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInputVector);
-			FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Target);
+			// rotating to targeted actor
+			FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Target->GetActorLocation());
+			CharacterFacing = FRotator(0.0f, Rotation.Yaw, 0.0f);
+		}
+		else if (MovementInputVector.Length() > 0.0f)
+		{
+			// rotating to movement input
+			FVector Direction = this->GetActorLocation() + FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInputVector);
+			FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Direction);
 			CharacterFacing = FRotator(0.0f, Rotation.Yaw, 0.0f);
 		}
 		SetActorRotation(FMath::RInterpConstantTo(this->GetActorRotation(), CharacterFacing, DeltaTime, 720.0f));
@@ -174,6 +229,9 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	PlayerInputComponent->BindAction("Input2", IE_Pressed, this, &AMainCharacter::Action2PressedBind);
 	PlayerInputComponent->BindAction("Input2", IE_Released, this, &AMainCharacter::Action2ReleasedBind);
+
+	PlayerInputComponent->BindAction("Target", IE_Pressed, this, &AMainCharacter::TargetPressedBind);
+	PlayerInputComponent->BindAction("Target", IE_Released, this, &AMainCharacter::TargetReleasedBind);
 }
 
 void AMainCharacter::MoveForwardBind(float Axis)
@@ -215,6 +273,18 @@ void AMainCharacter::Action2PressedBind()
 
 void AMainCharacter::Action2ReleasedBind()
 {Action2Pressed = false;}
+
+void AMainCharacter::TargetPressedBind()
+{
+	TargetPressed = true;
+	GetNewTarget();
+}
+
+void AMainCharacter::TargetReleasedBind()
+{
+	TargetPressed = false;
+	ClearTarget();
+}
 
 //////////////////////////////////////////////////////////
 // ************ For combat combo logic **************** //

@@ -52,10 +52,6 @@ public:
 	// Implementation for combat interface.
 	virtual void WeaponHit(AActor* HitActor) override;
 
-	////////////////////////////////////////////
-	//****** Basic Methods *******************//
-	////////////////////////////////////////////
-
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -106,7 +102,12 @@ public:
 
 	virtual void SetCharacterRotationEnabled(bool NewRotate = true) override;
 
-	// Attack logic functions and variables
+	////////////////////////////////////////////
+	//** Attack logic methods and variables **//
+	////////////////////////////////////////////
+
+	
+
 	bool CanStartFastAttack = true;
 	bool CanStartStrongAttack = true;
 
@@ -126,6 +127,7 @@ public:
 	void StartFastAttack();
 	void StartStrongAttack();
 
+	// Deprecated
 	//void CheckFastAttackPressed();
 	//void CheckStrongAttackPressed();
 	void CheckAttackPressed();
@@ -140,16 +142,33 @@ public:
 
 	void EndAttack();
 
+	///////////////////////////
+	// ***** Targeting ***** //
+	///////////////////////////
+
+	// actor class that the character can target
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		TSubclassOf<AActor> TargetedActorClass;
+	// list of all possible targets in the level
+	TArray<AActor*> AllTargets;
+	// Pointer to target
+	AActor* Target;
+
+	void GetNewTarget();
+	void ClearTarget();
+
+	void LookAtTarget(bool Enabled = false);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	APlayerController* PlayerController = Cast<APlayerController>(GetController());
+	//APlayerController* PlayerController = Cast<APlayerController>(GetController());
 
 	UCharacterMovementComponent* CharacterMovement = Cast<UCharacterMovementComponent>(GetMovementComponent());
 
-	// Input
+	// Movement and camera input
 	void MoveForwardBind(float Axis);
 	void MoveRightBind(float Axis);
 	void LookUpBind(float Axis);
@@ -169,14 +188,24 @@ private:
 	bool Action2PressedCache = false;
 	bool Action2WasPressed = false;
 
+	// Target input
+	void TargetPressedBind();
+	void TargetReleasedBind();
+	bool TargetPressed = false;
+
+	////////////////////////////////////////////
+	//****** Basic Methods *******************//
+	////////////////////////////////////////////
+
 	FRotator CharacterFacing;
 
 	// For camera smoothing
 	float PitchAmount = 0.0f;
 	float YawAmount = 0.0f;
 
-	// Basic functions
 	void Movement(bool Enabled = true);
 	void CameraMovement(float DeltaTime, float Smoothing = 0.0f, bool Enabled = true);
-	void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true);
+
+	// Rotate character completely to latest movement input direction or rotate character to face target.
+	void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true, bool Targeting = false);
 };

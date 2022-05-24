@@ -42,11 +42,22 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool MainCharacterDebug = false;
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	////////////////////////////////////////////
+	//****** Interface implementations *******//
+	////////////////////////////////////////////
 
 	// Implementation for character animation interface
 	float GetMovementInputStrength_Implementation();
+
+	// Implementation for combat interface.
+	virtual void WeaponHit(AActor* HitActor) override;
+
+	////////////////////////////////////////////
+	//****** Basic Methods *******************//
+	////////////////////////////////////////////
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

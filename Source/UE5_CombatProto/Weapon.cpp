@@ -2,6 +2,7 @@
 
 
 #include "Weapon.h"
+#include "CombatInterface.h"
 
 // Sets default values
 AWeapon::AWeapon()
@@ -28,6 +29,8 @@ void AWeapon::BeginPlay()
 
 	SetOwner(GetInstigator());
 
+	Ow_Imp_CI = GetOwner()->Implements<UCombatInterface>();
+
 	//FString own = GetOwner()->GetName();
 	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, own);
 	
@@ -39,8 +42,9 @@ void AWeapon::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	// Weapon checks every frame what actors it is overlapping. Excludes owner from list.
-	TArray<AActor*> OverlapsTemp;
 	OverlappedActors.Empty();
+	/*
+	TArray<AActor*> OverlapsTemp;
 	Collision->GetOverlappingActors(OverlapsTemp);
 	if (OverlapsTemp.Num() > 0)
 	{
@@ -55,12 +59,17 @@ void AWeapon::Tick(float DeltaTime)
 		if (OverlappedActors.Num() > 0)
 		{
 			FString a = OverlappedActors[0]->GetName();
-			if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, a);
+			if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, a);
 		}
 	}
+	*/
 }
 
 void AWeapon::NotifyActorBeginOverlap(AActor* OtherActor)
 {
+	if (Ow_Imp_CI && OtherActor != GetOwner())
+	{
+		Cast<ICombatInterface>(GetOwner())->WeaponHit(OtherActor);
+	}
 }
 

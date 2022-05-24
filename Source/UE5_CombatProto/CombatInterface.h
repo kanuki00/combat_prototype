@@ -18,9 +18,5 @@ class UE5_COMBATPROTO_API ICombatInterface
 
 public:
 
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	int GetMaxHealth();
-
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-	int GetHealth();
+	virtual void WeaponHit(AActor* HitActor);
 };

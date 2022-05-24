@@ -40,4 +40,7 @@ public:
 
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
+private:
+	bool Ow_Imp_CI = false;
+
 };

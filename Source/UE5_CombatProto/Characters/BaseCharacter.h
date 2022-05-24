@@ -8,7 +8,7 @@
 #include "BaseCharacter.generated.h"
 
 UCLASS()
-class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter
+class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter, public ICombatInterface
 {
 	GENERATED_BODY()
 
@@ -26,7 +26,7 @@ protected:
 		int Health = 100;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-		bool CanApplyDamage = true;
+		bool CanApplyDamage = false;
 
 public:	
 	// Called every frame
@@ -34,6 +34,8 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	
 
 	// Functions for getting health of character.
 	UFUNCTION()

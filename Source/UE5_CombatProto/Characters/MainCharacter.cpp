@@ -117,6 +117,8 @@ float AMainCharacter::GetMovementInputStrength_Implementation()
 	return MovementInputStrength;
 }
 
+
+
 void AMainCharacter::Movement(bool Enabled)
 {
 	if (Enabled)
@@ -381,4 +383,21 @@ void AMainCharacter::EndAttack()
 void AMainCharacter::SetCharacterRotationEnabled(bool NewRotate)
 {
 	PlayerHasRotationControl = NewRotate;
+}
+
+/////////////////////////////////////////////////////////////////
+//*********** Combat Interface implementation *****************//
+/////////////////////////////////////////////////////////////////
+
+void AMainCharacter::WeaponHit(AActor* HitActor)
+{
+	if (CanApplyDamage)
+	{
+		FString msg = HitActor->GetName();
+		if (GEngine && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, msg);
+
+		// Applying damage
+		FDamageEvent de;
+		HitActor->TakeDamage(1.0f, de, GetController(), this);
+	}
 }

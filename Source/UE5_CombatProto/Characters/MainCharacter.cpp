@@ -44,6 +44,20 @@ AMainCharacter::AMainCharacter()
 	Health = 200;
 }
 
+// Called when the game starts or when spawned
+void AMainCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	// Initial character rotation
+	CharacterFacing = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
+
+}
+
+////////////////////////////////////////////////////////////////////////
+// *********************** Targeting ******************************** //
+////////////////////////////////////////////////////////////////////////
+
 void AMainCharacter::GetNewTarget()
 {
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
@@ -56,48 +70,44 @@ void AMainCharacter::ClearTarget()
 	Target = nullptr;
 }
 
-void AMainCharacter::LookAtTarget(bool Enabled)
+void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 {
 	if (Enabled && Target != nullptr)
 	{
-		
-		FVector TargetLoc = Target->GetActorLocation();
-		FVector CamLoc = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
-		FVector VecToTarget = FVector(TargetLoc - CamLoc).GetSafeNormal();
-		FRotator CamRot = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation();
-		FVector CamFV = UKismetMathLibrary::GetForwardVector(CamRot);
-		FVector CamRV = UKismetMathLibrary::GetRightVector(CamRot);
 
+		FVector2D TargetGroundLoc = FVector2D(Target->GetActorLocation());
+		FVector2D SelfGroundLoc = FVector2D(this->GetActorLocation());
+		FVector2D VToTargetGround = FVector2D(TargetGroundLoc - SelfGroundLoc).GetSafeNormal();
 
+		FRotator ControlYawRot = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
+		FVector2D FV = FVector2D(UKismetMathLibrary::GetForwardVector(ControlYawRot));
+		FVector2D RV = FVector2D(UKismetMathLibrary::GetRightVector(ControlYawRot));
 
-		float HozLikeness = UKismetMathLibrary::Dot_VectorVector(VecToTarget, CamFV);
-		if (UKismetMathLibrary::Dot_VectorVector(VecToTarget, CamRV) > 0)
-		{HozLikeness *= -1;}
+		float LikenessF = FV.Dot(VToTargetGround);
+		float LikenessR = RV.Dot(VToTargetGround);
 
+		float angle = UKismetMathLibrary::DegAcos(LikenessR) - 90.0f;
 
-		// Debug
-		if (GEngine) GEngine->AddOnScreenDebugMessage(1, 1, FColor::Green, FString::SanitizeFloat(HozLikeness));
-
-		if (HozLikeness < -0.05)
-		{
-			//GetController()->SetControlRotation(FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + 1.0f, GetControlRotation().Roll));
+		if (GEngine) {
+			GEngine->AddOnScreenDebugMessage(1, 1, FColor::Green, FString::SanitizeFloat(angle));
+			GEngine->AddOnScreenDebugMessage(3, 1, FColor::Blue, FString::SanitizeFloat(LikenessR));
 		}
-		else if (HozLikeness > 0.05)
+
+		float rotspeed = 60.0f;
+		float play = 10.0f;
+		if (angle < -play)
 		{
-			//GetController()->SetControlRotation(FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw - 1.0f, GetControlRotation().Roll));
-			//AddControllerYawInput(-100.0f);
+			float limit = FMath::Clamp(angle, -180, 0);
+			FRotator NewRot = FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + FMath::Clamp(rotspeed, 0.0f, -limit - play), GetControlRotation().Roll);
+			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewRot, DeltaTime, 5.0f));
+		}
+		else if (angle > play)
+		{
+			float limit = FMath::Clamp(angle, 0, 180);
+			FRotator NewRot = FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + FMath::Clamp(-rotspeed, -limit + play, 0.0f), GetControlRotation().Roll);
+			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewRot, DeltaTime, 5.0f));
 		}
 	}
-}
-
-// Called when the game starts or when spawned
-void AMainCharacter::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// Initial character rotation
-	CharacterFacing = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
-	
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -111,7 +121,7 @@ void AMainCharacter::Tick(float DeltaTime)
 	CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
 	RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, TargetPressed);
 
-	LookAtTarget(TargetPressed);
+	LookAtTarget(TargetPressed, DeltaTime);
 
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
 	MovementInputStrength = FMath::Clamp(MovementInputVector.Length(), 0.0f, 1.0f);
@@ -136,7 +146,7 @@ void AMainCharacter::Tick(float DeltaTime)
 	{
 		FastAttackCooldownTimer += DeltaTime;
 	}
-	if (FastAttackCooldownTimer >= 0.4f) // how long the cooldown is
+	if (FastAttackCooldownTimer >= FastAttackCoolDownLength) // how long the cooldown is
 	{
 		FastAttackCoolingDown = false;
 		FastAttackCooldownTimer = 0.0f;
@@ -146,7 +156,7 @@ void AMainCharacter::Tick(float DeltaTime)
 	{
 		StrongAttackCooldownTimer += DeltaTime;
 	}
-	if (StrongAttackCooldownTimer >= 0.55f) // how long the cooldown is
+	if (StrongAttackCooldownTimer >= StronAttackCoolDownLength) // how long the cooldown is
 	{
 		StrongAttackCoolingDown = false;
 		StrongAttackCooldownTimer = 0.0f;
@@ -303,37 +313,7 @@ void AMainCharacter::StartStrongAttack()
 	CanStartFastAttack = false;
 }
 
-
-
 // Executed by notifystate tick over some time, only one bool can be true.
-/*
-void AMainCharacter::CheckFastAttackPressed()
-{
-	if (Action1WasPressed)
-	{
-		ShouldContinueFastAttack = true;
-		ShouldContinueStrongAttack = false;
-	}
-	else if (Action2WasPressed)
-	{
-		ShouldContinueFastAttack = false;
-		ShouldContinueStrongAttack = true;
-	}
-}
-void AMainCharacter::CheckStrongAttackPressed()
-{
-	if (Action2WasPressed)
-	{
-		ShouldContinueStrongAttack = true;
-		ShouldContinueFastAttack = false;
-	}
-	else if (Action1WasPressed)
-	{
-		ShouldContinueStrongAttack = false;
-		ShouldContinueFastAttack = true;
-	}
-}
-*/
 void AMainCharacter::CheckAttackPressed()
 {
 	if (Action1WasPressed)
@@ -347,70 +327,6 @@ void AMainCharacter::CheckAttackPressed()
 		ShouldContinueStrongAttack = true;
 	}
 }
-
-/*
-void AMainCharacter::ContinueFastAttack()
-{
-	//GetMesh()->GetAnimInstance()->Montage_IsPlaying(FastAttack);
-	if (ShouldContinueFastAttack)
-	{
-		// DEBUG
-		if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Yellow, TEXT("FastContinue"));
-		CanStartFastAttack = false; 
-		CanStartStrongAttack = false; 
-
-		ShouldContinueFastAttack = false;
-	}
-	else if (ShouldContinueStrongAttack)
-	{
-		if (FastAttack) StopAnimMontage(FastAttack);
-		ShouldContinueFastAttack = false;
-		ShouldContinueStrongAttack = false;
-
-		CanStartStrongAttack = false;
-		CanStartFastAttack = false;
-
-		CurrentFastAttackSectionCache = CurrentFastAttackSection;
-		TransToStrongAttack();
-	}
-	else
-	{
-		if(FastAttack) StopAnimMontage(FastAttack);
-		ShouldContinueFastAttack = false;
-		EndAttack();
-	}
-}
-void AMainCharacter::ContinueStrongAttack()
-{
-	if (ShouldContinueStrongAttack)
-	{
-		// DEBUG
-		if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Yellow, TEXT("StrongContinue"));
-		CanStartStrongAttack = false; // These have to be set to false, otherwise input bind will call StartStrongAttack()
-		CanStartFastAttack = false; // ^
-
-		ShouldContinueStrongAttack = false;
-	}
-	else if (ShouldContinueFastAttack)
-	{
-		if (StrongAttack) StopAnimMontage(StrongAttack);
-		ShouldContinueStrongAttack = false;
-		ShouldContinueFastAttack = false;
-
-		CanStartFastAttack = false;
-		CanStartStrongAttack = false;
-
-		CurrentStrongAttackSectionCache = CurrentStrongAttackSection;
-		TransToFastAttack();
-	}
-	else
-	{
-		if(StrongAttack) StopAnimMontage(StrongAttack);
-		ShouldContinueStrongAttack = false;
-		EndAttack();
-	}
-}
-*/
 
 void AMainCharacter::ContinueAttack()
 {

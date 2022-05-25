@@ -124,17 +124,14 @@ public:
 	FName CurrentStrongAttackSection;
 	FName CurrentStrongAttackSectionCache;
 
+	float FastAttackCoolDownLength = 0.18f;
+	float StronAttackCoolDownLength = 0.3f;
+
 	void StartFastAttack();
 	void StartStrongAttack();
 
-	// Deprecated
-	//void CheckFastAttackPressed();
-	//void CheckStrongAttackPressed();
 	void CheckAttackPressed();
 	
-	// Deprecated, use ContinueAttack()
-	//void ContinueFastAttack();
-	//void ContinueStrongAttack();
 	void ContinueAttack();
 
 	void TransToStrongAttack();
@@ -157,7 +154,7 @@ public:
 	void GetNewTarget();
 	void ClearTarget();
 
-	void LookAtTarget(bool Enabled = false);
+	void LookAtTarget(bool Enabled, float DeltaTime);
 
 protected:
 	// Called when the game starts or when spawned

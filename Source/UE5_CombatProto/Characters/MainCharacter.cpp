@@ -100,6 +100,14 @@ void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 		float LikenessR = RV.Dot(VToTargetGround);
 
 		float angle = UKismetMathLibrary::DegAcos(LikenessR) - 90.0f;
+		if (LikenessF < 0.0f && angle > 0.0f)
+		{
+			angle += 90.0f;
+		}
+		else if (LikenessF < 0.0f && angle < 0.0f)
+		{
+			angle -= 90.0f;
+		}
 	
 		if (angle < -play)
 		{
@@ -143,13 +151,19 @@ void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 		// Debug
 
 		if (GEngine && MainCharacterDebug) {
+			FVector FeetLoc = this->GetActorLocation() + FVector(0.0f, 0.0f,  -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
+			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(VToTargetGround.X, VToTargetGround.Y, 0.0f) * 200.0f, FColor::Green, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(RV.X, RV.Y, 0.0f) * 200.0f, FColor::Cyan, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(FV.X, FV.Y, 0.0f) * 200.0f, FColor::Orange, false, -1.0f, 0, 2.0f);
+
 			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VtoTarget * 200.0f, FColor::Blue, false, -1.0f, 0, 2.0f);
 			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + CharUpVec * 200.0f, FColor::Yellow, false, -1.0f, 0, 2.0f);
 			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VertTargetPlaneN * 200.0f, FColor::Yellow, false, -1.0f, 0, 2.0f);
 			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VtoTargetUpVec * 200.0f, FColor::Purple, false, -1.0f, 0, 2.0f);
 			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + CamFwdVec * 200.0f, FColor::Red, false, -1.0f, 0, 2.0f);
 
-			GEngine->AddOnScreenDebugMessage(1, 1, FColor::Green, FString::SanitizeFloat(VertAngle));
+			GEngine->AddOnScreenDebugMessage(3, 1, FColor::Orange, FString::SanitizeFloat(angle));
+			GEngine->AddOnScreenDebugMessage(1, 1, FColor::Red, FString::SanitizeFloat(VertAngle));
 		}
 	}
 }

@@ -33,6 +33,7 @@ AMainCharacter::AMainCharacter()
 
 	CameraBoom->bUsePawnControlRotation = true;
 	CameraBoom->bInheritRoll = false;
+	CameraBoom->TargetArmLength = 380.0f;
 	CameraBoom->bEnableCameraLag = true;
 	CameraBoom->CameraLagSpeed = 15.0f;
 

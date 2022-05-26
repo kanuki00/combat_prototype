@@ -156,6 +156,9 @@ public:
 
 	void LookAtTarget(bool Enabled, float DeltaTime);
 
+	// For determining if an actor (target) is on screen.
+	bool ActorInView(AActor* Actor);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

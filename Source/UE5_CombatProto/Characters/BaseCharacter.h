@@ -28,6 +28,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 		bool CanApplyDamage = false;
 
+	void Cooldown(bool & CoolingDown, float & CooldownTimer, float & CoolDownLength, float DeltaTime);
+	void WasPressed(bool & WasPressed, bool & Pressed, bool & PressedCache);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

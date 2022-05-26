@@ -18,6 +18,29 @@ void ABaseCharacter::BeginPlay()
 	
 }
 
+void ABaseCharacter::Cooldown(bool & CoolingDown, float & CooldownTimer, float & CoolDownLength, float DeltaTime)
+{
+	if (CoolingDown)
+	{
+		CooldownTimer += DeltaTime;
+	}
+	if (CooldownTimer >= CoolDownLength)
+	{
+		CoolingDown = false;
+		CooldownTimer = 0.0f;
+	}
+}
+
+void ABaseCharacter::WasPressed(bool & WasPressed, bool & Pressed, bool & PressedCache)
+{
+	WasPressed = false;
+	if (Pressed != PressedCache && Pressed == true) // Setting WasPressed to true if presssed in last frame.
+	{
+		WasPressed = true;
+	}
+	PressedCache = Pressed;
+}
+
 // Called every frame
 void ABaseCharacter::Tick(float DeltaTime)
 {

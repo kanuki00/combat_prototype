@@ -69,6 +69,7 @@ void AMainCharacter::GetNewTarget()
 	{
 		Target = AllTargets[0];
 	}
+	ActorInView(Target);
 }
 
 void AMainCharacter::ClearTarget()
@@ -169,6 +170,33 @@ void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 	}
 }
 
+bool AMainCharacter::ActorInView(AActor* Actor)
+{
+	bool IsOnScreen = false;
+	if (Actor)
+	{
+		FVector2D ScreenSize;
+		if (GEngine && GEngine->GameViewport)
+		{
+			GEngine->GameViewport->GetViewportSize(ScreenSize);
+		}
+		FVector2D ActorScreenPosition;
+		bool SuccessfullProjection = UGameplayStatics::ProjectWorldToScreen(UGameplayStatics::GetPlayerController(GetWorld(), 0), Actor->GetActorLocation(), ActorScreenPosition);
+
+		if (SuccessfullProjection && ActorScreenPosition.X > 0.0f && ActorScreenPosition.X < ScreenSize.X && ActorScreenPosition.Y > 0.0f && ActorScreenPosition.Y < ScreenSize.Y)
+		{
+			IsOnScreen = true;
+		}
+		else {
+			IsOnScreen = false;
+		}
+		// Debug
+		//if (GEngine && IsOnScreen) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Purple, ActorScreenPosition.ToString());
+		//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, ScreenSize.ToString());
+	}
+	return IsOnScreen;
+}
+
 ////////////////////////////////////////////////////////////////////////
 // ************* Tick, Called every frame *************************** //
 ////////////////////////////////////////////////////////////////////////
@@ -185,41 +213,24 @@ void AMainCharacter::Tick(float DeltaTime)
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
 	MovementInputStrength = FMath::Clamp(MovementInputVector.Length(), 0.0f, 1.0f);
 
-	// Setting Action1WasPressed to true if presssed in last frame.
+	// **** Was Pressed **** //
 	Action1WasPressed = false;
-	if (Action1Pressed != Action1PressedCache && Action1Pressed == true)
+	if (Action1Pressed != Action1PressedCache && Action1Pressed == true) // Setting Action1WasPressed to true if presssed in last frame.
 	{
 		Action1WasPressed = true;
 	}
 	Action1PressedCache = Action1Pressed;
-	// Setting Action2WasPressed to true if presssed in last frame.
+	
 	Action2WasPressed = false;
-	if (Action2Pressed != Action2PressedCache && Action2Pressed == true)
+	if (Action2Pressed != Action2PressedCache && Action2Pressed == true) // Setting Action2WasPressed to true if presssed in last frame.
 	{
 		Action2WasPressed = true;
 	}
 	Action2PressedCache = Action2Pressed;
 	
-	// FastAttack cooldown
-	if (FastAttackCoolingDown)
-	{
-		FastAttackCooldownTimer += DeltaTime;
-	}
-	if (FastAttackCooldownTimer >= FastAttackCoolDownLength) // how long the cooldown is
-	{
-		FastAttackCoolingDown = false;
-		FastAttackCooldownTimer = 0.0f;
-	}
-	// StrongAttackCooldown
-	if (StrongAttackCoolingDown)
-	{
-		StrongAttackCooldownTimer += DeltaTime;
-	}
-	if (StrongAttackCooldownTimer >= StronAttackCoolDownLength) // how long the cooldown is
-	{
-		StrongAttackCoolingDown = false;
-		StrongAttackCooldownTimer = 0.0f;
-	}
+	// **** Cooldowns **** //
+	Cooldown(FastAttackCoolingDown, FastAttackCooldownTimer, FastAttackCoolDownLength, DeltaTime);
+	Cooldown(StrongAttackCoolingDown, StrongAttackCooldownTimer, StronAttackCoolDownLength, DeltaTime);
 
 	// Keeping track of what section each attack montage is in.
 	CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(FastAttack);

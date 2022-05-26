@@ -218,10 +218,13 @@ void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
 {
 	FHitResult TraceResult;
 	FVector CameraFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
-	FVector CameraUpVec = UKismetMathLibrary::GetUpVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
-	FVector TraceStart = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation() + CameraUpVec*50.0f;
+	//FVector CameraUpVec = UKismetMathLibrary::GetUpVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+	FVector CameraRVec = UKismetMathLibrary::GetRightVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+
+	FVector TraceStart = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
+	FVector TraceEnd = FVector(TraceStart + CameraFwdVec * RayLength).RotateAngleAxis(-6.0f, CameraRVec);
 	// Tracing a line form a half metre above camera in camera's forward direction.
-	GetWorld()->LineTraceSingleByChannel(TraceResult, TraceStart, TraceStart + CameraFwdVec * RayLength, ECollisionChannel::ECC_Visibility);
+	GetWorld()->LineTraceSingleByChannel(TraceResult, TraceStart, TraceEnd, ECollisionChannel::ECC_Visibility);
 	TargetingBiasLocation = TraceResult.ImpactPoint;
 
 	//Debug

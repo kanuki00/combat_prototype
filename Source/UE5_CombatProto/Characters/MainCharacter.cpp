@@ -64,34 +64,17 @@ void AMainCharacter::BeginPlay()
 
 void AMainCharacter::GetNewTarget()
 {
-	// Determining targetable targets
-	AllTargets.Empty();
-	AllVisibleTargets.Empty();
-
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
-	if (AllTargets.Num() > 0)
-	{
-		for (int i = 0; i < AllTargets.Num(); i++)
-		{
-			if (ActorInView(AllTargets[i]))
-			{
-				AllVisibleTargets.Emplace(AllTargets[i]);
-			}
-		}
-	}
-
-	UpdateTargetingBiasLocation();
-	SortActorsByDistanceToLocation(AllVisibleTargets, TargetingBiasLocation);
-
 	if (AllVisibleTargets.Num() > 0) 
 	{
 		Target = AllVisibleTargets[0];
+		IsTargeting = true;
 	}
 }
 
 void AMainCharacter::ClearTarget()
 {
 	Target = nullptr;
+	IsTargeting = false;
 }
 
 void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
@@ -213,6 +196,24 @@ bool AMainCharacter::ActorInView(AActor* Actor)
 	return IsOnScreen;
 }
 
+bool AMainCharacter::ActorOccluded(AActor* Actor)
+{
+	if (Actor)
+	{
+		FHitResult TraceResult;
+		FVector Start = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
+		FVector End = Actor->GetActorLocation();
+		GetWorld()->LineTraceSingleByChannel(TraceResult, Start, End, ECollisionChannel::ECC_Visibility);
+		bool Result = TraceResult.bBlockingHit;
+
+		return Result;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
 {
 	FHitResult TraceResult;
@@ -273,6 +274,30 @@ void AMainCharacter::Tick(float DeltaTime)
 	CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(FastAttack);
 	CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(StrongAttack);
 
+	// Determining targetable targets. Quite slow as is, but executing in tick is necessary to draw suggestion widget.
+	AllTargets.Empty();
+	AllVisibleTargets.Empty();
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
+	if (AllTargets.Num() > 0)
+	{
+		for (int i = 0; i < AllTargets.Num(); i++)
+		{
+			if (ActorInView(AllTargets[i]) && !ActorOccluded(AllTargets[i]))
+			{
+				AllVisibleTargets.Emplace(AllTargets[i]);
+			}
+		}
+	}
+	UpdateTargetingBiasLocation();
+	SortActorsByDistanceToLocation(AllVisibleTargets, TargetingBiasLocation);
+	if (!IsTargeting)
+	{
+		if (AllVisibleTargets.Num() > 0) SuggestedTarget = AllVisibleTargets[0];
+	}
+	else
+	{
+		SuggestedTarget = nullptr;
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////

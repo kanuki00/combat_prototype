@@ -155,6 +155,11 @@ public:
 	// Pointer to target
 	AActor* Target;
 
+	// Pointer to target suggested by targeting logic. Used to draw suggestion widget.
+	AActor* SuggestedTarget;
+
+	bool IsTargeting = false;
+
 	void GetNewTarget();
 	void ClearTarget();
 
@@ -162,6 +167,8 @@ public:
 
 	// For determining if an actor (target) is on screen.
 	bool ActorInView(AActor* Actor);
+
+	bool ActorOccluded(AActor* Actor);
 
 	void UpdateTargetingBiasLocation(float RayLength = 2000.0f);
 	FVector TargetingBiasLocation;

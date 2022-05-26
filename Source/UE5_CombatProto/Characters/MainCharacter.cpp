@@ -64,17 +64,33 @@ void AMainCharacter::BeginPlay()
 
 void AMainCharacter::GetNewTarget()
 {
+	// Determining targetable targets
+	AllTargets.Empty();
+	AllVisibleTargets.Empty();
+
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
-	if (AllTargets.Num() > 0) 
+	if (AllTargets.Num() > 0)
 	{
-		Target = AllTargets[0];
+		for (int i = 0; i < AllTargets.Num(); i++)
+		{
+			if (ActorInView(AllTargets[i]))
+			{
+				AllVisibleTargets.Emplace(AllTargets[i]);
+			}
+		}
 	}
-	ActorInView(Target);
+
+	UpdateTargetingBiasLocation();
+	SortActorsByDistanceToLocation(AllVisibleTargets, TargetingBiasLocation);
+
+	if (AllVisibleTargets.Num() > 0) 
+	{
+		Target = AllVisibleTargets[0];
+	}
 }
 
 void AMainCharacter::ClearTarget()
 {
-	AllTargets.Empty();
 	Target = nullptr;
 }
 
@@ -152,7 +168,7 @@ void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 
 		// Debug
 
-		if (GEngine && MainCharacterDebug) {
+		if (GEngine && MainCharacterDebug && MainCharacterDebugLevel == 1) {
 			FVector FeetLoc = this->GetActorLocation() + FVector(0.0f, 0.0f,  -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(VToTargetGround.X, VToTargetGround.Y, 0.0f) * 200.0f, FColor::Green, false, -1.0f, 0, 2.0f);
 			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(RV.X, RV.Y, 0.0f) * 200.0f, FColor::Cyan, false, -1.0f, 0, 2.0f);
@@ -197,6 +213,38 @@ bool AMainCharacter::ActorInView(AActor* Actor)
 	return IsOnScreen;
 }
 
+void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
+{
+	FHitResult TraceResult;
+	FVector CameraFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+	FVector CameraUpVec = UKismetMathLibrary::GetUpVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+	FVector TraceStart = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation() + CameraUpVec*50.0f;
+	// Tracing a line form a half metre above camera to a few ten metres.
+	GetWorld()->LineTraceSingleByChannel(TraceResult, TraceStart, TraceStart + CameraFwdVec * RayLength, ECollisionChannel::ECC_Visibility);
+	TargetingBiasLocation = TraceResult.ImpactPoint;
+
+	//Debug
+	if (MainCharacterDebug && MainCharacterDebugLevel == 1)
+	{
+		DrawDebugBox(GetWorld(), TargetingBiasLocation, FVector(20.0f, 20.0f, 20.0f), FColor::Red, false, -1.0f, 0, 2.0f);
+	}
+}
+
+void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location)
+{
+
+	for (int i = 0; i < Actors.Num(); i++)
+	{
+		for (int o = 0; o < Actors.Num() - 1; o++)
+		{
+			if (FVector::Dist(Actors[o]->GetActorLocation(), Location) > FVector::Dist(Actors[o + 1]->GetActorLocation(), Location))
+			{
+				Actors.Swap(o, o + 1);
+			}
+		}
+	}
+}
+
 ////////////////////////////////////////////////////////////////////////
 // ************* Tick, Called every frame *************************** //
 ////////////////////////////////////////////////////////////////////////
@@ -214,27 +262,17 @@ void AMainCharacter::Tick(float DeltaTime)
 	MovementInputStrength = FMath::Clamp(MovementInputVector.Length(), 0.0f, 1.0f);
 
 	// **** Was Pressed **** //
-	Action1WasPressed = false;
-	if (Action1Pressed != Action1PressedCache && Action1Pressed == true) // Setting Action1WasPressed to true if presssed in last frame.
-	{
-		Action1WasPressed = true;
-	}
-	Action1PressedCache = Action1Pressed;
-	
-	Action2WasPressed = false;
-	if (Action2Pressed != Action2PressedCache && Action2Pressed == true) // Setting Action2WasPressed to true if presssed in last frame.
-	{
-		Action2WasPressed = true;
-	}
-	Action2PressedCache = Action2Pressed;
+	WasPressed(Action1WasPressed, Action1Pressed, Action1PressedCache);
+	WasPressed(Action2WasPressed, Action2Pressed, Action2PressedCache);
 	
 	// **** Cooldowns **** //
 	Cooldown(FastAttackCoolingDown, FastAttackCooldownTimer, FastAttackCoolDownLength, DeltaTime);
-	Cooldown(StrongAttackCoolingDown, StrongAttackCooldownTimer, StronAttackCoolDownLength, DeltaTime);
+	Cooldown(StrongAttackCoolingDown, StrongAttackCooldownTimer, StrongAttackCoolDownLength, DeltaTime);
 
 	// Keeping track of what section each attack montage is in.
 	CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(FastAttack);
 	CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(StrongAttack);
+
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -333,7 +371,7 @@ void AMainCharacter::Action1PressedBind()
 	{
 		StartFastAttack();
 		// DEBUG
-		if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, TEXT("FastStarted"));
+		if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, TEXT("FastStarted"));
 	}
 }
 
@@ -347,7 +385,7 @@ void AMainCharacter::Action2PressedBind()
 	{
 		StartStrongAttack();
 		// DEBUG
-		if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, TEXT("StrongStarted"));
+		if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Red, TEXT("StrongStarted"));
 	}
 } 
 
@@ -413,6 +451,9 @@ void AMainCharacter::ContinueAttack()
 		else {
 			ShouldContinueFastAttack = false;
 			ShouldContinueStrongAttack = false;
+
+			// Debug 
+			if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastContinue"));
 		}
 	}
 	else if (ShouldContinueStrongAttack)
@@ -428,6 +469,9 @@ void AMainCharacter::ContinueAttack()
 		else {
 			ShouldContinueFastAttack = false;
 			ShouldContinueStrongAttack = false;
+
+			// Debug 
+			if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongContinue"));
 		}
 	}
 	else {
@@ -448,7 +492,7 @@ void AMainCharacter::ContinueAttack()
 void AMainCharacter::TransToStrongAttack()
 {
 	// DEBUG
-	if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongTrans"));
+	if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongTrans"));
 
 	if (StrongAttack)
 	{
@@ -469,8 +513,7 @@ void AMainCharacter::TransToStrongAttack()
 void AMainCharacter::TransToFastAttack()
 {
 	// DEBUG
-	if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastTrans"));
-	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, CurrentStrongAttackSectionCache.ToString());
+	if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastTrans"));
 
 	if (FastAttack) 
 	{
@@ -492,13 +535,15 @@ void AMainCharacter::TransToFastAttack()
 // Called at end of montages so that attacks can be started again.
 void AMainCharacter::EndAttack()
 {
-	if (GEngine && true && MainCharacterDebug) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("AttackEnd"));
 	CanStartFastAttack = true;
 	CanStartStrongAttack = true;
 	FastAttackCoolingDown = true; 
 	StrongAttackCoolingDown = true;
 
 	PlayerHasRotationControl = true;
+
+	// Debug 
+	if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("AttackEnd"));
 }
 
 /////////////////////////////////////////////////////////////////

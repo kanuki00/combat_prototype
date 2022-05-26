@@ -41,6 +41,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool MainCharacterDebug = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int MainCharacterDebugLevel = -1;
 
 	////////////////////////////////////////////
 	//****** Interface implementations *******//
@@ -125,7 +127,7 @@ public:
 	FName CurrentStrongAttackSectionCache;
 
 	float FastAttackCoolDownLength = 0.18f;
-	float StronAttackCoolDownLength = 0.3f;
+	float StrongAttackCoolDownLength = 0.3f;
 
 	void StartFastAttack();
 	void StartStrongAttack();
@@ -148,6 +150,8 @@ public:
 		TSubclassOf<AActor> TargetedActorClass;
 	// list of all possible targets in the level
 	TArray<AActor*> AllTargets;
+	// list of all visible targets in the level
+	TArray<AActor*> AllVisibleTargets;
 	// Pointer to target
 	AActor* Target;
 
@@ -158,6 +162,11 @@ public:
 
 	// For determining if an actor (target) is on screen.
 	bool ActorInView(AActor* Actor);
+
+	void UpdateTargetingBiasLocation(float RayLength = 2000.0f);
+	FVector TargetingBiasLocation;
+
+	void SortActorsByDistanceToLocation(TArray<AActor*> & Actors, FVector Location);
 
 protected:
 	// Called when the game starts or when spawned

@@ -152,10 +152,13 @@ public:
 	TArray<AActor*> AllTargets;
 	// list of all visible targets in the level
 	TArray<AActor*> AllVisibleTargets;
+
 	// Pointer to target
+	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
 	AActor* Target;
 
 	// Pointer to target suggested by targeting logic. Used to draw suggestion widget.
+	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
 	AActor* SuggestedTarget;
 
 	bool IsTargeting = false;
@@ -170,7 +173,7 @@ public:
 
 	bool ActorOccluded(AActor* Actor);
 
-	void UpdateTargetingBiasLocation(float RayLength = 2000.0f);
+	void UpdateTargetingBiasLocation(float RayLength = 10000.0f);
 	FVector TargetingBiasLocation;
 
 	void SortActorsByDistanceToLocation(TArray<AActor*> & Actors, FVector Location);

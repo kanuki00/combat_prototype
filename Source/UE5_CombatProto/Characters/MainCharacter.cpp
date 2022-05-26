@@ -220,7 +220,7 @@ void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
 	FVector CameraFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
 	FVector CameraUpVec = UKismetMathLibrary::GetUpVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
 	FVector TraceStart = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation() + CameraUpVec*50.0f;
-	// Tracing a line form a half metre above camera to a few ten metres.
+	// Tracing a line form a half metre above camera in camera's forward direction.
 	GetWorld()->LineTraceSingleByChannel(TraceResult, TraceStart, TraceStart + CameraFwdVec * RayLength, ECollisionChannel::ECC_Visibility);
 	TargetingBiasLocation = TraceResult.ImpactPoint;
 

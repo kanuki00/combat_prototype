@@ -180,7 +180,7 @@ public:
 	void UpdateTargetingBiasLocation(float RayLength = 10000.0f);
 	FVector TargetingBiasLocation;
 
-	float TargetingRange = 1000.0f;
+	float TargetingRange = 2500.0f;
 
 	void SortActorsByDistanceToLocation(TArray<AActor*> & Actors, FVector Location);
 	bool ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range);

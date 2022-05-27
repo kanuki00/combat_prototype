@@ -25,8 +25,10 @@ class UE5_COMBATPROTO_API ICharacterAnimationInterface
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Animation Interface")
 		float GetMovementInputStrength();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Animation Interface")
+		FVector GetMovementInputDirection();
 };
 
 // Main character class
@@ -50,6 +52,7 @@ public:
 
 	// Implementation for character animation interface
 	float GetMovementInputStrength_Implementation();
+	FVector GetMovementInputDirection_Implementation();
 
 	// Implementation for combat interface.
 	virtual void WeaponHit(AActor* HitActor) override;
@@ -155,13 +158,14 @@ public:
 
 	// Pointer to target
 	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
-	AActor* Target;
+		AActor* Target;
 
 	// Pointer to target suggested by targeting logic. Used to draw suggestion widget.
 	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
-	AActor* SuggestedTarget;
+		AActor* SuggestedTarget;
 
-	bool IsTargeting = false;
+	UPROPERTY(BlueprintReadOnly) // Visible to blueprint so that anim bp knows when to strafe.
+		bool IsTargeting = false;
 
 	void GetNewTarget();
 	void ClearTarget();
@@ -176,7 +180,10 @@ public:
 	void UpdateTargetingBiasLocation(float RayLength = 10000.0f);
 	FVector TargetingBiasLocation;
 
+	float TargetingRange = 1000.0f;
+
 	void SortActorsByDistanceToLocation(TArray<AActor*> & Actors, FVector Location);
+	bool ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range);
 
 protected:
 	// Called when the game starts or when spawned
@@ -210,8 +217,10 @@ private:
 	// Target input
 	void TargetPressedBind();
 	void TargetReleasedBind();
-	bool TargetPressed = false;
-
+public:
+	UPROPERTY(BlueprintReadOnly)
+		bool TargetPressed = false;
+private:
 	////////////////////////////////////////////
 	//****** Basic Methods *******************//
 	////////////////////////////////////////////

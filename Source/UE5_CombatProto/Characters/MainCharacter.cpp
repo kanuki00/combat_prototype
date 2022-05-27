@@ -249,6 +249,11 @@ void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVe
 	}
 }
 
+bool AMainCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range)
+{
+	return FVector::Dist(Actor->GetActorLocation(), Location) <= Range;
+}
+
 ////////////////////////////////////////////////////////////////////////
 // ************* Tick, Called every frame *************************** //
 ////////////////////////////////////////////////////////////////////////
@@ -258,9 +263,7 @@ void AMainCharacter::Tick(float DeltaTime)
 
 	Movement(PlayerHasMovementControl);
 	CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
-	RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, TargetPressed);
-
-	LookAtTarget(TargetPressed, DeltaTime);
+	RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, IsTargeting);
 
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
 	MovementInputStrength = FMath::Clamp(MovementInputVector.Length(), 0.0f, 1.0f);
@@ -285,7 +288,11 @@ void AMainCharacter::Tick(float DeltaTime)
 	{
 		for (int i = 0; i < AllTargets.Num(); i++)
 		{
-			if (ActorInView(AllTargets[i]) && !ActorOccluded(AllTargets[i]))
+			if (
+				ActorInView(AllTargets[i]) 
+				&& !ActorOccluded(AllTargets[i]) 
+				&& ActorInRangeOfLocation(AllTargets[i], this->GetActorLocation(), TargetingRange)
+				)
 			{
 				AllVisibleTargets.Emplace(AllTargets[i]);
 			}
@@ -295,12 +302,22 @@ void AMainCharacter::Tick(float DeltaTime)
 	SortActorsByDistanceToLocation(AllVisibleTargets, TargetingBiasLocation);
 	if (!IsTargeting)
 	{
-		if (AllVisibleTargets.Num() > 0) SuggestedTarget = AllVisibleTargets[0];
+		if (AllVisibleTargets.Num() > 0)
+		{
+			SuggestedTarget = AllVisibleTargets[0];
+		}
+		else
+		{
+			SuggestedTarget = nullptr;
+		}
 	}
-	else
+	else 
 	{
 		SuggestedTarget = nullptr;
 	}
+
+	// Rotating camera to target when targeting
+	LookAtTarget(TargetPressed, DeltaTime);
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -310,6 +327,11 @@ void AMainCharacter::Tick(float DeltaTime)
 float AMainCharacter::GetMovementInputStrength_Implementation()
 {
 	return MovementInputStrength;
+}
+
+FVector AMainCharacter::GetMovementInputDirection_Implementation()
+{
+	return MovementInputVector;
 }
 
 

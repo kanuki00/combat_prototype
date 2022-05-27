@@ -236,7 +236,6 @@ void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
 
 void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location)
 {
-
 	for (int i = 0; i < Actors.Num(); i++)
 	{
 		for (int o = 0; o < Actors.Num() - 1; o++)
@@ -280,7 +279,7 @@ void AMainCharacter::Tick(float DeltaTime)
 	CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(FastAttack);
 	CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(StrongAttack);
 
-	// Determining targetable targets. Quite slow as is, but executing in tick is necessary to draw suggestion widget.
+	// Determining targetable actors. Quite slow as is, but executing in tick is necessary to draw suggestion widget.
 	AllTargets.Empty();
 	AllVisibleTargets.Empty();
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
@@ -333,8 +332,6 @@ FVector AMainCharacter::GetMovementInputDirection_Implementation()
 {
 	return MovementInputVector;
 }
-
-
 
 void AMainCharacter::Movement(bool Enabled)
 {

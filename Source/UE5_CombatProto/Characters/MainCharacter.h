@@ -38,30 +38,18 @@ class UE5_COMBATPROTO_API AMainCharacter : public ABaseCharacter, public ICharac
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
-	AMainCharacter();
-
+	////////////////////////////////////////////
+	//************* DEBUG ********************//
+	////////////////////////////////////////////
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool MainCharacterDebug = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int MainCharacterDebugLevel = -1;
 
 	////////////////////////////////////////////
-	//****** Interface implementations *******//
+	//************* Constructor **************//
 	////////////////////////////////////////////
-
-	// Implementation for character animation interface
-	float GetMovementInputStrength_Implementation();
-	FVector GetMovementInputDirection_Implementation();
-
-	// Implementation for combat interface.
-	virtual void WeaponHit(AActor* HitActor) override;
-
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	AMainCharacter();
 
 	// Component pointers
 	UPROPERTY(EditAnywhere)
@@ -69,11 +57,45 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		USpringArmComponent* CameraBoom;
 
-	// Attack Montages
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
-		UAnimMontage* FastAttack = nullptr;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
-		UAnimMontage* StrongAttack = nullptr;
+protected:
+	////////////////////////////////////////////
+	//************* Begin play ***************//
+	////////////////////////////////////////////
+	virtual void BeginPlay() override;
+
+public:
+	////////////////////////////////////////////
+	//************** Tick ********************//
+	////////////////////////////////////////////
+	virtual void Tick(float DeltaTime) override;
+
+private:
+	////////////////////////////////////////////
+	//****** Basic Methods *******************//
+	////////////////////////////////////////////
+	UPROPERTY()
+		FRotator CharacterFacing;
+
+	// For camera smoothing
+	UPROPERTY()
+		float PitchAmount = 0.0f;
+	UPROPERTY()
+		float YawAmount = 0.0f;
+
+	UFUNCTION()
+		void Movement(bool Enabled = true);
+	UFUNCTION()
+		void CameraMovement(float DeltaTime, float Smoothing = 0.0f, bool Enabled = true);
+
+	// Rotate character completely to latest movement input direction or rotate character to face target.
+	UFUNCTION()
+		void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true, bool Targeting = false);
+
+public:
+	////////////////////////////////////////////
+	//************** Bind ********************//
+	////////////////////////////////////////////
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// Input axis/action names
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Names")
@@ -107,91 +129,7 @@ public:
 
 	virtual void SetCharacterRotationEnabled(bool NewRotate = true) override;
 
-	////////////////////////////////////////////
-	//** Attack logic methods and variables **//
-	////////////////////////////////////////////
-
-	
-
-	bool CanStartFastAttack = true;
-	bool CanStartStrongAttack = true;
-
-	bool FastAttackCoolingDown = false;
-	bool StrongAttackCoolingDown = false;
-	float FastAttackCooldownTimer = 0.0f;
-	float StrongAttackCooldownTimer = 0.0f;
-
-	bool ShouldContinueFastAttack = false;
-	bool ShouldContinueStrongAttack = false;
-
-	FName CurrentFastAttackSection;
-	FName CurrentFastAttackSectionCache;
-	FName CurrentStrongAttackSection;
-	FName CurrentStrongAttackSectionCache;
-
-	float FastAttackCoolDownLength = 0.18f;
-	float StrongAttackCoolDownLength = 0.3f;
-
-	void StartFastAttack();
-	void StartStrongAttack();
-
-	void CheckAttackPressed();
-	
-	void ContinueAttack();
-
-	void TransToStrongAttack();
-	void TransToFastAttack();
-
-	void EndAttack();
-
-	///////////////////////////
-	// ***** Targeting ***** //
-	///////////////////////////
-
-	// actor class that the character can target
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-		TSubclassOf<AActor> TargetedActorClass;
-	// list of all possible targets in the level
-	TArray<AActor*> AllTargets;
-	// list of all visible targets in the level
-	TArray<AActor*> AllVisibleTargets;
-
-	// Pointer to target
-	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
-		AActor* Target;
-
-	// Pointer to target suggested by targeting logic. Used to draw suggestion widget.
-	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
-		AActor* SuggestedTarget;
-
-	UPROPERTY(BlueprintReadOnly) // Visible to blueprint so that anim bp knows when to strafe.
-		bool IsTargeting = false;
-
-	void GetNewTarget();
-	void ClearTarget();
-
-	void LookAtTarget(bool Enabled, float DeltaTime);
-
-	// For determining if an actor (target) is on screen.
-	bool ActorInView(AActor* Actor);
-
-	bool ActorOccluded(AActor* Actor);
-
-	void UpdateTargetingBiasLocation(float RayLength = 10000.0f);
-	FVector TargetingBiasLocation;
-
-	float TargetingRange = 2500.0f;
-
-	void SortActorsByDistanceToLocation(TArray<AActor*> & Actors, FVector Location);
-	bool ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range);
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
 private:
-	//APlayerController* PlayerController = Cast<APlayerController>(GetController());
-
 	UCharacterMovementComponent* CharacterMovement = Cast<UCharacterMovementComponent>(GetMovementComponent());
 
 	// Movement and camera input
@@ -217,23 +155,108 @@ private:
 	// Target input
 	void TargetPressedBind();
 	void TargetReleasedBind();
+
 public:
 	UPROPERTY(BlueprintReadOnly)
 		bool TargetPressed = false;
+
+protected:
+	///////////////////////////
+	// ***** Targeting ***** //
+	///////////////////////////
+
+	// actor class that the character can target
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		TSubclassOf<AActor> TargetedActorClass;
+
+	// list of all possible targets in the level
+	TArray<AActor*> AllTargets;
+	// list of all visible targets in the level
+	TArray<AActor*> AllVisibleTargets;
+
+	// Pointer to target
+	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
+		AActor* Target = nullptr;
+
+	// Pointer to target suggested by targeting logic. Used to draw suggestion widget.
+	UPROPERTY(BlueprintReadOnly, Category = "Targeting")
+		AActor* SuggestedTarget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly) // Visible to blueprint so that anim bp knows when to strafe.
+		bool IsTargeting = false;
+private:
+	void GetNewTarget();
+	void ClearTarget();
+
+	void LookAtTarget(bool Enabled, float DeltaTime);
+
+	// For determining if an actor (target) is on screen.
+	bool ActorInView(AActor* Actor);
+
+	bool ActorOccluded(AActor* Actor);
+
+	void UpdateTargetingBiasLocation(float RayLength = 10000.0f);
+	FVector TargetingBiasLocation;
+	FVector2D ScreenTargetingBiasLocation; // Unused for now, I want to try an approach of compating target's screen position to this bias location for target determining in the future.
+
+	float TargetingRange = 2500.0f;
+
+	void SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location);
+	bool ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range);
+
 private:
 	////////////////////////////////////////////
-	//****** Basic Methods *******************//
+	//** Attack logic methods and variables **//
 	////////////////////////////////////////////
 
-	FRotator CharacterFacing;
+	bool CanStartFastAttack = true;
+	bool CanStartStrongAttack = true;
 
-	// For camera smoothing
-	float PitchAmount = 0.0f;
-	float YawAmount = 0.0f;
+	bool FastAttackCoolingDown = false;
+	bool StrongAttackCoolingDown = false;
+	float FastAttackCooldownTimer = 0.0f;
+	float StrongAttackCooldownTimer = 0.0f;
 
-	void Movement(bool Enabled = true);
-	void CameraMovement(float DeltaTime, float Smoothing = 0.0f, bool Enabled = true);
+	bool ShouldContinueFastAttack = false;
+	bool ShouldContinueStrongAttack = false;
 
-	// Rotate character completely to latest movement input direction or rotate character to face target.
-	void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true, bool Targeting = false);
+	FName CurrentFastAttackSection;
+	FName CurrentFastAttackSectionCache;
+	FName CurrentStrongAttackSection;
+	FName CurrentStrongAttackSectionCache;
+
+	float FastAttackCoolDownLength = 0.18f;
+	float StrongAttackCoolDownLength = 0.3f;
+
+public:
+	void StartFastAttack();
+	void StartStrongAttack();
+
+	void CheckAttackPressed();
+	
+	void ContinueAttack();
+
+	void TransToStrongAttack();
+	void TransToFastAttack();
+
+	void EndAttack();
+
+protected:
+	// Attack Montages
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
+		UAnimMontage* FastAttack = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
+		UAnimMontage* StrongAttack = nullptr;
+
+protected:
+	////////////////////////////////////////////
+	//****** Interface implementations *******//
+	////////////////////////////////////////////
+
+	// Implementation for character animation interface
+	float GetMovementInputStrength_Implementation();
+	FVector GetMovementInputDirection_Implementation();
+
+	// Implementation for combat interface.
+	virtual void WeaponHit(AActor* HitActor) override;
 };

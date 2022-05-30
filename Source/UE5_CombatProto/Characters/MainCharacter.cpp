@@ -7,7 +7,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 
-// Sets default values
+////////////////////////////////////////////////////////////////////////
+// ******* Constructor, initializing components and settings ******** //
+////////////////////////////////////////////////////////////////////////
 AMainCharacter::AMainCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -48,7 +50,9 @@ AMainCharacter::AMainCharacter()
 	Health = 200;
 }
 
-// Called when the game starts or when spawned
+////////////////////////////////////////////////////////////////////////
+// ************* Begin Play, Called at start of game **************** //
+////////////////////////////////////////////////////////////////////////
 void AMainCharacter::BeginPlay()
 {
 	Super::BeginPlay();
@@ -56,201 +60,6 @@ void AMainCharacter::BeginPlay()
 	// Initial character rotation
 	CharacterFacing = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
 
-}
-
-////////////////////////////////////////////////////////////////////////
-// *********************** Targeting ******************************** //
-////////////////////////////////////////////////////////////////////////
-
-void AMainCharacter::GetNewTarget()
-{
-	if (AllVisibleTargets.Num() > 0) 
-	{
-		Target = AllVisibleTargets[0];
-		IsTargeting = true;
-	}
-}
-
-void AMainCharacter::ClearTarget()
-{
-	Target = nullptr;
-	IsTargeting = false;
-}
-
-void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
-{
-
-	float rotspeed = 60.0f; // how fast the camera rotates.
-	float play = 10.0f; // how many degrees camera has to be horizontally off-target to start rotating.
-	float vertplay = 0.0f; // how many degrees camera has to be vertically off-target to start rotating.
-	float vertoffset = 18.0f; // vertical offset,more positive number makes target appear higher above player character.
-
-	if (Enabled && Target != nullptr)
-	{
-		// Horizontal rotation
-
-		FVector2D TargetGroundLoc = FVector2D(Target->GetActorLocation());
-		FVector2D SelfGroundLoc = FVector2D(this->GetActorLocation());
-		FVector2D VToTargetGround = FVector2D(TargetGroundLoc - SelfGroundLoc).GetSafeNormal();
-
-		FRotator ControlYawRot = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
-		FVector2D FV = FVector2D(UKismetMathLibrary::GetForwardVector(ControlYawRot));
-		FVector2D RV = FVector2D(UKismetMathLibrary::GetRightVector(ControlYawRot));
-
-		float LikenessF = FV.Dot(VToTargetGround);
-		float LikenessR = RV.Dot(VToTargetGround);
-
-		float angle = UKismetMathLibrary::DegAcos(LikenessR) - 90.0f;
-		if (LikenessF < 0.0f && angle > 0.0f)
-		{
-			angle += 90.0f;
-		}
-		else if (LikenessF < 0.0f && angle < 0.0f)
-		{
-			angle -= 90.0f;
-		}
-	
-		if (angle < -play)
-		{
-			float Hozlimit = FMath::Clamp(angle, -180.0f, 0.0f);
-			FRotator NewHozRot = FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + FMath::Clamp(rotspeed, 0.0f, -Hozlimit - play), GetControlRotation().Roll);
-			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewHozRot, DeltaTime, 5.0f));
-		}
-		else if (angle > play)
-		{
-			float Hozlimit = FMath::Clamp(angle, 0.0f, 180.0f);
-			FRotator NewHozRot = FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + FMath::Clamp(-rotspeed, -Hozlimit + play, 0.0f), GetControlRotation().Roll);
-			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewHozRot, DeltaTime, 5.0f));
-		}
-
-		// Vertical rotation 
-
-		FVector TargetLoc = Target->GetActorLocation();
-		FVector VtoTarget = FVector(TargetLoc - this->GetActorLocation()).GetSafeNormal();
-		FVector CharUpVec = UKismetMathLibrary::GetUpVector(this->GetActorRotation());
-		FVector VertTargetPlaneN = UKismetMathLibrary::Cross_VectorVector(VtoTarget, CharUpVec).GetSafeNormal();
-		FVector VtoTargetUpVec = UKismetMathLibrary::Cross_VectorVector(VertTargetPlaneN, VtoTarget).GetSafeNormal();
-
-		FVector CamFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
-
-		float VertLikeness = CamFwdVec.Dot(VtoTargetUpVec);
-		float VertAngle = UKismetMathLibrary::DegAcos(VertLikeness) - 90.0f - vertoffset;
-
-		if (VertAngle < -vertplay)
-		{
-			float vertlimit = FMath::Clamp(VertAngle, -180.0f, 0.0f);
-			FRotator NewVertRot = FRotator(GetControlRotation().Pitch + FMath::Clamp(-rotspeed, vertlimit+vertplay, 0.0f), GetControlRotation().Yaw, GetControlRotation().Roll);
-			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewVertRot, DeltaTime, 5.0f));
-		}
-		else if (VertAngle > vertplay)
-		{
-			float vertlimit = FMath::Clamp(VertAngle, 0.0f, 180.0f);
-			FRotator NewVertRot = FRotator(GetControlRotation().Pitch + FMath::Clamp(rotspeed, 0.0f, vertlimit-vertplay), GetControlRotation().Yaw, GetControlRotation().Roll);
-			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewVertRot, DeltaTime, 5.0f));
-		}
-
-		// Debug
-
-		if (GEngine && MainCharacterDebug && MainCharacterDebugLevel == 1) {
-			FVector FeetLoc = this->GetActorLocation() + FVector(0.0f, 0.0f,  -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
-			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(VToTargetGround.X, VToTargetGround.Y, 0.0f) * 200.0f, FColor::Green, false, -1.0f, 0, 2.0f);
-			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(RV.X, RV.Y, 0.0f) * 200.0f, FColor::Cyan, false, -1.0f, 0, 2.0f);
-			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(FV.X, FV.Y, 0.0f) * 200.0f, FColor::Orange, false, -1.0f, 0, 2.0f);
-
-			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VtoTarget * 200.0f, FColor::Blue, false, -1.0f, 0, 2.0f);
-			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + CharUpVec * 200.0f, FColor::Yellow, false, -1.0f, 0, 2.0f);
-			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VertTargetPlaneN * 200.0f, FColor::Yellow, false, -1.0f, 0, 2.0f);
-			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VtoTargetUpVec * 200.0f, FColor::Purple, false, -1.0f, 0, 2.0f);
-			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + CamFwdVec * 200.0f, FColor::Red, false, -1.0f, 0, 2.0f);
-
-			GEngine->AddOnScreenDebugMessage(3, 1, FColor::Orange, FString::SanitizeFloat(angle));
-			GEngine->AddOnScreenDebugMessage(1, 1, FColor::Red, FString::SanitizeFloat(VertAngle));
-		}
-	}
-}
-
-bool AMainCharacter::ActorInView(AActor* Actor)
-{
-	bool IsOnScreen = false;
-	if (Actor)
-	{
-		FVector2D ScreenSize;
-		if (GEngine && GEngine->GameViewport)
-		{
-			GEngine->GameViewport->GetViewportSize(ScreenSize);
-		}
-		FVector2D ActorScreenPosition;
-		bool SuccessfullProjection = UGameplayStatics::ProjectWorldToScreen(UGameplayStatics::GetPlayerController(GetWorld(), 0), Actor->GetActorLocation(), ActorScreenPosition);
-
-		if (SuccessfullProjection && ActorScreenPosition.X > 0.0f && ActorScreenPosition.X < ScreenSize.X && ActorScreenPosition.Y > 0.0f && ActorScreenPosition.Y < ScreenSize.Y)
-		{
-			IsOnScreen = true;
-		}
-		else {
-			IsOnScreen = false;
-		}
-		// Debug
-		//if (GEngine && IsOnScreen) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Purple, ActorScreenPosition.ToString());
-		//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, ScreenSize.ToString());
-	}
-	return IsOnScreen;
-}
-
-bool AMainCharacter::ActorOccluded(AActor* Actor)
-{
-	if (Actor)
-	{
-		FHitResult TraceResult;
-		FVector Start = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
-		FVector End = Actor->GetActorLocation();
-		GetWorld()->LineTraceSingleByChannel(TraceResult, Start, End, ECollisionChannel::ECC_Visibility);
-		bool Result = TraceResult.bBlockingHit;
-
-		return Result;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
-{
-	FHitResult TraceResult;
-	FVector CameraFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
-	//FVector CameraUpVec = UKismetMathLibrary::GetUpVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
-	FVector CameraRVec = UKismetMathLibrary::GetRightVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
-
-	FVector TraceStart = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
-	FVector TraceEnd = FVector(TraceStart + CameraFwdVec * RayLength).RotateAngleAxis(-6.0f, CameraRVec);
-	// Tracing a line form a half metre above camera in camera's forward direction.
-	GetWorld()->LineTraceSingleByChannel(TraceResult, TraceStart, TraceEnd, ECollisionChannel::ECC_Visibility);
-	TargetingBiasLocation = TraceResult.ImpactPoint;
-
-	//Debug
-	if (MainCharacterDebug && MainCharacterDebugLevel == 1)
-	{
-		DrawDebugBox(GetWorld(), TargetingBiasLocation, FVector(20.0f, 20.0f, 20.0f), FColor::Red, false, -1.0f, 0, 2.0f);
-	}
-}
-
-void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location)
-{
-	for (int i = 0; i < Actors.Num(); i++)
-	{
-		for (int o = 0; o < Actors.Num() - 1; o++)
-		{
-			if (FVector::Dist(Actors[o]->GetActorLocation(), Location) > FVector::Dist(Actors[o + 1]->GetActorLocation(), Location))
-			{
-				Actors.Swap(o, o + 1);
-			}
-		}
-	}
-}
-
-bool AMainCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range)
-{
-	return FVector::Dist(Actor->GetActorLocation(), Location) <= Range;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -322,16 +131,6 @@ void AMainCharacter::Tick(float DeltaTime)
 ///////////////////////////////////////////////////////////////////////
 // ********* Basic Character functions ******************************//
 ///////////////////////////////////////////////////////////////////////
-
-float AMainCharacter::GetMovementInputStrength_Implementation()
-{
-	return MovementInputStrength;
-}
-
-FVector AMainCharacter::GetMovementInputDirection_Implementation()
-{
-	return MovementInputVector;
-}
 
 void AMainCharacter::Movement(bool Enabled)
 {
@@ -451,6 +250,201 @@ void AMainCharacter::TargetReleasedBind()
 	ClearTarget();
 }
 
+////////////////////////////////////////////////////////////////////////
+// *********************** Targeting ******************************** //
+////////////////////////////////////////////////////////////////////////
+
+void AMainCharacter::GetNewTarget()
+{
+	if (AllVisibleTargets.Num() > 0)
+	{
+		Target = AllVisibleTargets[0];
+		IsTargeting = true;
+	}
+}
+
+void AMainCharacter::ClearTarget()
+{
+	Target = nullptr;
+	IsTargeting = false;
+}
+
+void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
+{
+
+	float rotspeed = 60.0f; // how fast the camera rotates.
+	float play = 10.0f; // how many degrees camera has to be horizontally off-target to start rotating.
+	float vertplay = 0.0f; // how many degrees camera has to be vertically off-target to start rotating.
+	float vertoffset = 18.0f; // vertical offset,more positive number makes target appear higher above player character.
+
+	if (Enabled && Target != nullptr)
+	{
+		// Horizontal rotation
+
+		FVector2D TargetGroundLoc = FVector2D(Target->GetActorLocation());
+		FVector2D SelfGroundLoc = FVector2D(this->GetActorLocation());
+		FVector2D VToTargetGround = FVector2D(TargetGroundLoc - SelfGroundLoc).GetSafeNormal();
+
+		FRotator ControlYawRot = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
+		FVector2D FV = FVector2D(UKismetMathLibrary::GetForwardVector(ControlYawRot));
+		FVector2D RV = FVector2D(UKismetMathLibrary::GetRightVector(ControlYawRot));
+
+		float LikenessF = FV.Dot(VToTargetGround);
+		float LikenessR = RV.Dot(VToTargetGround);
+
+		float angle = UKismetMathLibrary::DegAcos(LikenessR) - 90.0f;
+		if (LikenessF < 0.0f && angle > 0.0f)
+		{
+			angle += 90.0f;
+		}
+		else if (LikenessF < 0.0f && angle < 0.0f)
+		{
+			angle -= 90.0f;
+		}
+
+		if (angle < -play)
+		{
+			float Hozlimit = FMath::Clamp(angle, -180.0f, 0.0f);
+			FRotator NewHozRot = FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + FMath::Clamp(rotspeed, 0.0f, -Hozlimit - play), GetControlRotation().Roll);
+			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewHozRot, DeltaTime, 5.0f));
+		}
+		else if (angle > play)
+		{
+			float Hozlimit = FMath::Clamp(angle, 0.0f, 180.0f);
+			FRotator NewHozRot = FRotator(GetControlRotation().Pitch, GetControlRotation().Yaw + FMath::Clamp(-rotspeed, -Hozlimit + play, 0.0f), GetControlRotation().Roll);
+			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewHozRot, DeltaTime, 5.0f));
+		}
+
+		// Vertical rotation 
+
+		FVector TargetLoc = Target->GetActorLocation();
+		FVector VtoTarget = FVector(TargetLoc - this->GetActorLocation()).GetSafeNormal();
+		FVector CharUpVec = UKismetMathLibrary::GetUpVector(this->GetActorRotation());
+		FVector VertTargetPlaneN = UKismetMathLibrary::Cross_VectorVector(VtoTarget, CharUpVec).GetSafeNormal();
+		FVector VtoTargetUpVec = UKismetMathLibrary::Cross_VectorVector(VertTargetPlaneN, VtoTarget).GetSafeNormal();
+
+		FVector CamFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+
+		float VertLikeness = CamFwdVec.Dot(VtoTargetUpVec);
+		float VertAngle = UKismetMathLibrary::DegAcos(VertLikeness) - 90.0f - vertoffset;
+
+		if (VertAngle < -vertplay)
+		{
+			float vertlimit = FMath::Clamp(VertAngle, -180.0f, 0.0f);
+			FRotator NewVertRot = FRotator(GetControlRotation().Pitch + FMath::Clamp(-rotspeed, vertlimit + vertplay, 0.0f), GetControlRotation().Yaw, GetControlRotation().Roll);
+			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewVertRot, DeltaTime, 5.0f));
+		}
+		else if (VertAngle > vertplay)
+		{
+			float vertlimit = FMath::Clamp(VertAngle, 0.0f, 180.0f);
+			FRotator NewVertRot = FRotator(GetControlRotation().Pitch + FMath::Clamp(rotspeed, 0.0f, vertlimit - vertplay), GetControlRotation().Yaw, GetControlRotation().Roll);
+			GetController()->SetControlRotation(FMath::RInterpTo(GetControlRotation(), NewVertRot, DeltaTime, 5.0f));
+		}
+
+		// Debug
+
+		if (GEngine && MainCharacterDebug && MainCharacterDebugLevel == 1) {
+			FVector FeetLoc = this->GetActorLocation() + FVector(0.0f, 0.0f, -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
+			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(VToTargetGround.X, VToTargetGround.Y, 0.0f) * 200.0f, FColor::Green, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(RV.X, RV.Y, 0.0f) * 200.0f, FColor::Cyan, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), FeetLoc, FeetLoc + FVector(FV.X, FV.Y, 0.0f) * 200.0f, FColor::Orange, false, -1.0f, 0, 2.0f);
+
+			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VtoTarget * 200.0f, FColor::Blue, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + CharUpVec * 200.0f, FColor::Yellow, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VertTargetPlaneN * 200.0f, FColor::Yellow, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + VtoTargetUpVec * 200.0f, FColor::Purple, false, -1.0f, 0, 2.0f);
+			DrawDebugLine(GetWorld(), this->GetActorLocation(), this->GetActorLocation() + CamFwdVec * 200.0f, FColor::Red, false, -1.0f, 0, 2.0f);
+
+			GEngine->AddOnScreenDebugMessage(3, 1, FColor::Orange, FString::SanitizeFloat(angle));
+			GEngine->AddOnScreenDebugMessage(1, 1, FColor::Red, FString::SanitizeFloat(VertAngle));
+		}
+	}
+}
+
+bool AMainCharacter::ActorInView(AActor* Actor)
+{
+	bool IsOnScreen = false;
+	if (Actor)
+	{
+		FVector2D ScreenSize;
+		if (GEngine && GEngine->GameViewport)
+		{
+			GEngine->GameViewport->GetViewportSize(ScreenSize);
+		}
+		FVector2D ActorScreenPosition;
+		bool SuccessfullProjection = UGameplayStatics::ProjectWorldToScreen(UGameplayStatics::GetPlayerController(GetWorld(), 0), Actor->GetActorLocation(), ActorScreenPosition);
+
+		if (SuccessfullProjection && ActorScreenPosition.X > 0.0f && ActorScreenPosition.X < ScreenSize.X && ActorScreenPosition.Y > 0.0f && ActorScreenPosition.Y < ScreenSize.Y)
+		{
+			IsOnScreen = true;
+		}
+		else {
+			IsOnScreen = false;
+		}
+		// Debug
+		//if (GEngine && IsOnScreen) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Purple, ActorScreenPosition.ToString());
+		//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, ScreenSize.ToString());
+	}
+	return IsOnScreen;
+}
+
+bool AMainCharacter::ActorOccluded(AActor* Actor)
+{
+	if (Actor)
+	{
+		FHitResult TraceResult;
+		FVector Start = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
+		FVector End = Actor->GetActorLocation();
+		GetWorld()->LineTraceSingleByChannel(TraceResult, Start, End, ECollisionChannel::ECC_Visibility);
+		bool Result = TraceResult.bBlockingHit;
+
+		return Result;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
+{
+	FHitResult TraceResult;
+	FVector CameraFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+	//FVector CameraUpVec = UKismetMathLibrary::GetUpVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+	FVector CameraRVec = UKismetMathLibrary::GetRightVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
+
+	FVector TraceStart = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
+	FVector TraceEnd = FVector(TraceStart + CameraFwdVec * RayLength).RotateAngleAxis(-6.0f, CameraRVec);
+	// Tracing a line form a half metre above camera in camera's forward direction.
+	GetWorld()->LineTraceSingleByChannel(TraceResult, TraceStart, TraceEnd, ECollisionChannel::ECC_Visibility);
+	TargetingBiasLocation = TraceResult.ImpactPoint;
+
+	//Debug
+	if (MainCharacterDebug && MainCharacterDebugLevel == 1)
+	{
+		DrawDebugBox(GetWorld(), TargetingBiasLocation, FVector(20.0f, 20.0f, 20.0f), FColor::Red, false, -1.0f, 0, 2.0f);
+	}
+}
+
+void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location)
+{
+	for (int i = 0; i < Actors.Num(); i++)
+	{
+		for (int o = 0; o < Actors.Num() - 1; o++)
+		{
+			if (FVector::Dist(Actors[o]->GetActorLocation(), Location) > FVector::Dist(Actors[o + 1]->GetActorLocation(), Location))
+			{
+				Actors.Swap(o, o + 1);
+			}
+		}
+	}
+}
+
+bool AMainCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range)
+{
+	return FVector::Dist(Actor->GetActorLocation(), Location) <= Range;
+}
+
 //////////////////////////////////////////////////////////
 // ************ For combat combo logic **************** //
 //////////////////////////////////////////////////////////
@@ -461,6 +455,7 @@ void AMainCharacter::StartFastAttack()
 	CanStartFastAttack = false;
 	CanStartStrongAttack = false;
 }
+
 void AMainCharacter::StartStrongAttack()
 {
 	if (StrongAttack) PlayAnimMontage(StrongAttack, 1.0f, TEXT("Attack1")); 
@@ -594,6 +589,8 @@ void AMainCharacter::EndAttack()
 }
 
 /////////////////////////////////////////////////////////////////
+//*************** BaseCharacter Implementations ***************//
+/////////////////////////////////////////////////////////////////
 
 void AMainCharacter::SetCharacterRotationEnabled(bool NewRotate)
 {
@@ -601,7 +598,7 @@ void AMainCharacter::SetCharacterRotationEnabled(bool NewRotate)
 }
 
 /////////////////////////////////////////////////////////////////
-//*********** Combat Interface implementation *****************//
+//*************** Interface implementation ********************//
 /////////////////////////////////////////////////////////////////
 
 void AMainCharacter::WeaponHit(AActor* HitActor)
@@ -615,4 +612,14 @@ void AMainCharacter::WeaponHit(AActor* HitActor)
 		FDamageEvent de;
 		HitActor->TakeDamage(1.0f, de, GetController(), this);
 	}
+}
+
+float AMainCharacter::GetMovementInputStrength_Implementation()
+{
+	return MovementInputStrength;
+}
+
+FVector AMainCharacter::GetMovementInputDirection_Implementation()
+{
+	return MovementInputVector;
 }

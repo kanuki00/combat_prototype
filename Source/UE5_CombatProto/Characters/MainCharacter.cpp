@@ -69,9 +69,12 @@ void AMainCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	Movement(PlayerHasMovementControl);
-	CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
-	RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, IsTargeting);
+	if (!IsDead)
+	{
+		Movement(PlayerHasMovementControl);
+		CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
+		RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, IsTargeting);
+	}
 
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
 	MovementInputStrength = FMath::Clamp(MovementInputVector.Length(), 0.0f, 1.0f);
@@ -85,8 +88,11 @@ void AMainCharacter::Tick(float DeltaTime)
 	Cooldown(StrongAttackCoolingDown, StrongAttackCooldownTimer, StrongAttackCoolDownLength, DeltaTime);
 
 	// Keeping track of what section each attack montage is in.
-	CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(FastAttack);
-	CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(StrongAttack);
+	if (!IsDead) {
+		CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(FastAttack);
+		CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(StrongAttack);
+	}
+	
 
 	// Determining targetable actors. Quite slow as is, but executing in tick is necessary to draw suggestion widget.
 	AllTargets.Empty();

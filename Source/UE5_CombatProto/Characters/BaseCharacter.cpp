@@ -41,6 +41,27 @@ void ABaseCharacter::WasPressed(bool & WasPressed, bool & Pressed, bool & Presse
 	PressedCache = Pressed;
 }
 
+void ABaseCharacter::Death()
+{
+	IsDead = true;
+	Health = 0;
+
+	DisableInput(Cast<APlayerController>(GetController()));
+
+	if (DeathAnimation)
+	{
+		PlayAnimMontage(DeathAnimation);
+	}
+}
+
+void ABaseCharacter::RagdollChar()
+{
+	GetCapsuleComponent()->SetCollisionProfileName(TEXT("NoCollision"));
+	GetMesh()->SetAnimationMode(EAnimationMode::AnimationCustomMode); // Should disable anim bp
+	GetMesh()->SetCollisionProfileName(TEXT("Ragdoll"));
+	GetMesh()->SetSimulatePhysics(true);
+}
+
 // Called every frame
 void ABaseCharacter::Tick(float DeltaTime)
 {

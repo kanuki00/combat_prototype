@@ -4,9 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Components/CapsuleComponent.h"
 #include "../CombatInterface.h"
 #include "BaseCharacter.generated.h"
 
+/*
+
+*/
 UCLASS()
 class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter, public ICombatInterface
 {
@@ -31,7 +35,17 @@ protected:
 	void Cooldown(bool & CoolingDown, float & CooldownTimer, float & CoolDownLength, float DeltaTime);
 	void WasPressed(bool & WasPressed, bool & Pressed, bool & PressedCache);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+		UAnimMontage* DeathAnimation = nullptr;
+
+	UFUNCTION(BlueprintCallable)
+		void Death();
+
+	bool IsDead = false;
+
 public:	
+	void RagdollChar();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -40,16 +54,16 @@ public:
 
 	// Functions for getting health of character.
 	UFUNCTION()
-	int GetMaxHealth();
+		int GetMaxHealth();
 
 	UFUNCTION()
-	int GetHealth();
+		int GetHealth();
 
 	// For setting damage dealing to enabled or disabled.
 	UFUNCTION()
-	void SetApplyDamageEnabled(bool NewDamage = true);
+		void SetApplyDamageEnabled(bool NewDamage = true);
 
 	UFUNCTION()
-	virtual void SetCharacterRotationEnabled(bool NewRotate = true);
+		virtual void SetCharacterRotationEnabled(bool NewRotate = true);
 
 };

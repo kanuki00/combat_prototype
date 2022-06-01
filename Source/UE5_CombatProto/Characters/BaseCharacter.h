@@ -6,13 +6,28 @@
 #include "GameFramework/Character.h"
 #include "Components/CapsuleComponent.h"
 #include "../CombatInterface.h"
+#include "UObject/Interface.h"
 #include "BaseCharacter.generated.h"
 
-/*
+// Interface for animations
+UINTERFACE(MinimalAPI, Blueprintable)
+class UCharacterAnimationInterface : public UInterface
+{
+	GENERATED_BODY()
+};
 
-*/
+class UE5_COMBATPROTO_API ICharacterAnimationInterface
+{
+	GENERATED_BODY()
+public:
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Animation Interface")
+		float GetMovementInputStrength();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Animation Interface")
+		FVector GetMovementInputDirection();
+};
+
 UCLASS()
-class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter, public ICombatInterface
+class UE5_COMBATPROTO_API ABaseCharacter : public ACharacter, public ICombatInterface, public ICharacterAnimationInterface
 {
 	GENERATED_BODY()
 

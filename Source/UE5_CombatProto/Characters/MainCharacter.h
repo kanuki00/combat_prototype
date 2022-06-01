@@ -14,26 +14,11 @@
 
 #include "MainCharacter.generated.h"
 
-// Interface for animations
-UINTERFACE(MinimalAPI, Blueprintable)
-class UCharacterAnimationInterface : public UInterface
-{
-	GENERATED_BODY()
-};
 
-class UE5_COMBATPROTO_API ICharacterAnimationInterface
-{
-	GENERATED_BODY()
-public:
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Animation Interface")
-		float GetMovementInputStrength();
-	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Animation Interface")
-		FVector GetMovementInputDirection();
-};
 
 // Main character class
 UCLASS()
-class UE5_COMBATPROTO_API AMainCharacter : public ABaseCharacter, public ICharacterAnimationInterface
+class UE5_COMBATPROTO_API AMainCharacter : public ABaseCharacter
 {
 	GENERATED_BODY()
 

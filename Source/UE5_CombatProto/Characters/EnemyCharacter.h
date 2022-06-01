@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BaseCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "EnemyCharacter.generated.h"
 
 /**
@@ -16,4 +17,6 @@ class UE5_COMBATPROTO_API AEnemyCharacter : public ABaseCharacter
 	
 public:
 	AEnemyCharacter();
+
+	float GetMovementInputStrength_Implementation();
 };

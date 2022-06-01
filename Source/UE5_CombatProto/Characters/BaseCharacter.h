@@ -35,8 +35,15 @@ protected:
 	void Cooldown(bool & CoolingDown, float & CooldownTimer, float & CoolDownLength, float DeltaTime);
 	void WasPressed(bool & WasPressed, bool & Pressed, bool & PressedCache);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+	// Death Montage
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References|Animations")
 		UAnimMontage* DeathAnimation = nullptr;
+	// Attack Montages
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
+		UAnimMontage* FastAttack = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
+		UAnimMontage* StrongAttack = nullptr;
+
 
 	UFUNCTION(BlueprintCallable)
 		void Death();

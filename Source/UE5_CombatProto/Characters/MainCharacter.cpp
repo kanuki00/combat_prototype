@@ -17,10 +17,6 @@ AMainCharacter::AMainCharacter()
 
 	// Setting up components, their attachments and initial locations.
 	GetCapsuleComponent()->InitCapsuleSize(30.0f, 90.0f);
-	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
-
-	float mesh_loc = GetCapsuleComponent()->GetScaledCapsuleHalfHeight() * -1.0f;
-	GetMesh()->SetRelativeLocation(FVector(0.0f, 0.0f, mesh_loc));
 
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("Camera Boom"));
 	CameraBoom->SetupAttachment(RootComponent);

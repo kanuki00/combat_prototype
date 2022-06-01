@@ -242,13 +242,6 @@ public:
 	void EndAttack();
 
 protected:
-	// Attack Montages
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
-		UAnimMontage* FastAttack = nullptr;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animations")
-		UAnimMontage* StrongAttack = nullptr;
-
-protected:
 	////////////////////////////////////////////
 	//****** Interface implementations *******//
 	////////////////////////////////////////////

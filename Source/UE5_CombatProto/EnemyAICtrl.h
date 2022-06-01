@@ -3,17 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseCharacter.h"
-#include "EnemyCharacter.generated.h"
+#include "AICtrlBase.h"
+#include "EnemyAICtrl.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UE5_COMBATPROTO_API AEnemyCharacter : public ABaseCharacter
+class UE5_COMBATPROTO_API AEnemyAICtrl : public AAICtrlBase
 {
 	GENERATED_BODY()
 	
-public:
-	AEnemyCharacter();
 };

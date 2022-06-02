@@ -1,14 +1,14 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// This is unused
 
 
 #include "StrongAttackEndedNotify.h"
 #include "../Characters/MainCharacter.h"
 
-void UStrongAttackEndedNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
+void UDEPRECATED_StrongAttackEndedNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
-	if (Cast<AMainCharacter>(MeshComp->GetOwner()))
+	if (Cast<APlayerCharacter>(MeshComp->GetOwner()))
 	{
-		AMainCharacter* MainCharacter = Cast<AMainCharacter>(MeshComp->GetOwner());
+		APlayerCharacter* MainCharacter = Cast<APlayerCharacter>(MeshComp->GetOwner());
 		MainCharacter->EndAttack();
 	}
 }

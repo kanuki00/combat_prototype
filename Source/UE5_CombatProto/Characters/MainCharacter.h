@@ -18,7 +18,7 @@
 
 // Main character class
 UCLASS()
-class UE5_COMBATPROTO_API AMainCharacter : public ABaseCharacter
+class UE5_COMBATPROTO_API APlayerCharacter : public ABaseCharacter
 {
 	GENERATED_BODY()
 
@@ -34,7 +34,7 @@ public:
 	////////////////////////////////////////////
 	//************* Constructor **************//
 	////////////////////////////////////////////
-	AMainCharacter();
+	APlayerCharacter();
 
 	// Component pointers
 	UPROPERTY(EditAnywhere)

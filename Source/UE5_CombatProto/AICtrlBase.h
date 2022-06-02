@@ -4,22 +4,30 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Perception/AIPerceptionComponent.h"
+#include "Perception/AISense_Sight.h"
+#include "Perception/AISenseConfig_Sight.h"
 #include "AICtrlBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
-class UE5_COMBATPROTO_API AAICtrlBase : public AAIController
+class UE5_COMBATPROTO_API ABaseAICtrl : public AAIController
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References")
-		UBlackboardData* UsedBlackboard = nullptr;
+	ABaseAICtrl();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References")
 		UBehaviorTree* UsedBehaviorTree = nullptr;
 
+	UPROPERTY()
+		class UAISenseConfig_Sight* SightConfig;
+
 protected:
 	virtual void BeginPlay() override;
+
+	UPROPERTY()
+		TArray<AActor*> SensedActors;
+
+	void Tick(float DeltaTime);
 };

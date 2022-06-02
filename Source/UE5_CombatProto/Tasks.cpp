@@ -22,5 +22,13 @@ EBTNodeResult::Type UMoveToLocation::ExecuteTask(UBehaviorTreeComponent& OwnerCo
 	AAIController* AIC = OwnerComp.GetAIOwner();
 	FVector MoveLocation = OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Vector>(BlackboardKey.GetSelectedKeyID());
 	AIC->MoveToLocation(MoveLocation, 50.0f);
+
+	return EBTNodeResult::Succeeded;
+}
+
+EBTNodeResult::Type UStopMoving::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+{
+	AAIController* AIC = OwnerComp.GetAIOwner();
+	AIC->StopMovement();
 	return EBTNodeResult::Succeeded;
 }

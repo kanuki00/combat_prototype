@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// This is unused
 
 #pragma once
 
@@ -9,8 +9,8 @@
 /**
  * 
  */
-UCLASS()
-class UE5_COMBATPROTO_API UStrongAttackCheckNotifyState : public UAnimNotifyState
+UCLASS(Deprecated)
+class UE5_COMBATPROTO_API UDEPRECATED_StrongAttackCheckNotifyState : public UAnimNotifyState
 {
 	GENERATED_BODY()
 public:

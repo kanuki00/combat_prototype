@@ -6,9 +6,9 @@
 
 void UFastAttackEndedNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
-	if (Cast<AMainCharacter>(MeshComp->GetOwner()))
+	if (Cast<APlayerCharacter>(MeshComp->GetOwner()))
 	{
-		AMainCharacter* MainCharacter = Cast<AMainCharacter>(MeshComp->GetOwner());
+		APlayerCharacter* MainCharacter = Cast<APlayerCharacter>(MeshComp->GetOwner());
 		MainCharacter->EndAttack();
 	}
 }

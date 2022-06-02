@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////
 // ******* Constructor, initializing components and settings ******** //
 ////////////////////////////////////////////////////////////////////////
-AMainCharacter::AMainCharacter()
+APlayerCharacter::APlayerCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -49,7 +49,7 @@ AMainCharacter::AMainCharacter()
 ////////////////////////////////////////////////////////////////////////
 // ************* Begin Play, Called at start of game **************** //
 ////////////////////////////////////////////////////////////////////////
-void AMainCharacter::BeginPlay()
+void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -61,7 +61,7 @@ void AMainCharacter::BeginPlay()
 ////////////////////////////////////////////////////////////////////////
 // ************* Tick, Called every frame *************************** //
 ////////////////////////////////////////////////////////////////////////
-void AMainCharacter::Tick(float DeltaTime)
+void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
@@ -134,7 +134,7 @@ void AMainCharacter::Tick(float DeltaTime)
 // ********* Basic Character functions ******************************//
 ///////////////////////////////////////////////////////////////////////
 
-void AMainCharacter::Movement(bool Enabled)
+void APlayerCharacter::Movement(bool Enabled)
 {
 	if (Enabled)
 	{
@@ -145,7 +145,7 @@ void AMainCharacter::Movement(bool Enabled)
 	}
 }
 
-void AMainCharacter::CameraMovement(float DeltaTime, float Smoothing, bool Enabled)
+void APlayerCharacter::CameraMovement(float DeltaTime, float Smoothing, bool Enabled)
 {
 	if (Enabled)
 	{
@@ -157,7 +157,7 @@ void AMainCharacter::CameraMovement(float DeltaTime, float Smoothing, bool Enabl
 	}
 }
 
-void AMainCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, bool Targeting)
+void APlayerCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, bool Targeting)
 {
 	if (Enabled)
 	{
@@ -181,38 +181,38 @@ void AMainCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, bo
 /////////////////////////////////////////////////////////////
 // ****** Called to bind functionality to input ***********//
 /////////////////////////////////////////////////////////////
-void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAxis(MoveForwardName, this, &AMainCharacter::MoveForwardBind);
-	PlayerInputComponent->BindAxis(MoveRightName, this, &AMainCharacter::MoveRightBind);
+	PlayerInputComponent->BindAxis(MoveForwardName, this, &APlayerCharacter::MoveForwardBind);
+	PlayerInputComponent->BindAxis(MoveRightName, this, &APlayerCharacter::MoveRightBind);
 
-	PlayerInputComponent->BindAxis(LookUpName, this, &AMainCharacter::LookUpBind);
-	PlayerInputComponent->BindAxis(LookRightName, this, &AMainCharacter::LookRightBind);
+	PlayerInputComponent->BindAxis(LookUpName, this, &APlayerCharacter::LookUpBind);
+	PlayerInputComponent->BindAxis(LookRightName, this, &APlayerCharacter::LookRightBind);
 
-	PlayerInputComponent->BindAction("Input1", IE_Pressed, this, &AMainCharacter::Action1PressedBind);
-	PlayerInputComponent->BindAction("Input1", IE_Released, this, &AMainCharacter::Action1ReleasedBind);
+	PlayerInputComponent->BindAction("Input1", IE_Pressed, this, &APlayerCharacter::Action1PressedBind);
+	PlayerInputComponent->BindAction("Input1", IE_Released, this, &APlayerCharacter::Action1ReleasedBind);
 
-	PlayerInputComponent->BindAction("Input2", IE_Pressed, this, &AMainCharacter::Action2PressedBind);
-	PlayerInputComponent->BindAction("Input2", IE_Released, this, &AMainCharacter::Action2ReleasedBind);
+	PlayerInputComponent->BindAction("Input2", IE_Pressed, this, &APlayerCharacter::Action2PressedBind);
+	PlayerInputComponent->BindAction("Input2", IE_Released, this, &APlayerCharacter::Action2ReleasedBind);
 
-	PlayerInputComponent->BindAction("Target", IE_Pressed, this, &AMainCharacter::TargetPressedBind);
-	PlayerInputComponent->BindAction("Target", IE_Released, this, &AMainCharacter::TargetReleasedBind);
+	PlayerInputComponent->BindAction("Target", IE_Pressed, this, &APlayerCharacter::TargetPressedBind);
+	PlayerInputComponent->BindAction("Target", IE_Released, this, &APlayerCharacter::TargetReleasedBind);
 }
 
-void AMainCharacter::MoveForwardBind(float Axis)
+void APlayerCharacter::MoveForwardBind(float Axis)
 {MovementInputVector = FVector(Axis, MovementInputVector.Y, 0.0f);}
 
-void AMainCharacter::MoveRightBind(float Axis)
+void APlayerCharacter::MoveRightBind(float Axis)
 {MovementInputVector = FVector(MovementInputVector.X, Axis, 0.0f);}
 
-void AMainCharacter::LookUpBind(float Axis)
+void APlayerCharacter::LookUpBind(float Axis)
 {CameraInputVector = FVector(CameraInputVector.X, Axis, 0.0f);}
 
-void AMainCharacter::LookRightBind(float Axis)
+void APlayerCharacter::LookRightBind(float Axis)
 {CameraInputVector = FVector(Axis, CameraInputVector.Y, 0.0f);}
 
-void AMainCharacter::Action1PressedBind()
+void APlayerCharacter::Action1PressedBind()
 {
 	Action1Pressed = true; 
 	if(CanStartFastAttack && !FastAttackCoolingDown) // Action1 starts fast attack montage
@@ -223,10 +223,10 @@ void AMainCharacter::Action1PressedBind()
 	}
 }
 
-void AMainCharacter::Action1ReleasedBind()
+void APlayerCharacter::Action1ReleasedBind()
 {Action1Pressed = false;}
 
-void AMainCharacter::Action2PressedBind()
+void APlayerCharacter::Action2PressedBind()
 {
 	Action2Pressed = true; 
 	if (CanStartStrongAttack && !StrongAttackCoolingDown) // Action2 starts strong attack montage
@@ -237,16 +237,16 @@ void AMainCharacter::Action2PressedBind()
 	}
 } 
 
-void AMainCharacter::Action2ReleasedBind()
+void APlayerCharacter::Action2ReleasedBind()
 {Action2Pressed = false;}
 
-void AMainCharacter::TargetPressedBind()
+void APlayerCharacter::TargetPressedBind()
 {
 	TargetPressed = true;
 	GetNewTarget();
 }
 
-void AMainCharacter::TargetReleasedBind()
+void APlayerCharacter::TargetReleasedBind()
 {
 	TargetPressed = false;
 	ClearTarget();
@@ -256,7 +256,7 @@ void AMainCharacter::TargetReleasedBind()
 // *********************** Targeting ******************************** //
 ////////////////////////////////////////////////////////////////////////
 
-void AMainCharacter::GetNewTarget()
+void APlayerCharacter::GetNewTarget()
 {
 	if (AllVisibleTargets.Num() > 0)
 	{
@@ -265,13 +265,13 @@ void AMainCharacter::GetNewTarget()
 	}
 }
 
-void AMainCharacter::ClearTarget()
+void APlayerCharacter::ClearTarget()
 {
 	Target = nullptr;
 	IsTargeting = false;
 }
 
-void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
+void APlayerCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 {
 
 	float rotspeed = 60.0f; // how fast the camera rotates.
@@ -363,7 +363,7 @@ void AMainCharacter::LookAtTarget(bool Enabled, float DeltaTime)
 	}
 }
 
-bool AMainCharacter::ActorInView(AActor* Actor)
+bool APlayerCharacter::ActorInView(AActor* Actor)
 {
 	bool IsOnScreen = false;
 	if (Actor)
@@ -390,7 +390,7 @@ bool AMainCharacter::ActorInView(AActor* Actor)
 	return IsOnScreen;
 }
 
-bool AMainCharacter::ActorOccluded(AActor* Actor)
+bool APlayerCharacter::ActorOccluded(AActor* Actor)
 {
 	if (Actor)
 	{
@@ -408,7 +408,7 @@ bool AMainCharacter::ActorOccluded(AActor* Actor)
 	}
 }
 
-void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
+void APlayerCharacter::UpdateTargetingBiasLocation(float RayLength)
 {
 	FHitResult TraceResult;
 	FVector CameraFwdVec = UKismetMathLibrary::GetForwardVector(UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraRotation());
@@ -428,7 +428,7 @@ void AMainCharacter::UpdateTargetingBiasLocation(float RayLength)
 	}
 }
 
-void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location)
+void APlayerCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVector Location)
 {
 	for (int i = 0; i < Actors.Num(); i++)
 	{
@@ -442,7 +442,7 @@ void AMainCharacter::SortActorsByDistanceToLocation(TArray<AActor*>& Actors, FVe
 	}
 }
 
-bool AMainCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range)
+bool APlayerCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range)
 {
 	return FVector::Dist(Actor->GetActorLocation(), Location) <= Range;
 }
@@ -451,14 +451,14 @@ bool AMainCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, flo
 // ************ For combat combo logic **************** //
 //////////////////////////////////////////////////////////
 
-void AMainCharacter::StartFastAttack()
+void APlayerCharacter::StartFastAttack()
 {
 	if (FastAttack) PlayAnimMontage(FastAttack, 1.0f, TEXT("Attack1")); 
 	CanStartFastAttack = false;
 	CanStartStrongAttack = false;
 }
 
-void AMainCharacter::StartStrongAttack()
+void APlayerCharacter::StartStrongAttack()
 {
 	if (StrongAttack) PlayAnimMontage(StrongAttack, 1.0f, TEXT("Attack1")); 
 	CanStartStrongAttack = false;
@@ -466,7 +466,7 @@ void AMainCharacter::StartStrongAttack()
 }
 
 // Executed by notifystate tick over some time, only one bool can be true.
-void AMainCharacter::CheckAttackPressed()
+void APlayerCharacter::CheckAttackPressed()
 {
 	if (Action1WasPressed)
 	{
@@ -480,7 +480,7 @@ void AMainCharacter::CheckAttackPressed()
 	}
 }
 
-void AMainCharacter::ContinueAttack()
+void APlayerCharacter::ContinueAttack()
 {
 	if (ShouldContinueFastAttack)
 	{
@@ -533,7 +533,7 @@ void AMainCharacter::ContinueAttack()
 	}
 }
 
-void AMainCharacter::TransToStrongAttack()
+void APlayerCharacter::TransToStrongAttack()
 {
 	// DEBUG
 	if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongTrans"));
@@ -554,7 +554,7 @@ void AMainCharacter::TransToStrongAttack()
 	CanStartStrongAttack = false;
 }
 
-void AMainCharacter::TransToFastAttack()
+void APlayerCharacter::TransToFastAttack()
 {
 	// DEBUG
 	if (GEngine && true && MainCharacterDebug && MainCharacterDebugLevel == 0) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastTrans"));
@@ -577,7 +577,7 @@ void AMainCharacter::TransToFastAttack()
 }
 
 // Called at end of montages so that attacks can be started again.
-void AMainCharacter::EndAttack()
+void APlayerCharacter::EndAttack()
 {
 	CanStartFastAttack = true;
 	CanStartStrongAttack = true;
@@ -594,7 +594,7 @@ void AMainCharacter::EndAttack()
 //*************** BaseCharacter Implementations ***************//
 /////////////////////////////////////////////////////////////////
 
-void AMainCharacter::SetCharacterRotationEnabled(bool NewRotate)
+void APlayerCharacter::SetCharacterRotationEnabled(bool NewRotate)
 {
 	PlayerHasRotationControl = NewRotate;
 }
@@ -603,7 +603,7 @@ void AMainCharacter::SetCharacterRotationEnabled(bool NewRotate)
 //*************** Interface implementation ********************//
 /////////////////////////////////////////////////////////////////
 
-void AMainCharacter::WeaponHit(AActor* HitActor)
+void APlayerCharacter::WeaponHit(AActor* HitActor)
 {
 	if (CanApplyDamage)
 	{
@@ -616,12 +616,12 @@ void AMainCharacter::WeaponHit(AActor* HitActor)
 	}
 }
 
-float AMainCharacter::GetMovementInputStrength_Implementation()
+float APlayerCharacter::GetMovementInputStrength_Implementation()
 {
 	return MovementInputStrength;
 }
 
-FVector AMainCharacter::GetMovementInputDirection_Implementation()
+FVector APlayerCharacter::GetMovementInputDirection_Implementation()
 {
 	return MovementInputVector;
 }

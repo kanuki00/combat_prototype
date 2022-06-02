@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "AICtrlBase.h"
-#include "BehaviorTree/BlackboardData.h"
-#include "BehaviorTree/BlackboardComponent.h"
 #include "EnemyAICtrl.generated.h"
 
 /**
@@ -18,6 +16,12 @@ class UE5_COMBATPROTO_API AEnemyAICtrl : public ABaseAICtrl
 
 public:
 	AEnemyAICtrl();
+
 protected:
 	void Tick(float DeltaTime);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float AttackRange;
+	UPROPERTY(BlueprintReadOnly)
+		bool InRangeOfPlayer;
 };

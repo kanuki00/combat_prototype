@@ -128,6 +128,26 @@ void APlayerCharacter::Tick(float DeltaTime)
 
 	// Rotating camera to target when targeting
 	LookAtTarget(TargetPressed, DeltaTime);
+
+	// Determining if Input3 was tapped or is being held
+
+	if (Input3Pressed == true)
+	{
+		Input3PressTimer += DeltaTime;
+		if (Input3PressTimer > Input3TapThresh)
+		{
+			Input3Held = true;
+		}
+	}
+	else {
+		Input3Held = false;
+	}
+	if (GEngine && Input3Held) GEngine->AddOnScreenDebugMessage(1, 0.1, FColor::Yellow, TEXT("Purposefully pressed!"));
+
+	// Setting sprint speed
+	if (Input3Held && !IsTargeting) { CharacterMovement->MaxWalkSpeed = 800.0f; IsSprinting = true; }
+	else { CharacterMovement->MaxWalkSpeed = 600.0f; IsSprinting = false; } // Such beautifully compact code! thx brackets.
+	
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -196,8 +216,13 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("Input2", IE_Pressed, this, &APlayerCharacter::Action2PressedBind);
 	PlayerInputComponent->BindAction("Input2", IE_Released, this, &APlayerCharacter::Action2ReleasedBind);
 
+	PlayerInputComponent->BindAction("Input3", IE_Pressed, this, &APlayerCharacter::Input3PressedBind);
+	PlayerInputComponent->BindAction("Input3", IE_Released, this, &APlayerCharacter::Input3ReleasedBind);
+
 	PlayerInputComponent->BindAction("Target", IE_Pressed, this, &APlayerCharacter::TargetPressedBind);
 	PlayerInputComponent->BindAction("Target", IE_Released, this, &APlayerCharacter::TargetReleasedBind);
+
+
 }
 
 void APlayerCharacter::MoveForwardBind(float Axis)
@@ -239,6 +264,26 @@ void APlayerCharacter::Action2PressedBind()
 
 void APlayerCharacter::Action2ReleasedBind()
 {Action2Pressed = false;}
+
+void APlayerCharacter::Input3PressedBind()
+{
+	Input3Pressed = true;
+}
+
+void APlayerCharacter::Input3ReleasedBind()
+{
+	Input3Pressed = false;
+	if (Input3PressTimer <= Input3TapThresh)
+	{
+		Input3Tapped();
+	}
+	Input3PressTimer = 0.0f;
+}
+
+void APlayerCharacter::Input3Tapped()
+{
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Yellow, TEXT("Tapped!"));
+}
 
 void APlayerCharacter::TargetPressedBind()
 {

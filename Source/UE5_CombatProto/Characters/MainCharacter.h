@@ -137,6 +137,15 @@ private:
 	bool Action2PressedCache = false;
 	bool Action2WasPressed = false;
 
+	// Dodge/sprint input bind
+	void Input3PressedBind();
+	void Input3ReleasedBind();
+	float Input3PressTimer = 0.0f;
+	bool Input3Pressed = false;
+	float Input3TapThresh = 0.1f;
+	void Input3Tapped();
+	bool Input3Held = false;
+
 	// Target input
 	void TargetPressedBind();
 	void TargetReleasedBind();

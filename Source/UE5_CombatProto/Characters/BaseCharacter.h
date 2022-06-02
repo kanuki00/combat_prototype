@@ -74,6 +74,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(BlueprintReadOnly)
+		bool IsSprinting = false; // Used for animation.
+
 	// Functions for getting health of character.
 	UFUNCTION()
 		int GetMaxHealth();

@@ -16,6 +16,11 @@ void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* A
 
 void URollEndNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+	Char = Cast<ABaseCharacter>(MeshComp->GetOwner());
+	if (Char)
+	{
+		Char->EndRoll();
+	}
 }
 
 void UResetEnemyAtkCooldownNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)

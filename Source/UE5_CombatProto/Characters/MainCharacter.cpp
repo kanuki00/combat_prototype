@@ -72,7 +72,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 	{
 		Movement(PlayerHasMovementControl);
 		CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
-		RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, IsTargeting);
+		RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, IsTargeting && !IsRolling);
 	}
 
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
@@ -166,6 +166,11 @@ void APlayerCharacter::Movement(bool Enabled)
 		FVector Direction = RotatedInput.GetSafeNormal();
 		float Scale = FMath::Clamp(RotatedInput.Length(), 0.0f, 1.0f);
 		AddMovementInput(Direction, Scale);
+
+		// DEBUG
+		//if (GEngine) GEngine->AddOnScreenDebugMessage(1, 0.1, FColor::Yellow, MovementInputVector.ToString());
+		//if (GEngine) GEngine->AddOnScreenDebugMessage(2, 0.1, FColor::Orange, CameraInputVector.ToString());
+
 	}
 }
 
@@ -202,6 +207,25 @@ void APlayerCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, 
 	}
 }
 
+void APlayerCharacter::InstantlyRotateToInput()
+{
+	if (MovementInputVector.Length() > 0.0f)
+	{
+		FVector Direction = this->GetActorLocation() + FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInputVector);
+		FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Direction);
+		this->SetActorRotation(Rotation);
+	}
+}
+
+void APlayerCharacter::EndRoll()
+{
+	IsRolling = false;
+	if (MovementInputStrength > 0.0f) // Stopping roll anim prematurely to keep movement velocity.
+	{
+		StopAnimMontage(RollAnimation);
+	}
+}
+
 void APlayerCharacter::UniqueDeath()
 {
 	DisableInput(Cast<APlayerController>(GetController()));
@@ -213,11 +237,11 @@ void APlayerCharacter::UniqueDeath()
 void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAxis(MoveForwardName, this, &APlayerCharacter::MoveForwardBind);
-	PlayerInputComponent->BindAxis(MoveRightName, this, &APlayerCharacter::MoveRightBind);
+	PlayerInputComponent->BindAxis("Move_Forward_Backward", this, &APlayerCharacter::MoveForwardBind);
+	PlayerInputComponent->BindAxis("Move_Right_Left", this, &APlayerCharacter::MoveRightBind);
 
-	PlayerInputComponent->BindAxis(LookUpName, this, &APlayerCharacter::LookUpBind);
-	PlayerInputComponent->BindAxis(LookRightName, this, &APlayerCharacter::LookRightBind);
+	PlayerInputComponent->BindAxis("Look_Up_Down", this, &APlayerCharacter::LookUpBind);
+	PlayerInputComponent->BindAxis("Look_Right_Left", this, &APlayerCharacter::LookRightBind);
 
 	PlayerInputComponent->BindAction("Input1", IE_Pressed, this, &APlayerCharacter::Action1PressedBind);
 	PlayerInputComponent->BindAction("Input1", IE_Released, this, &APlayerCharacter::Action1ReleasedBind);
@@ -235,10 +259,15 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 }
 
 void APlayerCharacter::MoveForwardBind(float Axis)
-{MovementInputVector = FVector(Axis, MovementInputVector.Y, 0.0f);}
+{
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(3, 0.1, FColor::Yellow, FString::SanitizeFloat(Axis));
+	MovementInputVector = FVector(Axis, MovementInputVector.Y, 0.0f);
+}
 
 void APlayerCharacter::MoveRightBind(float Axis)
-{MovementInputVector = FVector(MovementInputVector.X, Axis, 0.0f);}
+{
+	MovementInputVector = FVector(MovementInputVector.X, Axis, 0.0f);
+}
 
 void APlayerCharacter::LookUpBind(float Axis)
 {CameraInputVector = FVector(CameraInputVector.X, Axis, 0.0f);}
@@ -292,7 +321,20 @@ void APlayerCharacter::Input3ReleasedBind()
 void APlayerCharacter::Input3Tapped()
 {
 	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Yellow, TEXT("Tapped!"));
-	if (RollAnimation) PlayAnimMontage(RollAnimation);
+	InstantlyRotateToInput();
+	if (RollAnimation)
+	{
+		IsRolling = true;
+		if (MovementInputStrength > 0.0f)
+		{
+			PlayAnimMontage(RollAnimation, 1.0f, FName("Moving"));
+		}
+		else
+		{
+			PlayAnimMontage(RollAnimation, 1.0f, FName("Standing"));
+		}
+		
+	}
 }
 
 void APlayerCharacter::TargetPressedBind()

@@ -6,6 +6,7 @@
 #include "AICtrlBase.h"
 #include "EnemyAICtrl.generated.h"
 
+class ACharacter;
 /**
  * 
  */
@@ -18,6 +19,8 @@ public:
 	AEnemyAICtrl();
 
 protected:
+	virtual void BeginPlay() override;
+
 	void Tick(float DeltaTime);
 
 	bool SeesPlayer = false;
@@ -25,5 +28,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float AttackRange = 200.0f;
 	UPROPERTY(BlueprintReadOnly)
-		bool InRangeOfPlayer;
+		bool InRangeOfPlayer = false;
+
+	ACharacter* Player0;
+
+	float DistToPlayer = 0.0f;
 };

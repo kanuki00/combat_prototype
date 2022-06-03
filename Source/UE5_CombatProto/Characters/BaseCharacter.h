@@ -70,7 +70,11 @@ protected:
 
 	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
+	
+
 public:	
+	virtual void EndRoll();
+
 	void RagdollChar();
 
 	bool IsDead = false;

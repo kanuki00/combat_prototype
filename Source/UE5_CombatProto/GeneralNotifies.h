@@ -10,6 +10,7 @@
 class ABaseCharacter;
 class AEnemyCharacter;
 
+
 UCLASS()
 class UE5_COMBATPROTO_API UDeathNotify : public UAnimNotify
 {

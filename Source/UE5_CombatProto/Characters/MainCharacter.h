@@ -71,6 +71,14 @@ private:
 	UFUNCTION()
 		void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true, bool Targeting = false);
 
+	// Called to instantly rotate towards movement input.
+	void InstantlyRotateToInput();
+
+	bool CanRoll = true;
+	bool IsRolling = false;
+
+public:
+	virtual void EndRoll() override;
 protected:
 	virtual void UniqueDeath() override;
 

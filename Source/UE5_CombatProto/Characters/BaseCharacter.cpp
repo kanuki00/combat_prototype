@@ -68,6 +68,10 @@ float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, 
 	return 0.0f;
 }
 
+void ABaseCharacter::EndRoll()
+{
+}
+
 void ABaseCharacter::RagdollChar()
 {
 	GetCapsuleComponent()->SetCollisionProfileName(TEXT("NoCollision"));

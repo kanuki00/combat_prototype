@@ -251,5 +251,5 @@ protected:
 	FVector GetMovementInputDirection_Implementation();
 
 	// Implementation for combat interface.
-	virtual void WeaponHit(AActor* HitActor) override;
+	//virtual void WeaponHit(AActor* HitActor) override;
 };

@@ -6,7 +6,7 @@
 
 AEnemyCharacter::AEnemyCharacter()
 {
-	
+	DamageStrength = 20;
 }
 
 float AEnemyCharacter::GetMovementInputStrength_Implementation()
@@ -23,13 +23,13 @@ void AEnemyCharacter::Attack()
 		if (FastAttack) PlayAnimMontage(FastAttack);
 	}
 }
-
+/*
 float AEnemyCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	Death();
 	return 0.0f;
 }
-
+*/
 void AEnemyCharacter::UniqueDeath()
 {
 	Cast<ABaseAICtrl>(GetController())->DisableAI();

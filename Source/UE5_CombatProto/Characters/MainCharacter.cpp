@@ -43,10 +43,11 @@ APlayerCharacter::APlayerCharacter()
 
 	Camera->bCameraMeshHiddenInGame = false;
 
-	// Basecharacter
 	// Initial health
 	MaxHealth = 200;
 	Health = 200;
+
+	DamageStrength = 35;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -146,12 +147,14 @@ void APlayerCharacter::Tick(float DeltaTime)
 	else {
 		Input3Held = false;
 	}
-	//if (GEngine && Input3Held) GEngine->AddOnScreenDebugMessage(1, 0.1, FColor::Yellow, TEXT("Purposefully pressed!"));
 
 	// Setting sprint speed
-	if (Input3Held && !IsTargeting) { CharacterMovement->MaxWalkSpeed = 800.0f; IsSprinting = true; }
+	if (Input3Held && !IsTargeting) { CharacterMovement->MaxWalkSpeed = 800.0f; IsSprinting = true;
+	}
 	else { CharacterMovement->MaxWalkSpeed = 600.0f; IsSprinting = false; } // Such beautifully compact code! thx brackets.
-	
+
+	// Debug
+	//if (GEngine && IsSprinting) GEngine->AddOnScreenDebugMessage(20, 0.1, FColor::Yellow, TEXT("Should be sprinting"));
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -700,8 +703,10 @@ void APlayerCharacter::SetCharacterRotationEnabled(bool NewRotate)
 //*************** Interface implementation ********************//
 /////////////////////////////////////////////////////////////////
 
+/*
 void APlayerCharacter::WeaponHit(AActor* HitActor)
 {
+	// This is already implemented in baase character, consider removing
 	if (CanApplyDamage)
 	{
 		FString msg = HitActor->GetName();
@@ -712,7 +717,7 @@ void APlayerCharacter::WeaponHit(AActor* HitActor)
 		HitActor->TakeDamage(1.0f, de, GetController(), this);
 	}
 }
-
+*/
 float APlayerCharacter::GetMovementInputStrength_Implementation()
 {
 	return MovementInputStrength;

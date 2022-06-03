@@ -70,7 +70,9 @@ protected:
 
 	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
-	
+	int DamageStrength = 1; // how much damage the character can deal
+
+	virtual void WeaponHit(AActor* HitActor) override;
 
 public:	
 	virtual void EndRoll();

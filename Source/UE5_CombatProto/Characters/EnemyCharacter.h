@@ -23,7 +23,7 @@ public:
 	bool AttackCoolingDown = false;
 
 protected:
-	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+	//virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
 	virtual void UniqueDeath() override;
 };

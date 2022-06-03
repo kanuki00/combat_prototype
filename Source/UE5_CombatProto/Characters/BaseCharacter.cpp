@@ -51,7 +51,8 @@ void ABaseCharacter::Death()
 	UniqueDeath(); // Runs characters own unique death method. for example; players input is disabled and enemys AI is disabled.
 	IsDead = true;
 	Health = 0;
-	
+	CanApplyDamage = false;
+
 	StopAnimMontage(); // Stop any montage that could be playing, Eg. an attack.
 	if (DeathAnimation)
 	{
@@ -65,7 +66,25 @@ void ABaseCharacter::UniqueDeath()
 
 float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, TEXT("Was Hit"));
+	Health -= FMath::TruncToInt(Damage);
+	if (Health <= 0)
+	{
+		Death();
+	}
 	return 0.0f;
+}
+
+void ABaseCharacter::WeaponHit(AActor* HitActor)
+{
+	if (CanApplyDamage)
+	{
+		FString msg = HitActor->GetName();
+
+		// Applying damage
+		FDamageEvent de;
+		HitActor->TakeDamage(DamageStrength, de, GetController(), this);
+	}
 }
 
 void ABaseCharacter::EndRoll()

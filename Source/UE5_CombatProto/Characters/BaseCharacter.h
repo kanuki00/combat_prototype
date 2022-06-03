@@ -76,6 +76,8 @@ protected:
 
 public:	
 	virtual void EndRoll();
+	bool IsRolling = false;
+
 
 	void RagdollChar();
 

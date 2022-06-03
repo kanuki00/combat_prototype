@@ -281,7 +281,7 @@ void APlayerCharacter::LookRightBind(float Axis)
 void APlayerCharacter::Action1PressedBind()
 {
 	Action1Pressed = true; 
-	if(CanStartFastAttack && !FastAttackCoolingDown) // Action1 starts fast attack montage
+	if(CanStartFastAttack && !FastAttackCoolingDown && !IsRolling) // Action1 starts fast attack montage
 	{
 		StartFastAttack();
 		// DEBUG
@@ -295,7 +295,7 @@ void APlayerCharacter::Action1ReleasedBind()
 void APlayerCharacter::Action2PressedBind()
 {
 	Action2Pressed = true; 
-	if (CanStartStrongAttack && !StrongAttackCoolingDown) // Action2 starts strong attack montage
+	if (CanStartStrongAttack && !StrongAttackCoolingDown && !IsRolling) // Action2 starts strong attack montage
 	{
 		StartStrongAttack();
 		// DEBUG
@@ -553,9 +553,9 @@ bool APlayerCharacter::ActorInRangeOfLocation(AActor* Actor, FVector Location, f
 
 void APlayerCharacter::StartFastAttack()
 {
-	if (FastAttack) PlayAnimMontage(FastAttack, 1.0f, TEXT("Attack1")); 
-	CanStartFastAttack = false;
-	CanStartStrongAttack = false;
+		if (FastAttack) PlayAnimMontage(FastAttack, 1.0f, TEXT("Attack1"));
+		CanStartFastAttack = false;
+		CanStartStrongAttack = false;
 }
 
 void APlayerCharacter::StartStrongAttack()

@@ -66,11 +66,14 @@ void ABaseCharacter::UniqueDeath()
 
 float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, TEXT("Was Hit"));
-	Health -= FMath::TruncToInt(Damage);
-	if (Health <= 0)
+	if (!IsRolling)
 	{
-		Death();
+		//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, TEXT("Was Hit"));
+		Health -= FMath::TruncToInt(Damage);
+		if (Health <= 0)
+		{
+			Death();
+		}
 	}
 	return 0.0f;
 }

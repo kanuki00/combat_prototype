@@ -75,7 +75,7 @@ private:
 	void InstantlyRotateToInput();
 
 	bool CanRoll = true;
-	bool IsRolling = false;
+	
 
 public:
 	virtual void EndRoll() override;

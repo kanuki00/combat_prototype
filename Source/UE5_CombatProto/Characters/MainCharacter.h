@@ -3,18 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/PlayerController.h"
-#include "Camera/CameraComponent.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "Components/CapsuleComponent.h"
-#include "Animation/AnimMontage.h"
 #include "BaseCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 #include "MainCharacter.generated.h"
 
-
+class UCameraComponent;
+class USpringArmComponent;
 
 // Main character class
 UCLASS()
@@ -145,7 +140,7 @@ private:
 	void Input3ReleasedBind();
 	float Input3PressTimer = 0.0f;
 	bool Input3Pressed = false;
-	float Input3TapThresh = 0.1f;
+	float Input3TapThresh = 0.2f;
 	void Input3Tapped();
 	bool Input3Held = false;
 

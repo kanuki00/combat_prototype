@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "BaseCharacter.h"
-#include "GameFramework/CharacterMovementComponent.h"
 #include "EnemyCharacter.generated.h"
 
 /**

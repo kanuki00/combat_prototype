@@ -67,10 +67,12 @@ protected:
 
 	virtual void UniqueDeath();
 
-	bool IsDead = false;
+	
 
 public:	
 	void RagdollChar();
+
+	bool IsDead = false;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

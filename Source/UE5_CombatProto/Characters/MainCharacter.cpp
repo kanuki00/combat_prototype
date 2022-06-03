@@ -6,6 +6,9 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Components/CapsuleComponent.h"
 
 ////////////////////////////////////////////////////////////////////////
 // ******* Constructor, initializing components and settings ******** //
@@ -99,9 +102,10 @@ void APlayerCharacter::Tick(float DeltaTime)
 		for (int i = 0; i < AllTargets.Num(); i++)
 		{
 			if (
-				ActorInView(AllTargets[i]) 
-				&& !ActorOccluded(AllTargets[i]) 
-				&& ActorInRangeOfLocation(AllTargets[i], this->GetActorLocation(), TargetingRange)
+				ActorInView(AllTargets[i])																// Check is in view
+				&& !ActorOccluded(AllTargets[i])														// Check if not occluded by any objects
+				&& ActorInRangeOfLocation(AllTargets[i], this->GetActorLocation(), TargetingRange)		// Check if in range
+				&& !(Cast<ABaseCharacter>(AllTargets[i])->IsDead)										// Check if alive
 				)
 			{
 				AllVisibleTargets.Emplace(AllTargets[i]);
@@ -287,7 +291,8 @@ void APlayerCharacter::Input3ReleasedBind()
 
 void APlayerCharacter::Input3Tapped()
 {
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Yellow, TEXT("Tapped!"));
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Yellow, TEXT("Tapped!"));
+	if (RollAnimation) PlayAnimMontage(RollAnimation);
 }
 
 void APlayerCharacter::TargetPressedBind()

@@ -76,6 +76,9 @@ private:
 	UFUNCTION()
 		void RotateToInput(float DeltaTime, float Rate = 360.0f, bool Enabled = true, bool Targeting = false);
 
+protected:
+	virtual void UniqueDeath() override;
+
 public:
 	////////////////////////////////////////////
 	//************** Bind ********************//

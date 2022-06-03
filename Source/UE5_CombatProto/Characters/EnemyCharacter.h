@@ -19,4 +19,9 @@ public:
 	AEnemyCharacter();
 
 	float GetMovementInputStrength_Implementation();
+
+protected:
+	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+	virtual void UniqueDeath() override;
 };

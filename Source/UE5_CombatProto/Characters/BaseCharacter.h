@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Components/CapsuleComponent.h"
 #include "../CombatInterface.h"
 #include "UObject/Interface.h"
 #include "BaseCharacter.generated.h"
@@ -53,6 +52,9 @@ protected:
 	// Death Montage
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References|Animations")
 		UAnimMontage* DeathAnimation = nullptr;
+	// Roll Montage
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References|Animations")
+		UAnimMontage* RollAnimation = nullptr;
 	// Attack Montages
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
 		UAnimMontage* FastAttack = nullptr;
@@ -62,6 +64,8 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 		void Death();
+
+	virtual void UniqueDeath();
 
 	bool IsDead = false;
 

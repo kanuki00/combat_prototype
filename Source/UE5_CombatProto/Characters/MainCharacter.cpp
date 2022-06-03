@@ -142,7 +142,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 	else {
 		Input3Held = false;
 	}
-	if (GEngine && Input3Held) GEngine->AddOnScreenDebugMessage(1, 0.1, FColor::Yellow, TEXT("Purposefully pressed!"));
+	//if (GEngine && Input3Held) GEngine->AddOnScreenDebugMessage(1, 0.1, FColor::Yellow, TEXT("Purposefully pressed!"));
 
 	// Setting sprint speed
 	if (Input3Held && !IsTargeting) { CharacterMovement->MaxWalkSpeed = 800.0f; IsSprinting = true; }
@@ -196,6 +196,11 @@ void APlayerCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, 
 		}
 		SetActorRotation(FMath::RInterpConstantTo(this->GetActorRotation(), CharacterFacing, DeltaTime, 720.0f));
 	}
+}
+
+void APlayerCharacter::UniqueDeath()
+{
+	DisableInput(Cast<APlayerController>(GetController()));
 }
 
 /////////////////////////////////////////////////////////////

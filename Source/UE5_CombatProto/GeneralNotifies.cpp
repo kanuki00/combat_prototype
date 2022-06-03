@@ -2,6 +2,7 @@
 
 
 #include "GeneralNotifies.h"
+#include "Characters/BaseCharacter.h"
 
 void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
@@ -10,4 +11,8 @@ void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* A
 		Char = Cast<ABaseCharacter>(MeshComp->GetOwner());
 		Char->RagdollChar();
 	}
+}
+
+void URollEndNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
+{
 }

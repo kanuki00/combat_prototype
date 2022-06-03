@@ -2,6 +2,7 @@
 
 
 #include "BaseCharacter.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -47,15 +48,18 @@ void ABaseCharacter::WasPressed(bool & WasPressed, bool & Pressed, bool & Presse
 
 void ABaseCharacter::Death()
 {
+	UniqueDeath(); // Runs characters own unique death method. for example; players input is disabled and enemys AI is disabled.
 	IsDead = true;
 	Health = 0;
-
-	DisableInput(Cast<APlayerController>(GetController()));
-
+	
 	if (DeathAnimation)
 	{
-		PlayAnimMontage(DeathAnimation);
+		PlayAnimMontage(DeathAnimation); // Death montage should have an AnimNotify in it that fires RagdollChar when finished.
 	}
+}
+
+void ABaseCharacter::UniqueDeath()
+{
 }
 
 void ABaseCharacter::RagdollChar()

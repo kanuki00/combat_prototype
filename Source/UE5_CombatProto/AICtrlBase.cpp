@@ -20,6 +20,11 @@ ABaseAICtrl::ABaseAICtrl()
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
 }
 
+void ABaseAICtrl::DisableAI()
+{
+	BrainComponent->StopLogic(FString("Death"));
+}
+
 void ABaseAICtrl::BeginPlay()
 {
 	Super::BeginPlay();
@@ -31,6 +36,6 @@ void ABaseAICtrl::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	SensedActors.Empty();
-	GetPerceptionComponent()->GetPerceivedActors(UAISense_Sight::StaticClass(), SensedActors);
+	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), SensedActors);
 	if (GEngine && false && SensedActors.Num() > 0) GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Orange, SensedActors[0]->GetName());
 }

@@ -24,6 +24,13 @@ public:
 
 protected:
 	//virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+	void Tick(float DeltaTime);
+
+	bool CanRotateToPlayer = false;
 
 	virtual void UniqueDeath() override;
+
+	void RotateToPlayer(float DeltaTime);
+
+	virtual void SetCharacterRotationEnabled(bool NewRotate = true) override;
 };

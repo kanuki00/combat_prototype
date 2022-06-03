@@ -61,13 +61,14 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
 		UAnimMontage* StrongAttack = nullptr;
 
-
 	UFUNCTION(BlueprintCallable)
+	/* Death method that all characters share */
 		void Death();
 
+	// Unique death method that each child character can implement themselves.
 	virtual void UniqueDeath();
 
-	
+	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
 public:	
 	void RagdollChar();

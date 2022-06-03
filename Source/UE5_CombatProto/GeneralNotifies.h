@@ -8,6 +8,7 @@
 
 
 class ABaseCharacter;
+class AEnemyCharacter;
 
 UCLASS()
 class UE5_COMBATPROTO_API UDeathNotify : public UAnimNotify
@@ -24,5 +25,14 @@ class UE5_COMBATPROTO_API URollEndNotify : public UAnimNotify
 	GENERATED_BODY()
 public:
 	ABaseCharacter* Char;
+	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference) override;
+};
+
+// Notify used by enemies to reset attack cooldown
+UCLASS()
+class UE5_COMBATPROTO_API UResetEnemyAtkCooldownNotify : public UAnimNotify
+{
+	GENERATED_BODY()
+	AEnemyCharacter* EChar;
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference) override;
 };

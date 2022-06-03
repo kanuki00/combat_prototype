@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "Characters/EnemyCharacter.h"
 
 AEnemyAICtrl::AEnemyAICtrl()
 {
@@ -14,8 +15,10 @@ AEnemyAICtrl::AEnemyAICtrl()
 void AEnemyAICtrl::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	bool SeesPlayer = false;
-	if (SensedActors.Num() > 0) SeesPlayer = Cast<ACharacter>(SensedActors[0]) == UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
+	
+	if (SensedActors.Num() > 0) { SeesPlayer = Cast<ACharacter>(SensedActors[0]) == UGameplayStatics::GetPlayerCharacter(GetWorld(), 0); }
+	else { SeesPlayer = false; }
+
 	GetBlackboardComponent()->SetValueAsBool(FName("SeesPlayer"), SeesPlayer);
 
 	float DistToPlayer = FVector(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0)->GetActorLocation() - GetPawn()->GetActorLocation()).Length();
@@ -25,5 +28,11 @@ void AEnemyAICtrl::Tick(float DeltaTime)
 	}
 	else {
 		InRangeOfPlayer = false;
+	}
+
+	if (InRangeOfPlayer && SeesPlayer)
+	{
+		if (GEngine) GEngine->AddOnScreenDebugMessage(1, 1, FColor::Red, TEXT("Trying to attack"));
+		Cast<AEnemyCharacter>(GetPawn())->Attack();
 	}
 }

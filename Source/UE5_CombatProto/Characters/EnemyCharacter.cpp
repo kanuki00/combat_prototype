@@ -15,6 +15,15 @@ float AEnemyCharacter::GetMovementInputStrength_Implementation()
 	return result;
 }
 
+void AEnemyCharacter::Attack()
+{
+	if (!IsDead && !AttackCoolingDown)
+	{
+		AttackCoolingDown = true;
+		if (FastAttack) PlayAnimMontage(FastAttack);
+	}
+}
+
 float AEnemyCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	Death();

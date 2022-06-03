@@ -3293,3 +3293,1091 @@ LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
 [2022.06.03-05.35.00:073][486]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
 [2022.06.03-05.35.02:123][567]LogUObjectHash: Compacting FUObjectHashTables data took   6.30ms
 [2022.06.03-05.35.02:432][578]LogUObjectHash: Compacting FUObjectHashTables data took   2.71ms
+[2022.06.03-05.35.56:528][817]LogUObjectHash: Compacting FUObjectHashTables data took   0.99ms
+[2022.06.03-05.36.05:138][ 15]LogSlate: Window 'Message Log' being destroyed
+[2022.06.03-05.36.05:147][ 15]LogSlate: Window 'Message Log' being destroyed
+[2022.06.03-05.36.06:367][ 84]LogUObjectHash: Compacting FUObjectHashTables data took   1.32ms
+[2022.06.03-05.36.08:050][184]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.36.08:058][184]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.36.08:058][184]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.36.08)
+[2022.06.03-05.36.08:058][184]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.36.08:070][184]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011430s)
+[2022.06.03-05.36.08:070][184]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011508s)
+[2022.06.03-05.36.08:070][184]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.36.08:070][184]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.36.08:070][184]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.36.08:070][184]LogPlayLevel: PIE: World Init took: (0.000741s)
+[2022.06.03-05.36.08:121][184]LogUObjectHash: Compacting FUObjectHashTables data took   2.47ms
+[2022.06.03-05.36.08:122][184]LogAudio: Display: Creating Audio Device:                 Id: 26, Scope: Unique, Realtime: True
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.36.08:122][184]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.36.08:122][184]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.36.08:123][184]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.36.08:123][184]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.36.08:123][184]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.36.08:125][184]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.36.08:147][184]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.36.08:148][184]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.36.08:148][184]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.36.08:148][184]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.36.08:148][184]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=26
+[2022.06.03-05.36.08:148][184]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=26
+[2022.06.03-05.36.08:151][184]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=26
+[2022.06.03-05.36.08:151][184]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=26
+[2022.06.03-05.36.08:151][184]LogInit: FAudioDevice initialized.
+[2022.06.03-05.36.08:151][184]LogAudio: Display: Audio Device (ID: 26) registered with world 'CityLevel'.
+[2022.06.03-05.36.08:164][184]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.36.08:170][184]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.36.08
+[2022.06.03-05.36.08:170][184]LogWorld: Bringing up level for play took: 0.006133
+[2022.06.03-05.36.08:173][184]LogOnline: OSS: Created online subsystem instance for: :Context_58
+[2022.06.03-05.36.08:178][184]PIE: Server logged in
+[2022.06.03-05.36.08:179][184]PIE: Play in editor total start time 0,121 seconds.
+[2022.06.03-05.37.33:701][309]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.37.33:701][309]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.37.33:702][309]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.37.33:702][309]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.37.33:718][309]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.37.33:728][309]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.37.33:782][309]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.37.33:782][309]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=26
+[2022.06.03-05.37.33:784][309]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=26
+[2022.06.03-05.37.33:794][309]LogUObjectHash: Compacting FUObjectHashTables data took   2.70ms
+[2022.06.03-05.37.33:872][310]LogPlayLevel: Display: Destroying online subsystem :Context_58
+[2022.06.03-05.37.35:161][382]LogUObjectHash: Compacting FUObjectHashTables data took   2.54ms
+[2022.06.03-05.38.43:453][891]LogUObjectHash: Compacting FUObjectHashTables data took   1.08ms
+[2022.06.03-05.39.09:679][450]LogUObjectHash: Compacting FUObjectHashTables data took   0.96ms
+[2022.06.03-05.42.53:125][230]LogSlate: Window 'Pick Skeleton' being destroyed
+[2022.06.03-05.42.53:149][230]LogContentBrowser: Deferred new asset file creation: NewAnimMontage
+[2022.06.03-05.42.53:156][230]LogContentBrowser: Creating deferred item: NewAnimMontage
+[2022.06.03-05.42.53:174][231]LogContentBrowser: Renaming the item being created (Deferred Item: NewAnimMontage).
+[2022.06.03-05.42.59:179][592]LogContentBrowser: Attempting asset rename: NewAnimMontage -> Fast_Attack_Mon
+[2022.06.03-05.42.59:185][592]LogContentBrowser: End creating deferred item NewAnimMontage
+[2022.06.03-05.43.00:622][678]LogAssetEditorSubsystem: Opening Asset editor for AnimMontage /Game/Assets/Montages/Human/Fast_Attack_Mon.Fast_Attack_Mon
+[2022.06.03-05.43.25:651][141]LogSavePackage: Moving output files for package: /Game/Assets/Montages/Human/Fast_Attack_Mon
+[2022.06.03-05.43.25:651][141]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/Fast_Attack_Mon79431E3346AF43AA76EC4FB30A42CFC3.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Assets/Montages/Human/Fast_Attack_Mon.uasset'
+[2022.06.03-05.43.25:676][141]AssetCheck: New page: Asset Save: Fast_Attack_Mon
+[2022.06.03-05.43.25:676][141]LogContentValidation: Display: Validating AnimMontage /Game/Assets/Montages/Human/Fast_Attack_Mon.Fast_Attack_Mon
+[2022.06.03-05.43.41:886][ 91]BlueprintLog: New page: Compile Enemy_BP
+[2022.06.03-05.43.42:000][ 91]LogUObjectHash: Compacting FUObjectHashTables data took   3.17ms
+[2022.06.03-05.43.42:489][110]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Blueprints/Enemy/Enemy_BP" FILE="../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Blueprints/Enemy/Enemy_BP.uasset" SILENT=true
+[2022.06.03-05.43.42:504][110]LogSavePackage: Moving output files for package: /Game/Blueprints/Enemy/Enemy_BP
+[2022.06.03-05.43.42:505][110]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/Enemy_BP93D4BCC24906F8CF3889F1B098DAE905.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Blueprints/Enemy/Enemy_BP.uasset'
+[2022.06.03-05.43.42:526][110]AssetCheck: New page: Asset Save: Enemy_BP
+[2022.06.03-05.43.42:526][110]LogContentValidation: Display: Validating Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP
+[2022.06.03-05.43.45:140][259]Candidate modules for hot reload:
+[2022.06.03-05.43.45:140][259]  UE5_CombatProto
+[2022.06.03-05.43.45:148][259]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,7966 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.43.45:151][259]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.44.15:601][786]LogUObjectHash: Compacting FUObjectHashTables data took   3.40ms
+[2022.06.03-05.44.15:634][786]LogSavePackage: Moving output files for package: /Temp/Autosaves/Game/Levels/CityLevel_Auto2
+[2022.06.03-05.44.15:635][786]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevel_Auto2B90DDEDA480B3578E22C668E45B7E773.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/Autosaves/Game/Levels/CityLevel_Auto2.umap'
+[2022.06.03-05.44.15:644][786]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/Levels/CityLevel' took 0.100
+[2022.06.03-05.44.15:644][786]LogFileHelpers: Editor autosave (incl. sublevels & external actors) for all levels took 0.100
+[2022.06.03-05.44.59:743][399]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.44.59
+[2022.06.03-05.44.59:743][399]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.44.59:743][399]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-05.44.59:744][399]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 1,7315892 seconds
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.44.59:744][399]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.44.59:744][399]CompilerResultsLog:   Requested 1,5 GB free memory per action, 2,47 GB available: limiting max parallel actions to 1
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Building 6 actions with 1 process...
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [1/6] Compile EnemyAICtrl.cpp
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [2/6] Compile EnemyCharacter.cpp
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [3/6] Compile EnemyCharacter.gen.cpp
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [4/6] Link UnrealEditor-UE5_CombatProto-7966.lib
+[2022.06.03-05.44.59:744][399]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7966.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7966.exp
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [5/6] Link UnrealEditor-UE5_CombatProto-7966.dll
+[2022.06.03-05.44.59:744][399]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7966.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7966.suppressed.exp
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: [6/6] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Total time in Parallel executor: 70,56 seconds
+[2022.06.03-05.44.59:744][399]CompilerResultsLog: Total execution time: 74,47 seconds
+[2022.06.03-05.44.59:744][399]LogMainFrame: MainFrame: Module compiling took 74.647 seconds
+[2022.06.03-05.45.00:141][399]Display: HotReload took 75.1s.
+[2022.06.03-05.45.00:141][399]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
+[2022.06.03-05.45.22:545][701]LogUObjectHash: Compacting FUObjectHashTables data took   4.01ms
+[2022.06.03-05.45.23:713][701]LogSlate: Window 'Save Content' being destroyed
+[2022.06.03-05.45.23:971][701]LogUObjectHash: Compacting FUObjectHashTables data took   3.16ms
+[2022.06.03-05.45.24:007][701]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.03-05.45.24:008][701]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevelD9AB44C146AFFD2460A76B95DEFECB96.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.03-05.45.24:023][701]LogFileHelpers: Saving map 'CityLevel' took 0.159
+[2022.06.03-05.45.24:041][701]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.03-05.45.24:041][701]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.03-05.45.25:224][771]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.45.25:231][771]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.45.25:231][771]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.45.25)
+[2022.06.03-05.45.25:232][771]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.45.25:246][771]LogPlayLevel: PIE: StaticDuplicateObject took: (0.014384s)
+[2022.06.03-05.45.25:246][771]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.014482s)
+[2022.06.03-05.45.25:246][771]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.45.25:247][771]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.45.25:247][771]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.45.25:247][771]LogPlayLevel: PIE: World Init took: (0.000906s)
+[2022.06.03-05.45.25:303][771]LogUObjectHash: Compacting FUObjectHashTables data took   2.66ms
+[2022.06.03-05.45.25:309][771]LogAudio: Display: Creating Audio Device:                 Id: 27, Scope: Unique, Realtime: True
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.45.25:309][771]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.45.25:309][771]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.45.25:310][771]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.45.25:310][771]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.45.25:310][771]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.45.25:313][771]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.45.25:337][771]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.45.25:337][771]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.45.25:337][771]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.45.25:337][771]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.45.25:338][771]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=27
+[2022.06.03-05.45.25:338][771]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=27
+[2022.06.03-05.45.25:340][771]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=27
+[2022.06.03-05.45.25:340][771]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=27
+[2022.06.03-05.45.25:340][771]LogInit: FAudioDevice initialized.
+[2022.06.03-05.45.25:340][771]LogAudio: Display: Audio Device (ID: 27) registered with world 'CityLevel'.
+[2022.06.03-05.45.25:353][771]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.45.25:358][771]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.45.25
+[2022.06.03-05.45.25:359][771]LogWorld: Bringing up level for play took: 0.006523
+[2022.06.03-05.45.25:362][771]LogOnline: OSS: Created online subsystem instance for: :Context_59
+[2022.06.03-05.45.25:367][771]PIE: Server logged in
+[2022.06.03-05.45.25:368][771]PIE: Play in editor total start time 0,137 seconds.
+[2022.06.03-05.46.01:327][926]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.46.01:327][926]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.46.01:328][926]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.46.01:328][926]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.46.01:349][926]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.46.01:362][926]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.46.01:417][926]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.46.01:418][926]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=27
+[2022.06.03-05.46.01:420][926]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=27
+[2022.06.03-05.46.01:430][926]LogUObjectHash: Compacting FUObjectHashTables data took   2.93ms
+[2022.06.03-05.46.01:491][927]LogPlayLevel: Display: Destroying online subsystem :Context_59
+[2022.06.03-05.46.02:987][ 12]LogUObjectHash: Compacting FUObjectHashTables data took   2.63ms
+[2022.06.03-05.47.32:622][389]Candidate modules for hot reload:
+[2022.06.03-05.47.32:623][389]  UE5_CombatProto
+[2022.06.03-05.47.32:629][389]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,9870 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.47.32:632][389]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.47.53
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.47.53:620][630]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.47.53:620][630]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,4 GB available: limiting max parallel actions to 3
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Building 4 actions with 3 processes...
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: [1/4] Compile EnemyAICtrl.cpp
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: [2/4] Link UnrealEditor-UE5_CombatProto-9870.lib
+[2022.06.03-05.47.53:620][630]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9870.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9870.exp
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: [3/4] Link UnrealEditor-UE5_CombatProto-9870.dll
+[2022.06.03-05.47.53:620][630]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9870.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9870.suppressed.exp
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: [4/4] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Total time in Parallel executor: 19,82 seconds
+[2022.06.03-05.47.53:620][630]CompilerResultsLog: Total execution time: 20,87 seconds
+[2022.06.03-05.47.53:620][630]LogMainFrame: MainFrame: Module compiling took 21.035 seconds
+[2022.06.03-05.47.53:973][630]Display: HotReload took 21.4s.
+[2022.06.03-05.47.53:973][630]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
+[2022.06.03-05.47.56:094][733]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.47.56:105][733]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.47.56:105][733]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.47.56)
+[2022.06.03-05.47.56:105][733]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.47.56:125][733]LogPlayLevel: PIE: StaticDuplicateObject took: (0.019579s)
+[2022.06.03-05.47.56:125][733]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.019679s)
+[2022.06.03-05.47.56:125][733]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.47.56:125][733]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.47.56:125][733]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.47.56:126][733]LogPlayLevel: PIE: World Init took: (0.000791s)
+[2022.06.03-05.47.56:229][733]LogUObjectHash: Compacting FUObjectHashTables data took   4.22ms
+[2022.06.03-05.47.56:232][733]LogAudio: Display: Creating Audio Device:                 Id: 28, Scope: Unique, Realtime: True
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.47.56:232][733]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.47.56:232][733]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.47.56:233][733]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.47.56:233][733]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.47.56:233][733]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.47.56:235][733]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.47.56:258][733]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.47.56:258][733]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.47.56:258][733]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.47.56:258][733]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.47.56:259][733]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=28
+[2022.06.03-05.47.56:259][733]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=28
+[2022.06.03-05.47.56:261][733]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=28
+[2022.06.03-05.47.56:261][733]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=28
+[2022.06.03-05.47.56:261][733]LogInit: FAudioDevice initialized.
+[2022.06.03-05.47.56:261][733]LogAudio: Display: Audio Device (ID: 28) registered with world 'CityLevel'.
+[2022.06.03-05.47.56:275][733]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.47.56:280][733]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.47.56
+[2022.06.03-05.47.56:282][733]LogWorld: Bringing up level for play took: 0.006315
+[2022.06.03-05.47.56:283][733]LogOnline: OSS: Created online subsystem instance for: :Context_60
+[2022.06.03-05.47.56:288][733]PIE: Server logged in
+[2022.06.03-05.47.56:289][733]PIE: Play in editor total start time 0,184 seconds.
+[2022.06.03-05.48.03:034][132]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.48.03:034][132]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.48.03:034][132]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.48.03:035][132]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.48.03:049][132]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.48.03:059][132]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.48.03:117][132]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.48.03:118][132]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=28
+[2022.06.03-05.48.03:120][132]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=28
+[2022.06.03-05.48.03:135][132]LogUObjectHash: Compacting FUObjectHashTables data took   4.34ms
+[2022.06.03-05.48.03:198][133]LogPlayLevel: Display: Destroying online subsystem :Context_60
+[2022.06.03-05.48.28:730][386]Candidate modules for hot reload:
+[2022.06.03-05.48.28:730][386]  UE5_CombatProto
+[2022.06.03-05.48.28:737][386]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,6756 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.48.28:740][386]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.48.38
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-05.48.38:571][933]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 2,4490356 seconds
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.48.38:571][933]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.48.38:571][933]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,71 GB available: limiting max parallel actions to 3
+[2022.06.03-05.48.38:571][933]CompilerResultsLog: Building 5 actions with 3 processes...
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: [1/5] Compile EnemyAICtrl.gen.cpp
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: [2/5] Compile EnemyAICtrl.cpp
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: [3/5] Link UnrealEditor-UE5_CombatProto-6756.lib
+[2022.06.03-05.48.38:572][933]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-6756.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-6756.exp
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: [4/5] Link UnrealEditor-UE5_CombatProto-6756.dll
+[2022.06.03-05.48.38:572][933]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-6756.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-6756.suppressed.exp
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: [5/5] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: Total time in Parallel executor: 4,79 seconds
+[2022.06.03-05.48.38:572][933]CompilerResultsLog: Total execution time: 9,72 seconds
+[2022.06.03-05.48.38:572][933]LogMainFrame: MainFrame: Module compiling took 9.886 seconds
+[2022.06.03-05.48.38:721][933]Re-instancing EnemyAICtrl after reload.
+[2022.06.03-05.48.38:954][933]Display: HotReload took 10.3s.
+[2022.06.03-05.48.38:954][933]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
+[2022.06.03-05.48.40:385][997]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.48.40:393][997]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.48.40:393][997]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.48.40)
+[2022.06.03-05.48.40:393][997]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.48.40:405][997]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011605s)
+[2022.06.03-05.48.40:405][997]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011705s)
+[2022.06.03-05.48.40:405][997]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.48.40:405][997]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.48.40:405][997]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.48.40:406][997]LogPlayLevel: PIE: World Init took: (0.000778s)
+[2022.06.03-05.48.40:507][997]LogUObjectHash: Compacting FUObjectHashTables data took   3.98ms
+[2022.06.03-05.48.40:510][997]LogAudio: Display: Creating Audio Device:                 Id: 29, Scope: Unique, Realtime: True
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.48.40:510][997]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.48.40:510][997]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.48.40:511][997]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.48.40:511][997]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.48.40:511][997]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.48.40:512][997]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.48.40:533][997]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.48.40:533][997]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.48.40:533][997]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.48.40:533][997]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.48.40:534][997]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=29
+[2022.06.03-05.48.40:534][997]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=29
+[2022.06.03-05.48.40:536][997]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=29
+[2022.06.03-05.48.40:536][997]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=29
+[2022.06.03-05.48.40:536][997]LogInit: FAudioDevice initialized.
+[2022.06.03-05.48.40:536][997]LogAudio: Display: Audio Device (ID: 29) registered with world 'CityLevel'.
+[2022.06.03-05.48.40:548][997]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.48.40:554][997]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.48.40
+[2022.06.03-05.48.40:555][997]LogWorld: Bringing up level for play took: 0.005860
+[2022.06.03-05.48.40:557][997]LogOnline: OSS: Created online subsystem instance for: :Context_61
+[2022.06.03-05.48.40:561][997]PIE: Server logged in
+[2022.06.03-05.48.40:562][997]PIE: Play in editor total start time 0,17 seconds.
+[2022.06.03-05.49.07:461][608]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.49.07:461][608]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.49.07:461][608]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.49.07:462][608]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.49.07:480][608]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.49.07:492][608]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.49.07:546][608]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.49.07:546][608]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=29
+[2022.06.03-05.49.07:548][608]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=29
+[2022.06.03-05.49.07:587][608]LogUObjectHash: Compacting FUObjectHashTables data took   3.77ms
+[2022.06.03-05.49.07:644][609]LogPlayLevel: Display: Destroying online subsystem :Context_61
+[2022.06.03-05.50.20:452][929]Candidate modules for hot reload:
+[2022.06.03-05.50.20:452][929]  UE5_CombatProto
+[2022.06.03-05.50.20:460][929]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,5261 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.50.20:463][929]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.50.30
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-05.50.30:129][476]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 1,9582601 seconds
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.50.30:129][476]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.50.30:129][476]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,86 GB available: limiting max parallel actions to 3
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: Building 5 actions with 3 processes...
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: [1/5] Compile EnemyAICtrl.gen.cpp
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: [2/5] Compile EnemyAICtrl.cpp
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: [3/5] Link UnrealEditor-UE5_CombatProto-5261.lib
+[2022.06.03-05.50.30:129][476]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5261.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5261.exp
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: [4/5] Link UnrealEditor-UE5_CombatProto-5261.dll
+[2022.06.03-05.50.30:129][476]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5261.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5261.suppressed.exp
+[2022.06.03-05.50.30:129][476]CompilerResultsLog: [5/5] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.50.30:130][476]CompilerResultsLog: Total time in Parallel executor: 5,26 seconds
+[2022.06.03-05.50.30:130][476]CompilerResultsLog: Total execution time: 9,55 seconds
+[2022.06.03-05.50.30:130][476]LogMainFrame: MainFrame: Module compiling took 9.714 seconds
+[2022.06.03-05.50.30:170][476]LogClass: EnemyAICtrl Reload.
+[2022.06.03-05.50.30:207][476]LogClass: Could not find existing class EnemyAICtrl in package /Script/UE5_CombatProto for reload, assuming new or modified class
+[2022.06.03-05.50.30:292][476]Re-instancing EnemyAICtrl after reload.
+[2022.06.03-05.50.30:530][476]Display: HotReload took 10.1s.
+[2022.06.03-05.50.30:530][476]Display: Reload/Re-instancing Complete: 1 package changed, 1 class changed, 21 classes unchanged, 11 functions remapped
+[2022.06.03-05.50.32:169][550]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.50.32:177][550]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.50.32:177][550]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.50.32)
+[2022.06.03-05.50.32:177][550]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.50.32:189][550]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011512s)
+[2022.06.03-05.50.32:189][550]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011610s)
+[2022.06.03-05.50.32:189][550]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.50.32:189][550]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.50.32:189][550]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.50.32:190][550]LogPlayLevel: PIE: World Init took: (0.000749s)
+[2022.06.03-05.50.32:290][550]LogUObjectHash: Compacting FUObjectHashTables data took   4.04ms
+[2022.06.03-05.50.32:294][550]LogAudio: Display: Creating Audio Device:                 Id: 30, Scope: Unique, Realtime: True
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.50.32:294][550]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.50.32:294][550]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.50.32:295][550]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.50.32:295][550]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.50.32:295][550]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.50.32:297][550]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.50.32:318][550]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.50.32:319][550]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.50.32:319][550]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.50.32:319][550]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.50.32:319][550]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=30
+[2022.06.03-05.50.32:319][550]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=30
+[2022.06.03-05.50.32:321][550]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=30
+[2022.06.03-05.50.32:322][550]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=30
+[2022.06.03-05.50.32:322][550]LogInit: FAudioDevice initialized.
+[2022.06.03-05.50.32:322][550]LogAudio: Display: Audio Device (ID: 30) registered with world 'CityLevel'.
+[2022.06.03-05.50.32:338][550]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.50.32:344][550]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.50.32
+[2022.06.03-05.50.32:345][550]LogWorld: Bringing up level for play took: 0.006245
+[2022.06.03-05.50.32:347][550]LogOnline: OSS: Created online subsystem instance for: :Context_62
+[2022.06.03-05.50.32:351][550]PIE: Server logged in
+[2022.06.03-05.50.32:352][550]PIE: Play in editor total start time 0,175 seconds.
+[2022.06.03-05.51.04:388][466]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.51.04:389][466]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.51.04:389][466]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.51.04:390][466]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.51.04:402][466]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.51.04:413][466]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.51.04:467][466]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.06.03-05.51.04:468][466]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=30
+[2022.06.03-05.51.04:470][466]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=30
+[2022.06.03-05.51.04:475][466]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.51.04:481][466]LogUObjectHash: Compacting FUObjectHashTables data took   3.33ms
+[2022.06.03-05.51.04:537][467]LogPlayLevel: Display: Destroying online subsystem :Context_62
+[2022.06.03-05.51.54:525][906]Candidate modules for hot reload:
+[2022.06.03-05.51.54:525][906]  UE5_CombatProto
+[2022.06.03-05.51.54:532][906]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,5296 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.51.54:535][906]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.51.56
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog:   Requested 1,5 GB free memory per action, 3,55 GB available: limiting max parallel actions to 2
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: Building 3 actions with 2 processes...
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: [1/3] Link UnrealEditor-UE5_CombatProto-5296.lib
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5296.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5296.exp
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog: [2/3] Link UnrealEditor-UE5_CombatProto-5296.dll
+[2022.06.03-05.51.56:999][ 34]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5296.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5296.suppressed.exp
+[2022.06.03-05.51.57:000][ 34]CompilerResultsLog: [3/3] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.51.57:000][ 34]CompilerResultsLog: Total time in Parallel executor: 1,31 seconds
+[2022.06.03-05.51.57:000][ 34]CompilerResultsLog: Total execution time: 2,35 seconds
+[2022.06.03-05.51.57:000][ 34]LogMainFrame: MainFrame: Module compiling took 2.511 seconds
+[2022.06.03-05.51.57:356][ 34]Display: HotReload took  2.9s.
+[2022.06.03-05.51.57:356][ 34]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
+[2022.06.03-05.51.58:606][ 89]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.51.58:613][ 89]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.51.58:613][ 89]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.51.58)
+[2022.06.03-05.51.58:613][ 89]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.51.58:625][ 89]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011830s)
+[2022.06.03-05.51.58:625][ 89]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011908s)
+[2022.06.03-05.51.58:625][ 89]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.51.58:625][ 89]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.51.58:626][ 89]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.51.58:626][ 89]LogPlayLevel: PIE: World Init took: (0.000818s)
+[2022.06.03-05.51.58:732][ 89]LogUObjectHash: Compacting FUObjectHashTables data took   3.17ms
+[2022.06.03-05.51.58:735][ 89]LogAudio: Display: Creating Audio Device:                 Id: 31, Scope: Unique, Realtime: True
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.51.58:735][ 89]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.51.58:735][ 89]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.51.58:736][ 89]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.51.58:736][ 89]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.51.58:736][ 89]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.51.58:738][ 89]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.51.58:760][ 89]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.51.58:761][ 89]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.51.58:761][ 89]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.51.58:761][ 89]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.51.58:761][ 89]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=31
+[2022.06.03-05.51.58:761][ 89]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=31
+[2022.06.03-05.51.58:764][ 89]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=31
+[2022.06.03-05.51.58:764][ 89]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=31
+[2022.06.03-05.51.58:764][ 89]LogInit: FAudioDevice initialized.
+[2022.06.03-05.51.58:764][ 89]LogAudio: Display: Audio Device (ID: 31) registered with world 'CityLevel'.
+[2022.06.03-05.51.58:778][ 89]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.51.58:784][ 89]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.51.58
+[2022.06.03-05.51.58:785][ 89]LogWorld: Bringing up level for play took: 0.006881
+[2022.06.03-05.51.58:788][ 89]LogOnline: OSS: Created online subsystem instance for: :Context_63
+[2022.06.03-05.51.58:793][ 89]PIE: Server logged in
+[2022.06.03-05.51.58:793][ 89]PIE: Play in editor total start time 0,181 seconds.
+[2022.06.03-05.52.14:511][ 29]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.52.14:511][ 29]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.52.14:511][ 29]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.52.14:512][ 29]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.52.14:526][ 29]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.52.14:537][ 29]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.52.14:592][ 29]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.06.03-05.52.14:602][ 29]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=31
+[2022.06.03-05.52.14:604][ 29]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=31
+[2022.06.03-05.52.14:609][ 29]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.52.14:640][ 29]LogUObjectHash: Compacting FUObjectHashTables data took   3.53ms
+[2022.06.03-05.52.14:707][ 30]LogPlayLevel: Display: Destroying online subsystem :Context_63
+[2022.06.03-05.54.04:063][547]Candidate modules for hot reload:
+[2022.06.03-05.54.04:063][547]  UE5_CombatProto
+[2022.06.03-05.54.04:070][547]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,1242 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.54.04:073][547]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.54.21:640][583]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.54.21
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.54.21:641][583]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.54.21:641][583]CompilerResultsLog:   Requested 1,5 GB free memory per action, 6,48 GB available: limiting max parallel actions to 4
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Building 4 actions with 4 processes...
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: [1/4] Compile EnemyAICtrl.cpp
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: [2/4] Link UnrealEditor-UE5_CombatProto-1242.lib
+[2022.06.03-05.54.21:641][583]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-1242.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-1242.exp
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: [3/4] Link UnrealEditor-UE5_CombatProto-1242.dll
+[2022.06.03-05.54.21:641][583]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-1242.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-1242.suppressed.exp
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: [4/4] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Total time in Parallel executor: 16,39 seconds
+[2022.06.03-05.54.21:641][583]CompilerResultsLog: Total execution time: 17,44 seconds
+[2022.06.03-05.54.21:641][583]LogMainFrame: MainFrame: Module compiling took 17.617 seconds
+[2022.06.03-05.54.22:014][583]Display: HotReload took 18.0s.
+[2022.06.03-05.54.22:014][583]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
+[2022.06.03-05.54.24:335][698]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.54.24:342][698]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.54.24:342][698]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.54.24)
+[2022.06.03-05.54.24:366][698]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.54.24:379][698]LogPlayLevel: PIE: StaticDuplicateObject took: (0.012501s)
+[2022.06.03-05.54.24:379][698]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.012616s)
+[2022.06.03-05.54.24:379][698]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.54.24:379][698]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.54.24:379][698]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.54.24:380][698]LogPlayLevel: PIE: World Init took: (0.000852s)
+[2022.06.03-05.54.24:491][698]LogUObjectHash: Compacting FUObjectHashTables data took   3.98ms
+[2022.06.03-05.54.24:495][698]LogAudio: Display: Creating Audio Device:                 Id: 32, Scope: Unique, Realtime: True
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.54.24:495][698]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.54.24:495][698]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.54.24:496][698]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.54.24:496][698]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.54.24:496][698]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.54.24:498][698]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.54.24:522][698]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.54.24:522][698]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.54.24:522][698]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.54.24:522][698]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.54.24:522][698]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=32
+[2022.06.03-05.54.24:523][698]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=32
+[2022.06.03-05.54.24:525][698]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=32
+[2022.06.03-05.54.24:525][698]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=32
+[2022.06.03-05.54.24:525][698]LogInit: FAudioDevice initialized.
+[2022.06.03-05.54.24:525][698]LogAudio: Display: Audio Device (ID: 32) registered with world 'CityLevel'.
+[2022.06.03-05.54.24:536][698]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.54.24:542][698]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.54.24
+[2022.06.03-05.54.24:542][698]LogWorld: Bringing up level for play took: 0.006125
+[2022.06.03-05.54.24:545][698]LogOnline: OSS: Created online subsystem instance for: :Context_64
+[2022.06.03-05.54.24:549][698]PIE: Server logged in
+[2022.06.03-05.54.24:551][698]PIE: Play in editor total start time 0,209 seconds.
+[2022.06.03-05.54.54:308][480]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.54.54:308][480]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.54.54:308][480]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.54.54:310][480]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.54.54:327][480]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.54.54:339][480]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.54.54:393][480]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.06.03-05.54.54:394][480]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=32
+[2022.06.03-05.54.54:395][480]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=32
+[2022.06.03-05.54.54:400][480]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.54.54:442][480]LogUObjectHash: Compacting FUObjectHashTables data took   2.82ms
+[2022.06.03-05.54.54:504][481]LogPlayLevel: Display: Destroying online subsystem :Context_64
+[2022.06.03-05.54.55:688][547]LogUObjectHash: Compacting FUObjectHashTables data took   3.11ms
+[2022.06.03-05.57.41:358][122]Candidate modules for hot reload:
+[2022.06.03-05.57.41:358][122]  UE5_CombatProto
+[2022.06.03-05.57.41:365][122]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,7259 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.57.41:368][122]Warning: Starting HotReload took  0.0s.
+[2022.06.03-05.57.56:191][961]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.57.56
+[2022.06.03-05.57.56:191][961]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.57.56:191][961]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.57.56:191][961]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-05.57.56:192][961]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 2,6190611 seconds
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: BaseCharacter.cpp, EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.57.56:192][961]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.57.56:192][961]CompilerResultsLog:   Requested 1,5 GB free memory per action, 6,01 GB available: limiting max parallel actions to 4
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Building 17 actions with 4 processes...
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [1/17] Compile StrongAttackCheckNotifyState.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [2/17] Compile FastAttackEndedNotify.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [3/17] Compile UE5_CombatProto.init.gen.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [4/17] Compile GeneralNotifies.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [5/17] Compile MainCharacter.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [6/17] Compile StrongAttackEndedNotify.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [7/17] Compile EnemyCharacter.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [8/17] Compile FastAttackCheckNotifyState.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [9/17] Compile AttackSetterNotifies.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [10/17] Compile MainCharacter.gen.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [11/17] Compile BaseCharacter.gen.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [12/17] Compile BaseCharacter.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [13/17] Compile EnemyAICtrl.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [14/17] Compile EnemyCharacter.gen.cpp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [15/17] Link UnrealEditor-UE5_CombatProto-7259.lib
+[2022.06.03-05.57.56:192][961]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7259.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7259.exp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [16/17] Link UnrealEditor-UE5_CombatProto-7259.dll
+[2022.06.03-05.57.56:192][961]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7259.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-7259.suppressed.exp
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: [17/17] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Total time in Parallel executor: 9,38 seconds
+[2022.06.03-05.57.56:192][961]CompilerResultsLog: Total execution time: 14,70 seconds
+[2022.06.03-05.57.56:192][961]LogMainFrame: MainFrame: Module compiling took 14.869 seconds
+[2022.06.03-05.57.56:235][961]LogClass: /Script/UE5_CombatProto Reload.
+[2022.06.03-05.57.56:235][961]LogClass: BaseCharacter Reload.
+[2022.06.03-05.57.56:236][961]LogClass: EnemyCharacter Reload.
+[2022.06.03-05.57.56:236][961]LogClass: PlayerCharacter Reload.
+[2022.06.03-05.57.56:264][961]LogClass: Could not find existing class BaseCharacter in package /Script/UE5_CombatProto for reload, assuming new or modified class
+[2022.06.03-05.57.56:264][961]LogClass: Function Death is new or belongs to a modified class.
+[2022.06.03-05.57.56:264][961]LogClass: Function GetHealth is new or belongs to a modified class.
+[2022.06.03-05.57.56:264][961]LogClass: Function GetMaxHealth is new or belongs to a modified class.
+[2022.06.03-05.57.56:264][961]LogClass: Function SetApplyDamageEnabled is new or belongs to a modified class.
+[2022.06.03-05.57.56:264][961]LogClass: Function SetCharacterRotationEnabled is new or belongs to a modified class.
+[2022.06.03-05.57.56:274][961]LogClass: Could not find existing class EnemyCharacter in package /Script/UE5_CombatProto for reload, assuming new or modified class
+[2022.06.03-05.57.56:292][961]LogClass: Could not find existing class PlayerCharacter in package /Script/UE5_CombatProto for reload, assuming new or modified class
+[2022.06.03-05.57.56:292][961]LogClass: Function CameraMovement is new or belongs to a modified class.
+[2022.06.03-05.57.56:292][961]LogClass: Function Movement is new or belongs to a modified class.
+[2022.06.03-05.57.56:292][961]LogClass: Function RotateToInput is new or belongs to a modified class.
+[2022.06.03-05.57.56:350][961]Re-instancing BaseCharacter after reload.
+[2022.06.03-05.57.56:396][961]Re-instancing EnemyCharacter after reload.
+[2022.06.03-05.57.56:507][961]LogProperty: Warning: Serialized BlueprintGeneratedClass /Game/Blueprints/MainChar_BP.MainChar_BP_C for a property of Class /Script/UE5_CombatProto.BaseCharacter. Reference will be nullptred.
+    Property = ObjectProperty /Game/AnimationBlueprints/Hero_Anim_BP.Hero_Anim_BP_C:ExecuteUbergraph_Hero_Anim_BP:K2Node_DynamicCast_AsBase_Character
+    Item = MainChar_BP_C /Engine/Transient.World_16:PersistentLevel.MainChar_BP_C_1
+[2022.06.03-05.57.56:507][961]LogProperty: Warning: Serialized BlueprintGeneratedClass /Game/Blueprints/MainChar_BP.MainChar_BP_C for a property of Class /Script/UE5_CombatProto.BaseCharacter. Reference will be nullptred.
+    Property = ObjectProperty /Game/AnimationBlueprints/Hero_Anim_BP.Hero_Anim_BP_C:ExecuteUbergraph_Hero_Anim_BP:K2Node_DynamicCast_AsBase_Character
+    Item = MainChar_BP_C /Engine/Transient.World_23:PersistentLevel.MainChar_BP_C_0
+[2022.06.03-05.57.56:507][961]LogProperty: Warning: Serialized BlueprintGeneratedClass /Game/Blueprints/MainChar_BP.MainChar_BP_C for a property of Class /Script/UE5_CombatProto.BaseCharacter. Reference will be nullptred.
+    Property = ObjectProperty /Game/AnimationBlueprints/Hero_Anim_BP.Hero_Anim_BP_C:ExecuteUbergraph_Hero_Anim_BP:K2Node_DynamicCast_AsBase_Character
+    Item = MainChar_BP_C /Engine/Transient.World_22:PersistentLevel.MainChar_BP_C_0
+[2022.06.03-05.57.56:507][961]Re-instancing PlayerCharacter after reload.
+[2022.06.03-05.57.56:824][961]Display: HotReload took 15.5s.
+[2022.06.03-05.57.56:824][961]Display: Reload/Re-instancing Complete: 1 package changed, 3 classes changed, 19 classes unchanged, 3 functions remapped
+[2022.06.03-05.57.58:978][ 65]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.57.58:986][ 65]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.57.58:986][ 65]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.57.58)
+[2022.06.03-05.57.58:986][ 65]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.57.58:998][ 65]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011629s)
+[2022.06.03-05.57.58:998][ 65]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011709s)
+[2022.06.03-05.57.58:998][ 65]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.57.58:998][ 65]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.57.58:999][ 65]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.57.58:999][ 65]LogPlayLevel: PIE: World Init took: (0.000838s)
+[2022.06.03-05.57.59:104][ 65]LogUObjectHash: Compacting FUObjectHashTables data took   3.33ms
+[2022.06.03-05.57.59:109][ 65]LogAudio: Display: Creating Audio Device:                 Id: 33, Scope: Unique, Realtime: True
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.57.59:109][ 65]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.57.59:109][ 65]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.57.59:109][ 65]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.57.59:109][ 65]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.57.59:109][ 65]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.57.59:113][ 65]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.57.59:136][ 65]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.57.59:136][ 65]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.57.59:136][ 65]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.57.59:136][ 65]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.57.59:137][ 65]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=33
+[2022.06.03-05.57.59:137][ 65]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=33
+[2022.06.03-05.57.59:139][ 65]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=33
+[2022.06.03-05.57.59:139][ 65]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=33
+[2022.06.03-05.57.59:139][ 65]LogInit: FAudioDevice initialized.
+[2022.06.03-05.57.59:139][ 65]LogAudio: Display: Audio Device (ID: 33) registered with world 'CityLevel'.
+[2022.06.03-05.57.59:154][ 65]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.57.59:160][ 65]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.57.59
+[2022.06.03-05.57.59:161][ 65]LogWorld: Bringing up level for play took: 0.006447
+[2022.06.03-05.57.59:164][ 65]LogOnline: OSS: Created online subsystem instance for: :Context_65
+[2022.06.03-05.57.59:169][ 65]PIE: Server logged in
+[2022.06.03-05.57.59:170][ 65]PIE: Play in editor total start time 0,184 seconds.
+[2022.06.03-05.58.22:425][455]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.58.22:425][455]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.58.22:425][455]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.58.22:426][455]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.58.22:443][455]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.58.22:454][455]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.58.22:509][455]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.58.22:510][455]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=33
+[2022.06.03-05.58.22:511][455]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=33
+[2022.06.03-05.58.22:522][455]LogUObjectHash: Compacting FUObjectHashTables data took   2.86ms
+[2022.06.03-05.58.22:579][456]LogPlayLevel: Display: Destroying online subsystem :Context_65
+[2022.06.03-05.58.23:836][527]LogUObjectHash: Compacting FUObjectHashTables data took   2.85ms
+[2022.06.03-05.59.14:630][883]Candidate modules for hot reload:
+[2022.06.03-05.59.14:630][883]  UE5_CombatProto
+[2022.06.03-05.59.14:638][883]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,5314 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-05.59.14:641][883]Warning: Starting HotReload took  0.1s.
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 11.59.20
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: BaseCharacter.cpp, EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-05.59.20:354][208]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-05.59.20:354][208]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,55 GB available: limiting max parallel actions to 3
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: Building 4 actions with 3 processes...
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: [1/4] Compile EnemyCharacter.cpp
+[2022.06.03-05.59.20:354][208]CompilerResultsLog: [2/4] Link UnrealEditor-UE5_CombatProto-5314.lib
+[2022.06.03-05.59.20:354][208]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5314.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5314.exp
+[2022.06.03-05.59.20:355][208]CompilerResultsLog: [3/4] Link UnrealEditor-UE5_CombatProto-5314.dll
+[2022.06.03-05.59.20:355][208]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5314.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-5314.suppressed.exp
+[2022.06.03-05.59.20:355][208]CompilerResultsLog: [4/4] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-05.59.20:355][208]CompilerResultsLog: Total time in Parallel executor: 4,53 seconds
+[2022.06.03-05.59.20:355][208]CompilerResultsLog: Total execution time: 5,59 seconds
+[2022.06.03-05.59.20:355][208]LogMainFrame: MainFrame: Module compiling took 5.765 seconds
+[2022.06.03-05.59.20:725][208]Display: HotReload took  6.1s.
+[2022.06.03-05.59.20:725][208]Display: Reload/Re-instancing Complete: 1 package changed, 22 classes unchanged, 11 functions remapped
+[2022.06.03-05.59.22:577][295]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-05.59.22:585][295]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-05.59.22:586][295]PIE: New page: PIE session: CityLevel (3 Jun 2022, 11.59.22)
+[2022.06.03-05.59.22:627][295]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.59.22:640][295]LogPlayLevel: PIE: StaticDuplicateObject took: (0.012143s)
+[2022.06.03-05.59.22:640][295]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.012288s)
+[2022.06.03-05.59.22:640][295]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-05.59.22:640][295]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-05.59.22:640][295]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-05.59.22:640][295]LogPlayLevel: PIE: World Init took: (0.000763s)
+[2022.06.03-05.59.22:757][295]LogUObjectHash: Compacting FUObjectHashTables data took   3.57ms
+[2022.06.03-05.59.22:761][295]LogAudio: Display: Creating Audio Device:                 Id: 34, Scope: Unique, Realtime: True
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-05.59.22:761][295]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-05.59.22:761][295]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-05.59.22:762][295]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-05.59.22:762][295]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-05.59.22:762][295]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-05.59.22:764][295]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-05.59.22:787][295]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-05.59.22:788][295]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-05.59.22:788][295]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-05.59.22:788][295]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-05.59.22:789][295]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=34
+[2022.06.03-05.59.22:789][295]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=34
+[2022.06.03-05.59.22:791][295]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=34
+[2022.06.03-05.59.22:791][295]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=34
+[2022.06.03-05.59.22:791][295]LogInit: FAudioDevice initialized.
+[2022.06.03-05.59.22:791][295]LogAudio: Display: Audio Device (ID: 34) registered with world 'CityLevel'.
+[2022.06.03-05.59.22:807][295]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-05.59.22:813][295]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-08.59.22
+[2022.06.03-05.59.22:814][295]LogWorld: Bringing up level for play took: 0.006668
+[2022.06.03-05.59.22:817][295]LogOnline: OSS: Created online subsystem instance for: :Context_66
+[2022.06.03-05.59.22:821][295]PIE: Server logged in
+[2022.06.03-05.59.22:822][295]PIE: Play in editor total start time 0,237 seconds.
+[2022.06.03-05.59.30:521][753]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.59.30:521][753]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-05.59.30:521][753]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-05.59.30:522][753]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.59.30:536][753]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-05.59.30:547][753]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-05.59.30:599][753]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-05.59.30:604][753]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=34
+[2022.06.03-05.59.30:606][753]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=34
+[2022.06.03-05.59.30:649][753]LogUObjectHash: Compacting FUObjectHashTables data took   2.85ms
+[2022.06.03-05.59.30:725][754]LogPlayLevel: Display: Destroying online subsystem :Context_66
+[2022.06.03-05.59.31:921][821]LogUObjectHash: Compacting FUObjectHashTables data took   2.42ms
+[2022.06.03-06.00.43:735][120]LogUObjectHash: Compacting FUObjectHashTables data took   1.10ms
+[2022.06.03-06.01.59:910][455]Candidate modules for hot reload:
+[2022.06.03-06.01.59:910][455]  UE5_CombatProto
+[2022.06.03-06.01.59:918][455]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,9836 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-06.01.59:921][455]Warning: Starting HotReload took  0.1s.
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 12.02.10
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 1,9890497 seconds
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: BaseCharacter.cpp, EnemyCharacter.cpp, EnemyAICtrl.cpp
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,86 GB available: limiting max parallel actions to 3
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Building 6 actions with 3 processes...
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [1/6] Compile EnemyCharacter.gen.cpp
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [2/6] Compile EnemyCharacter.cpp
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [3/6] Compile EnemyAICtrl.cpp
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [4/6] Link UnrealEditor-UE5_CombatProto-9836.lib
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9836.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9836.exp
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [5/6] Link UnrealEditor-UE5_CombatProto-9836.dll
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9836.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-9836.suppressed.exp
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: [6/6] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Total time in Parallel executor: 5,48 seconds
+[2022.06.03-06.02.10:083][ 27]CompilerResultsLog: Total execution time: 10,03 seconds
+[2022.06.03-06.02.10:083][ 27]LogMainFrame: MainFrame: Module compiling took 10.215 seconds
+[2022.06.03-06.02.10:126][ 27]LogClass: EnemyCharacter Reload.
+[2022.06.03-06.02.10:168][ 27]LogClass: Could not find existing class EnemyCharacter in package /Script/UE5_CombatProto for reload, assuming new or modified class
+[2022.06.03-06.02.10:270][ 27]Re-instancing EnemyCharacter after reload.
+[2022.06.03-06.02.10:572][ 27]Display: HotReload took 10.7s.
+[2022.06.03-06.02.10:572][ 27]Display: Reload/Re-instancing Complete: 1 package changed, 1 class changed, 21 classes unchanged, 11 functions remapped
+[2022.06.03-06.02.12:044][ 91]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-06.02.12:052][ 91]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-06.02.12:052][ 91]PIE: New page: PIE session: CityLevel (3 Jun 2022, 12.02.12)
+[2022.06.03-06.02.12:052][ 91]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-06.02.12:064][ 91]LogPlayLevel: PIE: StaticDuplicateObject took: (0.012043s)
+[2022.06.03-06.02.12:064][ 91]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.012142s)
+[2022.06.03-06.02.12:064][ 91]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-06.02.12:064][ 91]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-06.02.12:065][ 91]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-06.02.12:065][ 91]LogPlayLevel: PIE: World Init took: (0.000762s)
+[2022.06.03-06.02.12:169][ 91]LogUObjectHash: Compacting FUObjectHashTables data took   4.49ms
+[2022.06.03-06.02.12:173][ 91]LogAudio: Display: Creating Audio Device:                 Id: 35, Scope: Unique, Realtime: True
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-06.02.12:173][ 91]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-06.02.12:173][ 91]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-06.02.12:174][ 91]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-06.02.12:174][ 91]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-06.02.12:174][ 91]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-06.02.12:176][ 91]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-06.02.12:202][ 91]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-06.02.12:202][ 91]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-06.02.12:202][ 91]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-06.02.12:202][ 91]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-06.02.12:203][ 91]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=35
+[2022.06.03-06.02.12:203][ 91]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=35
+[2022.06.03-06.02.12:205][ 91]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=35
+[2022.06.03-06.02.12:205][ 91]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=35
+[2022.06.03-06.02.12:205][ 91]LogInit: FAudioDevice initialized.
+[2022.06.03-06.02.12:205][ 91]LogAudio: Display: Audio Device (ID: 35) registered with world 'CityLevel'.
+[2022.06.03-06.02.12:223][ 91]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-06.02.12:229][ 91]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-09.02.12
+[2022.06.03-06.02.12:230][ 91]LogWorld: Bringing up level for play took: 0.006480
+[2022.06.03-06.02.12:232][ 91]LogOnline: OSS: Created online subsystem instance for: :Context_67
+[2022.06.03-06.02.12:236][ 91]PIE: Server logged in
+[2022.06.03-06.02.12:238][ 91]PIE: Play in editor total start time 0,186 seconds.
+[2022.06.03-06.02.23:364][756]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-06.02.23:364][756]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-06.02.23:365][756]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-06.02.23:365][756]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-06.02.23:385][756]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-06.02.23:396][756]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-06.02.23:448][756]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-06.02.23:448][756]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=35
+[2022.06.03-06.02.23:450][756]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=35
+[2022.06.03-06.02.23:496][756]LogUObjectHash: Compacting FUObjectHashTables data took   3.35ms
+[2022.06.03-06.02.23:558][757]LogPlayLevel: Display: Destroying online subsystem :Context_67
+[2022.06.03-06.02.24:775][825]LogUObjectHash: Compacting FUObjectHashTables data took   2.53ms
+[2022.06.03-06.02.25:990][897]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-06.02.25:998][897]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.03-06.02.25:998][897]PIE: New page: PIE session: CityLevel (3 Jun 2022, 12.02.25)
+[2022.06.03-06.02.25:998][897]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-06.02.26:010][897]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011906s)
+[2022.06.03-06.02.26:010][897]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011993s)
+[2022.06.03-06.02.26:010][897]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-06.02.26:010][897]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-06.02.26:011][897]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-06.02.26:011][897]LogPlayLevel: PIE: World Init took: (0.000930s)
+[2022.06.03-06.02.26:066][897]LogUObjectHash: Compacting FUObjectHashTables data took   2.68ms
+[2022.06.03-06.02.26:067][897]LogAudio: Display: Creating Audio Device:                 Id: 36, Scope: Unique, Realtime: True
+[2022.06.03-06.02.26:067][897]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-06.02.26:067][897]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-06.02.26:067][897]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-06.02.26:067][897]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-06.02.26:068][897]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-06.02.26:068][897]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-06.02.26:068][897]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-06.02.26:068][897]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-06.02.26:068][897]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-06.02.26:068][897]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-06.02.26:068][897]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-06.02.26:070][897]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-06.02.26:094][897]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-06.02.26:094][897]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-06.02.26:094][897]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-06.02.26:094][897]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-06.02.26:095][897]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=36
+[2022.06.03-06.02.26:095][897]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=36
+[2022.06.03-06.02.26:097][897]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=36
+[2022.06.03-06.02.26:097][897]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=36
+[2022.06.03-06.02.26:097][897]LogInit: FAudioDevice initialized.
+[2022.06.03-06.02.26:097][897]LogAudio: Display: Audio Device (ID: 36) registered with world 'CityLevel'.
+[2022.06.03-06.02.26:112][897]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-06.02.26:118][897]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-09.02.26
+[2022.06.03-06.02.26:119][897]LogWorld: Bringing up level for play took: 0.006807
+[2022.06.03-06.02.26:121][897]LogOnline: OSS: Created online subsystem instance for: :Context_68
+[2022.06.03-06.02.26:126][897]PIE: Server logged in
+[2022.06.03-06.02.26:127][897]PIE: Play in editor total start time 0,129 seconds.
+[2022.06.03-06.02.34:873][419]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-06.02.34:873][419]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-06.02.34:874][419]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-06.02.34:874][419]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-06.02.34:887][419]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-06.02.34:897][419]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-06.02.34:950][419]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-06.02.34:951][419]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=36
+[2022.06.03-06.02.34:952][419]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=36
+[2022.06.03-06.02.34:965][419]LogUObjectHash: Compacting FUObjectHashTables data took   3.75ms
+[2022.06.03-06.02.35:022][420]LogPlayLevel: Display: Destroying online subsystem :Context_68
+[2022.06.03-06.02.36:119][481]LogUObjectHash: Compacting FUObjectHashTables data took   2.61ms
+[2022.06.03-06.02.39:161][658]LogUObjectHash: Compacting FUObjectHashTables data took   1.02ms
+[2022.06.03-06.02.48:005][185]LogUObjectHash: Compacting FUObjectHashTables data took   1.14ms
+[2022.06.03-06.06.54:985][119]Candidate modules for hot reload:
+[2022.06.03-06.06.54:985][119]  UE5_CombatProto
+[2022.06.03-06.06.54:994][119]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,4983 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-06.06.54:996][119]Warning: Starting HotReload took  0.1s.
+[2022.06.03-06.07.07:139][805]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 12.07.07
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-06.07.07:140][805]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 2,4321938 seconds
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: BaseCharacter.cpp, EnemyCharacter.cpp, EnemyAICtrl.cpp, GeneralNotifies.cpp
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-06.07.07:140][805]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-06.07.07:140][805]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,86 GB available: limiting max parallel actions to 3
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Building 6 actions with 3 processes...
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [1/6] Compile UE5_CombatProto.init.gen.cpp
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [2/6] Compile GeneralNotifies.gen.cpp
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [3/6] Compile GeneralNotifies.cpp
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [4/6] Link UnrealEditor-UE5_CombatProto-4983.lib
+[2022.06.03-06.07.07:140][805]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-4983.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-4983.exp
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [5/6] Link UnrealEditor-UE5_CombatProto-4983.dll
+[2022.06.03-06.07.07:140][805]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-4983.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-4983.suppressed.exp
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: [6/6] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Total time in Parallel executor: 6,96 seconds
+[2022.06.03-06.07.07:140][805]CompilerResultsLog: Total execution time: 12,01 seconds
+[2022.06.03-06.07.07:140][805]LogMainFrame: MainFrame: Module compiling took 12.195 seconds
+[2022.06.03-06.07.07:224][805]LogClass: /Script/UE5_CombatProto Reload.
+[2022.06.03-06.07.07:288][805]LogClass: Could not find existing class ResetEnemyAtkCooldownNotify in package /Script/UE5_CombatProto for reload, assuming new or modified class
+[2022.06.03-06.07.07:538][805]Display: HotReload took 12.6s.
+[2022.06.03-06.07.07:538][805]Display: Reload/Re-instancing Complete: 1 package changed, 1 class new, 22 classes unchanged, 11 functions remapped
+[2022.06.03-06.07.25:439][858]LogContentBrowser: Attempting asset rename: Fast_Attack_Mon -> Enemy_Fast_Attack_Mon
+[2022.06.03-06.07.25:673][858]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Blueprints/Enemy/Enemy_BP" FILE="../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Blueprints/Enemy/Enemy_BP.uasset" SILENT=true
+[2022.06.03-06.07.25:715][858]LogSavePackage: Moving output files for package: /Game/Blueprints/Enemy/Enemy_BP
+[2022.06.03-06.07.25:716][858]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/Enemy_BP6125231449B37FCF384817B39F602673.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Blueprints/Enemy/Enemy_BP.uasset'
+[2022.06.03-06.07.25:719][858]LogSavePackage: Moving output files for package: /Game/Assets/Montages/Human/Enemy_Fast_Attack_Mon
+[2022.06.03-06.07.25:719][858]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/Enemy_Fast_Attack_MonEB139F9449D8F3B32902F7BABFAC2EA0.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Assets/Montages/Human/Enemy_Fast_Attack_Mon.uasset'
+[2022.06.03-06.07.25:890][858]LogUObjectHash: Compacting FUObjectHashTables data took   3.34ms
+[2022.06.03-06.07.25:983][858]LogUObjectHash: Compacting FUObjectHashTables data took   2.67ms
+[2022.06.03-06.07.26:049][858]LogUObjectHash: Compacting FUObjectHashTables data took   1.09ms
+[2022.06.03-06.07.26:062][858]AssetCheck: New page: Asset Save: multiple assets
+[2022.06.03-06.07.26:062][858]LogContentValidation: Display: Validating Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP
+[2022.06.03-06.07.26:062][858]LogContentValidation: Display: Validating AnimMontage /Game/Assets/Montages/Human/Enemy_Fast_Attack_Mon.Enemy_Fast_Attack_Mon
+[2022.06.03-06.07.41:742][774]LogEditorClassViewer: Warning: Class /Engine/Tutorial/InWorldBlueprintEditing/TutorialAssets/IWBE_Blutility.IWBE_Blutility_C has parent /Script/Blutility.PlacedEditorUtilityBase, but this parent is not found. The Class will not be shown in ClassViewer.
+[2022.06.03-06.08.08:575][347]LogSavePackage: Moving output files for package: /Game/Assets/Montages/Human/Enemy_Fast_Attack_Mon
+[2022.06.03-06.08.08:576][347]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/Enemy_Fast_Attack_MonABEDC0DF456CDDF566E76A891D5BEC42.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Assets/Montages/Human/Enemy_Fast_Attack_Mon.uasset'
+[2022.06.03-06.08.08:595][347]AssetCheck: New page: Asset Save: Enemy_Fast_Attack_Mon
+[2022.06.03-06.08.08:595][347]LogContentValidation: Display: Validating AnimMontage /Game/Assets/Montages/Human/Enemy_Fast_Attack_Mon.Enemy_Fast_Attack_Mon
+[2022.06.03-06.08.10:553][456]LogUObjectHash: Compacting FUObjectHashTables data took   3.21ms
+[2022.06.03-06.08.11:530][514]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.03-06.08.11:538][514]BlueprintLog: New page: Pre-Play auto-recompile
+[2022.06.03-06.08.11:540][514]LogPlayLevel: [PlayLevel] Compiling Enemy_BP before play...
+[2022.06.03-06.08.11:662][514]LogUObjectHash: Compacting FUObjectHashTables data took   3.03ms
+[2022.06.03-06.08.11:664][514]LogPlayLevel: PlayLevel: Blueprint regeneration took 126 ms (1 blueprints)
+[2022.06.03-06.08.11:664][514]PIE: New page: PIE session: CityLevel (3 Jun 2022, 12.08.11)
+[2022.06.03-06.08.11:715][514]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-06.08.11:727][514]LogPlayLevel: PIE: StaticDuplicateObject took: (0.011762s)
+[2022.06.03-06.08.11:727][514]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.011903s)
+[2022.06.03-06.08.11:727][514]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.03-06.08.11:727][514]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.03-06.08.11:727][514]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.03-06.08.11:727][514]LogPlayLevel: PIE: World Init took: (0.000832s)
+[2022.06.03-06.08.11:783][514]LogUObjectHash: Compacting FUObjectHashTables data took   2.95ms
+[2022.06.03-06.08.11:784][514]LogAudio: Display: Creating Audio Device:                 Id: 37, Scope: Unique, Realtime: True
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.03-06.08.11:784][514]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.03-06.08.11:784][514]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.03-06.08.11:784][514]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.03-06.08.11:784][514]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.03-06.08.11:784][514]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.03-06.08.11:787][514]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.03-06.08.11:811][514]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.03-06.08.11:811][514]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.03-06.08.11:811][514]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.03-06.08.11:812][514]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.03-06.08.11:813][514]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=37
+[2022.06.03-06.08.11:813][514]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=37
+[2022.06.03-06.08.11:815][514]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=37
+[2022.06.03-06.08.11:815][514]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=37
+[2022.06.03-06.08.11:815][514]LogInit: FAudioDevice initialized.
+[2022.06.03-06.08.11:815][514]LogAudio: Display: Audio Device (ID: 37) registered with world 'CityLevel'.
+[2022.06.03-06.08.11:827][514]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.03-06.08.11:832][514]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.03-09.08.11
+[2022.06.03-06.08.11:833][514]LogWorld: Bringing up level for play took: 0.006362
+[2022.06.03-06.08.11:835][514]LogOnline: OSS: Created online subsystem instance for: :Context_69
+[2022.06.03-06.08.11:840][514]PIE: Server logged in
+[2022.06.03-06.08.11:841][514]PIE: Play in editor total start time 0,303 seconds.
+[2022.06.03-06.09.57:486][844]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-06.09.57:486][844]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.03-06.09.57:486][844]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.03-06.09.57:487][844]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-06.09.57:504][844]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.03-06.09.57:515][844]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.03-06.09.57:569][844]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.03-06.09.57:570][844]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=37
+[2022.06.03-06.09.57:572][844]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=37
+[2022.06.03-06.09.57:584][844]LogUObjectHash: Compacting FUObjectHashTables data took   2.79ms
+[2022.06.03-06.09.57:639][845]LogPlayLevel: Display: Destroying online subsystem :Context_69
+[2022.06.03-06.09.59:140][929]LogUObjectHash: Compacting FUObjectHashTables data took   2.55ms
+[2022.06.03-06.10.00:029][929]LogSlate: Window 'Save Content' being destroyed
+[2022.06.03-06.10.00:233][929]LogUObjectHash: Compacting FUObjectHashTables data took   1.02ms
+[2022.06.03-06.10.00:262][929]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.03-06.10.00:263][929]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevel34A02D854325AC4D4EA667BA4B93143D.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.03-06.10.00:276][929]LogFileHelpers: Saving map 'CityLevel' took 0.101
+[2022.06.03-06.10.00:296][929]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.03-06.10.00:296][929]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.03-06.12.51:381][608]Candidate modules for hot reload:
+[2022.06.03-06.12.51:381][608]  UE5_CombatProto
+[2022.06.03-06.12.51:389][608]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,8328 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-06.12.51:392][608]Warning: Starting HotReload took  0.1s.
+[2022.06.03-06.13.12:157][808]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 12.13.12
+[2022.06.03-06.13.12:157][808]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Invalidating makefile for UE5_CombatProtoEditor (working set of source files changed)
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Parsing headers for UE5_CombatProtoEditor
+[2022.06.03-06.13.12:158][808]CompilerResultsLog:   Running UnrealHeaderTool "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\UE5_CombatProto.uproject" "C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UE5_CombatProtoEditor\Development\UE5_CombatProtoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Reflection code generated for UE5_CombatProtoEditor in 2,7835779 seconds
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: BaseCharacter.cpp, EnemyCharacter.cpp, EnemyAICtrl.cpp, GeneralNotifies.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-06.13.12:158][808]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-06.13.12:158][808]CompilerResultsLog:   Requested 1,5 GB free memory per action, 5,4 GB available: limiting max parallel actions to 3
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Building 16 actions with 3 processes...
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [1/16] Compile EnemyCharacter.gen.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [2/16] Compile BaseCharacter.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [3/16] Compile FastAttackEndedNotify.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [4/16] Compile AttackSetterNotifies.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [5/16] Compile GeneralNotifies.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [6/16] Compile BaseCharacter.gen.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [7/16] Compile MainCharacter.gen.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [8/16] Compile StrongAttackEndedNotify.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [9/16] Compile FastAttackCheckNotifyState.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [10/16] Compile StrongAttackCheckNotifyState.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [11/16] Compile MainCharacter.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [12/16] Compile EnemyCharacter.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [13/16] Compile EnemyAICtrl.cpp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [14/16] Link UnrealEditor-UE5_CombatProto-8328.lib
+[2022.06.03-06.13.12:158][808]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-8328.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-8328.exp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [15/16] Link UnrealEditor-UE5_CombatProto-8328.dll
+[2022.06.03-06.13.12:158][808]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-8328.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-8328.suppressed.exp
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: [16/16] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Total time in Parallel executor: 15,27 seconds
+[2022.06.03-06.13.12:158][808]CompilerResultsLog: Total execution time: 20,65 seconds
+[2022.06.03-06.13.12:158][808]LogMainFrame: MainFrame: Module compiling took 20.819 seconds
+[2022.06.03-06.13.12:544][808]Display: HotReload took 21.2s.
+[2022.06.03-06.13.12:544][808]Display: Reload/Re-instancing Complete: 1 package changed, 23 classes unchanged, 11 functions remapped
+[2022.06.03-06.13.51:396][109]LogUObjectHash: Compacting FUObjectHashTables data took   3.67ms
+[2022.06.03-06.14.45:426][448]Candidate modules for hot reload:
+[2022.06.03-06.14.45:426][448]  UE5_CombatProto
+[2022.06.03-06.14.45:434][448]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe  -ModuleWithSuffix=UE5_CombatProto,3638 UE5_CombatProtoEditor Win64 Development -Project="C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject" "C:/Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/UE5_CombatProto.uproject"  -IgnoreJunk]
+[2022.06.03-06.14.45:437][448]Warning: Starting HotReload took  0.1s.
+[2022.06.03-06.14.48:146][592]CompilerResultsLog: New page: Compilation - 3 Jun 2022, 12.14.48
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Log file: C:\Users\kanuki\AppData\Local\UnrealBuildTool\Log.txt
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build (C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto).
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Building UE5_CombatProtoEditor...
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Using Visual Studio 2019 14.29.30133 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.19041.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: [Adaptive Build] Excluded from UE5_CombatProto unity file: BaseCharacter.cpp, EnemyCharacter.cpp, EnemyAICtrl.cpp, GeneralNotifies.cpp
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Determining max actions to execute in parallel (8 physical cores, 16 logical cores)
+[2022.06.03-06.14.48:147][592]CompilerResultsLog:   Executing up to 8 processes, one per physical core
+[2022.06.03-06.14.48:147][592]CompilerResultsLog:   Requested 1,5 GB free memory per action, 1,23 GB available: limiting max parallel actions to 1
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Building 3 actions with 1 process...
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: [1/3] Link UnrealEditor-UE5_CombatProto-3638.dll
+[2022.06.03-06.14.48:147][592]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-3638.suppressed.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-3638.suppressed.exp
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: [2/3] Link UnrealEditor-UE5_CombatProto-3638.lib
+[2022.06.03-06.14.48:147][592]CompilerResultsLog:    Creating library C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-3638.lib and object C:\Users\kanuki\Documents\Unreal Projects\UE5_CombatProto\Intermediate\Build\Win64\UnrealEditor\Development\UE5_CombatProto\UnrealEditor-UE5_CombatProto-3638.exp
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: [3/3] WriteMetadata UE5_CombatProtoEditor.target
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Total time in Parallel executor: 1,43 seconds
+[2022.06.03-06.14.48:147][592]CompilerResultsLog: Total execution time: 2,58 seconds
+[2022.06.03-06.14.48:147][592]LogMainFrame: MainFrame: Module compiling took 2.763 seconds
+[2022.06.03-06.14.48:572][592]Display: HotReload took  3.2s.
+[2022.06.03-06.14.48:572][592]Display: Reload/Re-instancing Complete: 1 package changed, 23 classes unchanged, 11 functions remapped
+[2022.06.03-06.14.51:567][736]LogUObjectHash: Compacting FUObjectHashTables data took   3.98ms

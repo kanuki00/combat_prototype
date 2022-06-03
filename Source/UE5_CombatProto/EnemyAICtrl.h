@@ -20,8 +20,10 @@ public:
 protected:
 	void Tick(float DeltaTime);
 
+	bool SeesPlayer = false;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float AttackRange;
+		float AttackRange = 200.0f;
 	UPROPERTY(BlueprintReadOnly)
 		bool InRangeOfPlayer;
 };

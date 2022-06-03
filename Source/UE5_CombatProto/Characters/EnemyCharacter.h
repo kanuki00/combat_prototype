@@ -19,6 +19,9 @@ public:
 
 	float GetMovementInputStrength_Implementation();
 
+	void Attack();
+	bool AttackCoolingDown = false;
+
 protected:
 	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 

@@ -52,6 +52,7 @@ void ABaseCharacter::Death()
 	IsDead = true;
 	Health = 0;
 	
+	StopAnimMontage(); // Stop any montage that could be playing, Eg. an attack.
 	if (DeathAnimation)
 	{
 		PlayAnimMontage(DeathAnimation); // Death montage should have an AnimNotify in it that fires RagdollChar when finished.
@@ -60,6 +61,11 @@ void ABaseCharacter::Death()
 
 void ABaseCharacter::UniqueDeath()
 {
+}
+
+float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	return 0.0f;
 }
 
 void ABaseCharacter::RagdollChar()

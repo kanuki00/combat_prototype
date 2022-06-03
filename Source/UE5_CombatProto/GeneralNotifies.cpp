@@ -3,6 +3,7 @@
 
 #include "GeneralNotifies.h"
 #include "Characters/BaseCharacter.h"
+#include "Characters/EnemyCharacter.h"
 
 void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
@@ -15,4 +16,13 @@ void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* A
 
 void URollEndNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+}
+
+void UResetEnemyAtkCooldownNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
+{
+	EChar = Cast<AEnemyCharacter>(MeshComp->GetOwner());
+	if (EChar)
+	{
+		EChar->AttackCoolingDown = false;
+	}
 }

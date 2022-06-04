@@ -29,5 +29,6 @@ void UResetEnemyAtkCooldownNotify::Notify(USkeletalMeshComponent* MeshComp, UAni
 	if (EChar)
 	{
 		EChar->AttackCoolingDown = false;
+		EChar->AttackEndCooldown = true;
 	}
 }

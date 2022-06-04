@@ -21,12 +21,13 @@ float AEnemyCharacter::GetMovementInputStrength_Implementation()
 
 void AEnemyCharacter::Attack()
 {
-	if (!IsDead && !AttackCoolingDown)
+	if (!IsDead && !AttackCoolingDown && !AttackEndCooldown)
 	{
 		AttackCoolingDown = true;
 		if (FastAttack) PlayAnimMontage(FastAttack);
 	}
 }
+
 void AEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -34,14 +35,10 @@ void AEnemyCharacter::Tick(float DeltaTime)
 	{
 		RotateToPlayer(DeltaTime);
 	}
+
+	Cooldown(AttackEndCooldown, AttackEndCooldownTimer, AttackEndCooldownLength, DeltaTime);
 }
-/*
-float AEnemyCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
-{
-	Death();
-	return 0.0f;
-}
-*/
+
 void AEnemyCharacter::UniqueDeath()
 {
 	Cast<ABaseAICtrl>(GetController())->DisableAI();
@@ -51,6 +48,7 @@ void AEnemyCharacter::RotateToPlayer(float DeltaTime)
 {
 	ACharacter* PlayerCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 	FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), PlayerCharacter->GetActorLocation());
+	Rotation = FRotator(0.0f, Rotation.Yaw, 0.0f); // Only rotate on plane
 	this->SetActorRotation(FMath::RInterpConstantTo(this->GetActorRotation(), Rotation, DeltaTime, 720.0f));
 }
 

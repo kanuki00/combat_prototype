@@ -8,6 +8,8 @@
 #include "UObject/Interface.h"
 #include "BaseCharacter.generated.h"
 
+class USoundCue;
+
 // Interface for animations
 UINTERFACE(MinimalAPI, Blueprintable)
 class UCharacterAnimationInterface : public UInterface
@@ -61,6 +63,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
 		UAnimMontage* StrongAttack = nullptr;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References")
+		USoundCue* HitSFX = nullptr;
+
 	UFUNCTION(BlueprintCallable)
 	/* Death method that all characters share */
 		void Death();
@@ -77,9 +82,15 @@ protected:
 public:	
 	virtual void EndRoll();
 	bool IsRolling = false;
-
+	bool CanStartRoll = true;
 
 	void RagdollChar();
+
+	bool CanDie = true;
+	bool CanBeDamaged = true;
+	bool TakeDamageCooldown = false;
+	float TakeDamageCooldownTimer = 0.0f;
+	float TakeDamageCoolDownLength = 0.25f;
 
 	bool IsDead = false;
 

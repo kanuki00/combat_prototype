@@ -20,7 +20,9 @@ public:
 	float GetMovementInputStrength_Implementation();
 
 	void Attack();
-	bool AttackCoolingDown = false;
+	bool AttackCoolingDown = false; // this cooldown is for actually starting the attack animation.
+	bool AttackEndCooldown = false; // this cooldown starts at end of attack animation so that there's a window for the player to attack the enemy.
+									// both are getting set in GeneralNotifies -> UResetEnemyAtkCooldownNotify.
 
 protected:
 	//virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
@@ -33,4 +35,8 @@ protected:
 	void RotateToPlayer(float DeltaTime);
 
 	virtual void SetCharacterRotationEnabled(bool NewRotate = true) override;
+
+
+	float AttackEndCooldownTimer = 0.0f;
+	float AttackEndCooldownLength = 1.0f;
 };

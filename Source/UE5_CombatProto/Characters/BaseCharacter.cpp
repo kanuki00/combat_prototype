@@ -3,6 +3,8 @@
 
 #include "BaseCharacter.h"
 #include "Components/CapsuleComponent.h"
+#include "Sound/SoundCue.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -48,15 +50,19 @@ void ABaseCharacter::WasPressed(bool & WasPressed, bool & Pressed, bool & Presse
 
 void ABaseCharacter::Death()
 {
-	UniqueDeath(); // Runs characters own unique death method. for example; players input is disabled and enemys AI is disabled.
-	IsDead = true;
-	Health = 0;
-	CanApplyDamage = false;
-
-	StopAnimMontage(); // Stop any montage that could be playing, Eg. an attack.
-	if (DeathAnimation)
+	if (CanDie)
 	{
-		PlayAnimMontage(DeathAnimation); // Death montage should have an AnimNotify in it that fires RagdollChar when finished.
+		CanDie = false;
+		UniqueDeath(); // Runs characters own unique death method. for example; players input is disabled and enemys AI is disabled.
+		IsDead = true;
+		Health = 0;
+		CanApplyDamage = false;
+
+		StopAnimMontage(); // Stop any montage that could be playing, Eg. an attack.
+		if (DeathAnimation)
+		{
+			PlayAnimMontage(DeathAnimation); // Death montage should have an AnimNotify in it that fires RagdollChar when finished.
+		}
 	}
 }
 
@@ -66,9 +72,12 @@ void ABaseCharacter::UniqueDeath()
 
 float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	if (!IsRolling)
+	if (CanBeDamaged && !TakeDamageCooldown && !IsRolling)
 	{
-		//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, TEXT("Was Hit"));
+		TakeDamageCooldown = true;
+		// Playing hit sound
+		if(HitSFX) UGameplayStatics::PlaySound2D(GetWorld(), HitSFX); //if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, TEXT("Was Hit"));
+		
 		Health -= FMath::TruncToInt(Damage);
 		if (Health <= 0)
 		{
@@ -107,6 +116,7 @@ void ABaseCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	Cooldown(TakeDamageCooldown, TakeDamageCooldownTimer, TakeDamageCoolDownLength, DeltaTime);
 }
 
 // Called to bind functionality to input

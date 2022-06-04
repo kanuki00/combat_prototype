@@ -73,7 +73,8 @@ void APlayerCharacter::Tick(float DeltaTime)
 	{
 		Movement(PlayerHasMovementControl);
 		CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
-		RotateToInput(DeltaTime, 720.0f, PlayerHasRotationControl, IsTargeting && !IsRolling);
+		RotateToInput(DeltaTime, RotationSpeed, PlayerHasRotationControl, IsTargeting && !IsRolling);
+		RotateCameraToMovement(!IsTargeting);
 	}
 
 	// Setting MovementInputStrength. Used mainly in animation blueprint via CharacterAnimation interface.
@@ -189,6 +190,14 @@ void APlayerCharacter::CameraMovement(float DeltaTime, float Smoothing, bool Ena
 	}
 }
 
+void APlayerCharacter::RotateCameraToMovement(bool Enabled)
+{
+	if (Enabled && CameraInputVector.Length() == 0.0f)
+	{
+		AddControllerYawInput(MovementInputVector.Y*0.5f);
+	}
+}
+
 void APlayerCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, bool Targeting)
 {
 	if (Enabled)
@@ -206,7 +215,7 @@ void APlayerCharacter::RotateToInput(float DeltaTime, float Rate, bool Enabled, 
 			FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Direction);
 			CharacterFacing = FRotator(0.0f, Rotation.Yaw, 0.0f);
 		}
-		SetActorRotation(FMath::RInterpConstantTo(this->GetActorRotation(), CharacterFacing, DeltaTime, 720.0f));
+		SetActorRotation(FMath::RInterpConstantTo(this->GetActorRotation(), CharacterFacing, DeltaTime, RotationSpeed));
 	}
 }
 
@@ -220,9 +229,32 @@ void APlayerCharacter::InstantlyRotateToInput()
 	}
 }
 
+void APlayerCharacter::StartRoll()
+{
+	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Yellow, TEXT("Tapped!"));
+	InstantlyRotateToInput();
+	if (RollAnimation && CanStartRoll)
+	{
+		CanStartRoll = false;
+		IsRolling = true;
+		RotationSpeed = 180.0f;
+		if (MovementInputStrength > 0.0f)
+		{
+			PlayAnimMontage(RollAnimation, 1.0f, FName("Moving"));
+		}
+		else
+		{
+			PlayAnimMontage(RollAnimation, 1.0f, FName("Standing"));
+		}
+
+	}
+}
+
 void APlayerCharacter::EndRoll()
 {
 	IsRolling = false;
+	CanStartRoll = true;
+	RotationSpeed = DefaultRotationSpeed;
 	if (MovementInputStrength > 0.0f) // Stopping roll anim prematurely to keep movement velocity.
 	{
 		StopAnimMontage(RollAnimation);
@@ -323,21 +355,7 @@ void APlayerCharacter::Input3ReleasedBind()
 
 void APlayerCharacter::Input3Tapped()
 {
-	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Yellow, TEXT("Tapped!"));
-	InstantlyRotateToInput();
-	if (RollAnimation)
-	{
-		IsRolling = true;
-		if (MovementInputStrength > 0.0f)
-		{
-			PlayAnimMontage(RollAnimation, 1.0f, FName("Moving"));
-		}
-		else
-		{
-			PlayAnimMontage(RollAnimation, 1.0f, FName("Standing"));
-		}
-		
-	}
+	StartRoll();
 }
 
 void APlayerCharacter::TargetPressedBind()

@@ -56,6 +56,11 @@ private:
 	UPROPERTY()
 		FRotator CharacterFacing;
 
+	UPROPERTY()
+		float RotationSpeed = 720.0f;
+
+		const float DefaultRotationSpeed = 720.0f;
+
 	// For camera smoothing
 	UPROPERTY()
 		float PitchAmount = 0.0f;
@@ -66,6 +71,8 @@ private:
 		void Movement(bool Enabled = true);
 	UFUNCTION()
 		void CameraMovement(float DeltaTime, float Smoothing = 0.0f, bool Enabled = true);
+	UFUNCTION()
+		void RotateCameraToMovement(bool Enabled);
 
 	// Rotate character completely to latest movement input direction or rotate character to face target.
 	UFUNCTION()
@@ -76,9 +83,10 @@ private:
 
 	bool CanRoll = true;
 	
-
+	void StartRoll();
 public:
 	virtual void EndRoll() override;
+
 protected:
 	virtual void UniqueDeath() override;
 

@@ -11,6 +11,9 @@ AEnemyCharacter::AEnemyCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	DamageStrength = 50;
+
+	MaxHealth = 200;
+	Health = 200;
 }
 
 float AEnemyCharacter::GetMovementInputStrength_Implementation()

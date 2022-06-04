@@ -5518,3 +5518,483 @@ LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
 [2022.06.04-06.45.54:468][798]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
 [2022.06.04-06.47.13:804][552]LogUObjectHash: Compacting FUObjectHashTables data took   1.61ms
 [2022.06.04-06.47.25:019][880]LogUObjectHash: Compacting FUObjectHashTables data took   0.66ms
+[2022.06.04-06.50.05:607][476]LogUObjectHash: Compacting FUObjectHashTables data took   0.77ms
+[2022.06.04-06.50.31:473][ 25]LogUObjectHash: Compacting FUObjectHashTables data took   0.65ms
+[2022.06.04-06.50.58:024][584]Cmd: EDIT COPY
+[2022.06.04-06.50.58:219][593]Cmd: EDIT PASTE
+[2022.06.04-06.50.58:322][594]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.50.58:997][626]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.21:189][909]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.23:881][ 63]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.24:532][101]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.26:273][195]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.29:809][388]Cmd: EDIT COPY
+[2022.06.04-06.51.30:069][403]Cmd: EDIT PASTE
+[2022.06.04-06.51.30:163][404]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.31:620][465]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.31:652][467]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.31:802][476]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.32:286][505]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.32:885][541]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.33:258][563]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.38:841][868]Cmd: EDIT COPY
+[2022.06.04-06.51.39:041][880]Cmd: EDIT PASTE
+[2022.06.04-06.51.39:158][881]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.40:586][948]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.40:677][952]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.40:810][960]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.41:493][  1]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.41:864][ 22]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.51.51:303][575]LogUObjectHash: Compacting FUObjectHashTables data took   1.71ms
+[2022.06.04-06.51.52:349][575]LogSlate: Window 'Save Content' being destroyed
+[2022.06.04-06.51.52:526][575]LogUObjectHash: Compacting FUObjectHashTables data took   0.75ms
+[2022.06.04-06.51.52:548][575]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.04-06.51.52:549][575]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevel2F9C7B9B4E554BBE549234929C392E75.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.04-06.51.52:562][575]LogFileHelpers: Saving map 'CityLevel' took 0.077
+[2022.06.04-06.51.52:577][575]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.04-06.51.52:577][575]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.04-06.52.00:959][ 76]LogUObjectHash: Compacting FUObjectHashTables data took   1.13ms
+[2022.06.04-06.52.48:172][899]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.48:225][902]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.48:397][912]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.48:665][928]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.48:735][932]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.49:388][971]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.59:130][543]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.52.59:721][578]Cmd: EDIT COPY
+[2022.06.04-06.52.59:904][589]Cmd: EDIT PASTE
+[2022.06.04-06.52.59:979][590]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.00:460][612]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.01:316][662]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.02:869][755]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.02:903][757]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.02:953][760]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.03:236][777]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.03:287][780]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.03:604][799]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.03:990][822]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.05:770][928]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.07:510][ 31]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.08:143][ 69]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.09:616][156]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.10:683][220]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.10:750][224]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.11:100][245]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.11:683][280]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.12:252][314]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.41:412][ 30]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.53.48:735][460]LogUObjectHash: Compacting FUObjectHashTables data took   1.67ms
+[2022.06.04-06.53.49:605][460]LogSlate: Window 'Save Content' being destroyed
+[2022.06.04-06.53.49:769][460]LogUObjectHash: Compacting FUObjectHashTables data took   0.68ms
+[2022.06.04-06.53.49:793][460]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.04-06.53.49:794][460]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevelE45ACC9245D9944ED7863EB8E8D61329.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.04-06.53.49:807][460]LogFileHelpers: Saving map 'CityLevel' took 0.081
+[2022.06.04-06.53.49:823][460]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.04-06.53.49:823][460]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.04-06.53.55:868][813]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.53.55:869][813]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.53.55:874][813]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_0
+[2022.06.04-06.53.55:875][813]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_0
+[2022.06.04-06.53.56:689][856]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.53.56:690][856]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.53.56:692][856]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_4
+[2022.06.04-06.53.56:694][856]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_4
+[2022.06.04-06.54.00:038][ 45]Cmd: MODE ROTGRID=0
+[2022.06.04-06.54.03:310][228]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.54.03:310][228]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.54.03:312][228]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_5
+[2022.06.04-06.54.03:313][228]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_5
+[2022.06.04-06.54.03:920][259]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.54.03:920][259]LogActorFactory: Actor Factory attempting to spawn BlueprintGeneratedClass /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP_C
+[2022.06.04-06.54.03:923][259]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_6
+[2022.06.04-06.54.03:924][259]LogActorFactory: Actor Factory spawned Blueprint /Game/Blueprints/Enemy/Enemy_BP.Enemy_BP as actor: Enemy_BP_C /Game/Levels/CityLevel.CityLevel:PersistentLevel.Enemy_BP_C_6
+[2022.06.04-06.54.07:529][465]LogUObjectHash: Compacting FUObjectHashTables data took   1.63ms
+[2022.06.04-06.54.08:318][465]LogSlate: Window 'Save Content' being destroyed
+[2022.06.04-06.54.08:494][465]LogUObjectHash: Compacting FUObjectHashTables data took   0.70ms
+[2022.06.04-06.54.08:518][465]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.04-06.54.08:519][465]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevelE45CF3A944F62699113BA78004E9D767.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.04-06.54.08:532][465]LogFileHelpers: Saving map 'CityLevel' took 0.079
+[2022.06.04-06.54.08:548][465]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.04-06.54.08:548][465]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.04-06.54.16:135][901]LogUObjectHash: Compacting FUObjectHashTables data took   0.68ms
+[2022.06.04-06.54.47:244][749]Cmd: MODE GRID=0
+[2022.06.04-06.54.59:393][414]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.54.59:576][425]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.54.59:814][439]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.00:651][489]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.01:515][535]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.01:938][560]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.06:806][848]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.07:595][876]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.07:883][893]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.08:981][957]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.10:376][ 28]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.10:670][ 45]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.55.56:086][759]LogUObjectHash: Compacting FUObjectHashTables data took   0.84ms
+[2022.06.04-06.55.56:899][759]LogSlate: Window 'Save Content' being destroyed
+[2022.06.04-06.55.57:068][759]LogUObjectHash: Compacting FUObjectHashTables data took   0.80ms
+[2022.06.04-06.55.57:093][759]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.04-06.55.57:094][759]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevelB71AC8CA46464D1EA13CAB987F12EE9A.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.04-06.55.57:108][759]LogFileHelpers: Saving map 'CityLevel' took 0.080
+[2022.06.04-06.55.57:123][759]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.04-06.55.57:123][759]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.04-06.56.01:978][ 44]LogUObjectHash: Compacting FUObjectHashTables data took   1.02ms
+[2022.06.04-06.56.03:304][119]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.04-06.56.03:312][119]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.04-06.56.03:312][119]PIE: New page: PIE session: CityLevel (4 Jun 2022, 12.56.03)
+[2022.06.04-06.56.03:312][119]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.04-06.56.03:323][119]LogPlayLevel: PIE: StaticDuplicateObject took: (0.010729s)
+[2022.06.04-06.56.03:323][119]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.010819s)
+[2022.06.04-06.56.03:323][119]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.04-06.56.03:323][119]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.04-06.56.03:323][119]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.04-06.56.03:324][119]LogPlayLevel: PIE: World Init took: (0.000787s)
+[2022.06.04-06.56.03:364][119]LogUObjectHash: Compacting FUObjectHashTables data took   1.60ms
+[2022.06.04-06.56.03:365][119]LogAudio: Display: Creating Audio Device:                 Id: 38, Scope: Unique, Realtime: True
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.04-06.56.03:366][119]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.04-06.56.03:366][119]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.04-06.56.03:366][119]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.04-06.56.03:366][119]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.04-06.56.03:366][119]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.04-06.56.03:369][119]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.04-06.56.03:393][119]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.04-06.56.03:394][119]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.04-06.56.03:394][119]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.04-06.56.03:394][119]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.04-06.56.03:394][119]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=38
+[2022.06.04-06.56.03:394][119]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=38
+[2022.06.04-06.56.03:396][119]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=38
+[2022.06.04-06.56.03:396][119]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=38
+[2022.06.04-06.56.03:396][119]LogInit: FAudioDevice initialized.
+[2022.06.04-06.56.03:396][119]LogAudio: Display: Audio Device (ID: 38) registered with world 'CityLevel'.
+[2022.06.04-06.56.03:412][119]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.04-06.56.03:421][119]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.04-09.56.03
+[2022.06.04-06.56.03:422][119]LogWorld: Bringing up level for play took: 0.009264
+[2022.06.04-06.56.03:424][119]LogOnline: OSS: Created online subsystem instance for: :Context_68
+[2022.06.04-06.56.03:429][119]PIE: Server logged in
+[2022.06.04-06.56.03:430][119]PIE: Play in editor total start time 0,117 seconds.
+[2022.06.04-06.56.26:097][473]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.04-06.56.26:097][473]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.04-06.56.26:097][473]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.56.26:099][473]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.56.26:116][473]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.04-06.56.26:123][473]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.56.26:161][473]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.06.04-06.56.26:162][473]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=38
+[2022.06.04-06.56.26:163][473]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=38
+[2022.06.04-06.56.26:169][473]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.04-06.56.26:176][473]LogUObjectHash: Compacting FUObjectHashTables data took   2.16ms
+[2022.06.04-06.56.26:232][474]LogPlayLevel: Display: Destroying online subsystem :Context_68
+[2022.06.04-06.56.27:521][550]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.06.04-06.56.27:529][550]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.06.04-06.56.27:529][550]PIE: New page: PIE session: CityLevel (4 Jun 2022, 12.56.27)
+[2022.06.04-06.56.27:529][550]LogPlayLevel: Creating play world package: /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.04-06.56.27:539][550]LogPlayLevel: PIE: StaticDuplicateObject took: (0.010213s)
+[2022.06.04-06.56.27:539][550]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/Levels/CityLevel.CityLevel to /Game/Levels/UEDPIE_0_CityLevel.CityLevel (0.010298s)
+[2022.06.04-06.56.27:539][550]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.06.04-06.56.27:539][550]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.06.04-06.56.27:540][550]LogAIModule: Creating AISystem for world CityLevel
+[2022.06.04-06.56.27:540][550]LogPlayLevel: PIE: World Init took: (0.000857s)
+[2022.06.04-06.56.27:581][550]LogUObjectHash: Compacting FUObjectHashTables data took   1.62ms
+[2022.06.04-06.56.27:583][550]LogAudio: Display: Creating Audio Device:                 Id: 39, Scope: Unique, Realtime: True
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.06.04-06.56.27:583][550]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.06.04-06.56.27:583][550]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.06.04-06.56.27:584][550]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.06.04-06.56.27:584][550]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.06.04-06.56.27:584][550]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.06.04-06.56.27:586][550]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.06.04-06.56.27:607][550]LogAudioMixer: Display: Using Audio Hardware Device Speakers (Realtek(R) Audio)
+[2022.06.04-06.56.27:607][550]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.06.04-06.56.27:607][550]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.06.04-06.56.27:607][550]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.06.04-06.56.27:608][550]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=39
+[2022.06.04-06.56.27:608][550]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=39
+[2022.06.04-06.56.27:611][550]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=39
+[2022.06.04-06.56.27:611][550]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=39
+[2022.06.04-06.56.27:611][550]LogInit: FAudioDevice initialized.
+[2022.06.04-06.56.27:611][550]LogAudio: Display: Audio Device (ID: 39) registered with world 'CityLevel'.
+[2022.06.04-06.56.27:622][550]LogLoad: Game class is 'Gamemode_BP_C'
+[2022.06.04-06.56.27:631][550]LogWorld: Bringing World /Game/Levels/UEDPIE_0_CityLevel.CityLevel up for play (max tick rate 60) at 2022.06.04-09.56.27
+[2022.06.04-06.56.27:632][550]LogWorld: Bringing up level for play took: 0.010099
+[2022.06.04-06.56.27:634][550]LogOnline: OSS: Created online subsystem instance for: :Context_69
+[2022.06.04-06.56.27:639][550]PIE: Server logged in
+[2022.06.04-06.56.27:640][550]PIE: Play in editor total start time 0,111 seconds.
+[2022.06.04-06.58.36:623][281]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.04-06.58.36:623][281]LogWorld: BeginTearingDown for /Game/Levels/UEDPIE_0_CityLevel
+[2022.06.04-06.58.36:624][281]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.36:625][281]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.36:645][281]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2022.06.04-06.58.36:652][281]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.36:690][281]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.06.04-06.58.36:690][281]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=39
+[2022.06.04-06.58.36:692][281]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=39
+[2022.06.04-06.58.36:706][281]LogUObjectHash: Compacting FUObjectHashTables data took   2.33ms
+[2022.06.04-06.58.36:761][282]LogPlayLevel: Display: Destroying online subsystem :Context_69
+[2022.06.04-06.58.37:977][350]LogUObjectHash: Compacting FUObjectHashTables data took   1.83ms
+[2022.06.04-06.58.40:214][480]Cmd: DELETE
+[2022.06.04-06.58.40:214][480]Cmd: ACTOR DELETE
+[2022.06.04-06.58.40:217][480]LogEditorActor: Deleted Actor: StaticMeshActor
+[2022.06.04-06.58.40:257][480]LogUObjectHash: Compacting FUObjectHashTables data took   1.62ms
+[2022.06.04-06.58.40:259][480]LogEditorActor: Deleted 1 Actors (0.045 secs)
+[2022.06.04-06.58.40:270][481]LogNavigationDataBuild: Navigation data generation finished in /Game/Levels/CityLevel.
+[2022.06.04-06.58.41:349][543]LogUObjectHash: Compacting FUObjectHashTables data took   0.68ms
+[2022.06.04-06.58.42:298][543]LogSlate: Window 'Save Content' being destroyed
+[2022.06.04-06.58.42:466][543]LogUObjectHash: Compacting FUObjectHashTables data took   0.67ms
+[2022.06.04-06.58.42:490][543]LogSavePackage: Moving output files for package: /Game/Levels/CityLevel
+[2022.06.04-06.58.42:491][543]LogSavePackage: Moving '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Saved/CityLevel7FF6263B4E570809AAC461A1F7E10615.tmp' to '../../../../../../Users/kanuki/Documents/Unreal Projects/UE5_CombatProto/Content/Levels/CityLevel.umap'
+[2022.06.04-06.58.42:504][543]LogFileHelpers: Saving map 'CityLevel' took 0.078
+[2022.06.04-06.58.42:518][543]AssetCheck: New page: Asset Save: CityLevel
+[2022.06.04-06.58.42:518][543]LogContentValidation: Display: Validating World /Game/Levels/CityLevel.CityLevel
+[2022.06.04-06.58.46:064][754]LogUObjectHash: Compacting FUObjectHashTables data took   1.60ms
+[2022.06.04-06.58.58:454][ 31]LogUObjectHash: Compacting FUObjectHashTables data took   0.64ms
+[2022.06.04-06.58.59:581][ 96]LogUObjectHash: Compacting FUObjectHashTables data took   0.64ms
+[2022.06.04-06.58.59:583][ 96]LogStall: Shutdown...
+[2022.06.04-06.58.59:589][ 96]LogStall: Shutdown complete.
+[2022.06.04-06.58.59:629][ 96]LogWorld: UWorld::CleanupWorld for World_9, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.59:629][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.59:725][ 96]LogWorld: UWorld::CleanupWorld for World_3, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.59:725][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.59:763][ 96]LogWorld: UWorld::CleanupWorld for World_2, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.59:763][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.59:865][ 96]LogWorld: UWorld::CleanupWorld for World_14, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.59:865][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.59:899][ 96]LogWorld: UWorld::CleanupWorld for World_13, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.59:899][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.58.59:911][ 96]LogWorld: UWorld::CleanupWorld for World_12, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.58.59:911][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.59.00:001][ 96]LogWorld: UWorld::CleanupWorld for World_16, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.00:001][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.59.00:036][ 96]LogWorld: UWorld::CleanupWorld for World_17, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.00:036][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.59.00:091][ 96]LogWorld: UWorld::CleanupWorld for World_23, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.00:091][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.59.00:137][ 96]LogWorld: UWorld::CleanupWorld for World_29, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.00:137][ 96]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.06.04-06.59.00:224][ 96]LogSlate: Window 'UE5_CombatProto - Unreal Editor' being destroyed
+[2022.06.04-06.59.00:545][ 97]Cmd: QUIT_EDITOR
+[2022.06.04-06.59.00:545][ 97]LogCore: Engine exit requested (reason: UUnrealEdEngine::CloseEditor())
+[2022.06.04-06.59.00:556][ 97]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+[2022.06.04-06.59.00:558][ 97]LogStaticMesh: Abandoning remaining async distance field tasks for shutdown
+[2022.06.04-06.59.00:558][ 97]LogStaticMesh: Abandoning remaining async card representation tasks for shutdown
+[2022.06.04-06.59.00:616][ 97]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerXAudio2)...
+[2022.06.04-06.59.00:616][ 97]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...
+[2022.06.04-06.59.00:616][ 97]LogAudio: Display: Audio Device unregistered from world 'CityLevel'.
+[2022.06.04-06.59.00:617][ 97]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1
+[2022.06.04-06.59.00:620][ 97]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=1
+[2022.06.04-06.59.00:644][ 97]LogAudio: Display: Audio Device Manager Shutdown
+[2022.06.04-06.59.00:652][ 97]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2022.06.04-06.59.00:653][ 97]LogExit: Preparing to exit.
+[2022.06.04-06.59.00:735][ 97]LogUObjectHash: Compacting FUObjectHashTables data took   1.63ms
+[2022.06.04-06.59.00:751][ 97]LogPython: Display: Object '/Engine/PythonTypes.add_controls_for_selected_options' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:752][ 97]LogPython: Display: Object '/Engine/PythonTypes.add_controls_for_selected' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:759][ 97]LogPython: Display: Object '/Engine/PythonTypes.add_null_above_selected' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:761][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_translation_rotation' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:761][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_translation_all' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:761][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_translation_x' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:761][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_translation_y' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:762][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_translation_z' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:762][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_rotation' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:762][ 97]LogPython: Display: Object '/Engine/PythonTypes.align_scale' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.00:762][ 97]LogPython: Display: Object '/Engine/PythonTypes.ControlOutputFormat' was externally referenced when shutting down Python. Forcibly releasing its Python resources!
+[2022.06.04-06.59.01:777][ 97]LogWorld: UWorld::CleanupWorld for World_30, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:782][ 97]LogWorld: UWorld::CleanupWorld for World_25, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:786][ 97]LogWorld: UWorld::CleanupWorld for World_26, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:790][ 97]LogWorld: UWorld::CleanupWorld for World_27, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:794][ 97]LogWorld: UWorld::CleanupWorld for World_28, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:798][ 97]LogWorld: UWorld::CleanupWorld for World_0, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:803][ 97]LogWorld: UWorld::CleanupWorld for World_18, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:807][ 97]LogWorld: UWorld::CleanupWorld for World_15, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:811][ 97]LogWorld: UWorld::CleanupWorld for World_4, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:815][ 97]LogWorld: UWorld::CleanupWorld for World_24, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogActorComponent: UnregisterComponent: (None.None) Not registered. Aborting.
+[2022.06.04-06.59.01:820][ 97]LogWorld: UWorld::CleanupWorld for World_5, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:825][ 97]LogWorld: UWorld::CleanupWorld for World_1, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:829][ 97]LogWorld: UWorld::CleanupWorld for World_10, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:833][ 97]LogWorld: UWorld::CleanupWorld for World_11, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:849][ 97]LogWorld: UWorld::CleanupWorld for CityLevel, bSessionEnded=true, bCleanupResources=true
+[2022.06.04-06.59.01:974][ 97]LogStylusInput: Shutting down StylusInput subsystem.
+[2022.06.04-06.59.01:977][ 97]LogLevelSequenceEditor: LevelSequenceEditor subsystem deinitialized.
+[2022.06.04-06.59.01:986][ 97]LogExit: Editor shut down
+[2022.06.04-06.59.02:007][ 97]LogDemo: Cleaned up 0 splitscreen connections with owner deletion
+[2022.06.04-06.59.02:058][ 97]LogExit: Transaction tracking system shut down
+[2022.06.04-06.59.02:733][ 97]LogExit: Object subsystem successfully closed.
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: ================================================
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Total job queries 268, among them cache hits 162 (60.45%)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Tracking 92 distinct input hashes that result in 59 distinct outputs (64.13%)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: RAM used: 0.15 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.02%
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Shaders Compiled: 37
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Jobs assigned 92, completed 92 (100.00%)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Average time worker was idle: 26.27 s
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Time job spent in pending queue: average 1.54 s, longest 6.31 s
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Job execution time: average 1.31 s, max 3.16 s
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Job life time (pending + execution): average 2.85 s, max 7.33
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 21.57 s
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Jobs were issued in 92 batches (only local compilation was used), average 1.00 jobs/batch
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Average processing rate: 4.27 jobs/sec
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Effective parallelization: 4.63 (times faster than compiling all shaders on one thread). Compare with number of workers: 8
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Top 5 most expensive shader types by average time:
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: TBasePassPSFPrecomputedVolumetricLightmapLightingPolicySkylight (compiled    2 times, average 1.47 sec, max 1.52 sec, min 1.42 sec)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display:                         TBasePassPSTLightMapPolicyLQSkylight (compiled    2 times, average 1.41 sec, max 1.44 sec, min 1.38 sec)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display:        TBasePassPSFCachedPointIndirectLightingPolicySkylight (compiled    2 times, average 1.40 sec, max 1.50 sec, min 1.29 sec)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display:          TBasePassPSTDistanceFieldShadowsAndLightMapPolicyHQ (compiled    2 times, average 1.40 sec, max 1.40 sec, min 1.40 sec)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display:  TBasePassPSTDistanceFieldShadowsAndLightMapPolicyHQSkylight (compiled    2 times, average 1.38 sec, max 1.42 sec, min 1.33 sec)
+[2022.06.04-06.59.02:749][ 97]LogShaderCompilers: Display: Top 5 shader types by total compile time:
+[2022.06.04-06.59.02:750][ 97]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 17.11% of total time (compiled   14 times, average 1.22 sec, max 1.79 sec, min 0.81 sec)
+[2022.06.04-06.59.02:750][ 97]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 15.35% of total time (compiled   14 times, average 1.10 sec, max 1.78 sec, min 0.71 sec)
+[2022.06.04-06.59.02:750][ 97]LogShaderCompilers: Display:                                                 FLumenCardVS - 7.97% of total time (compiled    8 times, average 1.00 sec, max 1.73 sec, min 0.74 sec)
+[2022.06.04-06.59.02:750][ 97]LogShaderCompilers: Display:                         TBasePassPSFNoLightMapPolicySkylight - 3.76% of total time (compiled    4 times, average 0.94 sec, max 1.18 sec, min 0.59 sec)
+[2022.06.04-06.59.02:750][ 97]LogShaderCompilers: Display:                                             FDebugViewModeVS - 3.25% of total time (compiled    4 times, average 0.81 sec, max 1.43 sec, min 0.59 sec)
+[2022.06.04-06.59.02:750][ 97]LogShaderCompilers: Display: ================================================
+[2022.06.04-06.59.02:788][ 97]LogShaderCompilers: Display: Shaders left to compile 0
+[2022.06.04-06.59.02:968][ 97]LogModuleManager: Shutting down and abandoning module UE5_CombatProto (929)
+[2022.06.04-06.59.02:968][ 97]LogModuleManager: Shutting down and abandoning module HierarchicalLODUtilities (927)
+[2022.06.04-06.59.02:968][ 97]LogModuleManager: Shutting down and abandoning module BlueprintGraph (925)
+[2022.06.04-06.59.02:968][ 97]LogModuleManager: Shutting down and abandoning module SequencerWidgets (917)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module PinnedCommandList (915)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module SkeletonEditor (913)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module MovieSceneCapture (902)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module Voice (900)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module HierarchicalLODOutliner (898)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module SubobjectEditor (896)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module SceneOutliner (894)
+[2022.06.04-06.59.02:969][ 97]LogModuleManager: Shutting down and abandoning module AddContentDialog (892)
+[2022.06.04-06.59.02:978][ 97]LogModuleManager: Shutting down and abandoning module WidgetCarousel (891)
+[2022.06.04-06.59.02:978][ 97]LogModuleManager: Shutting down and abandoning module StatusBar (888)
+[2022.06.04-06.59.02:978][ 97]LogModuleManager: Shutting down and abandoning module ExternalImagePicker (886)
+[2022.06.04-06.59.02:978][ 97]LogModuleManager: Shutting down and abandoning module GameProjectGeneration (884)
+[2022.06.04-06.59.02:979][ 97]LogModuleManager: Shutting down and abandoning module StatsViewer (882)
+[2022.06.04-06.59.02:981][ 97]LogModuleManager: Shutting down and abandoning module SequenceRecorderSections (880)
+[2022.06.04-06.59.02:981][ 97]LogModuleManager: Shutting down and abandoning module AutomationWorker (878)
+[2022.06.04-06.59.02:982][ 97]LogModuleManager: Shutting down and abandoning module ResonanceAudioEditor (876)
+[2022.06.04-06.59.02:982][ 97]LogModuleManager: Shutting down and abandoning module GooglePADEditor (874)
+[2022.06.04-06.59.02:982][ 97]LogModuleManager: Shutting down and abandoning module AudioCaptureEditor (872)
+[2022.06.04-06.59.02:982][ 97]LogModuleManager: Shutting down and abandoning module AndroidFileServerEditor (870)
+[2022.06.04-06.59.02:982][ 97]LogModuleManager: Shutting down and abandoning module TemplateSequenceEditor (868)
+[2022.06.04-06.59.02:987][ 97]LogModuleManager: Shutting down and abandoning module MatineeToLevelSequence (866)
+[2022.06.04-06.59.02:989][ 97]LogModuleManager: Shutting down and abandoning module ActorSequenceEditor (864)
+[2022.06.04-06.59.02:990][ 97]LogModuleManager: Shutting down and abandoning module LevelSequenceEditor (862)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module OpenExrWrapper (860)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module ImgMediaFactory (858)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module ImgMediaEditor (856)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module WmfMediaFactory (854)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module WmfMediaEditor (852)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module WebMMediaFactory (850)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module WebMMediaEditor (848)
+[2022.06.04-06.59.02:994][ 97]LogModuleManager: Shutting down and abandoning module WebMMedia (846)
+[2022.06.04-06.59.02:995][ 97]LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (844)
+[2022.06.04-06.59.02:996][ 97]LogModuleManager: Shutting down and abandoning module MediaCompositingEditor (842)
+[2022.06.04-06.59.02:998][ 97]LogModuleManager: Shutting down and abandoning module SequenceRecorder (841)
+[2022.06.04-06.59.02:998][ 97]LogModuleManager: Shutting down and abandoning module AndroidMediaFactory (838)
+[2022.06.04-06.59.02:998][ 97]LogModuleManager: Shutting down and abandoning module AndroidMediaEditor (836)
+[2022.06.04-06.59.02:998][ 97]LogModuleManager: Shutting down and abandoning module AvfMediaFactory (834)
+[2022.06.04-06.59.02:998][ 97]LogModuleManager: Shutting down and abandoning module AvfMediaEditor (832)
+[2022.06.04-06.59.02:998][ 97]LogModuleManager: Shutting down and abandoning module PlanarCut (830)
+[2022.06.04-06.59.02:999][ 97]LogModuleManager: Shutting down and abandoning module CharacterAI (828)
+[2022.06.04-06.59.02:999][ 97]LogModuleManager: Shutting down and abandoning module TextureAlignMode (826)
+[2022.06.04-06.59.02:999][ 97]LogModuleManager: Shutting down and abandoning module BspMode (824)
+[2022.06.04-06.59.03:000][ 97]LogModuleManager: Shutting down and abandoning module GeometryMode (822)
+[2022.06.04-06.59.03:000][ 97]LogModuleManager: Shutting down and abandoning module ControlRigEditor (820)
+[2022.06.04-06.59.03:004][ 97]LogModuleManager: Shutting down and abandoning module AnimationEditor (819)
+[2022.06.04-06.59.03:004][ 97]LogModuleManager: Shutting down and abandoning module IKRigEditor (816)
+[2022.06.04-06.59.03:006][ 97]LogModuleManager: Shutting down and abandoning module ControlRigSplineEditor (814)
+[2022.06.04-06.59.03:006][ 97]LogModuleManager: Shutting down and abandoning module CameraShakePreviewer (812)
+[2022.06.04-06.59.03:007][ 97]LogModuleManager: Shutting down and abandoning module SmartSnapping (810)
+[2022.06.04-06.59.03:007][ 97]LogModuleManager: Shutting down and abandoning module SessionServices (808)
+[2022.06.04-06.59.03:009][ 97]LogModuleManager: Shutting down and abandoning module MeshPaint (806)
+[2022.06.04-06.59.03:010][ 97]LogModuleManager: Shutting down and abandoning module VirtualTexturingEditor (804)
+[2022.06.04-06.59.03:010][ 97]LogModuleManager: Shutting down and abandoning module PlacementMode (803)
+[2022.06.04-06.59.03:011][ 97]LogModuleManager: Shutting down and abandoning module FoliageEdit (800)
+[2022.06.04-06.59.03:011][ 97]LogModuleManager: Shutting down and abandoning module LandscapeEditor (798)
+[2022.06.04-06.59.03:014][ 97]LogModuleManager: Shutting down and abandoning module SceneDepthPickerMode (796)
+[2022.06.04-06.59.03:014][ 97]LogModuleManager: Shutting down and abandoning module ActorPickerMode (794)
+[2022.06.04-06.59.03:015][ 97]LogModuleManager: Shutting down and abandoning module ViewportSnapping (792)
+[2022.06.04-06.59.03:015][ 97]LogModuleManager: Shutting down and abandoning module EditorWidgets (790)
+[2022.06.04-06.59.03:015][ 97]LogModuleManager: Shutting down and abandoning module ViewportInteraction (788)
+[2022.06.04-06.59.03:015][ 97]LogModuleManager: Shutting down and abandoning module ClothPainter (786)
+[2022.06.04-06.59.03:017][ 97]LogModuleManager: Shutting down and abandoning module SkeletalMeshEditor (785)
+[2022.06.04-06.59.03:020][ 97]LogModuleManager: Shutting down and abandoning module LogVisualizer (782)
+[2022.06.04-06.59.03:023][ 97]LogModuleManager: Shutting down and abandoning module IntroTutorials (780)
+[2022.06.04-06.59.03:026][ 97]LogModuleManager: Shutting down and abandoning module IOSPlatformEditor (778)
+[2022.06.04-06.59.03:026][ 97]LogModuleManager: Shutting down and abandoning module AndroidPlatformEditor (776)
+[2022.06.04-06.59.03:026][ 97]LogModuleManager: Shutting down and abandoning module PIEPreviewDeviceProfileSelector (775)
+[2022.06.04-06.59.03:028][ 97]LogModuleManager: Shutting down and abandoning module AndroidDeviceDetection (773)
+[2022.06.04-06.59.03:770][ 97]LogModuleManager: Shutting down and abandoning module WindowsPlatformEditor (770)
+[2022.06.04-06.59.03:770][ 97]LogModuleManager: Shutting down and abandoning module HoloLensPlatformEditor (768)
+[2022.06.04-06.59.03:770][ 97]LogModuleManager: Shutting down and abandoning module IOSRuntimeSettings (766)
+[2022.06.04-06.59.03:770][ 97]LogModuleManager: Shutting down and abandoning module AndroidRuntimeSettings (764)
+[2022.06.04-06.59.03:770][ 97]LogModuleManager: Shutting down and abandoning module CSVtoSVG (762)
+[2022.06.04-06.59.03:770][ 97]LogModuleManager: Shutting down and abandoning module DerivedDataEditor (760)
+[2022.06.04-06.59.03:771][ 97]LogModuleManager: Shutting down and abandoning module EditorConfig (758)
+[2022.06.04-06.59.03:771][ 97]LogModuleManager: Shutting down and abandoning module WorldPartitionEditor (756)
+[2022.06.04-06.59.03:772][ 97]LogModuleManager: Shutting down and abandoning module EditorFramework (754)
+[2022.06.04-06.59.03:772][ 97]LogModuleManager: Shutting down and abandoning module StaticMeshEditor (752)
+[2022.06.04-06.59.03:772][ 97]LogModuleManager: Shutting down and abandoning module TraceInsights (750)
+[2022.06.04-06.59.03:782][ 97]MemoryProfiler: Shutdown
+[2022.06.04-06.59.03:784][ 97]NetworkingProfiler: Shutdown
+[2022.06.04-06.59.03:784][ 97]LoadingProfiler: Shutdown
+[2022.06.04-06.59.03:785][ 97]TimingProfiler: Shutdown
+[2022.06.04-06.59.03:790][ 97]LogModuleManager: Shutting down and abandoning module TraceServices (749)
+[2022.06.04-06.59.03:791][ 97]LogModuleManager: Shutting down and abandoning module EditorInteractiveToolsFramework (746)
+[2022.06.04-06.59.03:791][ 97]LogModuleManager: Shutting down and abandoning module InteractiveToolsFramework (745)
+[2022.06.04-06.59.03:792][ 97]LogModuleManager: Shutting down and abandoning module InputBindingEditor (742)
+[2022.06.04-06.59.03:793][ 97]LogModuleManager: Shutting down and abandoning module MergeActors (740)
+[2022.06.04-06.59.03:794][ 97]LogModuleManager: Shutting down and abandoning module LocalizationDashboard (738)
+[2022.06.04-06.59.03:796][ 97]LogModuleManager: Shutting down and abandoning module LocalizationService (737)
+[2022.06.04-06.59.03:796][ 97]LogModuleManager: Shutting down and abandoning module HardwareTargeting (734)
+[2022.06.04-06.59.03:796][ 97]LogModuleManager: Shutting down and abandoning module DeviceProfileEditor (732)
+[2022.06.04-06.59.03:796][ 97]LogModuleManager: Shutting down and abandoning module UndoHistory (730)
+[2022.06.04-06.59.03:797][ 97]LogModuleManager: Shutting down and abandoning module XmlParser (728)
+[2022.06.04-06.59.03:798][ 97]LogModuleManager: Shutting down and abandoning module Blutility (726)
+[2022.06.04-06.59.03:798][ 97]LogModuleManager: Shutting down and abandoning module ProjectSettingsViewer (724)
+[2022.06.04-06.59.03:798][ 97]LogModuleManager: Shutting down and abandoning module ProjectTargetPlatformEditor (723)
+[2022.06.04-06.59.03:799][ 97]LogModuleManager: Shutting down and abandoning module EditorSettingsViewer (720)
+[2022.06.04-06.59.03:799][ 97]LogModuleManager: Shutting down and abandoning module InternationalizationSettings (719)
+[2022.06.04-06.59.03:799][ 97]LogModuleManager: Shutting down and abandoning module SettingsEditor (716)
+[2022.06.04-06.59.03:799][ 97]LogModuleManager: Shutting down and abandoning module ProjectLauncher (714)
+[2022.06.04-06.59.03:800][ 97]LogModuleManager: Shutting down and abandoning module SessionFrontend (712)
+[2022.06.04-06.59.03:801][ 97]LogModuleManager: Shutting down and abandoning module ProfilerClient (710)
+[2022.06.04-06.59.03:801][ 97]LogModuleManager: Shutting down and abandoning module DeviceManager (708)
+[2022.06.04-06.59.03:802][ 97]LogModuleManager: Shutting down and abandoning module TargetDeviceServices (707)
+[2022.06.04-06.59.03:814][ 97]LogModuleManager: Shutting down and abandoning module AutomationController (704)
+[2022.06.04-06.59.03:815][ 97]LogModuleManager: Shutting down and abandoning module AutomationWindow (702)
+[2022.06.04-06.59.03:816][ 97]LogModuleManager: Shutting down and abandoning module Layers (700)
+[2022.06.04-06.59.03:818][ 97]LogModuleManager: Shutting down and abandoning module ComponentVisualizers (698)
+[2022.06.04-06.59.03:818][ 97]LogModuleManager: Shutting down and abandoning module DetailCustomizations (696)
+[2022.06.04-06.59.03:818][ 97]LogModuleManager: Shutting down and abandoning module PackagesDialog (694)
+[2022.06.04-06.59.03:819][ 97]LogModuleManager: Shutting down and abandoning module AnimationBlueprintEditor (692)
+[2022.06.04-06.59.03:819][ 97]LogModuleManager: Shutting down and abandoning module Persona (690)
+[2022.06.04-06.59.03:819][ 97]LogModuleManager: Shutting down and abandoning module AdvancedPreviewScene (689)
+[2022.06.04-06.59.03:819][ 97]LogModuleManager: Shutting down and abandoning module AnimGraph (687)
+[2022.06.04-06.59.03:819][ 97]LogModuleManager: Shutting down and abandoning module Kismet (684)
+[2022.06.04-06.59.03:836][ 97]LogModuleManager: Shutting down and abandoning module KismetWidgets (683)
+[2022.06.04-06.59.03:836][ 97]LogModuleManager: Shutting down and abandoning module GraphEditor (680)
+[2022.06.04-06.59.03:837][ 97]LogModuleManager: Shutting down and abandoning module StructViewer (678)
+[2022.06.04-06.59.03:837][ 97]LogModuleManager: Shutting down and abandoning module ClassViewer (676)
+[2022.06.04-06.59.03:837][ 97]LogModuleManager: Shutting down and abandoning module NaniteTools (674)
+[2022.06.04-06.59.03:837][ 97]LogModuleManager: Shutting down and abandoning module UncontrolledChangelists (672)
+[2022.06.04-06.59.03:838][ 97]LogModuleManager: Shutting down and abandoning module SourceControlWindows (670)
+[2022.06.04-06.59.03:839][ 97]LogModuleManager: Shutting down and abandoning module OutputLog (668)
+[2022.06.04-06.59.03:841][ 97]LogModuleManager: Shutting down and abandoning module Documentation (666)
+[2022.06.04-06.59.03:841][ 97]LogModuleManager: Shutting down and abandoning module LiveCoding (664)
+[2022.06.04-06.59.03:842][ 97]LogModuleManager: Shutting down and abandoning module MovieSceneTracks (662)
+[2022.06.04-06.59.03:843][ 97]LogModuleManager: Shutting down and abandoning module MovieScene (660)

@@ -10,7 +10,7 @@
 AEnemyCharacter::AEnemyCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	DamageStrength = 20;
+	DamageStrength = 50;
 }
 
 float AEnemyCharacter::GetMovementInputStrength_Implementation()

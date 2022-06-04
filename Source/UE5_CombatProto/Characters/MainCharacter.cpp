@@ -94,46 +94,54 @@ void APlayerCharacter::Tick(float DeltaTime)
 		CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection(StrongAttack);
 	}
 	
-
-	// Determining targetable actors. Quite slow as is, but executing in tick is necessary to draw suggestion widget.
-	AllTargets.Empty();
-	AllVisibleTargets.Empty();
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
-	if (AllTargets.Num() > 0)
+	if (!IsDead)
 	{
-		for (int i = 0; i < AllTargets.Num(); i++)
+		// Determining targetable actors. Quite slow as is, but executing in tick is necessary to draw suggestion widget.
+		AllTargets.Empty();
+		AllVisibleTargets.Empty();
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), TargetedActorClass, AllTargets);
+		if (AllTargets.Num() > 0)
 		{
-			if (
-				ActorInView(AllTargets[i])																// Check is in view
-				&& !ActorOccluded(AllTargets[i])														// Check if not occluded by any objects
-				&& ActorInRangeOfLocation(AllTargets[i], this->GetActorLocation(), TargetingRange)		// Check if in range
-				&& !(Cast<ABaseCharacter>(AllTargets[i])->IsDead)										// Check if alive
-				)
+			for (int i = 0; i < AllTargets.Num(); i++)
 			{
+				if (
+					ActorInView(AllTargets[i])																// Check is in view
+					&& !ActorOccluded(AllTargets[i])														// Check if not occluded by any objects
+					&& ActorInRangeOfLocation(AllTargets[i], this->GetActorLocation(), TargetingRange)		// Check if in range
+					&& !(Cast<ABaseCharacter>(AllTargets[i])->IsDead)										// Check if alive
+					)
+				{
 				AllVisibleTargets.Emplace(AllTargets[i]);
+				}
 			}
 		}
-	}
-	UpdateTargetingBiasLocation();
-	SortActorsByDistanceToLocation(AllVisibleTargets, TargetingBiasLocation);
-	if (!IsTargeting)
-	{
-		if (AllVisibleTargets.Num() > 0)
+		UpdateTargetingBiasLocation();
+		SortActorsByDistanceToLocation(AllVisibleTargets, TargetingBiasLocation);
+		if (!IsTargeting)
 		{
-			SuggestedTarget = AllVisibleTargets[0];
+			if (AllVisibleTargets.Num() > 0)
+			{
+				SuggestedTarget = AllVisibleTargets[0];
+			}
+			else
+			{
+				SuggestedTarget = nullptr;
+			}
 		}
-		else
+		else 
 		{
 			SuggestedTarget = nullptr;
 		}
-	}
-	else 
-	{
-		SuggestedTarget = nullptr;
-	}
 
 	// Rotating camera to target when targeting
-	LookAtTarget(TargetPressed, DeltaTime);
+	
+		LookAtTarget(TargetPressed, DeltaTime);
+	}
+	else
+	{
+		Target = nullptr;
+		SuggestedTarget = nullptr;
+	}
 
 	// Determining if Input3 was tapped or is being held
 
@@ -194,7 +202,7 @@ void APlayerCharacter::RotateCameraToMovement(bool Enabled)
 {
 	if (Enabled && CameraInputVector.Length() == 0.0f)
 	{
-		AddControllerYawInput(MovementInputVector.Y*0.5f);
+		AddControllerYawInput(MovementInputVector.Y*0.2f);
 	}
 }
 

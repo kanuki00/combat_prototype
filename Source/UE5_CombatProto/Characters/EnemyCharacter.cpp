@@ -47,6 +47,11 @@ void AEnemyCharacter::UniqueDeath()
 	Cast<ABaseAICtrl>(GetController())->DisableAI();
 }
 
+void AEnemyCharacter::UniqueTakeDamage()
+{
+	CanRotateToPlayer = true;
+}
+
 void AEnemyCharacter::RotateToPlayer(float DeltaTime)
 {
 	ACharacter* PlayerCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);

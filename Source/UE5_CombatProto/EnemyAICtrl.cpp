@@ -54,4 +54,16 @@ void AEnemyAICtrl::Tick(float DeltaTime)
 		//if (GEngine) GEngine->AddOnScreenDebugMessage(1, 1, FColor::Red, TEXT("Trying to attack"));
 		Cast<AEnemyCharacter>(GetPawn())->Attack();
 	}
+
+	// Losing Sight of player
+	if (!SeesPlayer && SeesPlayerCache)
+	{
+		LostSightOfPlayer();
+	}
+	SeesPlayerCache = SeesPlayer;
+}
+
+void AEnemyAICtrl::LostSightOfPlayer()
+{
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, TEXT("Lost sight of player"));
 }

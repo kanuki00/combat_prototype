@@ -30,7 +30,9 @@ protected:
 
 	bool CanRotateToPlayer = false;
 
-	virtual void UniqueDeath() override;
+	void UniqueDeath() override;
+
+	void UniqueTakeDamage() override;
 
 	void RotateToPlayer(float DeltaTime);
 

@@ -73,7 +73,10 @@ protected:
 	// Unique death method that each child character can implement themselves.
 	virtual void UniqueDeath();
 
-	virtual float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+	float TakeDamage(float Damage, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+	// character can do something unique when taking damage
+	virtual void UniqueTakeDamage();
 
 	int DamageStrength = 1; // how much damage the character can deal
 

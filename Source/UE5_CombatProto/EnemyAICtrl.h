@@ -25,6 +25,11 @@ protected:
 
 	bool SeesPlayer = false;
 
+	bool SeesPlayerCache = false;
+
+	// Called when SeesPlayer becomes false.
+	void LostSightOfPlayer();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float AttackRange = 200.0f;
 	UPROPERTY(BlueprintReadOnly)

@@ -36,6 +36,14 @@ public:
 	// *********************************
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void MoveForwardBind(float Axis);
+	void MoveRightBind(float Axis);
+	void LookUpBind(float Axis);
+	void LookRightBind(float Axis);
+
+	FVector MovementInput;
+	FVector CameraInput;
+
 protected:
 	// *********************************
 	// Components
@@ -51,4 +59,12 @@ protected:
 public:
 protected:
 private:
+
+	FRotator CharacterFacing;
+	void OrientToMovementInput();
+
+	void WalkMovementController();
+	void WalkMovementFacing();
+
+	void CameraMovement();
 };

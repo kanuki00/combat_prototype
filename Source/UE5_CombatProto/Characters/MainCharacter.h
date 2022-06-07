@@ -117,8 +117,8 @@ public:
 		FVector CameraInputVector;
 
 	// Movement switch
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
-		bool PlayerHasMovementControl = true;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
+	//	bool CanMove = true;
 	// Camera switch
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Switches")
 		bool PlayerHasCameraControl = true;

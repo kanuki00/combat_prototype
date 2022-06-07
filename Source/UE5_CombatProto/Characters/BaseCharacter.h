@@ -63,6 +63,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
 		UAnimMontage* StrongAttack = nullptr;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Asset References|Animations")
+		UAnimMontage* HitAnimation = nullptr;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Asset References")
 		USoundCue* HitSFX = nullptr;
 
@@ -82,6 +85,14 @@ protected:
 
 	virtual void WeaponHit(AActor* HitActor) override;
 
+	// Stunning when character gets hit. 
+	void Stun();
+
+	bool IsStunned = false;
+	float StunLength = 0.5f;
+	float StunTimer = 0.0f;
+
+	bool CanMove = true;
 public:	
 	virtual void EndRoll();
 	bool IsRolling = false;
@@ -95,6 +106,7 @@ public:
 	float TakeDamageCooldownTimer = 0.0f;
 	float TakeDamageCoolDownLength = 0.25f;
 
+	UPROPERTY(BlueprintReadOnly)
 	bool IsDead = false;
 
 	// Called every frame

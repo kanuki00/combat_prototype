@@ -40,6 +40,14 @@ void AEnemyCharacter::Tick(float DeltaTime)
 	}
 
 	Cooldown(AttackEndCooldown, AttackEndCooldownTimer, AttackEndCooldownLength, DeltaTime);
+
+	// Enabling attacking when stun ends
+	if (!IsStunned && IsStunnedCache)
+	{
+		AttackCoolingDown = false;
+		AttackEndCooldown = false;
+	}
+	IsStunnedCache = IsStunned;
 }
 
 void AEnemyCharacter::UniqueDeath()

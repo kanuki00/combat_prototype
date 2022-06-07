@@ -75,6 +75,7 @@ float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, 
 	if (CanBeDamaged && !TakeDamageCooldown && !IsRolling)
 	{
 		TakeDamageCooldown = true;
+		
 		// Playing hit sound
 		if(HitSFX) UGameplayStatics::PlaySound2D(GetWorld(), HitSFX); //if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, TEXT("Was Hit"));
 		
@@ -83,6 +84,10 @@ float ABaseCharacter::TakeDamage(float Damage, FDamageEvent const& DamageEvent, 
 		if (Health <= 0)
 		{
 			Death();
+		}
+		else {
+			// Stun plays hit animation and disables the character for a moment.
+			Stun();
 		}
 	}
 	return 0.0f;
@@ -104,6 +109,15 @@ void ABaseCharacter::WeaponHit(AActor* HitActor)
 	}
 }
 
+void ABaseCharacter::Stun()
+{
+	IsStunned = true;
+	if (HitAnimation)
+	{
+		PlayAnimMontage(HitAnimation);
+	}
+}
+
 void ABaseCharacter::EndRoll()
 {
 }
@@ -122,6 +136,8 @@ void ABaseCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	Cooldown(TakeDamageCooldown, TakeDamageCooldownTimer, TakeDamageCoolDownLength, DeltaTime);
+
+	Cooldown(IsStunned, StunTimer, StunLength, DeltaTime);
 }
 
 // Called to bind functionality to input

@@ -41,4 +41,6 @@ protected:
 
 	float AttackEndCooldownTimer = 0.0f;
 	float AttackEndCooldownLength = 1.0f;
+
+	bool IsStunnedCache = false;
 };

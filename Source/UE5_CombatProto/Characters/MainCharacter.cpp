@@ -71,7 +71,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 
 	if (!IsDead)
 	{
-		Movement(PlayerHasMovementControl);
+		Movement(CanMove && !IsStunned);
 		CameraMovement(DeltaTime, 20.0f, PlayerHasCameraControl);
 		RotateToInput(DeltaTime, RotationSpeed, PlayerHasRotationControl, IsTargeting && !IsRolling);
 		RotateCameraToMovement(!IsTargeting);
@@ -245,6 +245,10 @@ void APlayerCharacter::StartRoll()
 	{
 		CanStartRoll = false;
 		IsRolling = true;
+		// Don't allow attacking during roll.
+		CanStartFastAttack = false;
+		CanStartStrongAttack = false;
+		// Character rotates slower during roll
 		RotationSpeed = 180.0f;
 		if (MovementInputStrength > 0.0f)
 		{
@@ -262,6 +266,9 @@ void APlayerCharacter::EndRoll()
 {
 	IsRolling = false;
 	CanStartRoll = true;
+	// Enable attacking after roll.
+	CanStartFastAttack = true;
+	CanStartStrongAttack = true;
 	RotationSpeed = DefaultRotationSpeed;
 	if (MovementInputStrength > 0.0f) // Stopping roll anim prematurely to keep movement velocity.
 	{
@@ -363,7 +370,7 @@ void APlayerCharacter::Input3ReleasedBind()
 
 void APlayerCharacter::Input3Tapped()
 {
-	StartRoll();
+	if(!IsStunned)	StartRoll();
 }
 
 void APlayerCharacter::TargetPressedBind()

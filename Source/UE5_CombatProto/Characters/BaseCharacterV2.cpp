@@ -77,6 +77,7 @@ void ABaseCharacterV2::FlipBoolAfterDelay(bool& Bool, bool ValueToFlipFrom, floa
 
 void ABaseCharacterV2::Death()
 {
+	IsDead = true;
 	Health = 0.0f;
 	UniqueDeath();
 }

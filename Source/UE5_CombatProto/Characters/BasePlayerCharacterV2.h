@@ -61,7 +61,7 @@ protected:
 private:
 
 	FRotator CharacterFacing;
-	void OrientToMovementInput();
+	void OrientToMovementInput(float DeltaTime, float RotationSpeed = 720.0f);
 
 	void WalkMovementController();
 	void WalkMovementFacing();

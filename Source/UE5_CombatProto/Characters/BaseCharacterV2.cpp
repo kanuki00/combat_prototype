@@ -2,6 +2,7 @@
 
 
 #include "BaseCharacterV2.h"
+#include "CollisionShape.h"
 
 // *********************************
 // Constructor
@@ -84,4 +85,20 @@ void ABaseCharacterV2::Death()
 
 void ABaseCharacterV2::UniqueDeath()
 {
+}
+
+void ABaseCharacterV2::SimpleAttack(float Damage)
+{
+	TArray<struct FHitResult> HitResults;
+	struct FHitResult HitResult;
+
+	FVector TraceStart = this->GetActorForwardVector() * 100.0f;
+	FVector TraceEnd = TraceStart + this->GetActorForwardVector() * 100.0f;
+	FCollisionShape Capsule;
+	Capsule.MakeCapsule(20.0f, 30.0f);
+	FCollisionQueryParams Params;
+	GetWorld()->DebugDrawTraceTag = FName("Tag");
+	Params.TraceTag = FName("Tag");
+	//GetWorld()->SweepMultiByChannel(HitResults, TraceStart, TraceEnd, FQuat(), ECollisionChannel::ECC_Visibility, Capsule, Params);
+	GetWorld()->LineTraceSingleByChannel(HitResult, this->GetActorLocation(), FVector(0.0f, 0.0f, 0.0f), ECC_Visibility, Params);
 }

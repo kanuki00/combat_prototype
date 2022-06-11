@@ -62,6 +62,10 @@ protected:
 	// Character implements something unique to do upon death.
 	virtual void UniqueDeath();
 
+	// Simple attack method. Used for development. Does a capsule trace in front of 
+	// character and applies damage to any characters that are in the trace.
+	void SimpleAttack(float Damage);
+
 private:
 
 	UPROPERTY()

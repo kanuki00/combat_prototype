@@ -41,6 +41,10 @@ public:
 	void LookUpBind(float Axis);
 	void LookRightBind(float Axis);
 
+	void Input1PressedBind();
+	void Input1ReleasedBind();
+	bool Input1Pressed = false;
+
 	FVector MovementInput;
 	FVector CameraInput;
 

@@ -56,6 +56,9 @@ void ABasePlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerIn
 	PlayerInputComponent->BindAxis("Move_Right_Left", this, & ABasePlayerCharacterV2::MoveRightBind);
 	PlayerInputComponent->BindAxis("Look_Up_Down", this, & ABasePlayerCharacterV2::LookUpBind);
 	PlayerInputComponent->BindAxis("Look_Right_Left", this, & ABasePlayerCharacterV2::LookRightBind);
+
+	PlayerInputComponent->BindAction("Input1", IE_Pressed, this, &ABasePlayerCharacterV2::Input1PressedBind);
+	PlayerInputComponent->BindAction("Input1", IE_Released, this, &ABasePlayerCharacterV2::Input1ReleasedBind);
 }
 
 void ABasePlayerCharacterV2::MoveForwardBind(float Axis)
@@ -76,6 +79,17 @@ void ABasePlayerCharacterV2::LookUpBind(float Axis)
 void ABasePlayerCharacterV2::LookRightBind(float Axis)
 {
 	CameraInput = FVector(CameraInput.X, Axis, 0.0f);
+}
+
+void ABasePlayerCharacterV2::Input1PressedBind()
+{
+	Input1Pressed = true;
+	SimpleAttack(50.0f);
+}
+
+void ABasePlayerCharacterV2::Input1ReleasedBind()
+{
+	Input1Pressed = false;
 }
 
 void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float RotationSpeed)

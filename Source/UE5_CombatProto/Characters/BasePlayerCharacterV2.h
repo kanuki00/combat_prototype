@@ -62,6 +62,7 @@ protected:
 	// *********************************
 public:
 protected:
+	bool CanOrientToMovementInput = true;
 private:
 
 	FRotator CharacterFacing;

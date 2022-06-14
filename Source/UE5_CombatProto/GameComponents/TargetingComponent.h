@@ -27,10 +27,8 @@ public:
 private:
 	APawn* Owner;
 
-	AActor* Target;
-	AActor* SuggestedTarget;
-
-	void LookAtTarget(bool Enabled, float DeltaTime);
+	void LookAtTarget(float DeltaTime);
+	void RotateOwnerToTarget(float DeltaTime);
 	bool ActorInView(AActor* Actor);
 	bool ActorOccluded(AActor* Actor);
 	bool ActorInRangeOfLocation(AActor* Actor, FVector Location, float Range);
@@ -50,6 +48,11 @@ private:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 		TSubclassOf<AActor> TargetedActorClass;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Combat")
+		AActor* Target;
+	UPROPERTY(BlueprintReadOnly, Category = "Combat")
+		AActor* SuggestedTarget;
 
 	void GetNewTarget();
 	void ClearTarget();

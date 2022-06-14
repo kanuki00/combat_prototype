@@ -35,9 +35,9 @@ void ABasePlayerCharacterV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	OrientToMovementInput(DeltaTime);
+	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime);
 
-	if (true)
+	if (false)
 	{
 		WalkMovementFacing();
 	}

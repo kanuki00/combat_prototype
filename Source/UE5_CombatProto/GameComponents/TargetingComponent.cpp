@@ -6,26 +6,17 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "../Characters/BaseCharacter.h"
 
-// Sets default values for this component's properties
 UTargetingComponent::UTargetingComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
 	Owner = Cast<APawn>(GetOwner());
 }
 
-
-// Called when the game starts
 void UTargetingComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
-	
 }
-
 
 // Called every frame
 void UTargetingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -63,7 +54,8 @@ void UTargetingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 			SuggestedTarget = nullptr;
 
 			// Rotating camera to target when targeting
-			LookAtTarget(true, DeltaTime);
+			LookAtTarget(DeltaTime);
+			RotateOwnerToTarget(DeltaTime);
 		}
 		else
 		{
@@ -99,7 +91,7 @@ void UTargetingComponent::ClearTarget()
 	IsTargeting = false;
 }
 
-void UTargetingComponent::LookAtTarget(bool Enabled, float DeltaTime)
+void UTargetingComponent::LookAtTarget(float DeltaTime)
 {
 
 	float rotspeed = 60.0f; // how fast the camera rotates.
@@ -107,7 +99,7 @@ void UTargetingComponent::LookAtTarget(bool Enabled, float DeltaTime)
 	float vertplay = 0.0f; // how many degrees camera has to be vertically off-target to start rotating.
 	float vertoffset = 18.0f; // vertical offset,more positive number makes target appear higher above player character.
 
-	if (Enabled && Target != nullptr)
+	if (Target != nullptr)
 	{
 		// Horizontal rotation
 
@@ -189,6 +181,17 @@ void UTargetingComponent::LookAtTarget(bool Enabled, float DeltaTime)
 			GEngine->AddOnScreenDebugMessage(1, 1, FColor::Red, FString::SanitizeFloat(VertAngle));
 		}
 		*/
+	}
+}
+
+void UTargetingComponent::RotateOwnerToTarget(float DeltaTime)
+{
+	if (Target && Owner)
+	{
+		FVector TargetLocation = Target->GetActorLocation();
+		FVector OwnerLocation = Owner->GetActorLocation();
+		FRotator Rotation = FRotator(0.0f, UKismetMathLibrary::FindLookAtRotation(OwnerLocation, TargetLocation).Yaw, 0.0f);
+		Owner->SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(Owner->GetActorRotation(), Rotation, DeltaTime, 720.0f));
 	}
 }
 

@@ -38,7 +38,7 @@ public:
 	void TargetPressedBind();
 	void TargetReleasedBind();
 
-protected:
-	UPROPERTY(EditAnywhere)
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		UTargetingComponent* TargetingComponent;
 };

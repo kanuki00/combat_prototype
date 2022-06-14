@@ -88,7 +88,7 @@ void UTargetingComponent::GetNewTarget()
 {
 	if (AllVisibleTargets.Num() > 0)
 	{
-		Target = AllVisibleTargets[0];
+		if(AllVisibleTargets[0]) Target = AllVisibleTargets[0];
 		IsTargeting = true;
 	}
 }

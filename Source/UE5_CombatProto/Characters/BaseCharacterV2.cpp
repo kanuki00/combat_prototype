@@ -3,6 +3,7 @@
 
 #include "BaseCharacterV2.h"
 #include "CollisionShape.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 // *********************************
 // Constructor
@@ -29,6 +30,7 @@ void ABaseCharacterV2::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FlipBoolAfterDelay(TakeDamageCoolingDown, true, TakeDamageCooldownTimer, TakeDamageCooldown, DeltaTime);
+	FlipBoolAfterDelay(SimpleAttackCoolingDown, true, S_A_CooldownTimer, S_A_Cooldown, DeltaTime);
 }
 
 // *********************************
@@ -89,16 +91,19 @@ void ABaseCharacterV2::UniqueDeath()
 
 void ABaseCharacterV2::SimpleAttack(float Damage)
 {
-	TArray<struct FHitResult> HitResults;
-	struct FHitResult HitResult;
+	if (!SimpleAttackCoolingDown)
+	{
+		SimpleAttackCoolingDown = true;
+		FVector TraceLoc = this->GetActorLocation() + this->GetActorForwardVector() * 70.0f + this->GetActorUpVector() * 30.0f;
+		TArray<AActor*> Ignore;
+		TArray<struct FHitResult> HitResults;
 
-	FVector TraceStart = this->GetActorForwardVector() * 100.0f;
-	FVector TraceEnd = TraceStart + this->GetActorForwardVector() * 100.0f;
-	FCollisionShape Capsule;
-	Capsule.MakeCapsule(20.0f, 30.0f);
-	FCollisionQueryParams Params;
-	GetWorld()->DebugDrawTraceTag = FName("Tag");
-	Params.TraceTag = FName("Tag");
-	//GetWorld()->SweepMultiByChannel(HitResults, TraceStart, TraceEnd, FQuat(), ECollisionChannel::ECC_Visibility, Capsule, Params);
-	GetWorld()->LineTraceSingleByChannel(HitResult, this->GetActorLocation(), FVector(0.0f, 0.0f, 0.0f), ECC_Visibility, Params);
+		UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, true);
+
+		FDamageEvent DmgEvent;
+		for (int i = 0; i < HitResults.Num(); i++)
+		{
+			HitResults[i].GetActor()->TakeDamage(Damage, DmgEvent, GetController(), this);
+		}
+	}
 }

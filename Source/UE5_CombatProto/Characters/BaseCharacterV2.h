@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "BaseCharacterV2.generated.h"
 
+#define DEBUG_MSG(message) if(GEngine)GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, message);
+
 UCLASS()
 class UE5_COMBATPROTO_API ABaseCharacterV2 : public ACharacter
 {
@@ -65,6 +67,10 @@ protected:
 	// Simple attack method. Used for development. Does a capsule trace in front of 
 	// character and applies damage to any characters that are in the trace.
 	void SimpleAttack(float Damage);
+
+	bool SimpleAttackCoolingDown = false;
+	float S_A_CooldownTimer = 0.0f;
+	float S_A_Cooldown = 0.8f;
 
 private:
 

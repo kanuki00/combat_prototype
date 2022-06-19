@@ -26,6 +26,8 @@ AEnemyAICV2::AEnemyAICV2()
 	SightConfig->PeripheralVisionAngleDegrees = 70.0f;
 
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
+
+	TeamId = 2;
 }
 
 void AEnemyAICV2::BeginPlay()
@@ -66,6 +68,50 @@ void AEnemyAICV2::Tick(float DeltaTime)
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const
 {
-	return ETeamAttitude::Friendly;
+	// pawn cast condition
+	if (const APawn* OtherPawn = Cast<APawn>(&Other))
+	{
+		// checking if pawn controller implements interface
+		if (const IGenericTeamAgentInterface* TeamAgent = Cast<IGenericTeamAgentInterface>(OtherPawn->GetController()))
+		{
+			FGenericTeamId OtherTeam = TeamAgent->GetGenericTeamId();
+
+			// Rules Start *****************************************
+			if (GetGenericTeamId() == 1 && OtherTeam == 1)
+			{
+				return ETeamAttitude::Friendly;
+			}
+			else if (GetGenericTeamId() == 2 && OtherTeam == 1)
+			{
+				return ETeamAttitude::Hostile;
+			}
+			else if (GetGenericTeamId() == 1 && OtherTeam == 2)
+			{
+				return ETeamAttitude::Hostile;
+			}
+			else if (GetGenericTeamId() == 2 && OtherTeam == 2)
+			{
+				return ETeamAttitude::Neutral;
+			}
+			else
+			{
+				return ETeamAttitude::Neutral;
+			}
+			// Rules End *******************************************
+		}
+		else 
+		{
+			return ETeamAttitude::Neutral;
+		}
+	}
+	else 
+	{
+		return ETeamAttitude::Neutral;
+	}
+}
+
+FGenericTeamId AEnemyAICV2::GetGenericTeamId() const
+{
+	return TeamId;
 }
 

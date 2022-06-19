@@ -14,10 +14,10 @@ UCLASS()
 class UE5_COMBATPROTO_API ACustomPlayerCtrl : public APlayerController, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
-	
 
-	FGenericTeamId TeamId = FGenericTeamId(1);
+	FGenericTeamId TeamId;
 
 public:
+	ACustomPlayerCtrl();
 	FGenericTeamId GetGenericTeamId() const;
 };

@@ -39,6 +39,11 @@ public:
 
 	ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
 
+	FGenericTeamId GetGenericTeamId() const;
+
 protected:
 	UAISenseConfig_Sight* SightConfig;
+
+private:
+	FGenericTeamId TeamId;
 };

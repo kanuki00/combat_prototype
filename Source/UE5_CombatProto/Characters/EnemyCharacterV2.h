@@ -3,20 +3,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BasePlayerCharacterV2.h"
-#include "PlayerCharacterV2.generated.h"
+#include "BaseCharacterV2.h"
+#include "EnemyCharacterV2.generated.h"
 
-class UTargetingComponent;
-
+/**
+ * 
+ */
 UCLASS()
-class UE5_COMBATPROTO_API APlayerCharacterV2 : public ABasePlayerCharacterV2
+class UE5_COMBATPROTO_API AEnemyCharacterV2 : public ABaseCharacterV2
 {
 	GENERATED_BODY()
+
 public:
 	// *********************************
 	// Constructor
 	// *********************************
-	APlayerCharacterV2();
+	AEnemyCharacterV2();
 
 protected:
 	// *********************************
@@ -31,17 +33,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// *********************************
-	// Bind
+	// Character functionality 
 	// *********************************
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	void TargetPressedBind();
-	void TargetReleasedBind();
-
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		UTargetingComponent* TargetingComponent;
-
 protected:
-	virtual void UniqueDeath() override;
+private:
+
 };

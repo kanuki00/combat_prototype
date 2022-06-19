@@ -3,3 +3,8 @@
 
 #include "CustomPlayerCtrl.h"
 
+
+FGenericTeamId ACustomPlayerCtrl::GetGenericTeamId() const
+{
+    return TeamId;
+}

@@ -2,7 +2,7 @@
 
 
 #include "EnemyCharacter.h"
-#include "../AICtrlBase.h"
+#include "../../Controllers/AICtrlBase.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Math/UnrealMathUtility.h"

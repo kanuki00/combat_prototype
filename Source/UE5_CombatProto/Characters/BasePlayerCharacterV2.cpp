@@ -24,6 +24,8 @@ ABasePlayerCharacterV2::ABasePlayerCharacterV2()
 	FVector MeshLoc = FVector(0.0f, 0.0f, -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 	FRotator MeshRot = FRotator(0.0f, -90.0f, 0.0f);
 	GetMesh()->SetRelativeLocationAndRotation(MeshLoc, MeshRot);
+
+	AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
 
 void ABasePlayerCharacterV2::BeginPlay()
@@ -94,7 +96,7 @@ void ABasePlayerCharacterV2::Input1ReleasedBind()
 
 void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float RotationSpeed)
 {
-	if (MovementInput.Length() > 0.0f)
+	if (MovementInput.Length() > 0.05f) // Kinda like deadzone
 	{
 		FVector LookDirection = FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInput);
 		CharacterFacing = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), this->GetActorLocation() + LookDirection);
@@ -105,10 +107,13 @@ void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float Rotati
 
 void ABasePlayerCharacterV2::WalkMovementController()
 {
-	float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
-	FRotator CtrlRotYaw = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
-	FVector MovementInputCopy = MovementInput.GetSafeNormal();
-	AddMovementInput(CtrlRotYaw.RotateVector(MovementInputCopy), Scale);
+	if (MovementInput.Length() > 0.1f) // Deadzone
+	{
+		float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
+		FRotator CtrlRotYaw = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
+		FVector MovementInputCopy = MovementInput.GetSafeNormal();
+		AddMovementInput(CtrlRotYaw.RotateVector(MovementInputCopy), Scale);
+	}
 }
 
 void ABasePlayerCharacterV2::WalkMovementFacing()
@@ -119,6 +124,9 @@ void ABasePlayerCharacterV2::WalkMovementFacing()
 
 void ABasePlayerCharacterV2::CameraMovement()
 {
-	AddControllerPitchInput(CameraInput.X);
-	AddControllerYawInput(CameraInput.Y);
+	if (CameraInput.Length() > 0.1f) // Deadzone
+	{
+		AddControllerPitchInput(CameraInput.X);
+		AddControllerYawInput(CameraInput.Y);
+	}
 }

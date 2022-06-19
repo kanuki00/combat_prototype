@@ -2,7 +2,7 @@
 
 
 #include "StrongAttackCheckNotifyState.h"
-#include "../Characters/MainCharacter.h"
+#include "../Characters/V1/MainCharacter.h"
 
 void UDEPRECATED_StrongAttackCheckNotifyState::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration, const FAnimNotifyEventReference& EventReference)
 {

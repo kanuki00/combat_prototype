@@ -2,7 +2,7 @@
 
 
 #include "FastAttackEndedNotify.h"
-#include "../Characters/MainCharacter.h"
+#include "../Characters/V1/MainCharacter.h"
 
 void UFastAttackEndedNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {

@@ -4,14 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "GenericTeamAgentInterface.h"
 #include "CustomPlayerCtrl.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UE5_COMBATPROTO_API ACustomPlayerCtrl : public APlayerController
+class UE5_COMBATPROTO_API ACustomPlayerCtrl : public APlayerController, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 	
+
+	FGenericTeamId TeamId = FGenericTeamId(1);
+
+public:
+	FGenericTeamId GetGenericTeamId() const;
 };

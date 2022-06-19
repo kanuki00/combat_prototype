@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "../CombatInterface.h"
+#include "../../CombatInterface.h"
 #include "UObject/Interface.h"
 #include "BaseCharacter.generated.h"
 

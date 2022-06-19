@@ -4,7 +4,7 @@
 #include "TargetingComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "../Characters/BaseCharacter.h"
+#include "../Characters/V1/BaseCharacter.h"
 
 UTargetingComponent::UTargetingComponent()
 {

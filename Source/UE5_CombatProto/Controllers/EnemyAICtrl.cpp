@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "Characters/EnemyCharacter.h"
+#include "../Characters/V1/EnemyCharacter.h"
 #include "GameFramework/Character.h"
 
 AEnemyAICtrl::AEnemyAICtrl()

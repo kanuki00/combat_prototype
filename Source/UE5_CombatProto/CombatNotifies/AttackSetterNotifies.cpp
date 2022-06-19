@@ -2,7 +2,7 @@
 
 
 #include "AttackSetterNotifies.h"
-#include "../Characters/BaseCharacter.h"
+#include "../Characters/V1/BaseCharacter.h"
 
 void UEnableCharacterRotation::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {

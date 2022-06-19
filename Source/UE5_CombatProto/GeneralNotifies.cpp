@@ -2,8 +2,8 @@
 
 
 #include "GeneralNotifies.h"
-#include "Characters/BaseCharacter.h"
-#include "Characters/EnemyCharacter.h"
+#include "Characters/V1/BaseCharacter.h"
+#include "Characters/V1/EnemyCharacter.h"
 
 void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {

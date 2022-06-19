@@ -40,3 +40,11 @@ void APlayerCharacterV2::TargetReleasedBind()
 	CanOrientToMovementInput = true;
 	TargetingComponent->ClearTarget();
 }
+
+void APlayerCharacterV2::UniqueDeath()
+{
+	APlayerController* PCtrl = Cast<APlayerController>(GetController());
+	if (PCtrl) DisableInput(PCtrl);
+	GetMesh()->SetCollisionProfileName("Ragdoll");
+	GetMesh()->SetSimulatePhysics(true);
+}

@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "../Characters/V1/BaseCharacter.h"
+#include "../Characters/BaseCharacterV2.h"
 
 UTargetingComponent::UTargetingComponent()
 {
@@ -37,7 +38,7 @@ void UTargetingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 					ActorInView(AllTargets[i])																	// Check if in view
 					&& !ActorOccluded(AllTargets[i])															// Check if not occluded by any objects
 					&& ActorInRangeOfLocation(AllTargets[i], GetOwner()->GetActorLocation(), TargetingRange)	// Check if in range
-					&& !(Cast<ABaseCharacter>(AllTargets[i])->IsDead)											// Check if alive
+					&& !(Cast<ABaseCharacterV2>(AllTargets[i])->IsDead)											// Check if alive
 					)
 				{
 					AllVisibleTargets.Emplace(AllTargets[i]);

@@ -4,6 +4,7 @@
 #include "BaseCharacterV2.h"
 #include "CollisionShape.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Components/CapsuleComponent.h"
 
 // *********************************
 // Constructor
@@ -12,6 +13,11 @@ ABaseCharacterV2::ABaseCharacterV2()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// Moving mesh to a better initial location
+	FVector MeshLoc = FVector(0.0f, 0.0f, -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
+	FRotator MeshRot = FRotator(0.0f, -90.0f, 0.0f);
+	GetMesh()->SetRelativeLocationAndRotation(MeshLoc, MeshRot);
 }
 
 // *********************************

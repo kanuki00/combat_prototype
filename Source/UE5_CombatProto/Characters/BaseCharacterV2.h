@@ -42,14 +42,14 @@ public:
 public:
 	// Taking damage. Overridden from AActor.
 	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor * DamageCauser) override;
-
-protected:
 	// Is Character stunned? If true, character shouldn't be able to move or rotate.
 	bool IsStunned = false;
 	//
 	bool IsDead = false;
 	// 
 	bool CanMove = true;
+
+protected:
 	// Character implements something unique to do upon taking damage.
 	virtual void UniqueTakeDamage();
 

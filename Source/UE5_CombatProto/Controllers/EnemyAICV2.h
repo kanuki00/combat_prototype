@@ -6,7 +6,9 @@
 #include "AIController.h"
 #include "EnemyAICV2.generated.h"
 
+#define DEBUG_MSG(key, duration, color, message) if(GEngine) GEngine->AddOnScreenDebugMessage(key, duration, FColor::color, message);
 
+class UAISenseConfig_Sight;
 
 UCLASS()
 class UE5_COMBATPROTO_API AEnemyAICV2 : public AAIController
@@ -33,5 +35,10 @@ public:
 
 public:
 	UPROPERTY(EditAnywhere)
-		UBehaviorTree* BehaviorTree;
+		UBehaviorTree* BehaviorTree = nullptr;
+
+	ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
+
+protected:
+	UAISenseConfig_Sight* SightConfig;
 };

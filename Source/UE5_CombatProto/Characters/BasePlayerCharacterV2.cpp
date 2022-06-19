@@ -4,7 +4,7 @@
 #include "BasePlayerCharacterV2.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
-#include "Components/CapsuleComponent.h"
+
 #include "Kismet/KismetMathLibrary.h"
 
 ABasePlayerCharacterV2::ABasePlayerCharacterV2()
@@ -20,10 +20,7 @@ ABasePlayerCharacterV2::ABasePlayerCharacterV2()
 
 	CameraBoom->bUsePawnControlRotation = true;
 
-	// Moving mesh to a better initial location
-	FVector MeshLoc = FVector(0.0f, 0.0f, -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
-	FRotator MeshRot = FRotator(0.0f, -90.0f, 0.0f);
-	GetMesh()->SetRelativeLocationAndRotation(MeshLoc, MeshRot);
+	CameraBoom->ProbeChannel = ECollisionChannel::ECC_Camera;
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 }

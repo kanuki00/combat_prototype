@@ -34,7 +34,7 @@ void ABasePlayerCharacterV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime);
+	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime, 480.0f);
 
 	if (false)
 	{
@@ -93,7 +93,7 @@ void ABasePlayerCharacterV2::Input1ReleasedBind()
 
 void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float RotationSpeed)
 {
-	if (MovementInput.Length() > 0.05f) // Kinda like deadzone
+	if (MovementInput.Length() > 0.1f) // Kinda like deadzone
 	{
 		FVector LookDirection = FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInput);
 		CharacterFacing = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), this->GetActorLocation() + LookDirection);

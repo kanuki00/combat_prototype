@@ -36,6 +36,9 @@ public:
 	// Character functionality 
 	// *********************************
 public:
+
+	UPROPERTY(EditAnywhere, Category = "Team")
+		int Team = 0;
 protected:
 private:
 

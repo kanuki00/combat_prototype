@@ -41,6 +41,14 @@ public:
 
 	FGenericTeamId GetGenericTeamId() const;
 
+	void SetGenericTeamId(const FGenericTeamId& NewTeamID) override;
+
+	void Shout()
+	{
+		DEBUG_MSG(10, 4, Yellow, TEXT("EnemyAI"));
+		DEBUG_MSG(10, 4, Yellow, FString::FromInt(GetGenericTeamId()));
+	}
+
 protected:
 	UAISenseConfig_Sight* SightConfig;
 

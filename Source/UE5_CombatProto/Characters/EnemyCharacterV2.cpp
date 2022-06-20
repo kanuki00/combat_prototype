@@ -3,6 +3,7 @@
 
 #include "EnemyCharacterV2.h"
 #include "Components/CapsuleComponent.h"
+#include "../Controllers/EnemyAICV2.h"
 
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
@@ -17,6 +18,14 @@ AEnemyCharacterV2::AEnemyCharacterV2()
 void AEnemyCharacterV2::BeginPlay()
 {
 	Super::BeginPlay();
+
+	AEnemyAICV2* Ctrl;
+	Ctrl = Cast<AEnemyAICV2>(GetController());
+	if (Ctrl)
+	{
+		Ctrl->SetGenericTeamId(FGenericTeamId(Team));
+		Ctrl->Shout();
+	}
 }
 
 void AEnemyCharacterV2::Tick(float DeltaTime)

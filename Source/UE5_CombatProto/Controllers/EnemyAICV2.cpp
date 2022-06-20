@@ -115,3 +115,8 @@ FGenericTeamId AEnemyAICV2::GetGenericTeamId() const
 	return TeamId;
 }
 
+void AEnemyAICV2::SetGenericTeamId(const FGenericTeamId& NewTeamID)
+{
+	TeamId = NewTeamID;
+}
+

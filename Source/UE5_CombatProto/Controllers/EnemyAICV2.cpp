@@ -43,11 +43,36 @@ void AEnemyAICV2::BeginPlay()
 void AEnemyAICV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	TArray<AActor*> SensedActors;
-	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), SensedActors);
 
-	if (SensedActors.Num() > 0)
+	AllActors.Empty();
+	FriendlyActors.Empty();
+	NeutralActors.Empty();
+	HostileActors.Empty();
+
+	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), AllActors);
+
+	if (AllActors.Num() > 0)
 	{
+		for (int i = 0; i < AllActors.Num(); i++)
+		{
+			if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Friendly)
+			{
+				FriendlyActors.Emplace(AllActors[i]);
+			}
+			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Neutral)
+			{
+				NeutralActors.Emplace(AllActors[i]);
+			}
+			else {
+				HostileActors.Emplace(AllActors[i]);
+			}
+		}
+
+		if (FriendlyActors.Num() > 0) DEBUG_MSG(1, 5, Green, TEXT("Sees Friendly"));
+		if (NeutralActors.Num() > 0) DEBUG_MSG(2, 5, Yellow, TEXT("Sees Neutral"));
+		if (HostileActors.Num() > 0) DEBUG_MSG(3, 5, Red, TEXT("Sees Hostile"));
+
+		/*
 		DEBUG_MSG(1, 0.2f, Cyan, TEXT("Sensed"));
 
 		ETeamAttitude::Type ZAttitude = GetTeamAttitudeTowards(*SensedActors[0]);
@@ -63,6 +88,7 @@ void AEnemyAICV2::Tick(float DeltaTime)
 				DEBUG_MSG(2, 0.2f, Orange, TEXT("Hostile"));
 				break;
 		}
+		*/
 	}
 }
 
@@ -81,17 +107,17 @@ ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) con
 			{
 				return ETeamAttitude::Friendly;
 			}
-			else if (GetGenericTeamId() == 2 && OtherTeam == 1)
+			else if (GetGenericTeamId() == 2 && OtherTeam == 2)
 			{
-				return ETeamAttitude::Hostile;
+				return ETeamAttitude::Friendly;
 			}
 			else if (GetGenericTeamId() == 1 && OtherTeam == 2)
 			{
 				return ETeamAttitude::Hostile;
 			}
-			else if (GetGenericTeamId() == 2 && OtherTeam == 2)
+			else if (GetGenericTeamId() == 2 && OtherTeam == 1)
 			{
-				return ETeamAttitude::Neutral;
+				return ETeamAttitude::Hostile;
 			}
 			else
 			{

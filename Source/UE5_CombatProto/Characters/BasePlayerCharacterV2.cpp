@@ -4,6 +4,7 @@
 #include "BasePlayerCharacterV2.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 #include "Kismet/KismetMathLibrary.h"
 
@@ -23,6 +24,8 @@ ABasePlayerCharacterV2::ABasePlayerCharacterV2()
 	CameraBoom->ProbeChannel = ECollisionChannel::ECC_Camera;
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
+
+	Cast<UCharacterMovementComponent>(GetMovementComponent())->GravityScale = 3.0;
 }
 
 void ABasePlayerCharacterV2::BeginPlay()

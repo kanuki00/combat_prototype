@@ -40,6 +40,8 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Team")
 		int Team = 0;
 protected:
+	void UniqueTakeDamage() override;
+	void UniqueDeath() override;
 private:
 
 };

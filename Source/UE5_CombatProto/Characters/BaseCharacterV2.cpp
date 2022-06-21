@@ -53,10 +53,11 @@ void ABaseCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
+	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
 	if (CanTakeDamage && !TakeDamageCoolingDown)
 	{
 		TakeDamageCoolingDown = true;
-		Health -= DamageAmount; //if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
+		Health -= DamageAmount; 
 		UniqueTakeDamage();
 		if (Health <= 0.0f)
 		{
@@ -104,11 +105,12 @@ void ABaseCharacterV2::SimpleAttack(float Damage)
 		TArray<AActor*> Ignore;
 		TArray<struct FHitResult> HitResults;
 
-		UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, true);
+		UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, false);
 
 		FDamageEvent DmgEvent;
 		for (int i = 0; i < HitResults.Num(); i++)
 		{
+			/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Hit Something"));
 			HitResults[i].GetActor()->TakeDamage(Damage, DmgEvent, GetController(), this);
 		}
 	}

@@ -54,4 +54,9 @@ protected:
 
 private:
 	FGenericTeamId TeamId;
+
+	TArray<AActor*> AllActors;
+	TArray<AActor*> FriendlyActors;
+	TArray<AActor*> NeutralActors;
+	TArray<AActor*> HostileActors;
 };

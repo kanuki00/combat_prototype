@@ -4,6 +4,7 @@
 #include "EnemyCharacterV2.h"
 #include "Components/CapsuleComponent.h"
 #include "../Controllers/EnemyAICV2.h"
+//#include "Engine/EngineTypes.h"
 
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
@@ -13,7 +14,6 @@ AEnemyCharacterV2::AEnemyCharacterV2()
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Ignore);
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Ignore);
-	
 }
 
 void AEnemyCharacterV2::BeginPlay()
@@ -36,7 +36,7 @@ void AEnemyCharacterV2::Tick(float DeltaTime)
 
 void AEnemyCharacterV2::UniqueTakeDamage()
 {
-	DEBUG_MSG(-1, 4, Red, TEXT("Took Unique Damage"));
+	DEBUG_MSG(-1, 4, Red, TEXT("EnemyV2 Took Unique Damage"));
 }
 
 void AEnemyCharacterV2::UniqueDeath()

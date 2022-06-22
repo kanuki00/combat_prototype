@@ -6,6 +6,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/CapsuleComponent.h"
 
+
 // *********************************
 // Constructor
 // *********************************
@@ -103,15 +104,20 @@ void ABaseCharacterV2::SimpleAttack(float Damage)
 		SimpleAttackCoolingDown = true;
 		FVector TraceLoc = this->GetActorLocation() + this->GetActorForwardVector() * 70.0f + this->GetActorUpVector() * 30.0f;
 		TArray<AActor*> Ignore;
+		Ignore.Empty();
 		TArray<struct FHitResult> HitResults;
 
-		UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, false);
+		//FHitResult HitRes;
 
-		FDamageEvent DmgEvent;
+		UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, false);
+		//UKismetSystemLibrary::LineTraceSingle(GetWorld(), TraceLoc, TraceLoc + this->GetActorForwardVector() * 70.0f, ETraceTypeQuery::TraceTypeQuery1, false, Ignore, EDrawDebugTrace::ForOneFrame, HitRes, true);
+		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("After Trace"));
+
+		
 		for (int i = 0; i < HitResults.Num(); i++)
 		{
 			/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Hit Something"));
-			HitResults[i].GetActor()->TakeDamage(Damage, DmgEvent, GetController(), this);
+			HitResults[i].GetActor()->TakeDamage(Damage, FDamageEvent(), GetController(), this);
 		}
 	}
 }

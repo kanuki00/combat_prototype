@@ -39,7 +39,7 @@ void ABasePlayerCharacterV2::Tick(float DeltaTime)
 
 	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime, 480.0f);
 
-	if (false)
+	if (GetVelocity().Length() > 300.0f)
 	{
 		WalkMovementFacing();
 	}
@@ -96,7 +96,7 @@ void ABasePlayerCharacterV2::Input1ReleasedBind()
 
 void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float RotationSpeed)
 {
-	if (MovementInput.Length() > 0.1f) // Kinda like deadzone
+	if (MovementInput.Length() > 0.1f) // Deadzone
 	{
 		FVector LookDirection = FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInput);
 		CharacterFacing = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), this->GetActorLocation() + LookDirection);
@@ -118,8 +118,11 @@ void ABasePlayerCharacterV2::WalkMovementController()
 
 void ABasePlayerCharacterV2::WalkMovementFacing()
 {
-	float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
-	AddMovementInput(this->GetActorForwardVector(), Scale);
+	if (MovementInput.Length() > 0.1f) // Deadzone
+	{
+		float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
+		AddMovementInput(this->GetActorForwardVector(), Scale);
+	}
 }
 
 void ABasePlayerCharacterV2::CameraMovement()

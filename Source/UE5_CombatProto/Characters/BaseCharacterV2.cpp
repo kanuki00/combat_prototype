@@ -19,6 +19,16 @@ ABaseCharacterV2::ABaseCharacterV2()
 	FVector MeshLoc = FVector(0.0f, 0.0f, -(GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 	FRotator MeshRot = FRotator(0.0f, -90.0f, 0.0f);
 	GetMesh()->SetRelativeLocationAndRotation(MeshLoc, MeshRot);
+
+	// Collision Settings
+	GetMesh()->SetCollisionProfileName("NoCollision");
+	GetCapsuleComponent()->SetCollisionProfileName("Custom");
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
+
+	// Cel Shade
+	GetMesh()->bRenderCustomDepth = true;
+	GetMesh()->CustomDepthStencilValue = 1;
 }
 
 // *********************************

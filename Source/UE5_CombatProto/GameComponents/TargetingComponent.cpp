@@ -4,6 +4,7 @@
 #include "TargetingComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "../Characters/V1/BaseCharacter.h"
 #include "../Characters/BaseCharacterV2.h"
 
@@ -230,7 +231,8 @@ bool UTargetingComponent::ActorOccluded(AActor* Actor)
 		FHitResult TraceResult;
 		FVector Start = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
 		FVector End = Actor->GetActorLocation();
-		GetWorld()->LineTraceSingleByChannel(TraceResult, Start, End, ECollisionChannel::ECC_Visibility);
+		//GetWorld()->LineTraceSingleByChannel(TraceResult, Start, End, ECollisionChannel::ECC_Visibility);
+		UKismetSystemLibrary::LineTraceSingle(GetWorld(), Start, End, ETraceTypeQuery::TraceTypeQuery1, true, AllTargets, EDrawDebugTrace::None, TraceResult, true);
 		bool Result = TraceResult.bBlockingHit;
 
 		return Result;

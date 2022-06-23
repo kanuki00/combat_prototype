@@ -8,6 +8,7 @@
 #include "Perception/AISense_Hearing.h"
 #include "Perception/AISense_Touch.h"
 #include "Perception/AISense_Damage.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 AEnemyAICV2::AEnemyAICV2()
 {
@@ -68,10 +69,29 @@ void AEnemyAICV2::Tick(float DeltaTime)
 			}
 		}
 
+		SortByDistance(HostileActors, GetPawn());
+
+		if (HostileActors.Num() > 0)
+		{
+			DEBUG_MSG(90, 0.02f, Orange, HostileActors[0]->GetName());
+			Target = HostileActors[0];
+			SeesTarget = true;
+		}
+		else 
+		{
+			DEBUG_MSG(91, 0.02f, Orange, TEXT("No Target"));
+			Target = nullptr;
+			SeesTarget = false;
+		}
+
+		GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
+		GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
+		
+		/*
 		if (FriendlyActors.Num() > 0) DEBUG_MSG(1, 5, Green, TEXT("Sees Friendly"));
 		if (NeutralActors.Num() > 0) DEBUG_MSG(2, 5, Yellow, TEXT("Sees Neutral"));
 		if (HostileActors.Num() > 0) DEBUG_MSG(3, 5, Red, TEXT("Sees Hostile"));
-
+		*/
 		/*
 		DEBUG_MSG(1, 0.2f, Cyan, TEXT("Sensed"));
 
@@ -144,5 +164,21 @@ FGenericTeamId AEnemyAICV2::GetGenericTeamId() const
 void AEnemyAICV2::SetGenericTeamId(const FGenericTeamId& NewTeamID)
 {
 	TeamId = NewTeamID;
+}
+
+void AEnemyAICV2::SortByDistance(TArray<AActor*>& ActorsToSort, AActor* Actor)
+{
+	for (int i = 0; i < ActorsToSort.Num(); i++)
+	{
+		for (int j = 0; j < ActorsToSort.Num() - 1; j++)
+		{
+			if (FVector::Dist(ActorsToSort[j]->GetActorLocation(), Actor->GetActorLocation()) 
+				> 
+				FVector::Dist(ActorsToSort[j + 1]->GetActorLocation(), Actor->GetActorLocation()))
+			{
+				Swap(ActorsToSort[j], ActorsToSort[j + 1]);
+			}
+		}
+	}
 }
 

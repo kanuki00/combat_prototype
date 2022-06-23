@@ -4,11 +4,13 @@
 #include "EnemyCharacterV2.h"
 #include "Components/CapsuleComponent.h"
 #include "../Controllers/EnemyAICV2.h"
+#include "GameFramework/CharacterMovementComponent.h"
 //#include "Engine/EngineTypes.h"
 
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	Cast<UCharacterMovementComponent>(GetMovementComponent())->MaxWalkSpeed = 300.0f;
 }
 
 void AEnemyCharacterV2::BeginPlay()

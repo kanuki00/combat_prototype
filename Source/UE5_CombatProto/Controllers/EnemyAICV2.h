@@ -52,6 +52,11 @@ public:
 protected:
 	UAISenseConfig_Sight* SightConfig;
 
+	UPROPERTY()
+		AActor* Target = nullptr;
+	UPROPERTY()
+		bool SeesTarget = false;
+
 private:
 	FGenericTeamId TeamId;
 
@@ -59,4 +64,6 @@ private:
 	TArray<AActor*> FriendlyActors;
 	TArray<AActor*> NeutralActors;
 	TArray<AActor*> HostileActors;
+
+	void SortByDistance(TArray<AActor*> & ActorsToSort, AActor* Actor);
 };

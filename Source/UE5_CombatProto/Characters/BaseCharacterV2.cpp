@@ -65,15 +65,15 @@ void ABaseCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
-	if (CanTakeDamage && !TakeDamageCoolingDown)
+
+	if (!CanTakeDamage && TakeDamageCoolingDown) { return 0.0f; }
+	
+	TakeDamageCoolingDown = true;
+	Health -= DamageAmount; 
+	UniqueTakeDamage();
+	if (Health <= 0.0f)
 	{
-		TakeDamageCoolingDown = true;
-		Health -= DamageAmount; 
-		UniqueTakeDamage();
-		if (Health <= 0.0f)
-		{
-			Death();
-		}
+		Death();
 	}
 
 	return DamageAmount;
@@ -109,25 +109,24 @@ void ABaseCharacterV2::UniqueDeath()
 
 void ABaseCharacterV2::SimpleAttack(float Damage)
 {
-	if (!SimpleAttackCoolingDown)
-	{
-		SimpleAttackCoolingDown = true;
-		FVector TraceLoc = this->GetActorLocation() + this->GetActorForwardVector() * 70.0f + this->GetActorUpVector() * 30.0f;
-		TArray<AActor*> Ignore;
-		Ignore.Empty();
-		TArray<struct FHitResult> HitResults;
+	if (SimpleAttackCoolingDown) { return; }
+	
+	SimpleAttackCoolingDown = true;
+	FVector TraceLoc = this->GetActorLocation() + this->GetActorForwardVector() * 70.0f + this->GetActorUpVector() * 30.0f;
+	TArray<AActor*> Ignore;
+	Ignore.Empty();
+	TArray<struct FHitResult> HitResults;
 
-		//FHitResult HitRes;
+	//FHitResult HitRes;
 
-		UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, false);
-		//UKismetSystemLibrary::LineTraceSingle(GetWorld(), TraceLoc, TraceLoc + this->GetActorForwardVector() * 70.0f, ETraceTypeQuery::TraceTypeQuery1, false, Ignore, EDrawDebugTrace::ForOneFrame, HitRes, true);
-		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("After Trace"));
+	UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, false);
+	//UKismetSystemLibrary::LineTraceSingle(GetWorld(), TraceLoc, TraceLoc + this->GetActorForwardVector() * 70.0f, ETraceTypeQuery::TraceTypeQuery1, false, Ignore, EDrawDebugTrace::ForOneFrame, HitRes, true);
+	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("After Trace"));
 
 		
-		for (int i = 0; i < HitResults.Num(); i++)
-		{
-			/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Hit Something"));
-			HitResults[i].GetActor()->TakeDamage(Damage, FDamageEvent(), GetController(), this);
-		}
+	for (auto & hit_result : HitResults)
+	{
+		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Hit Something"));
+		hit_result.GetActor()->TakeDamage(Damage, FDamageEvent(), GetController(), this);
 	}
 }

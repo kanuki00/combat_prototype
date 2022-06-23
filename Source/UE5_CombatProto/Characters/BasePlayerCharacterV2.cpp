@@ -96,7 +96,7 @@ void ABasePlayerCharacterV2::Input1ReleasedBind()
 
 void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float RotationSpeed)
 {
-	if (MovementInput.Length() > 0.1f) // Deadzone
+	if (MovementInput.Length() > 0.1f)
 	{
 		FVector LookDirection = FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInput);
 		CharacterFacing = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), this->GetActorLocation() + LookDirection);
@@ -107,29 +107,26 @@ void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float Rotati
 
 void ABasePlayerCharacterV2::WalkMovementController()
 {
-	if (MovementInput.Length() > 0.1f) // Deadzone
-	{
-		float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
-		FRotator CtrlRotYaw = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
-		FVector MovementInputCopy = MovementInput.GetSafeNormal();
-		AddMovementInput(CtrlRotYaw.RotateVector(MovementInputCopy), Scale);
-	}
+	if (MovementInput.Length() < 0.1f) { return; } // Deadzone
+	
+	float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
+	FRotator CtrlRotYaw = FRotator(0.0f, GetControlRotation().Yaw, 0.0f);
+	FVector MovementInputCopy = MovementInput.GetSafeNormal();
+	AddMovementInput(CtrlRotYaw.RotateVector(MovementInputCopy), Scale);
 }
 
 void ABasePlayerCharacterV2::WalkMovementFacing()
 {
-	if (MovementInput.Length() > 0.1f) // Deadzone
-	{
-		float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
-		AddMovementInput(this->GetActorForwardVector(), Scale);
-	}
+	if (MovementInput.Length() < 0.1f) { return; } // Deadzone
+	
+	float Scale = UKismetMathLibrary::ClampVectorSize(MovementInput, 0.0f, 1.0f).Length();
+	AddMovementInput(this->GetActorForwardVector(), Scale);
 }
 
 void ABasePlayerCharacterV2::CameraMovement()
 {
-	if (CameraInput.Length() > 0.1f) // Deadzone
-	{
-		AddControllerPitchInput(CameraInput.X);
-		AddControllerYawInput(CameraInput.Y);
-	}
+	if (CameraInput.Length() < 0.1f) { return; } // Deadzone
+
+	AddControllerPitchInput(CameraInput.X);
+	AddControllerYawInput(CameraInput.Y);
 }

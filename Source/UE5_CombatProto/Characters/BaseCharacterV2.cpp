@@ -64,7 +64,7 @@ void ABaseCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
+	/* Debug *///if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
 
 	if (!CanTakeDamage && TakeDamageCoolingDown) { return 0.0f; }
 	
@@ -121,12 +121,12 @@ void ABaseCharacterV2::SimpleAttack(float Damage)
 
 	UKismetSystemLibrary::CapsuleTraceMulti(GetWorld(), TraceLoc, TraceLoc, 30.0f, 50.0f, ETraceTypeQuery::TraceTypeQuery1, true, Ignore, EDrawDebugTrace::ForOneFrame, HitResults, false);
 	//UKismetSystemLibrary::LineTraceSingle(GetWorld(), TraceLoc, TraceLoc + this->GetActorForwardVector() * 70.0f, ETraceTypeQuery::TraceTypeQuery1, false, Ignore, EDrawDebugTrace::ForOneFrame, HitRes, true);
-	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("After Trace"));
+	/* Debug *///if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("After Trace"));
 
 		
 	for (auto & hit_result : HitResults)
 	{
-		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Hit Something"));
+		/* Debug *///if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Hit Something"));
 		hit_result.GetActor()->TakeDamage(Damage, FDamageEvent(), GetController(), this);
 	}
 }

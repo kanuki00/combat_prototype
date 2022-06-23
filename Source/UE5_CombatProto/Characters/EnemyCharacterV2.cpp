@@ -33,7 +33,7 @@ void AEnemyCharacterV2::Tick(float DeltaTime)
 
 void AEnemyCharacterV2::UniqueTakeDamage()
 {
-	DEBUG_MSG(-1, 4, Red, TEXT("EnemyV2 Took Unique Damage"));
+	//DEBUG_MSG(-1, 4, Red, TEXT("EnemyV2 Took Unique Damage"));
 }
 
 void AEnemyCharacterV2::UniqueDeath()

@@ -45,10 +45,13 @@ void AEnemyAICV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	AllActors.Empty();
-	FriendlyActors.Empty();
-	NeutralActors.Empty();
-	HostileActors.Empty();
+	AllActors.Empty(0);
+	FriendlyActors.Empty(0);
+	NeutralActors.Empty(0);
+	HostileActors.SetNum(0);
+
+	Target = nullptr;
+	SeesTarget = false;
 
 	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), AllActors);
 
@@ -64,12 +67,19 @@ void AEnemyAICV2::Tick(float DeltaTime)
 			{
 				NeutralActors.Emplace(AllActors[i]);
 			}
-			else {
+			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Hostile) {
 				HostileActors.Emplace(AllActors[i]);
 			}
 		}
 
-		SortByDistance(HostileActors, GetPawn());
+		//SortByDistance(HostileActors, GetPawn());
+
+		HostileActors.Sort([this](const auto& A, const auto& B) 
+			{
+			auto pawnLocation = GetPawn()->GetActorLocation();
+			return FVector::Dist(A.GetActorLocation(), pawnLocation) < FVector::Dist(B.GetActorLocation(), pawnLocation);
+			}
+		);
 
 		if (HostileActors.Num() > 0)
 		{
@@ -77,39 +87,12 @@ void AEnemyAICV2::Tick(float DeltaTime)
 			Target = HostileActors[0];
 			SeesTarget = true;
 		}
-		else 
-		{
-			DEBUG_MSG(91, 0.02f, Orange, TEXT("No Target"));
-			Target = nullptr;
-			SeesTarget = false;
-		}
-
-		GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
-		GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
-		
-		/*
-		if (FriendlyActors.Num() > 0) DEBUG_MSG(1, 5, Green, TEXT("Sees Friendly"));
-		if (NeutralActors.Num() > 0) DEBUG_MSG(2, 5, Yellow, TEXT("Sees Neutral"));
-		if (HostileActors.Num() > 0) DEBUG_MSG(3, 5, Red, TEXT("Sees Hostile"));
-		*/
-		/*
-		DEBUG_MSG(1, 0.2f, Cyan, TEXT("Sensed"));
-
-		ETeamAttitude::Type ZAttitude = GetTeamAttitudeTowards(*SensedActors[0]);
-		switch(ZAttitude)
-		{
-			case ETeamAttitude::Neutral:
-				DEBUG_MSG(2, 0.2f, Orange, TEXT("Neutral"));
-				break;
-			case ETeamAttitude::Friendly:
-				DEBUG_MSG(2, 0.2f, Orange, TEXT("Friendly"));
-				break;
-			case ETeamAttitude::Hostile:
-				DEBUG_MSG(2, 0.2f, Orange, TEXT("Hostile"));
-				break;
-		}
-		*/
 	}
+
+	if (GEngine) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
+
+	GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
+	GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
 }
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const
@@ -168,7 +151,7 @@ void AEnemyAICV2::SetGenericTeamId(const FGenericTeamId& NewTeamID)
 
 void AEnemyAICV2::SortByDistance(TArray<AActor*>& ActorsToSort, AActor* Actor)
 {
-	for (int i = 0; i < ActorsToSort.Num(); i++)
+	for (int i = 1; i < ActorsToSort.Num(); i++)
 	{
 		for (int j = 0; j < ActorsToSort.Num() - 1; j++)
 		{

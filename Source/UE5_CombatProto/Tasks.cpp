@@ -34,18 +34,32 @@ EBTNodeResult::Type UStopMoving::ExecuteTask(UBehaviorTreeComponent& OwnerComp, 
 	return EBTNodeResult::Succeeded;
 }
 
-// DOESN'T WORK
-EBTNodeResult::Type UGetActorsLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+void UGetActorLocation::InitializeFromAsset(UBehaviorTree& Asset)
+{
+	Super::InitializeFromAsset(Asset);
+
+	UBlackboardData* BBAsset = GetBlackboardAsset();
+	if (BBAsset)
+	{
+		ActorKey.ResolveSelectedKey(*BBAsset);
+		LocationKey.ResolveSelectedKey(*BBAsset);
+	}
+	else
+	{
+		UE_LOG(LogBehaviorTree, Warning, TEXT("Can't initialize task: %s, make sure that behavior tree specifies blackboard asset!"), *GetName());
+	}
+}
+
+EBTNodeResult::Type UGetActorLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	AActor* Tar_Actor;
-	UObject* O = OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(BlackboardKey.GetSelectedKeyID());
-	Tar_Actor = Cast<AActor>(O);
-	/* Debug */if (GEngine && Tar_Actor)
-	{
-		GEngine->AddOnScreenDebugMessage(70, 1, FColor::Purple, Tar_Actor->GetName());
-		GEngine->AddOnScreenDebugMessage(71, 1, FColor::Purple, Tar_Actor->GetActorLocation().ToString());
-	}
+	FVector Tar_Location;
 
-	if(Tar_Actor) OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(Location.GetSelectedKeyID(), Tar_Actor->GetActorLocation());
+	Tar_Actor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(ActorKey.GetSelectedKeyID()));
+
+	if (Tar_Actor) Tar_Location = Tar_Actor->GetActorLocation();
+
+	OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(LocationKey.GetSelectedKeyID(), Tar_Location);
+
 	return EBTNodeResult::Succeeded;
 }

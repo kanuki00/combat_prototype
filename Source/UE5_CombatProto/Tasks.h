@@ -14,19 +14,6 @@ class UE5_COMBATPROTO_API UGetPlayerLocation : public UBTTask_BlackboardBase
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };
 
-// DOESN'T WORK
-UCLASS()
-class UE5_COMBATPROTO_API UGetActorsLocation : public UBTTask_BlackboardBase
-{
-	GENERATED_BODY()
-
-	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
-
-public:
-	UPROPERTY(EditAnywhere, Category = Blackboard)
-		struct FBlackboardKeySelector Location;
-};
-
 UCLASS()
 class UE5_COMBATPROTO_API UMoveToLocation : public UBTTask_BlackboardBase
 {
@@ -41,4 +28,20 @@ class UE5_COMBATPROTO_API UStopMoving : public UBTTask_BlackboardBase
 	GENERATED_BODY()
 	// Called in behavior tree to stop any navmesh movement.
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+};
+
+UCLASS()
+class UE5_COMBATPROTO_API UGetActorLocation : public UBTTask_BlackboardBase
+{
+	GENERATED_BODY()
+
+	void InitializeFromAsset(UBehaviorTree& Asset) override;
+
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
+protected:
+	UPROPERTY(EditAnywhere, Category = Blackboard)
+		struct FBlackboardKeySelector ActorKey;
+	UPROPERTY(EditAnywhere, Category = Blackboard)
+		struct FBlackboardKeySelector LocationKey;
 };

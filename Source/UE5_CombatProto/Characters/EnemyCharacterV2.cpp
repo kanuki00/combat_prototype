@@ -10,7 +10,13 @@
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	Cast<UCharacterMovementComponent>(GetMovementComponent())->MaxWalkSpeed = 300.0f;
+	CharMovComp = Cast<UCharacterMovementComponent>(GetMovementComponent());
+
+	CharMovComp->MaxWalkSpeed = 300.0f;
+
+	bUseControllerRotationYaw = false;
+	CharMovComp->bUseControllerDesiredRotation = false;
+	CharMovComp->bOrientRotationToMovement = true;
 }
 
 void AEnemyCharacterV2::BeginPlay()

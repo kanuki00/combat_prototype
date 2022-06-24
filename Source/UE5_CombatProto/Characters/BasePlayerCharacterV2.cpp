@@ -39,7 +39,11 @@ void ABasePlayerCharacterV2::Tick(float DeltaTime)
 
 	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime, 480.0f);
 
-	if (GetVelocity().Length() > 300.0f)
+	if (UseWalkMovementController)
+	{
+		WalkMovementController();
+	}
+	else if (GetVelocity().Length() > 400.0f)
 	{
 		WalkMovementFacing();
 	}

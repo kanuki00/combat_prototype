@@ -52,6 +52,7 @@ void AEnemyAICV2::Tick(float DeltaTime)
 
 	Target = nullptr;
 	SeesTarget = false;
+	InRangeOfTarget = false;
 
 	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), AllActors);
 
@@ -86,6 +87,11 @@ void AEnemyAICV2::Tick(float DeltaTime)
 			DEBUG_MSG(90, 0.02f, Orange, HostileActors[0]->GetName());
 			Target = HostileActors[0];
 			SeesTarget = true;
+
+			if (FVector::Dist(GetPawn()->GetActorLocation(), Target->GetActorLocation()) <= AttackRange)
+			{
+				InRangeOfTarget = true;
+			}
 		}
 	}
 
@@ -93,6 +99,7 @@ void AEnemyAICV2::Tick(float DeltaTime)
 
 	GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
 	GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
+	GetBlackboardComponent()->SetValueAsBool(FName("InRangeOfTarget"), InRangeOfTarget);
 }
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const

@@ -56,6 +56,10 @@ protected:
 		AActor* Target = nullptr;
 	UPROPERTY()
 		bool SeesTarget = false;
+	UPROPERTY()
+		bool InRangeOfTarget = false;
+
+	float AttackRange = 150.0f;
 
 private:
 	FGenericTeamId TeamId;

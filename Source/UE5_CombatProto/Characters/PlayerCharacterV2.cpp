@@ -32,12 +32,14 @@ void APlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 void APlayerCharacterV2::TargetPressedBind()
 {
 	CanOrientToMovementInput = false;
+	UseWalkMovementController = true;
 	TargetingComponent->GetNewTarget();
 }
 
 void APlayerCharacterV2::TargetReleasedBind()
 {
 	CanOrientToMovementInput = true;
+	UseWalkMovementController = false;
 	TargetingComponent->ClearTarget();
 }
 

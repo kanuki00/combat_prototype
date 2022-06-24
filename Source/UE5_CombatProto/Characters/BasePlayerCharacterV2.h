@@ -65,6 +65,8 @@ protected:
 public:
 protected:
 	bool CanOrientToMovementInput = true;
+
+	bool UseWalkMovementController = false;
 private:
 
 	FRotator CharacterFacing;

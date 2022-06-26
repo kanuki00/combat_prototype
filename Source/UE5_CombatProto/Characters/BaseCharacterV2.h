@@ -6,7 +6,9 @@
 #include "GameFramework/Character.h"
 #include "BaseCharacterV2.generated.h"
 
+#ifndef DEBUG_MSG
 #define DEBUG_MSG(message) if(GEngine)GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, message);
+#endif
 
 UCLASS()
 class UE5_COMBATPROTO_API ABaseCharacterV2 : public ACharacter

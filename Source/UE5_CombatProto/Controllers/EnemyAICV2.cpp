@@ -9,6 +9,7 @@
 #include "Perception/AISense_Touch.h"
 #include "Perception/AISense_Damage.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "../Characters/EnemyCharacterV2.h"
 
 AEnemyAICV2::AEnemyAICV2()
 {
@@ -45,61 +46,18 @@ void AEnemyAICV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	AllActors.Empty(0);
-	FriendlyActors.Empty(0);
-	NeutralActors.Empty(0);
-	HostileActors.SetNum(0);
+	DetermineTarget();
 
-	Target = nullptr;
-	SeesTarget = false;
-	InRangeOfTarget = false;
-
-	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), AllActors);
-
-	if (AllActors.Num() > 0)
+	if (SeesTarget && InRangeOfTarget)
 	{
-		for (int i = 0; i < AllActors.Num(); i++)
-		{
-			if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Friendly)
-			{
-				FriendlyActors.Emplace(AllActors[i]);
-			}
-			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Neutral)
-			{
-				NeutralActors.Emplace(AllActors[i]);
-			}
-			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Hostile) {
-				HostileActors.Emplace(AllActors[i]);
-			}
-		}
-
-		//SortByDistance(HostileActors, GetPawn());
-
-		HostileActors.Sort([this](const auto& A, const auto& B) 
-			{
-			auto pawnLocation = GetPawn()->GetActorLocation();
-			return FVector::Dist(A.GetActorLocation(), pawnLocation) < FVector::Dist(B.GetActorLocation(), pawnLocation);
-			}
-		);
-
-		if (HostileActors.Num() > 0)
-		{
-			DEBUG_MSG(90, 0.02f, Orange, HostileActors[0]->GetName());
-			Target = HostileActors[0];
-			SeesTarget = true;
-
-			if (FVector::Dist(GetPawn()->GetActorLocation(), Target->GetActorLocation()) <= AttackRange)
-			{
-				InRangeOfTarget = true;
-			}
-		}
+		Cast<AEnemyCharacterV2>(GetPawn())->RotateToActor(Target, DeltaTime);
 	}
 
-	if (GEngine) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
-
-	GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
-	GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
-	GetBlackboardComponent()->SetValueAsBool(FName("InRangeOfTarget"), InRangeOfTarget);
+	if (!SeesTarget && SeesTargetCache)
+	{
+		LostTarget();
+	}
+	SeesTargetCache = SeesTarget;
 }
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const
@@ -170,5 +128,69 @@ void AEnemyAICV2::SortByDistance(TArray<AActor*>& ActorsToSort, AActor* Actor)
 			}
 		}
 	}
+}
+
+void AEnemyAICV2::DetermineTarget()
+{
+	AllActors.Empty();
+	FriendlyActors.Empty();
+	NeutralActors.Empty();
+	HostileActors.Empty();
+
+	Target = nullptr;
+	SeesTarget = false;
+	InRangeOfTarget = false;
+
+	GetPerceptionComponent()->GetCurrentlyPerceivedActors(UAISense_Sight::StaticClass(), AllActors);
+
+	if (AllActors.Num() > 0)
+	{
+		for (int i = 0; i < AllActors.Num(); i++)
+		{
+			if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Friendly)
+			{
+				FriendlyActors.Emplace(AllActors[i]);
+			}
+			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Neutral)
+			{
+				NeutralActors.Emplace(AllActors[i]);
+			}
+			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Hostile) {
+				HostileActors.Emplace(AllActors[i]);
+			}
+		}
+
+		//SortByDistance(HostileActors, GetPawn());
+
+		HostileActors.Sort([this](const auto& A, const auto& B)
+			{
+				auto pawnLocation = GetPawn()->GetActorLocation();
+				return FVector::Dist(A.GetActorLocation(), pawnLocation) < FVector::Dist(B.GetActorLocation(), pawnLocation);
+			}
+		);
+
+		if (HostileActors.Num() > 0)
+		{
+			//DEBUG_MSG(90, 0.02f, Orange, HostileActors[0]->GetName());
+			Target = HostileActors[0];
+			SeesTarget = true;
+
+			if (FVector::Dist(GetPawn()->GetActorLocation(), Target->GetActorLocation()) <= AttackRange)
+			{
+				InRangeOfTarget = true;
+			}
+		}
+	}
+
+	if (GEngine) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
+
+	GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
+	GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
+	GetBlackboardComponent()->SetValueAsBool(FName("InRangeOfTarget"), InRangeOfTarget);
+}
+
+void AEnemyAICV2::LostTarget()
+{
+	DEBUG_MSG(-1, 4, Orange, TEXT("Lost target!"));
 }
 

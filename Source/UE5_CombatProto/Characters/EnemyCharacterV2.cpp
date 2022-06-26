@@ -6,6 +6,7 @@
 #include "../Controllers/EnemyAICV2.h"
 #include "GameFramework/CharacterMovementComponent.h"
 //#include "Engine/EngineTypes.h"
+#include "Kismet/KismetMathLibrary.h"
 
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
@@ -28,13 +29,21 @@ void AEnemyCharacterV2::BeginPlay()
 	if (Ctrl)
 	{
 		Ctrl->SetGenericTeamId(FGenericTeamId(Team));
-		Ctrl->Shout();
+		//Ctrl->Shout();
 	}
 }
 
 void AEnemyCharacterV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void AEnemyCharacterV2::RotateToActor(AActor* Actor, float DeltaTime, float Speed)
+{
+	FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Actor->GetActorLocation());
+	Rotation = FRotator(0.0f, Rotation.Yaw, 0.0f); 
+
+	SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(GetActorRotation(), Rotation, DeltaTime, Speed));
 }
 
 void AEnemyCharacterV2::UniqueTakeDamage()

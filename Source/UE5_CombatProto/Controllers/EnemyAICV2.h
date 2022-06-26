@@ -55,8 +55,10 @@ protected:
 	UPROPERTY()
 		AActor* Target = nullptr;
 	UPROPERTY()
+		AActor* PreviousTarget = nullptr;
+
 		bool SeesTarget = false;
-	UPROPERTY()
+		bool SeesTargetCache = false;
 		bool InRangeOfTarget = false;
 
 	float AttackRange = 150.0f;
@@ -70,4 +72,8 @@ private:
 	TArray<AActor*> HostileActors;
 
 	void SortByDistance(TArray<AActor*> & ActorsToSort, AActor* Actor);
+
+	void DetermineTarget();
+
+	void LostTarget();
 };

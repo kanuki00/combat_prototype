@@ -39,6 +39,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Team")
 		int Team = 0;
+
+	void RotateToActor(AActor* Actor, float DeltaTime, float Speed = 480.0f);
 protected:
 	void UniqueTakeDamage() override;
 	void UniqueDeath() override;

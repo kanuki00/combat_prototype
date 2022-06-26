@@ -31,11 +31,14 @@ ABasePlayerCharacterV2::ABasePlayerCharacterV2()
 void ABasePlayerCharacterV2::BeginPlay()
 {
 	Super::BeginPlay();
+	CharacterFacing = GetActorRotation();
 }
 
 void ABasePlayerCharacterV2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (IsDead) return;
 
 	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime, 480.0f);
 

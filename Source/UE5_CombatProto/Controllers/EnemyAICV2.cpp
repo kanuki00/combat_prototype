@@ -175,6 +175,8 @@ void AEnemyAICV2::DetermineTarget()
 			Target = HostileActors[0];
 			SeesTarget = true;
 
+			GetBlackboardComponent()->SetValueAsVector(FName("LastKnownTargetLoc"), Target->GetActorLocation());
+
 			if (FVector::Dist(GetPawn()->GetActorLocation(), Target->GetActorLocation()) <= AttackRange)
 			{
 				InRangeOfTarget = true;
@@ -192,5 +194,7 @@ void AEnemyAICV2::DetermineTarget()
 void AEnemyAICV2::LostTarget()
 {
 	DEBUG_MSG(-1, 4, Orange, TEXT("Lost target!"));
+	// start searching for target upon losing it.
+	GetBlackboardComponent()->SetValueAsBool(FName("ShouldSearch"), true);
 }
 

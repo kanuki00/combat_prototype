@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 
 
+
 // *********************************
 // Constructor
 // *********************************
@@ -29,6 +30,11 @@ ABaseCharacterV2::ABaseCharacterV2()
 	// Cel Shade
 	GetMesh()->bRenderCustomDepth = true;
 	GetMesh()->CustomDepthStencilValue = 1;
+
+	CharMovComp = Cast<UCharacterMovementComponent>(GetMovementComponent());
+
+	DefaultMaxWalkSpeed = 600.0f;
+	CharMovComp->MaxWalkSpeed = DefaultMaxWalkSpeed;
 }
 
 // *********************************

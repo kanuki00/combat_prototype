@@ -45,7 +45,7 @@ protected:
 	void UniqueTakeDamage() override;
 	void UniqueDeath() override;
 
-	UCharacterMovementComponent* CharMovComp;
+	
 private:
 
 };

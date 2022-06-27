@@ -67,3 +67,15 @@ class UE5_COMBATPROTO_API UAttack : public UBTTaskNode
 
 	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };
+
+UCLASS()
+class UE5_COMBATPROTO_API USetBBEntryBool : public UBTTask_BlackboardBase
+{
+	GENERATED_BODY()
+
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
+	public:
+		UPROPERTY(EditAnywhere)
+			bool NewValue = false;
+};

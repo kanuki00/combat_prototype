@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "BaseCharacterV2.generated.h"
 
 #ifndef DEBUG_MSG
@@ -74,6 +75,9 @@ protected:
 	float S_A_CooldownTimer = 0.0f;
 	float S_A_Cooldown = 0.8f;
 
+	UCharacterMovementComponent* CharMovComp;
+	float DefaultMaxWalkSpeed;
+
 private:
 
 	UPROPERTY()
@@ -91,4 +95,6 @@ private:
 	bool TakeDamageCoolingDown = false;
 	float TakeDamageCooldownTimer = 0.0f;
 	float TakeDamageCooldown = 0.333f;
+
+
 };

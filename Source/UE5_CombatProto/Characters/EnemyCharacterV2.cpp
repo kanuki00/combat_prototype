@@ -4,14 +4,12 @@
 #include "EnemyCharacterV2.h"
 #include "Components/CapsuleComponent.h"
 #include "../Controllers/EnemyAICV2.h"
-#include "GameFramework/CharacterMovementComponent.h"
 //#include "Engine/EngineTypes.h"
 #include "Kismet/KismetMathLibrary.h"
 
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	CharMovComp = Cast<UCharacterMovementComponent>(GetMovementComponent());
 
 	CharMovComp->MaxWalkSpeed = 300.0f;
 

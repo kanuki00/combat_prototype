@@ -80,11 +80,9 @@ void UTargetingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 void UTargetingComponent::GetNewTarget()
 {
-	if (AllVisibleTargets.Num() > 0)
-	{
-		if(AllVisibleTargets[0]) Target = AllVisibleTargets[0];
-		IsTargeting = true;
-	}
+	if (AllVisibleTargets.Num() == 0) return;
+	if(AllVisibleTargets[0]) Target = AllVisibleTargets[0];
+	IsTargeting = true;
 }
 
 void UTargetingComponent::ClearTarget()

@@ -10,6 +10,14 @@
 
 class UAISenseConfig_Sight;
 
+UENUM(BlueprintType)
+enum class EReactionToEnemy : uint8
+{
+	ERTE_Attack UMETA(DisplayName = "Attack"),
+	ERTE_Caution UMETA(DisplayName = "Caution"),
+	ERTE_Flee UMETA(DisplayName = "Flee")
+};
+
 UCLASS()
 class UE5_COMBATPROTO_API AEnemyAICV2 : public AAIController
 {
@@ -40,6 +48,8 @@ public:
 	ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
 
 	FGenericTeamId GetGenericTeamId() const;
+
+	EReactionToEnemy InitialReaction;
 
 	void SetGenericTeamId(const FGenericTeamId& NewTeamID) override;
 

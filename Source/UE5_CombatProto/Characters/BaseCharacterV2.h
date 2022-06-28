@@ -52,6 +52,9 @@ public:
 	// 
 	bool CanMove = true;
 
+	UPROPERTY(BlueprintReadOnly)
+		float DefaultMaxWalkSpeed;
+
 	// Simple attack method. Used for development. Does a capsule trace in front of 
 	// character and applies damage to any characters that are in the trace.
 	void SimpleAttack(float Damage);
@@ -76,7 +79,7 @@ protected:
 	float S_A_Cooldown = 0.8f;
 
 	UCharacterMovementComponent* CharMovComp;
-	float DefaultMaxWalkSpeed;
+
 
 private:
 

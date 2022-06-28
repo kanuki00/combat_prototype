@@ -30,6 +30,8 @@ AEnemyAICV2::AEnemyAICV2()
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
 
 	TeamId = 2;
+
+	InitialReaction = EReactionToEnemy::ERTE_Caution;
 }
 
 void AEnemyAICV2::BeginPlay()
@@ -40,6 +42,9 @@ void AEnemyAICV2::BeginPlay()
 	{
 		RunBehaviorTree(BehaviorTree);
 	}
+
+	// Telling the blackboard what the initial reaction to an enemy is.
+	GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)InitialReaction);
 }
 
 void AEnemyAICV2::Tick(float DeltaTime)
@@ -184,7 +189,7 @@ void AEnemyAICV2::DetermineTarget()
 		}
 	}
 
-	if (GEngine) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
+	/* Debug */ if (GEngine) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
 
 	GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
 	GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);

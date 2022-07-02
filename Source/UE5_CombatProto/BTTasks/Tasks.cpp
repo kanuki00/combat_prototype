@@ -107,24 +107,60 @@ void UFindEscapeLocation::InitializeFromAsset(UBehaviorTree& Asset)
 
 EBTNodeResult::Type UFindEscapeLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
+	float ShortestEscDist = 300.0f;
 	FVector NewEscapeLoc;
 	AActor* Actor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(ActorToEscFromKey.GetSelectedKeyID()));
 	if(Actor == nullptr) return EBTNodeResult::Succeeded;
 	FVector EscDirection = OwnerComp.GetAIOwner()->GetPawn()->GetActorLocation() - Actor->GetActorLocation();
+	FVector PawnLoc = OwnerComp.GetAIOwner()->GetPawn()->GetActorLocation();
 	EscDirection = EscDirection.GetSafeNormal();
-	FVector TraceStart = OwnerComp.GetAIOwner()->GetPawn()->GetActorLocation();
 	FRotator Spread = FRotator(0.0f, UKismetMathLibrary::RandomFloat()*10-5, 0.0f);
 	TArray<AActor*> I; I.Init(OwnerComp.GetAIOwner()->GetPawn(), 1);
-	FHitResult HitResult;
-	UKismetSystemLibrary::LineTraceSingle(GetWorld(), TraceStart, Spread.RotateVector(TraceStart + EscDirection * 1000), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, HitResult, false);
+	FHitResult ForwardTraceHitResult;
+	// First trace directly away from target actor.
+	UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + Spread.RotateVector(EscDirection * 1000), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, ForwardTraceHitResult, false);
 	/* Debug *///if (GEngine && HitResult.GetActor()) GEngine->AddOnScreenDebugMessage(10, 0.2f, FColor::Orange, HitResult.GetActor()->GetName());
 	/* Debug *///if (GEngine) GEngine->AddOnScreenDebugMessage(11, 0.2f, FColor::Blue, I[0]->GetName());
-	if (HitResult.bBlockingHit)
+	if (ForwardTraceHitResult.bBlockingHit)
 	{
-		NewEscapeLoc = HitResult.Location;
+		if ((ForwardTraceHitResult.Location - PawnLoc).Length() < ShortestEscDist)
+		{
+			FHitResult RightTraceHitResult;
+			// Second trace to the right of the enemy. Traced if first trace distance is too short.
+			UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + FRotator(0.0f, -90.0f, 0.0f).RotateVector(Spread.RotateVector(EscDirection * 1000)), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, RightTraceHitResult, false, FLinearColor::Yellow);
+			if (RightTraceHitResult.bBlockingHit)
+			{
+				if ((RightTraceHitResult.Location - PawnLoc).Length() < ShortestEscDist)
+				{
+					FHitResult LeftTraceHitResult;
+					// Third trace to the enemy's left.
+					UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + FRotator(0.0f, 90.0f, 0.0f).RotateVector(Spread.RotateVector(EscDirection * 1000)), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, LeftTraceHitResult, false, FLinearColor::Blue);
+					if (LeftTraceHitResult.bBlockingHit)
+					{
+						NewEscapeLoc = LeftTraceHitResult.Location;
+					}
+					else
+					{
+						NewEscapeLoc = LeftTraceHitResult.TraceEnd;
+					}
+				}
+				else 
+				{
+					NewEscapeLoc = RightTraceHitResult.Location;
+				}
+			}
+			else
+			{
+				NewEscapeLoc = RightTraceHitResult.TraceEnd;
+			}
+		}
+		else
+		{
+			NewEscapeLoc = ForwardTraceHitResult.Location;
+		}
 	}
 	else {
-		NewEscapeLoc = HitResult.TraceEnd;
+		NewEscapeLoc = ForwardTraceHitResult.TraceEnd;
 	}
 	OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(LocationKey.GetSelectedKeyID(), NewEscapeLoc);
 	return EBTNodeResult::Succeeded;

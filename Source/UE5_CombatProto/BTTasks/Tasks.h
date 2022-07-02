@@ -79,3 +79,18 @@ class UE5_COMBATPROTO_API USetBBEntryBool : public UBTTask_BlackboardBase
 		UPROPERTY(EditAnywhere)
 			bool NewValue = false;
 };
+
+UCLASS()
+class UE5_COMBATPROTO_API UFindEscapeLocation : public UBTTask_BlackboardBase
+{
+	GENERATED_BODY()
+
+	void InitializeFromAsset(UBehaviorTree& Asset) override;
+	
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+protected:
+	UPROPERTY(EditAnywhere, Category = Blackboard)
+		struct FBlackboardKeySelector ActorToEscFromKey;
+	UPROPERTY(EditAnywhere, Category = Blackboard)
+		struct FBlackboardKeySelector LocationKey;
+};

@@ -14,8 +14,8 @@ AEnemyCharacterV2::AEnemyCharacterV2()
 	CharMovComp->MaxWalkSpeed = 300.0f;
 
 	bUseControllerRotationYaw = false;
-	CharMovComp->bUseControllerDesiredRotation = false;
-	CharMovComp->bOrientRotationToMovement = true;
+	CharMovComp->bUseControllerDesiredRotation = true;
+	CharMovComp->bOrientRotationToMovement = false;
 }
 
 void AEnemyCharacterV2::BeginPlay()

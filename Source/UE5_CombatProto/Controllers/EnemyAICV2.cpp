@@ -31,7 +31,7 @@ AEnemyAICV2::AEnemyAICV2()
 
 	TeamId = 2;
 
-	InitialReaction = EReactionToEnemy::ERTE_Caution;
+	InitialReaction = EReactionToEnemy::ERTE_Flee;
 }
 
 void AEnemyAICV2::BeginPlay()

@@ -108,6 +108,9 @@ void UFindEscapeLocation::InitializeFromAsset(UBehaviorTree& Asset)
 EBTNodeResult::Type UFindEscapeLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	float ShortestEscDist = 300.0f;
+	float EscDist = 1000.0f;
+	EDrawDebugTrace::Type Debugmode = EDrawDebugTrace::ForDuration;
+
 	FVector NewEscapeLoc;
 	AActor* Actor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(ActorToEscFromKey.GetSelectedKeyID()));
 	if(Actor == nullptr) return EBTNodeResult::Succeeded;
@@ -118,40 +121,62 @@ EBTNodeResult::Type UFindEscapeLocation::ExecuteTask(UBehaviorTreeComponent& Own
 	TArray<AActor*> I; I.Init(OwnerComp.GetAIOwner()->GetPawn(), 1);
 	FHitResult ForwardTraceHitResult;
 	// First trace directly away from target actor.
-	UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + Spread.RotateVector(EscDirection * 1000), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, ForwardTraceHitResult, false);
-	/* Debug *///if (GEngine && HitResult.GetActor()) GEngine->AddOnScreenDebugMessage(10, 0.2f, FColor::Orange, HitResult.GetActor()->GetName());
-	/* Debug *///if (GEngine) GEngine->AddOnScreenDebugMessage(11, 0.2f, FColor::Blue, I[0]->GetName());
+	UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + Spread.RotateVector(EscDirection * EscDist), ETraceTypeQuery::TraceTypeQuery1, true, I, Debugmode, ForwardTraceHitResult, false);
+	
 	if (ForwardTraceHitResult.bBlockingHit)
 	{
+		// Trace another line along the tangent of first hit if the first trace distance is too short.
 		if ((ForwardTraceHitResult.Location - PawnLoc).Length() < ShortestEscDist)
 		{
+			FVector SecondaryTracesStart = ForwardTraceHitResult.Location + ForwardTraceHitResult.Normal * 40.0f;
 			FHitResult RightTraceHitResult;
-			// Second trace to the right of the enemy. Traced if first trace distance is too short.
-			UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + FRotator(0.0f, -90.0f, 0.0f).RotateVector(Spread.RotateVector(EscDirection * 1000)), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, RightTraceHitResult, false, FLinearColor::Yellow);
-			if (RightTraceHitResult.bBlockingHit)
+			FHitResult LeftTraceHitResult;
+			// Trace to the right of forward trace location
+			UKismetSystemLibrary::LineTraceSingle(GetWorld(), SecondaryTracesStart, 
+			SecondaryTracesStart + FRotator(0.0f, -90.0f, 0.0f).RotateVector(ForwardTraceHitResult.Normal * EscDist), 
+			ETraceTypeQuery::TraceTypeQuery1, true, I, Debugmode, RightTraceHitResult, false, FLinearColor::Yellow);
+
+			// Trace to the left of forward trace location
+			UKismetSystemLibrary::LineTraceSingle(GetWorld(), SecondaryTracesStart, 
+			SecondaryTracesStart + FRotator(0.0f, 90.0f, 0.0f).RotateVector(ForwardTraceHitResult.Normal * EscDist), 
+			ETraceTypeQuery::TraceTypeQuery1, true, I, Debugmode, LeftTraceHitResult, false, FLinearColor::Blue);
+
+			// Choose by likeness
+			if (FVector::DotProduct((ForwardTraceHitResult.TraceEnd - ForwardTraceHitResult.TraceStart).GetSafeNormal(), (FRotator(0.0f, -90.0f, 0.0f).RotateVector(ForwardTraceHitResult.Normal * EscDist)).GetSafeNormal()) > 0.0f)
 			{
-				if ((RightTraceHitResult.Location - PawnLoc).Length() < ShortestEscDist)
+				if (RightTraceHitResult.bBlockingHit)
 				{
-					FHitResult LeftTraceHitResult;
-					// Third trace to the enemy's left.
-					UKismetSystemLibrary::LineTraceSingle(GetWorld(), PawnLoc, PawnLoc + FRotator(0.0f, 90.0f, 0.0f).RotateVector(Spread.RotateVector(EscDirection * 1000)), ETraceTypeQuery::TraceTypeQuery1, true, I, EDrawDebugTrace::ForDuration, LeftTraceHitResult, false, FLinearColor::Blue);
-					if (LeftTraceHitResult.bBlockingHit)
+					if ((RightTraceHitResult.Location - PawnLoc).Length() < ShortestEscDist)
 					{
-						NewEscapeLoc = LeftTraceHitResult.Location;
+						NewEscapeLoc = LeftTraceHitResult.bBlockingHit ? LeftTraceHitResult.Location : LeftTraceHitResult.TraceEnd;
 					}
 					else
 					{
-						NewEscapeLoc = LeftTraceHitResult.TraceEnd;
+						NewEscapeLoc = RightTraceHitResult.Location;
 					}
 				}
-				else 
+				else
 				{
-					NewEscapeLoc = RightTraceHitResult.Location;
+					NewEscapeLoc = RightTraceHitResult.TraceEnd;
 				}
 			}
 			else
 			{
-				NewEscapeLoc = RightTraceHitResult.TraceEnd;
+				if (LeftTraceHitResult.bBlockingHit)
+				{
+					if ((LeftTraceHitResult.Location - PawnLoc).Length() < ShortestEscDist)
+					{
+						NewEscapeLoc = RightTraceHitResult.bBlockingHit ? RightTraceHitResult.Location : RightTraceHitResult.TraceEnd;
+					}
+					else
+					{
+						NewEscapeLoc = LeftTraceHitResult.Location;
+					}
+				}
+				else
+				{
+					NewEscapeLoc = LeftTraceHitResult.TraceEnd;
+				}
 			}
 		}
 		else

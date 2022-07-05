@@ -14,6 +14,7 @@
 AEnemyAICV2::AEnemyAICV2()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	Debug = true;
 
 	SetPerceptionComponent(*CreateDefaultSubobject<UAIPerceptionComponent>(FName("Perception Cmp")));
 	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(FName("Sight Config"));
@@ -63,6 +64,13 @@ void AEnemyAICV2::Tick(float DeltaTime)
 		LostTarget();
 	}
 	SeesTargetCache = SeesTarget;
+
+	/* DEBUG SECTION */
+	if (Debug)
+	{
+		FString FP = GetFocalPoint().ToString();
+		DEBUG_MSG(56, 0.02f, Orange, FP);
+	}
 }
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const

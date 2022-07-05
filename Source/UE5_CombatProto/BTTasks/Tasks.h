@@ -94,3 +94,13 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Blackboard)
 		struct FBlackboardKeySelector LocationKey;
 };
+
+UCLASS()
+class UE5_COMBATPROTO_API USetControllerFocus : public UBTTask_BlackboardBase
+{
+	GENERATED_BODY()
+
+	USetControllerFocus();
+
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+};

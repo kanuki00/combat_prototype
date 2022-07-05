@@ -190,3 +190,16 @@ EBTNodeResult::Type UFindEscapeLocation::ExecuteTask(UBehaviorTreeComponent& Own
 	OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(LocationKey.GetSelectedKeyID(), NewEscapeLoc);
 	return EBTNodeResult::Succeeded;
 }
+
+USetControllerFocus::USetControllerFocus()
+{
+	NodeName = "Set Controller Focus";
+}
+
+EBTNodeResult::Type USetControllerFocus::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+{
+	FVector Location = OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Vector>(BlackboardKey.GetSelectedKeyID());
+	//if (BlackboardKey == NULL) return EBTNodeResult::Failed;
+	OwnerComp.GetAIOwner()->SetFocalPoint(Location, EAIFocusPriority::Gameplay);
+	return EBTNodeResult::Succeeded;
+}

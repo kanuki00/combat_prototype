@@ -44,7 +44,7 @@ public:
 	// *********************************
 public:
 	// Taking damage. Overridden from AActor.
-	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor * DamageCauser) override;
+	float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController* EventInstigator, AActor * DamageCauser) override;
 	// Is Character stunned? If true, character shouldn't be able to move or rotate.
 	bool IsStunned = false;
 	//
@@ -61,7 +61,7 @@ public:
 
 protected:
 	// Character implements something unique to do upon taking damage.
-	virtual void UniqueTakeDamage();
+	virtual void UniqueTakeDamage(AActor* DamageCauser);
 
 	// Method to flip a bool from a defined value after a certain delay. 
 	// Timer and Delay variables must be created for each bool that gets this functionality.

@@ -44,9 +44,11 @@ void AEnemyCharacterV2::RotateToActor(AActor* Actor, float DeltaTime, float Spee
 	SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(GetActorRotation(), Rotation, DeltaTime, Speed));
 }
 
-void AEnemyCharacterV2::UniqueTakeDamage()
+void AEnemyCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
 {
-	//DEBUG_MSG(-1, 4, Red, TEXT("EnemyV2 Took Unique Damage"));
+	// Focus the controller on damage causer when receiving damage.
+	AAIController* AIC = Cast<AAIController>(GetController());
+	AIC->SetFocus(DamageCauser, EAIFocusPriority::Gameplay);
 }
 
 void AEnemyCharacterV2::UniqueDeath()

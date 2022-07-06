@@ -4,11 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "BaseCharacterV2.h"
+#include "../Controllers/EnemyAICV2.h"
 #include "EnemyCharacterV2.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class UE5_COMBATPROTO_API AEnemyCharacterV2 : public ABaseCharacterV2
 {
@@ -37,14 +35,16 @@ public:
 	// *********************************
 public:
 
-	UPROPERTY(EditAnywhere, Category = "Team")
+	UPROPERTY(EditAnywhere, Category = "AI")
 		int Team = 0;
+
+	UPROPERTY(EditAnywhere, Category = "AI")
+		EReactionToEnemy PawnInitialReaction = EReactionToEnemy::ERTE_Attack;
 
 	void RotateToActor(AActor* Actor, float DeltaTime, float Speed = 480.0f);
 protected:
-	void UniqueTakeDamage() override;
+	void UniqueTakeDamage(AActor* DamageCauser) override;
 	void UniqueDeath() override;
-
 	
 private:
 

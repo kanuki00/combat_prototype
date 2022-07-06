@@ -76,7 +76,7 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 	
 	TakeDamageCoolingDown = true;
 	Health -= DamageAmount; 
-	UniqueTakeDamage();
+	UniqueTakeDamage(DamageCauser);
 	if (Health <= 0.0f)
 	{
 		Death();
@@ -85,7 +85,7 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 	return DamageAmount;
 }
 
-void ABaseCharacterV2::UniqueTakeDamage()
+void ABaseCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
 {
 }
 

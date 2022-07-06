@@ -29,10 +29,6 @@ AEnemyAICV2::AEnemyAICV2()
 	SightConfig->PeripheralVisionAngleDegrees = 70.0f;
 
 	GetPerceptionComponent()->ConfigureSense(*SightConfig);
-
-	TeamId = 2;
-
-	InitialReaction = EReactionToEnemy::ERTE_Flee;
 }
 
 void AEnemyAICV2::BeginPlay()
@@ -43,6 +39,9 @@ void AEnemyAICV2::BeginPlay()
 	{
 		RunBehaviorTree(BehaviorTree);
 	}
+
+	// Get initial reaction from pawn
+	if (AEnemyCharacterV2* CP = Cast<AEnemyCharacterV2>(GetPawn())) InitialReaction = CP->PawnInitialReaction;
 
 	// Telling the blackboard what the initial reaction to an enemy is.
 	GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)InitialReaction);

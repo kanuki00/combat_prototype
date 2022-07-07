@@ -80,8 +80,12 @@ protected:
 
 	UCharacterMovementComponent* CharMovComp;
 
-
-private:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		// If charactershould spawn with weapon in hand.
+		bool SpawnWithWeapon = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		// Determine what weapon character is holding
+		TSubclassOf<AActor> WeaponClass;
 
 	UPROPERTY()
 		// Characters maximum health.
@@ -89,11 +93,13 @@ private:
 	UPROPERTY()
 		// Characters health.
 		float Health = 100.0f;
-	
+
 	UPROPERTY()
 		// Can character take damage? Turn this to false if you want character to be invincible.
 		bool CanTakeDamage = true;
-	
+
+private:
+
 	// Cooldown for damage taking, so that damage cant be applied unnececarily fast.
 	bool TakeDamageCoolingDown = false;
 	float TakeDamageCooldownTimer = 0.0f;

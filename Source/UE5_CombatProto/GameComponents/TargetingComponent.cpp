@@ -51,13 +51,18 @@ void UTargetingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 
 
-		if (IsTargeting)
+		if (IsTargeting && Cast<ABaseCharacterV2>(Target)->IsDead == false)
 		{
 			SuggestedTarget = nullptr;
 
 			// Rotating camera to target when targeting
 			LookAtTarget(DeltaTime);
 			RotateOwnerToTarget(DeltaTime);
+		}
+		// Stop targeting upon target death.
+		else if (IsTargeting && Cast<ABaseCharacterV2>(Target)->IsDead == true)
+		{
+			ClearTarget();
 		}
 		else
 		{

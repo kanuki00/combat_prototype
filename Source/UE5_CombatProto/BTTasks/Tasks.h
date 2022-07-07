@@ -66,6 +66,9 @@ class UE5_COMBATPROTO_API UAttack : public UBTTaskNode
 	GENERATED_BODY()
 
 	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+public:
+	UPROPERTY(EditAnywhere, Category = "Debug")
+		bool PerformDebugAttack = true;
 };
 
 UCLASS()
@@ -84,6 +87,7 @@ UCLASS()
 class UE5_COMBATPROTO_API UFindEscapeLocation : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
+	UFindEscapeLocation();
 
 	void InitializeFromAsset(UBehaviorTree& Asset) override;
 	
@@ -99,8 +103,6 @@ UCLASS()
 class UE5_COMBATPROTO_API USetControllerFocus : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
-
 	USetControllerFocus();
-
 	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

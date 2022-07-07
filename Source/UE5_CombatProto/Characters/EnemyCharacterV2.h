@@ -45,7 +45,9 @@ public:
 protected:
 	void UniqueTakeDamage(AActor* DamageCauser) override;
 	void UniqueDeath() override;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		TArray<UAnimMontage*> AttackAnimations;
 private:
 
 };

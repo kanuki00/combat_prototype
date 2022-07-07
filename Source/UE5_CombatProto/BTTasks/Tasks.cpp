@@ -79,14 +79,27 @@ EBTNodeResult::Type UGetRandomLocationInRange::ExecuteTask(UBehaviorTreeComponen
 EBTNodeResult::Type UAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	AEnemyCharacterV2* ControlledEnemy = Cast<AEnemyCharacterV2>(OwnerComp.GetAIOwner()->GetPawn());
-	ControlledEnemy->SimpleAttack(25.0f);
-	return EBTNodeResult::Type();
+	if (!ControlledEnemy) return EBTNodeResult::Failed;
+	if (PerformDebugAttack)
+	{
+		ControlledEnemy->SimpleAttack(25.0f);
+	}
+	else
+	{
+
+	}
+	return EBTNodeResult::Succeeded;
 }
 
 EBTNodeResult::Type USetBBEntryBool::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Bool>(BlackboardKey.GetSelectedKeyID(), NewValue);
 	return EBTNodeResult::Succeeded;
+}
+
+UFindEscapeLocation::UFindEscapeLocation()
+{
+	NodeName = "Find Escape Location";
 }
 
 void UFindEscapeLocation::InitializeFromAsset(UBehaviorTree& Asset)
@@ -104,12 +117,12 @@ void UFindEscapeLocation::InitializeFromAsset(UBehaviorTree& Asset)
 		UE_LOG(LogBehaviorTree, Warning, TEXT("Can't initialize task: %s, make sure that behavior tree specifies blackboard asset!"), *GetName());
 	}
 }
-
+/* Calculating where enemy should escape to */
 EBTNodeResult::Type UFindEscapeLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	float ShortestEscDist = 300.0f;
-	float EscDist = 1000.0f;
-	EDrawDebugTrace::Type Debugmode = EDrawDebugTrace::ForDuration;
+	float EscDist = 800.0f;
+	EDrawDebugTrace::Type Debugmode = EDrawDebugTrace::None;
 
 	FVector NewEscapeLoc;
 	AActor* Actor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(ActorToEscFromKey.GetSelectedKeyID()));

@@ -45,9 +45,6 @@ public:
 	void Input1ReleasedBind();
 	bool Input1Pressed = false;
 
-	UPROPERTY(BlueprintReadOnly)
-		FVector MovementInput;
-
 	FVector CameraInput;
 
 protected:

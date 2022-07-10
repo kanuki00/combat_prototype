@@ -55,9 +55,16 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 		float DefaultMaxWalkSpeed;
 
+	UPROPERTY(BlueprintReadOnly)
+		bool StrafeEnabled = false;
+
 	// Simple attack method. Used for development. Does a capsule trace in front of 
 	// character and applies damage to any characters that are in the trace.
 	void SimpleAttack(float Damage);
+
+	// Character's desired movement input. 
+	UPROPERTY(BlueprintReadOnly)
+		FVector MovementInput;
 
 protected:
 	// Character implements something unique to do upon taking damage.

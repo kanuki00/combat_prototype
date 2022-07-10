@@ -33,6 +33,7 @@ void APlayerCharacterV2::TargetPressedBind()
 {
 	CanOrientToMovementInput = false;
 	UseWalkMovementController = true;
+	StrafeEnabled = true; // for animbp
 	TargetingComponent->GetNewTarget();
 }
 
@@ -40,6 +41,7 @@ void APlayerCharacterV2::TargetReleasedBind()
 {
 	CanOrientToMovementInput = true;
 	UseWalkMovementController = false;
+	StrafeEnabled = false; // for animbp
 	TargetingComponent->ClearTarget();
 }
 

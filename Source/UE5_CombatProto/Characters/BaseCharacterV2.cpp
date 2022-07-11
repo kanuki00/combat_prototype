@@ -43,6 +43,15 @@ ABaseCharacterV2::ABaseCharacterV2()
 void ABaseCharacterV2::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Spawning a weapon in hand upon game start.
+	if (!SpawnWithWeapon || WeaponClass == nullptr) return;
+	const FVector SLoc = FVector();
+	const FRotator SRot = FRotator();
+	Weapon = GetWorld()->SpawnActor<AActor>(WeaponClass, SLoc, SRot);
+	const FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, false);
+	Weapon->AttachToComponent(GetMesh(), Rules, FName("equip_hand_right"));
+	if (Weapon) IsArmed = true; // If the spawning was succesfull, the character is armed.
 }
 
 // *********************************

@@ -7,7 +7,7 @@
 // Sets default values
 AWeapon::AWeapon()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Setting up components.
 	PrimaryActorTick.bCanEverTick = true;
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Actor Root"));
@@ -28,12 +28,6 @@ void AWeapon::BeginPlay()
 	Super::BeginPlay();
 
 	SetOwner(GetInstigator());
-
-	Ow_Imp_CI = GetOwner()->Implements<UCombatInterface>();
-
-	//FString own = GetOwner()->GetName();
-	//if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, own);
-	
 }
 
 // Called every frame
@@ -43,33 +37,10 @@ void AWeapon::Tick(float DeltaTime)
 
 	// Weapon checks every frame what actors it is overlapping. Excludes owner from list.
 	OverlappedActors.Empty();
-	/*
-	TArray<AActor*> OverlapsTemp;
-	Collision->GetOverlappingActors(OverlapsTemp);
-	if (OverlapsTemp.Num() > 0)
-	{
-		for (int i = 0; i < OverlapsTemp.Num(); i++)
-		{
-			if (OverlapsTemp[i] != GetOwner())
-			{
-				OverlappedActors.Emplace(OverlapsTemp[i]);
-			}
-		}
-
-		if (OverlappedActors.Num() > 0)
-		{
-			FString a = OverlappedActors[0]->GetName();
-			if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, a);
-		}
-	}
-	*/
 }
 
 void AWeapon::NotifyActorBeginOverlap(AActor* OtherActor)
 {
-	if (Ow_Imp_CI && OtherActor != GetOwner())
-	{
-		Cast<ICombatInterface>(GetOwner())->WeaponHit(OtherActor);
-	}
+
 }
 

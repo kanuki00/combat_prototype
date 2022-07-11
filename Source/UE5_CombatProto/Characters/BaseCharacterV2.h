@@ -94,6 +94,12 @@ protected:
 		// Determine what weapon character is holding
 		TSubclassOf<AActor> WeaponClass;
 
+	// Pointer that stores whichever weapon that the character is holding.
+	AActor* Weapon;
+
+	UPROPERTY(BlueprintReadOnly)
+		bool IsArmed = false;
+
 	UPROPERTY()
 		// Characters maximum health.
 		float MaxHealth = 100.0f;

@@ -44,4 +44,10 @@ public:
 
 protected:
 	virtual void UniqueDeath() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		UAnimMontage* FastAttackAnimation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
+		UAnimMontage* StrongAttackAnimation;
 };

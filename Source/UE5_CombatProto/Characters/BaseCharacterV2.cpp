@@ -98,7 +98,7 @@ void ABaseCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
 {
 }
 
-void ABaseCharacterV2::FlipBoolAfterDelay(bool& Bool, bool ValueToFlipFrom, float& Timer, float& Delay, float DeltaTime)
+void ABaseCharacterV2::FlipBoolAfterDelay(bool& Bool, bool ValueToFlipFrom, float& Timer, float Delay, float DeltaTime)
 {
 	if (Bool == ValueToFlipFrom)
 	{

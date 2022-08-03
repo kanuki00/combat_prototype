@@ -27,6 +27,13 @@ void APlayerCharacterV2::Tick(float DeltaTime)
 	Input2WasPressed = false;
 	if (Input2Pressed && !Input2PressedCache) Input2WasPressed = true;
 	Input2PressedCache = Input2Pressed;
+
+	// most likely dont need two of these...
+	CurrentFastAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection();
+	CurrentStrongAttackSection = GetMesh()->GetAnimInstance()->Montage_GetCurrentSection();
+
+	FlipBoolAfterDelay(StrongAttackCoolingDown, true, StrongAttackCoolDownTimer, 0.5f, DeltaTime);
+	FlipBoolAfterDelay(FastAttackCoolingDown, true, FastAttackCoolDownTimer, 0.5f, DeltaTime);
 }
 
 void APlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -56,7 +63,11 @@ void APlayerCharacterV2::TargetReleasedBind()
 void APlayerCharacterV2::Input1PressedBind()
 {
 	Input1Pressed = true;
-	if(CanStartFastAttack) StartFastAttack();
+	if (CanStartFastAttack && !FastAttackCoolingDown)
+	{
+		StartFastAttack();
+		if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("StartedFast"));
+	}
 }
 
 void APlayerCharacterV2::Input1ReleasedBind()
@@ -67,7 +78,11 @@ void APlayerCharacterV2::Input1ReleasedBind()
 void APlayerCharacterV2::Input2PressedBind()
 {
 	Input2Pressed = true;
-	if(CanStartStrongAttack) StartStrongAttack();
+	if (CanStartStrongAttack && !StrongAttackCoolingDown) 
+	{
+		StartStrongAttack();
+		if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("StartedStrong"));
+	}
 }
 
 void APlayerCharacterV2::Input2ReleasedBind()
@@ -108,13 +123,11 @@ void APlayerCharacterV2::CheckAttackPressed()
 	{
 		ShouldContinueFastAttack = true;
 		ShouldContinueStrongAttack = false;
-		DEBUG_MSG(TEXT("ChoseFast"));
 	}
 	else if (Input2WasPressed)
 	{
 		ShouldContinueFastAttack = false;
 		ShouldContinueStrongAttack = true;
-		DEBUG_MSG(TEXT("ChoseStrong"));
 	}
 }
 

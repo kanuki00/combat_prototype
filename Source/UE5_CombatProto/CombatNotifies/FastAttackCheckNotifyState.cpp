@@ -34,9 +34,17 @@ void UFastAttackCheckNotifyState::NotifyTick(USkeletalMeshComponent* MeshComp, U
 
 void UFastAttackCheckNotifyState::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+	// V1 Deprecated
 	if (Cast<APlayerCharacter>(MeshComp->GetOwner())) {
 		APlayerCharacter* Player = Cast<APlayerCharacter>(MeshComp->GetOwner());
 		//Player->ContinueFastAttack();
 		Player->ContinueAttack();
+	}
+
+	// V2
+	APlayerCharacterV2* PlayerV2 = Cast<APlayerCharacterV2>(MeshComp->GetOwner());
+	if (PlayerV2)
+	{
+		PlayerV2->ContinueAttack();
 	}
 }

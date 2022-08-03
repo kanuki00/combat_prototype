@@ -77,6 +77,9 @@ public:
 	bool FastAttackCoolingDown = false;
 	bool StrongAttackCoolingDown = false;
 
+	float FastAttackCoolDownTimer = 0.0f;
+	float StrongAttackCoolDownTimer = 0.0f;
+
 	FName CurrentStrongAttackSection;
 	FName CurrentStrongAttackSectionCache;
 

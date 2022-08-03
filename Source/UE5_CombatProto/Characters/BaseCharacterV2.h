@@ -73,7 +73,7 @@ protected:
 	// Method to flip a bool from a defined value after a certain delay. 
 	// Timer and Delay variables must be created for each bool that gets this functionality.
 	// Call in tick.
-	void FlipBoolAfterDelay(bool& Bool, bool ValueToFlipFrom, float& Timer, float& Delay, float DeltaTime);
+	void FlipBoolAfterDelay(bool& Bool, bool ValueToFlipFrom, float& Timer, float Delay, float DeltaTime);
 
 	// Death is called when characters health falls to 0 upon taking damage.
 	void Death();

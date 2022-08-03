@@ -3,6 +3,7 @@
 
 #include "AttackSetterNotifies.h"
 #include "../Characters/V1/BaseCharacter.h"
+#include "../Characters/BaseCharacterV2.h"
 
 void UEnableCharacterRotation::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
@@ -12,6 +13,7 @@ void UEnableCharacterRotation::Notify(USkeletalMeshComponent* MeshComp, UAnimSeq
 		Character = Cast<ABaseCharacter>(MeshComp->GetOwner());
 		Character->SetCharacterRotationEnabled(true);
 	}
+
 }
 
 void UDisableCharacterRotation::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)

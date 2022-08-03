@@ -41,9 +41,13 @@ public:
 	void LookUpBind(float Axis);
 	void LookRightBind(float Axis);
 
-	void Input1PressedBind();
-	void Input1ReleasedBind();
+	virtual void Input1PressedBind();
+	virtual void Input1ReleasedBind();
 	bool Input1Pressed = false;
+
+	virtual void Input2PressedBind();
+	virtual void Input2ReleasedBind();
+	bool Input2Pressed = false;
 
 	FVector CameraInput;
 
@@ -61,13 +65,13 @@ protected:
 	// *********************************
 public:
 protected:
-	bool CanOrientToMovementInput = true;
+	bool CanOrientToStickInput = true;
 
 	bool UseWalkMovementController = false;
 private:
 
 	FRotator CharacterFacing;
-	void OrientToMovementInput(float DeltaTime, float RotationSpeed = 720.0f);
+	void OrientToStickInput(float DeltaTime, float RotationSpeed = 720.0f);
 
 	void WalkMovementController();
 	void WalkMovementFacing();

@@ -38,16 +38,57 @@ public:
 	void TargetPressedBind();
 	void TargetReleasedBind();
 
+	void Input1PressedBind() override;
+	void Input1ReleasedBind() override;
+
+	void Input2PressedBind() override;
+	void Input2ReleasedBind() override;
+
+	bool Input1PressedCache = false;
+	bool Input2PressedCache = false;
+
+	bool Input1WasPressed = false;
+	bool Input2WasPressed = false;
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		UTargetingComponent* TargetingComponent;
+
+	void StartFastAttack();
+
+	void StartStrongAttack();
+
+	void CheckAttackPressed();
+
+	void ContinueAttack();
+
+	void TransToStrongAttack();
+
+	void TransToFastAttack();
+
+	void EndAttack();
+
+	bool CanStartFastAttack = true;
+	bool CanStartStrongAttack = true;
+
+	bool ShouldContinueFastAttack = false;
+	bool ShouldContinueStrongAttack = false;
+
+	bool FastAttackCoolingDown = false;
+	bool StrongAttackCoolingDown = false;
+
+	FName CurrentStrongAttackSection;
+	FName CurrentStrongAttackSectionCache;
+
+	FName CurrentFastAttackSection;
+	FName CurrentFastAttackSectionCache;
 
 protected:
 	virtual void UniqueDeath() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-		UAnimMontage* FastAttackAnimation;
+		UAnimMontage* FastAttackAnimation = nullptr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-		UAnimMontage* StrongAttackAnimation;
+		UAnimMontage* StrongAttackAnimation = nullptr;
 };

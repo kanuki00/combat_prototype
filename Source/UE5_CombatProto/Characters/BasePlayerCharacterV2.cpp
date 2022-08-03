@@ -40,7 +40,7 @@ void ABasePlayerCharacterV2::Tick(float DeltaTime)
 
 	if (IsDead) return;
 
-	if(CanOrientToMovementInput) OrientToMovementInput(DeltaTime, 480.0f);
+	if(CanOrientToStickInput) OrientToStickInput(DeltaTime, 480.0f);
 
 	if (UseWalkMovementController)
 	{
@@ -68,6 +68,8 @@ void ABasePlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 	PlayerInputComponent->BindAction("Input1", IE_Pressed, this, &ABasePlayerCharacterV2::Input1PressedBind);
 	PlayerInputComponent->BindAction("Input1", IE_Released, this, &ABasePlayerCharacterV2::Input1ReleasedBind);
+	PlayerInputComponent->BindAction("Input2", IE_Pressed, this, &ABasePlayerCharacterV2::Input2PressedBind);
+	PlayerInputComponent->BindAction("Input2", IE_Released, this, &ABasePlayerCharacterV2::Input2ReleasedBind);
 }
 
 void ABasePlayerCharacterV2::MoveForwardBind(float Axis)
@@ -101,7 +103,15 @@ void ABasePlayerCharacterV2::Input1ReleasedBind()
 	Input1Pressed = false;
 }
 
-void ABasePlayerCharacterV2::OrientToMovementInput(float DeltaTime, float RotationSpeed)
+void ABasePlayerCharacterV2::Input2PressedBind()
+{
+}
+
+void ABasePlayerCharacterV2::Input2ReleasedBind()
+{
+}
+
+void ABasePlayerCharacterV2::OrientToStickInput(float DeltaTime, float RotationSpeed)
 {
 	if (MovementInput.Length() > 0.1f)
 	{

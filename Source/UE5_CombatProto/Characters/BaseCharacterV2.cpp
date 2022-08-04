@@ -51,6 +51,7 @@ void ABaseCharacterV2::BeginPlay()
 	Weapon = GetWorld()->SpawnActor<AActor>(WeaponClass, SLoc, SRot);
 	const FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, false);
 	Weapon->AttachToComponent(GetMesh(), Rules, FName("equip_hand_right"));
+	Weapon->SetOwner(this);
 	if (Weapon) IsArmed = true; // If the spawning was succesfull, the character is armed.
 }
 
@@ -79,7 +80,7 @@ void ABaseCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	/* Debug *///if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
+	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
 
 	if (!CanTakeDamage && TakeDamageCoolingDown) { return 0.0f; }
 	
@@ -92,6 +93,17 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 	}
 
 	return DamageAmount;
+}
+
+void ABaseCharacterV2::WeaponDamage(TArray<AActor*> Overlapped)
+{
+	if (!CanApplyDamage) return;
+	FDamageEvent DmgEvent;
+	for (AActor* Actor : Overlapped)
+	{
+		Actor->TakeDamage(30.0f, DmgEvent, GetController(), this);
+		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, TEXT("Applied Weapon Damage"));
+	}
 }
 
 void ABaseCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
@@ -115,6 +127,14 @@ void ABaseCharacterV2::Death()
 {
 	IsDead = true;
 	Health = 0.0f;
+	// Destroying all attached actors. ie. weapons.
+	TArray<AActor*> AttachedActors;
+	GetAttachedActors(AttachedActors);
+	for (AActor* A : AttachedActors)
+	{
+		A->Destroy();
+	}
+	// Calling unique death functionality.
 	UniqueDeath();
 }
 

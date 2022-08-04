@@ -64,9 +64,8 @@ protected:
 	// Character functionality 
 	// *********************************
 public:
-protected:
 	bool CanOrientToStickInput = true;
-
+protected:
 	bool UseWalkMovementController = false;
 private:
 

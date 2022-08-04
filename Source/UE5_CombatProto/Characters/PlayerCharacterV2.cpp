@@ -34,6 +34,8 @@ void APlayerCharacterV2::Tick(float DeltaTime)
 
 	FlipBoolAfterDelay(StrongAttackCoolingDown, true, StrongAttackCoolDownTimer, 0.5f, DeltaTime);
 	FlipBoolAfterDelay(FastAttackCoolingDown, true, FastAttackCoolDownTimer, 0.5f, DeltaTime);
+
+	/* Debug */ if (GEngine && CanApplyDamage && false)GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::Blue, TEXT("Damaging Enabled"));
 }
 
 void APlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -66,7 +68,7 @@ void APlayerCharacterV2::Input1PressedBind()
 	if (CanStartFastAttack && !FastAttackCoolingDown)
 	{
 		StartFastAttack();
-		if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("StartedFast"));
+		/* Debug */ if (GEngine && false)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("StartedFast"));
 	}
 }
 
@@ -81,7 +83,7 @@ void APlayerCharacterV2::Input2PressedBind()
 	if (CanStartStrongAttack && !StrongAttackCoolingDown) 
 	{
 		StartStrongAttack();
-		if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("StartedStrong"));
+		/* Debug */ if (GEngine && false)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("StartedStrong"));
 	}
 }
 
@@ -147,8 +149,7 @@ void APlayerCharacterV2::ContinueAttack()
 			ShouldContinueFastAttack = false;
 			ShouldContinueStrongAttack = false;
 
-			// Debug 
-			if (GEngine && true) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastContinue"));
+			/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastContinue"));
 		}
 	}
 	else if (ShouldContinueStrongAttack)
@@ -165,8 +166,8 @@ void APlayerCharacterV2::ContinueAttack()
 			ShouldContinueFastAttack = false;
 			ShouldContinueStrongAttack = false;
 
-			// Debug 
-			if (GEngine && true) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongContinue"));
+			
+			/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongContinue"));
 		}
 	}
 	else {
@@ -186,8 +187,7 @@ void APlayerCharacterV2::ContinueAttack()
 
 void APlayerCharacterV2::TransToStrongAttack()
 {
-	// DEBUG
-	if (GEngine && true) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongTrans"));
+	/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("StrongTrans"));
 
 	if (StrongAttackAnimation)
 	{
@@ -207,8 +207,7 @@ void APlayerCharacterV2::TransToStrongAttack()
 
 void APlayerCharacterV2::TransToFastAttack()
 {
-	// DEBUG
-	if (GEngine && true) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastTrans"));
+	/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Cyan, TEXT("FastTrans"));
 
 	if (FastAttackAnimation)
 	{
@@ -237,6 +236,5 @@ void APlayerCharacterV2::EndAttack()
 
 	CanOrientToStickInput = true;
 
-	// Debug 
-	if (GEngine && true) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("AttackEnd"));
+	/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("AttackEnd"));
 }

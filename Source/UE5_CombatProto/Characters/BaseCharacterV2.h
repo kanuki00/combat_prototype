@@ -66,6 +66,10 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 		FVector MovementInput;
 
+	bool CanApplyDamage = false;
+
+	void WeaponDamage(TArray<AActor*> Overlapped);
+
 protected:
 	// Character implements something unique to do upon taking damage.
 	virtual void UniqueTakeDamage(AActor* DamageCauser);

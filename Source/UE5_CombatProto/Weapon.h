@@ -25,6 +25,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UStaticMeshComponent* Mesh;
 
+	TArray<AActor*> RawOverlappedActors;
+
 	UPROPERTY(BlueprintReadOnly)
 		TArray<AActor*> OverlappedActors;
 
@@ -41,6 +43,6 @@ public:
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
 private:
-	bool Ow_Imp_CI = false;
+
 
 };

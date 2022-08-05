@@ -36,6 +36,20 @@ void APlayerCharacterV2::Tick(float DeltaTime)
 	FlipBoolAfterDelay(FastAttackCoolingDown, true, FastAttackCoolDownTimer, 0.5f, DeltaTime);
 
 	/* Debug */ if (GEngine && CanApplyDamage && false)GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::Blue, TEXT("Damaging Enabled"));
+
+	if (SR_TimerActive) SprintRollTimer += DeltaTime; // Timer for same button rolling and sprinting.
+	if (SprintRollTimer >= SprintRollThresh) 
+	{
+		IsSprinting = true;
+		CharMovComp->MaxWalkSpeed = 700.0f;
+		OrientSpeed = 240.0f;
+	}
+	else {
+		IsSprinting = false;
+		CharMovComp->MaxWalkSpeed = DefaultMaxWalkSpeed;
+		OrientSpeed = DefaultOrientSpeed;
+	}
+	
 }
 
 void APlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -44,6 +58,8 @@ void APlayerCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	PlayerInputComponent->BindAction("Target", IE_Pressed, this, &APlayerCharacterV2::TargetPressedBind);
 	PlayerInputComponent->BindAction("Target", IE_Released, this, &APlayerCharacterV2::TargetReleasedBind);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &APlayerCharacterV2::JumpPressedBind);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &APlayerCharacterV2::JumpReleasedBind);
 }
 
 void APlayerCharacterV2::TargetPressedBind()
@@ -60,6 +76,21 @@ void APlayerCharacterV2::TargetReleasedBind()
 	UseWalkMovementController = false;
 	StrafeEnabled = false; // for animbp
 	TargetingComponent->ClearTarget();
+}
+
+void APlayerCharacterV2::JumpPressedBind()
+{
+	SR_TimerActive = true;
+}
+
+void APlayerCharacterV2::JumpReleasedBind()
+{
+	SR_TimerActive = false;
+	if (SprintRollTimer <= SprintRollThresh)
+	{
+		Roll();
+	}
+	SprintRollTimer = 0.0f;
 }
 
 void APlayerCharacterV2::Input1PressedBind()
@@ -100,9 +131,16 @@ void APlayerCharacterV2::UniqueDeath()
 	GetMesh()->SetSimulatePhysics(true);
 }
 
+void APlayerCharacterV2::Roll()
+{
+	if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Rolled!"));
+}
+
 //////////////////////////////////////////////////////////
 // ************ For combat combo logic **************** //
 //////////////////////////////////////////////////////////
+
+
 
 void APlayerCharacterV2::StartFastAttack()
 {

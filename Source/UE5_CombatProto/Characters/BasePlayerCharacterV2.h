@@ -65,6 +65,8 @@ protected:
 	// *********************************
 public:
 	bool CanOrientToStickInput = true;
+	float OrientSpeed = 480.0f;
+	const float DefaultOrientSpeed = 480.0f;
 protected:
 	bool UseWalkMovementController = false;
 private:

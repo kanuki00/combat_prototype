@@ -38,6 +38,9 @@ public:
 	void TargetPressedBind();
 	void TargetReleasedBind();
 
+	void JumpPressedBind();
+	void JumpReleasedBind();
+
 	void Input1PressedBind() override;
 	void Input1ReleasedBind() override;
 
@@ -51,6 +54,16 @@ public:
 	bool Input2WasPressed = false;
 
 public:
+
+	float SprintRollTimer = 0.0f;
+	bool SR_TimerActive = false;
+	float SprintRollThresh = 0.2f;
+
+	void Roll();
+	
+	UPROPERTY(BlueprintReadOnly)
+		bool IsSprinting = false;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		UTargetingComponent* TargetingComponent;
 

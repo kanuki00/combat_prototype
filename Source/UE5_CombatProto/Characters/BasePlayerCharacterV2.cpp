@@ -40,7 +40,7 @@ void ABasePlayerCharacterV2::Tick(float DeltaTime)
 
 	if (IsDead) return;
 
-	if(CanOrientToStickInput) OrientToStickInput(DeltaTime, 480.0f);
+	if(CanOrientToStickInput) OrientToStickInput(DeltaTime, OrientSpeed);
 
 	if (UseWalkMovementController)
 	{

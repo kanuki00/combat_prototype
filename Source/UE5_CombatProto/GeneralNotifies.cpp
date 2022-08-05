@@ -4,6 +4,7 @@
 #include "GeneralNotifies.h"
 #include "Characters/V1/BaseCharacter.h"
 #include "Characters/V1/EnemyCharacter.h"
+#include "Characters/PlayerCharacterV2.h"
 
 void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
@@ -16,11 +17,16 @@ void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* A
 
 void URollEndNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
+	// V1
 	Char = Cast<ABaseCharacter>(MeshComp->GetOwner());
 	if (Char)
 	{
 		Char->EndRoll();
 	}
+	// V2
+	APlayerCharacterV2* Player = Cast<APlayerCharacterV2>(MeshComp->GetOwner());
+	if (!Player) return;
+	Player->EndRoll();
 }
 
 void UResetEnemyAtkCooldownNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)

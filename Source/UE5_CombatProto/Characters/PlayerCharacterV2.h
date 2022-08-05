@@ -59,7 +59,9 @@ public:
 	bool SR_TimerActive = false;
 	float SprintRollThresh = 0.2f;
 
+	bool CanStartRoll = true;
 	void Roll();
+	void EndRoll();
 	
 	UPROPERTY(BlueprintReadOnly)
 		bool IsSprinting = false;
@@ -107,4 +109,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 		UAnimMontage* StrongAttackAnimation = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+		UAnimMontage* RollAnimation = nullptr;
 };

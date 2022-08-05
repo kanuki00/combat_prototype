@@ -133,7 +133,18 @@ void APlayerCharacterV2::UniqueDeath()
 
 void APlayerCharacterV2::Roll()
 {
-	if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Rolled!"));
+	if (!CanStartRoll) return;
+	/* Debug */if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Rolled!"));
+	PlayAnimMontage(RollAnimation);
+	OrientSpeed = 60.0f;
+	CanStartRoll = false;
+}
+
+void APlayerCharacterV2::EndRoll()
+{
+	/* Debug */if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Roll Ended"));
+	OrientSpeed = DefaultOrientSpeed;
+	CanStartRoll = true;
 }
 
 //////////////////////////////////////////////////////////

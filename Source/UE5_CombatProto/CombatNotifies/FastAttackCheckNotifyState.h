@@ -9,6 +9,7 @@
 
 
 // Even though these say that they're for fast attacks, they are meant to be for general attacking. fast and strong. names need to be fixed some day.
+// Should be renamed to "AttackNotifies"
 
 UCLASS()
 class UE5_COMBATPROTO_API UFastAttackCheckNotifyState : public UAnimNotifyState

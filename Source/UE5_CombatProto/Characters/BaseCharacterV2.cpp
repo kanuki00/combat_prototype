@@ -80,9 +80,9 @@ void ABaseCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
+	/* Debug */if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
 
-	if (!CanTakeDamage && TakeDamageCoolingDown) { return 0.0f; }
+	if (!CanTakeDamage || TakeDamageCoolingDown) return 0.0f;
 	
 	TakeDamageCoolingDown = true;
 	Health -= DamageAmount; 
@@ -91,6 +91,9 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 	{
 		Death();
 	}
+	// Calling blueprint event.
+	UDamageType* DT = nullptr;
+	ReceiveAnyDamage(DamageAmount, DT, EventInstigator, DamageCauser);
 
 	return DamageAmount;
 }

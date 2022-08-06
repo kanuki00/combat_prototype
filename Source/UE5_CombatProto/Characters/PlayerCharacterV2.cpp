@@ -135,15 +135,29 @@ void APlayerCharacterV2::Roll()
 {
 	if (!CanStartRoll) return;
 	/* Debug */if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Rolled!"));
-	PlayAnimMontage(RollAnimation);
+
+	// If player is giving movement input, play animation without start. Else just play the animation.
+	if (MovementInput.Length() > 0.0f) PlayAnimMontage(RollAnimation, 1.0f, FName("Moving"));
+	else PlayAnimMontage(RollAnimation);
+
 	OrientSpeed = 60.0f;
+	CanTakeDamage = false;
+	CanStartFastAttack = false;
+	CanStartStrongAttack = false;
 	CanStartRoll = false;
 }
 
 void APlayerCharacterV2::EndRoll()
 {
 	/* Debug */if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Roll Ended"));
+
+	// Don't play the end off roll animation if player wants to move immediately.
+	if (MovementInput.Length() > 0.0f) StopAnimMontage(RollAnimation);
+
 	OrientSpeed = DefaultOrientSpeed;
+	CanTakeDamage = true;
+	CanStartFastAttack = true;
+	CanStartStrongAttack = true;
 	CanStartRoll = true;
 }
 

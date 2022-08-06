@@ -17,8 +17,6 @@ AEnemyCharacterV2::AEnemyCharacterV2()
 	CharMovComp->bUseControllerDesiredRotation = true;
 	CharMovComp->bOrientRotationToMovement = false;
 
-	// Strafe is allways enabled on enemies, for now.
-	StrafeEnabled = true;
 }
 
 void AEnemyCharacterV2::BeginPlay()

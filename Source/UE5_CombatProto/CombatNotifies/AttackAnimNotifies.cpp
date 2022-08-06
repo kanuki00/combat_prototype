@@ -1,7 +1,7 @@
 // 
 
 
-#include "FastAttackCheckNotifyState.h"
+#include "AttackAnimNotifies.h"
 #include "../Characters/V1/MainCharacter.h"
 #include "../Characters/PlayerCharacterV2.h"
 

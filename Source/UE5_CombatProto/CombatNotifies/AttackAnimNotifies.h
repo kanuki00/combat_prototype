@@ -5,11 +5,12 @@
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotifyState.h"
 #include "Animation/AnimNotifies/AnimNotify.h"
-#include "FastAttackCheckNotifyState.generated.h"
+#include "AttackAnimNotifies.generated.h"
 
 
 // Even though these say that they're for fast attacks, they are meant to be for general attacking. fast and strong. names need to be fixed some day.
 // Should be renamed to "AttackNotifies"
+// ok thats done, next task is to rename the classes to something more sensible.
 
 UCLASS()
 class UE5_COMBATPROTO_API UFastAttackCheckNotifyState : public UAnimNotifyState

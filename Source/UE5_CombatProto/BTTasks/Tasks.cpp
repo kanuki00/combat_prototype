@@ -86,7 +86,7 @@ EBTNodeResult::Type UAttack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint
 	}
 	else
 	{
-
+		ControlledEnemy->StartAttack();
 	}
 	return EBTNodeResult::Succeeded;
 }

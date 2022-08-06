@@ -47,6 +47,13 @@ void AEnemyCharacterV2::RotateToActor(AActor* Actor, float DeltaTime, float Spee
 	SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(GetActorRotation(), Rotation, DeltaTime, Speed));
 }
 
+void AEnemyCharacterV2::StartAttack()
+{
+	if (AttackAnimations.Num() == 0) return;
+	int AttackNum = UKismetMathLibrary::RandomIntegerInRange(0, AttackAnimations.Num() - 1);
+	PlayAnimMontage(AttackAnimations[AttackNum]);
+}
+
 void AEnemyCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
 {
 	// Focus the controller on damage causer when receiving damage.
@@ -56,5 +63,7 @@ void AEnemyCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
 
 void AEnemyCharacterV2::UniqueDeath()
 {
+	TargetWidget->RemoveFromParent();
+	SuggestWidget->RemoveFromParent();
 	this->Destroy();
 }

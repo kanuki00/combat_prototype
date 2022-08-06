@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "BaseCharacterV2.h"
 #include "../Controllers/EnemyAICV2.h"
+#include "../BaseWidget.h"
 #include "EnemyCharacterV2.generated.h"
 
 UCLASS()
@@ -42,12 +43,20 @@ public:
 		EReactionToEnemy PawnInitialReaction = EReactionToEnemy::ERTE_Attack;
 
 	void RotateToActor(AActor* Actor, float DeltaTime, float Speed = 480.0f);
+
+	void StartAttack();
 protected:
 	void UniqueTakeDamage(AActor* DamageCauser) override;
 	void UniqueDeath() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 		TArray<UAnimMontage*> AttackAnimations;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Targeting")
+		UBaseWidget* TargetWidget;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Targeting")
+		UBaseWidget* SuggestWidget;
 private:
 
 };

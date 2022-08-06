@@ -235,7 +235,13 @@ bool UTargetingComponent::ActorOccluded(AActor* Actor)
 		FVector Start = UGameplayStatics::GetPlayerController(GetWorld(), 0)->PlayerCameraManager->GetCameraLocation();
 		FVector End = Actor->GetActorLocation();
 		//GetWorld()->LineTraceSingleByChannel(TraceResult, Start, End, ECollisionChannel::ECC_Visibility);
-		UKismetSystemLibrary::LineTraceSingle(GetWorld(), Start, End, ETraceTypeQuery::TraceTypeQuery1, true, AllTargets, EDrawDebugTrace::None, TraceResult, true);
+
+		// Actors to ignore list includes all targets plus the player character.
+		TArray<AActor*> ActorsToIgnore;
+		ActorsToIgnore.Append(AllTargets);
+		ActorsToIgnore.Add(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
+
+		UKismetSystemLibrary::LineTraceSingle(GetWorld(), Start, End, ETraceTypeQuery::TraceTypeQuery1, true, ActorsToIgnore, EDrawDebugTrace::None, TraceResult, true);
 		bool Result = TraceResult.bBlockingHit;
 
 		return Result;

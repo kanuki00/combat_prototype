@@ -62,6 +62,9 @@ public:
 	bool CanStartRoll = true;
 	void Roll();
 	void EndRoll();
+
+	// Called to instantly rotate towards movement input.
+	void InstantlyRotateToInput();
 	
 	UPROPERTY(BlueprintReadOnly)
 		bool IsSprinting = false;

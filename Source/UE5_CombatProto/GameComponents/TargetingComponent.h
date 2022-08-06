@@ -50,9 +50,11 @@ public:
 		TSubclassOf<AActor> TargetedActorClass;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Combat")
-		AActor* Target;
+		AActor* Target = nullptr;
 	UPROPERTY(BlueprintReadOnly, Category = "Combat")
-		AActor* SuggestedTarget;
+		AActor* SuggestedTarget = nullptr;
+
+	bool CanRotateOwner = true;
 
 	void GetNewTarget();
 	void ClearTarget();

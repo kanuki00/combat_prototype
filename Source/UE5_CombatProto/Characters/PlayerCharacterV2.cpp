@@ -3,6 +3,7 @@
 
 #include "PlayerCharacterV2.h"
 #include "../GameComponents/TargetingComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 
 APlayerCharacterV2::APlayerCharacterV2()
 {
@@ -140,6 +141,8 @@ void APlayerCharacterV2::Roll()
 	if (MovementInput.Length() > 0.0f) PlayAnimMontage(RollAnimation, 1.0f, FName("Moving"));
 	else PlayAnimMontage(RollAnimation);
 
+	TargetingComponent->CanRotateOwner = false;
+	InstantlyRotateToInput();
 	OrientSpeed = 60.0f;
 	CanTakeDamage = false;
 	CanStartFastAttack = false;
@@ -154,11 +157,22 @@ void APlayerCharacterV2::EndRoll()
 	// Don't play the end off roll animation if player wants to move immediately.
 	if (MovementInput.Length() > 0.0f) StopAnimMontage(RollAnimation);
 
+	TargetingComponent->CanRotateOwner = true;
 	OrientSpeed = DefaultOrientSpeed;
 	CanTakeDamage = true;
 	CanStartFastAttack = true;
 	CanStartStrongAttack = true;
 	CanStartRoll = true;
+}
+
+void APlayerCharacterV2::InstantlyRotateToInput()
+{
+	if (MovementInput.Length() > 0.0f)
+	{
+		FVector Direction = this->GetActorLocation() + FRotator(0.0f, GetControlRotation().Yaw, 0.0f).RotateVector(MovementInput);
+		FRotator Rotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), Direction);
+		this->SetActorRotation(Rotation);
+	}
 }
 
 //////////////////////////////////////////////////////////

@@ -191,13 +191,12 @@ void UTargetingComponent::LookAtTarget(float DeltaTime)
 
 void UTargetingComponent::RotateOwnerToTarget(float DeltaTime)
 {
-	if (Target && Owner)
-	{
-		FVector TargetLocation = Target->GetActorLocation();
-		FVector OwnerLocation = Owner->GetActorLocation();
-		FRotator Rotation = FRotator(0.0f, UKismetMathLibrary::FindLookAtRotation(OwnerLocation, TargetLocation).Yaw, 0.0f);
-		Owner->SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(Owner->GetActorRotation(), Rotation, DeltaTime, 720.0f));
-	}
+	if (Target == nullptr || Owner == nullptr || !CanRotateOwner) return;
+	
+	FVector TargetLocation = Target->GetActorLocation();
+	FVector OwnerLocation = Owner->GetActorLocation();
+	FRotator Rotation = FRotator(0.0f, UKismetMathLibrary::FindLookAtRotation(OwnerLocation, TargetLocation).Yaw, 0.0f);
+	Owner->SetActorRotation(UKismetMathLibrary::RInterpTo_Constant(Owner->GetActorRotation(), Rotation, DeltaTime, 720.0f));
 }
 
 bool UTargetingComponent::ActorInView(AActor* Actor)

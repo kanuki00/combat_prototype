@@ -8,6 +8,7 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UBaseWidget;
 
 UCLASS()
 class UE5_COMBATPROTO_API ABasePlayerCharacterV2 : public ABaseCharacterV2
@@ -69,6 +70,9 @@ public:
 	const float DefaultOrientSpeed = 480.0f;
 protected:
 	bool UseWalkMovementController = false;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "HUD")
+		UBaseWidget* HudWidget = nullptr;
 private:
 
 	FRotator CharacterFacing;

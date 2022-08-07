@@ -100,10 +100,10 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 		bool IsArmed = false;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly, Category = "Health")
 		// Characters maximum health.
 		float MaxHealth = 100.0f;
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly, Category = "Health")
 		// Characters health.
 		float Health = 100.0f;
 

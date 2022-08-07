@@ -4,9 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "../Characters/BaseCharacterV2.h"
 #include "EnemyAICV2.generated.h"
 
-#define DEBUG_MSG(key, duration, color, message) if(GEngine) GEngine->AddOnScreenDebugMessage(key, duration, FColor::color, message);
+//#define DEBUG_MSG(key, duration, color, message) if(GEngine) GEngine->AddOnScreenDebugMessage(key, duration, FColor::color, message);
 
 class UAISenseConfig_Sight;
 
@@ -55,8 +56,8 @@ public:
 
 	void Shout()
 	{
-		DEBUG_MSG(10, 4, Yellow, TEXT("EnemyAI"));
-		DEBUG_MSG(10, 4, Yellow, FString::FromInt(GetGenericTeamId()));
+		//DEBUG_MSG(10, 4, Yellow, TEXT("EnemyAI"));
+		//DEBUG_MSG(10, 4, Yellow, FString::FromInt(GetGenericTeamId()));
 	}
 
 protected:
@@ -76,6 +77,8 @@ protected:
 		bool InRangeOfTarget = false;
 
 	float AttackRange = 150.0f;
+
+	ABaseCharacterV2* ControlledCharacter = nullptr;
 
 private:
 	FGenericTeamId TeamId;

@@ -11,6 +11,8 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "../Characters/EnemyCharacterV2.h"
 
+#include "../GameMacros.h"
+
 AEnemyAICV2::AEnemyAICV2()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -45,6 +47,8 @@ void AEnemyAICV2::BeginPlay()
 
 	// Telling the blackboard what the initial reaction to an enemy is.
 	GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)InitialReaction);
+
+	ControlledCharacter = Cast<ABaseCharacterV2>(GetPawn());
 }
 
 void AEnemyAICV2::Tick(float DeltaTime)
@@ -65,12 +69,14 @@ void AEnemyAICV2::Tick(float DeltaTime)
 	SeesTargetCache = SeesTarget;
 
 	/* DEBUG SECTION */
-	if (Debug)
-	{
-		FString FP = GetFocalPoint().ToString();
-		DEBUG_MSG(-1, DeltaTime, Orange, FP);
-		DEBUG_MSG(-1, DeltaTime, Orange, FString::FromInt(TeamId.GetId()));
-	}
+	if (!Debug || ControlledCharacter == nullptr) return;
+	
+	DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, GetFocalPoint().ToString());
+	DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, FString::FromInt(TeamId.GetId()));
+	DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, GetPawn()->GetName());
+
+	if (ControlledCharacter->IsDead) { DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, TEXT("IsDead = true" )); }
+	else							 { DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, TEXT("IsDead = false")); }
 }
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const

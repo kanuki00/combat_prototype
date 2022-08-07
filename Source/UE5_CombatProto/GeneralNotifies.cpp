@@ -5,6 +5,7 @@
 #include "Characters/V1/BaseCharacter.h"
 #include "Characters/V1/EnemyCharacter.h"
 #include "Characters/PlayerCharacterV2.h"
+#include "Characters/EnemyCharacterV2.h"
 
 void UDeathNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
 {
@@ -36,5 +37,13 @@ void UResetEnemyAtkCooldownNotify::Notify(USkeletalMeshComponent* MeshComp, UAni
 	{
 		EChar->AttackCoolingDown = false;
 		EChar->AttackEndCooldown = true;
+	}
+
+	// V2
+	
+	AEnemyCharacterV2* EnemyV2 = Cast<AEnemyCharacterV2>(MeshComp->GetOwner());
+	if (EnemyV2)
+	{
+		EnemyV2->CanStartAttack = true;
 	}
 }

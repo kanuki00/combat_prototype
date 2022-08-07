@@ -68,7 +68,8 @@ void AEnemyAICV2::Tick(float DeltaTime)
 	if (Debug)
 	{
 		FString FP = GetFocalPoint().ToString();
-		DEBUG_MSG(56, 0.02f, Orange, FP);
+		DEBUG_MSG(-1, DeltaTime, Orange, FP);
+		DEBUG_MSG(-1, DeltaTime, Orange, FString::FromInt(TeamId.GetId()));
 	}
 }
 
@@ -196,7 +197,7 @@ void AEnemyAICV2::DetermineTarget()
 		}
 	}
 
-	/* Debug */ if (GEngine) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
+	/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(100, 0.1f, FColor::Magenta, FString::FromInt(HostileActors.Num()));
 
 	GetBlackboardComponent()->SetValueAsObject(FName("TargetActor"), Target);
 	GetBlackboardComponent()->SetValueAsBool(FName("SeesTarget"), SeesTarget);
@@ -205,7 +206,7 @@ void AEnemyAICV2::DetermineTarget()
 
 void AEnemyAICV2::LostTarget()
 {
-	DEBUG_MSG(-1, 4, Orange, TEXT("Lost target!"));
+	//DEBUG_MSG(-1, 4, Orange, TEXT("Lost target!"));
 	// start searching for target upon losing it.
 	GetBlackboardComponent()->SetValueAsBool(FName("ShouldSearch"), true);
 }

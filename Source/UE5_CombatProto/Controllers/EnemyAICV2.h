@@ -62,7 +62,7 @@ public:
 protected:
 	// Switch for turning controller debug on and off
 	UPROPERTY(EditAnywhere)
-		bool Debug;
+		bool Debug = false;
 
 	UAISenseConfig_Sight* SightConfig;
 

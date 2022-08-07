@@ -46,8 +46,8 @@ void ABaseCharacterV2::BeginPlay()
 
 	// Spawning a weapon in hand upon game start.
 	if (!SpawnWithWeapon || WeaponClass == nullptr) return;
-	const FVector SLoc = FVector();
-	const FRotator SRot = FRotator();
+	const FVector SLoc = FVector(); // Spawn Location
+	const FRotator SRot = FRotator(); // Spawn Rotation
 	Weapon = GetWorld()->SpawnActor<AActor>(WeaponClass, SLoc, SRot);
 	const FAttachmentTransformRules Rules = FAttachmentTransformRules(EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, EAttachmentRule::SnapToTarget, false);
 	Weapon->AttachToComponent(GetMesh(), Rules, FName("equip_hand_right"));
@@ -67,19 +67,13 @@ void ABaseCharacterV2::Tick(float DeltaTime)
 }
 
 // *********************************
-// Bind
-// *********************************
-void ABaseCharacterV2::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
-// *********************************
 // Character functionality 
 // *********************************
 
 float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
+	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
 	/* Debug */if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
 
 	if (!CanTakeDamage || TakeDamageCoolingDown) return 0.0f;

@@ -35,11 +35,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// *********************************
-	// Bind
-	// *********************************
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	// *********************************
 	// Character functionality 
 	// *********************************
 public:

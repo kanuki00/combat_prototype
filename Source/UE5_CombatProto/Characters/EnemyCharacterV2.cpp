@@ -3,7 +3,8 @@
 
 #include "EnemyCharacterV2.h"
 #include "Components/CapsuleComponent.h"
-#include "../Controllers/EnemyAICV2.h"
+
+#include "BrainComponent.h"
 //#include "Engine/EngineTypes.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -16,18 +17,17 @@ AEnemyCharacterV2::AEnemyCharacterV2()
 	bUseControllerRotationYaw = false;
 	CharMovComp->bUseControllerDesiredRotation = true;
 	CharMovComp->bOrientRotationToMovement = false;
-
 }
 
 void AEnemyCharacterV2::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AEnemyAICV2* Ctrl;
-	Ctrl = Cast<AEnemyAICV2>(GetController());
-	if (Ctrl)
+	AIController = Cast<AEnemyAICV2>(GetController());
+
+	if (AIController)
 	{
-		Ctrl->SetGenericTeamId(FGenericTeamId(Team));
+		AIController->SetGenericTeamId(FGenericTeamId(Team));
 		//Ctrl->Shout();
 	}
 }
@@ -49,7 +49,8 @@ void AEnemyCharacterV2::RotateToActor(AActor* Actor, float DeltaTime, float Spee
 
 void AEnemyCharacterV2::StartAttack()
 {
-	if (AttackAnimations.Num() == 0) return;
+	if (AttackAnimations.Num() == 0 || !CanStartAttack) return;
+	CanStartAttack = false;
 	int AttackNum = UKismetMathLibrary::RandomIntegerInRange(0, AttackAnimations.Num() - 1);
 	PlayAnimMontage(AttackAnimations[AttackNum]);
 }
@@ -65,5 +66,15 @@ void AEnemyCharacterV2::UniqueDeath()
 {
 	TargetWidget->RemoveFromParent();
 	SuggestWidget->RemoveFromParent();
-	this->Destroy();
+	// Stopping AI
+	if (AIController)
+	{
+		AIController->GetBrainComponent()->StopLogic(FString("Death"));
+	}
+	GetCapsuleComponent()->SetCollisionProfileName("NoCollision");
+	// Ragdolling
+	GetMesh()->SetCollisionProfileName("Ragdoll");
+	GetMesh()->bPauseAnims = true;
+	GetMesh()->SetSimulatePhysics(true);
+
 }

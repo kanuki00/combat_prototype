@@ -135,7 +135,7 @@ void APlayerCharacterV2::UniqueDeath()
 void APlayerCharacterV2::Roll()
 {
 	if (!CanStartRoll) return;
-	/* Debug */if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Rolled!"));
+	/* Debug */if (GEngine && false)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Rolled!"));
 
 	// If player is giving movement input, play animation without start. Else just play the animation.
 	if (MovementInput.Length() > 0.0f) PlayAnimMontage(RollAnimation, 1.0f, FName("Moving"));
@@ -152,7 +152,7 @@ void APlayerCharacterV2::Roll()
 
 void APlayerCharacterV2::EndRoll()
 {
-	/* Debug */if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Roll Ended"));
+	/* Debug */if (GEngine && false)GEngine->AddOnScreenDebugMessage(-1, 4, FColor::Red, TEXT("Roll Ended"));
 
 	// Don't play the end off roll animation if player wants to move immediately.
 	if (MovementInput.Length() > 0.0f) StopAnimMontage(RollAnimation);

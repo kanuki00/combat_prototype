@@ -17,6 +17,8 @@ AEnemyCharacterV2::AEnemyCharacterV2()
 	bUseControllerRotationYaw = false;
 	CharMovComp->bUseControllerDesiredRotation = true;
 	CharMovComp->bOrientRotationToMovement = false;
+
+	StrafeEnabled = true;
 }
 
 void AEnemyCharacterV2::BeginPlay()
@@ -37,6 +39,7 @@ void AEnemyCharacterV2::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	// Enemy's movement input is current velocity. 
 	MovementInput = GetVelocity().GetSafeNormal();
+	MovementInput *= CharMovComp->MaxWalkSpeed / DefaultMaxWalkSpeed;
 }
 
 void AEnemyCharacterV2::RotateToActor(AActor* Actor, float DeltaTime, float Speed)

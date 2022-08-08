@@ -15,6 +15,8 @@
 #include "NavigationSystem.h"
 #include "../Characters/EnemyCharacterV2.h"
 
+#include "../GameMacros.h"
+
 
 EBTNodeResult::Type UGetPlayerLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
@@ -211,8 +213,74 @@ USetControllerFocus::USetControllerFocus()
 
 EBTNodeResult::Type USetControllerFocus::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	FVector Location = OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Vector>(BlackboardKey.GetSelectedKeyID());
 	//if (BlackboardKey == NULL) return EBTNodeResult::Failed;
+
+	FVector Location;
+	AActor* PossibleActor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(BlackboardKey.GetSelectedKeyID()));
+
+	if (PossibleActor) // Testing if key is an actor. if true, location is actors location
+	{
+		Location = PossibleActor->GetActorLocation();
+	}
+	else // if it's not an actor, then it must be a vector.
+	{
+		Location = OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Vector>(BlackboardKey.GetSelectedKeyID());
+	}
+
 	OwnerComp.GetAIOwner()->SetFocalPoint(Location, EAIFocusPriority::Gameplay);
+	return EBTNodeResult::Succeeded;
+}
+
+/********** Find Cautious Location ***********/
+
+UFindCautiousLocation::UFindCautiousLocation()
+{
+	NodeName = "Find Cautious Location";
+}
+
+void UFindCautiousLocation::InitializeFromAsset(UBehaviorTree& Asset)
+{
+	Super::InitializeFromAsset(Asset);
+
+	UBlackboardData* BBAsset = GetBlackboardAsset();
+	if (BBAsset)
+	{
+		ActorToBeCautiousOfKey.ResolveSelectedKey(*BBAsset);
+		MoveLocationKey.ResolveSelectedKey(*BBAsset);
+	}
+	else
+	{
+		UE_LOG(LogBehaviorTree, Warning, TEXT("Can't initialize task: %s, make sure that behavior tree specifies blackboard asset!"), *GetName());
+	}
+}
+
+EBTNodeResult::Type UFindCautiousLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+{
+	AActor* Actor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(ActorToBeCautiousOfKey.GetSelectedKeyID()));
+	APawn* ControlledPawn = OwnerComp.GetAIOwner()->GetPawn();
+
+	float Distance = FVector::Distance(Actor->GetActorLocation(), ControlledPawn->GetActorLocation());
+
+	if (Distance < SafeDistanceMin)
+	{
+		//DEBUG_MESSAGE(-1, 1, FColor::Cyan, TEXT("Too close!"));
+		FVector Away = ControlledPawn->GetActorLocation() - Actor->GetActorLocation();
+		Away = Away.GetSafeNormal();
+		OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(MoveLocationKey.GetSelectedKeyID(), 
+			ControlledPawn->GetActorLocation() + Away * 200.0f);
+	}
+	else if (Distance > SafeDistanceMax)
+	{
+		//DEBUG_MESSAGE(-1, 1, FColor::Cyan, TEXT("Too far!"));
+		FVector Towards = Actor->GetActorLocation() - ControlledPawn->GetActorLocation();
+		Towards = Towards.GetSafeNormal();
+		OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(MoveLocationKey.GetSelectedKeyID(),
+			ControlledPawn->GetActorLocation() + Towards * 200.0f);
+	}
+	else 
+	{
+		//DEBUG_MESSAGE(-1, 1, FColor::Cyan, TEXT("Just right."));
+	}
+
 	return EBTNodeResult::Succeeded;
 }

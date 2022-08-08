@@ -66,6 +66,12 @@ public:
 
 	void WeaponDamage(TArray<AActor*> Overlapped);
 
+	float GetHealth();
+	float GetMaxHealth();
+
+	bool CountSecsSinceLastDamage = false;
+	float SecondsSinceLastDamage = 1000000.0f;
+
 protected:
 	// Character implements something unique to do upon taking damage.
 	virtual void UniqueTakeDamage(AActor* DamageCauser);
@@ -100,14 +106,14 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 		bool IsArmed = false;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 		// Characters maximum health.
 		float MaxHealth = 100.0f;
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 		// Characters health.
 		float Health = 100.0f;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly, Category = "Health")
 		// Can character take damage? Turn this to false if you want character to be invincible.
 		bool CanTakeDamage = true;
 

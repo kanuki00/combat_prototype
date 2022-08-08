@@ -68,6 +68,25 @@ void AEnemyAICV2::Tick(float DeltaTime)
 	}
 	SeesTargetCache = SeesTarget;
 
+	// changing reaction to enemy depending on what's happening in the fight.
+
+	// if health is critical, flee
+	if (ControlledCharacter->GetHealth() / ControlledCharacter->GetMaxHealth() <= 0.2f)
+	{
+		GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)EReactionToEnemy::ERTE_Flee);
+	}
+	// if time since last damage is 7 secs and health is less than half, be cautious.
+	else if (ControlledCharacter->SecondsSinceLastDamage < 7.0f && ControlledCharacter->GetHealth() / ControlledCharacter->GetMaxHealth() <= 0.5f)
+	{
+		GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)EReactionToEnemy::ERTE_Caution);
+	}
+	// else attack target.
+	else
+	{
+		GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)EReactionToEnemy::ERTE_Attack);
+	}
+
+
 	/* DEBUG SECTION */
 	if (!Debug || ControlledCharacter == nullptr) return;
 	
@@ -166,16 +185,19 @@ void AEnemyAICV2::DetermineTarget()
 	{
 		for (int i = 0; i < AllActors.Num(); i++)
 		{
-			if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Friendly)
+			if (Cast<ABaseCharacterV2>(AllActors[i])->IsDead == false) // Don't add to any list if actor is dead.
 			{
-				FriendlyActors.Emplace(AllActors[i]);
-			}
-			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Neutral)
-			{
-				NeutralActors.Emplace(AllActors[i]);
-			}
-			else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Hostile) {
-				HostileActors.Emplace(AllActors[i]);
+				if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Friendly)
+				{
+					FriendlyActors.Emplace(AllActors[i]);
+				}
+				else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Neutral)
+				{
+					NeutralActors.Emplace(AllActors[i]);
+				}
+				else if (GetTeamAttitudeTowards(*AllActors[i]) == ETeamAttitude::Hostile) {
+					HostileActors.Emplace(AllActors[i]);
+				}
 			}
 		}
 

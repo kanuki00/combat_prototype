@@ -64,6 +64,11 @@ void ABaseCharacterV2::Tick(float DeltaTime)
 
 	FlipBoolAfterDelay(TakeDamageCoolingDown, true, TakeDamageCooldownTimer, TakeDamageCooldown, DeltaTime);
 	FlipBoolAfterDelay(SimpleAttackCoolingDown, true, S_A_CooldownTimer, S_A_Cooldown, DeltaTime);
+
+	if (CountSecsSinceLastDamage)
+	{
+		SecondsSinceLastDamage += DeltaTime;
+	}
 }
 
 // *********************************
@@ -77,6 +82,10 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 	/* Debug */if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
 
 	if (!CanTakeDamage || TakeDamageCoolingDown) return 0.0f;
+
+	// Start counting how much time has passed since this damage was taken.
+	CountSecsSinceLastDamage = true;
+	SecondsSinceLastDamage = 0.0f;
 	
 	TakeDamageCoolingDown = true;
 	Health -= DamageAmount; 
@@ -101,6 +110,16 @@ void ABaseCharacterV2::WeaponDamage(TArray<AActor*> Overlapped)
 		Actor->TakeDamage(30.0f, DmgEvent, GetController(), this);
 		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, TEXT("Applied Weapon Damage"));
 	}
+}
+
+float ABaseCharacterV2::GetHealth()
+{
+	return Health;
+}
+
+float ABaseCharacterV2::GetMaxHealth()
+{
+	return MaxHealth;
 }
 
 void ABaseCharacterV2::UniqueTakeDamage(AActor* DamageCauser)

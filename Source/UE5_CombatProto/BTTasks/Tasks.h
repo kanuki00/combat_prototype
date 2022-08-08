@@ -106,3 +106,33 @@ class UE5_COMBATPROTO_API USetControllerFocus : public UBTTask_BlackboardBase
 	USetControllerFocus();
 	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };
+
+
+/********** Find Cautious Location ***********/
+
+UCLASS()
+class UE5_COMBATPROTO_API UFindCautiousLocation : public UBTTaskNode
+{
+	GENERATED_BODY()
+
+	UFindCautiousLocation();
+
+	void InitializeFromAsset(UBehaviorTree& Asset) override;
+
+	/* Executing */
+	EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
+protected:
+
+	/* Key selectors */
+	UPROPERTY(EditAnywhere, Category = Blackboard)
+		struct FBlackboardKeySelector ActorToBeCautiousOfKey;
+	UPROPERTY(EditAnywhere, Category = Blackboard)
+		struct FBlackboardKeySelector MoveLocationKey;
+
+public:
+	UPROPERTY(EditAnywhere)
+		float SafeDistanceMin = 400.0f;
+	UPROPERTY(EditAnywhere)
+		float SafeDistanceMax = 600.0f;
+};

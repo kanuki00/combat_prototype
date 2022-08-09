@@ -44,5 +44,12 @@ public:
 
 private:
 
+protected:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float WeaponBaseDamage = 30.0f;
+
+public:
+
 
 };

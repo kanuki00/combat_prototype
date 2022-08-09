@@ -115,4 +115,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
 		UAnimMontage* RollAnimation = nullptr;
+
+	UPROPERTY()
+		float FastAttackMultiplier = 1.0f;
+	UPROPERTY()
+		float StrongAttackMultiplier = 2.0f;
 };

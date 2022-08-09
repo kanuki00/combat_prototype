@@ -103,13 +103,15 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 
 void ABaseCharacterV2::WeaponDamage(TArray<AActor*> Overlapped)
 {
+	/*
 	if (!CanApplyDamage) return;
 	FDamageEvent DmgEvent;
 	for (AActor* Actor : Overlapped)
 	{
 		Actor->TakeDamage(30.0f, DmgEvent, GetController(), this);
-		/* Debug */if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, TEXT("Applied Weapon Damage"));
+		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, TEXT("Applied Weapon Damage"));
 	}
+	*/
 }
 
 float ABaseCharacterV2::GetHealth()

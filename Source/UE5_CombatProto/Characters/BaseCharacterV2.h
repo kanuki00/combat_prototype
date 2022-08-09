@@ -72,6 +72,8 @@ public:
 	bool CountSecsSinceLastDamage = false;
 	float SecondsSinceLastDamage = 1000000.0f;
 
+	float WeaponDamageMultiplier = 1.0f;
+
 protected:
 	// Character implements something unique to do upon taking damage.
 	virtual void UniqueTakeDamage(AActor* DamageCauser);

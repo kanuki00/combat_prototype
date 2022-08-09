@@ -58,11 +58,16 @@ void AWeapon::Tick(float DeltaTime)
 void AWeapon::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	ABaseCharacterV2* OwningCharacter = Cast<ABaseCharacterV2>(Owner);
+	// Check if owner is valid
 	if (!OwningCharacter) return;
+	// Check if owner allows damage dealing
 	if (OwningCharacter->CanApplyDamage == false) return;
-	/* Debug */if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 2, FColor::Cyan, TEXT("Can Damage"));
+	// Weapon can't damage owner
+	if (OtherActor == OwningCharacter) return;
+
 	FDamageEvent DmgEvent;
-	OtherActor->TakeDamage(30.0f, DmgEvent, OwningCharacter->GetController(), OwningCharacter);
+	float Mult = OwningCharacter->WeaponDamageMultiplier;
+	OtherActor->TakeDamage(WeaponBaseDamage * Mult, DmgEvent, OwningCharacter->GetController(), OwningCharacter);
 }
 
 

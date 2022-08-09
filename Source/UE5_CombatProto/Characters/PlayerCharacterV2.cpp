@@ -36,7 +36,7 @@ void APlayerCharacterV2::Tick(float DeltaTime)
 	FlipBoolAfterDelay(StrongAttackCoolingDown, true, StrongAttackCoolDownTimer, 0.5f, DeltaTime);
 	FlipBoolAfterDelay(FastAttackCoolingDown, true, FastAttackCoolDownTimer, 0.5f, DeltaTime);
 
-	/* Debug */ if (GEngine && CanApplyDamage && false)GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::Blue, TEXT("Damaging Enabled"));
+	/* Debug */ //if (GEngine && CanApplyDamage)GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::Blue, TEXT("Damaging Enabled"));
 
 	if (SR_TimerActive) SprintRollTimer += DeltaTime; // Timer for same button rolling and sprinting.
 	if (SprintRollTimer >= SprintRollThresh) 
@@ -145,6 +145,8 @@ void APlayerCharacterV2::Roll()
 	InstantlyRotateToInput();
 	OrientSpeed = 60.0f;
 	CanTakeDamage = false;
+	// Disable damage dealing since roll can start mid attack when damage disable notify hasn't had enough time to fire in attack montage.
+	CanApplyDamage = false;
 	CanStartFastAttack = false;
 	CanStartStrongAttack = false;
 	CanStartRoll = false;
@@ -184,6 +186,7 @@ void APlayerCharacterV2::InstantlyRotateToInput()
 void APlayerCharacterV2::StartFastAttack()
 {
 	if (FastAttackAnimation) PlayAnimMontage(FastAttackAnimation, 1.0f, TEXT("Attack1"));
+	/* Damage Multiplier */ WeaponDamageMultiplier = FastAttackMultiplier;
 	CanStartFastAttack = false;
 	CanStartStrongAttack = false;
 }
@@ -191,6 +194,7 @@ void APlayerCharacterV2::StartFastAttack()
 void APlayerCharacterV2::StartStrongAttack()
 {
 	if (StrongAttackAnimation) PlayAnimMontage(StrongAttackAnimation, 1.0f, TEXT("Attack1"));
+	/* Damage Multiplier */ WeaponDamageMultiplier = StrongAttackMultiplier;
 	CanStartStrongAttack = false;
 	CanStartFastAttack = false;
 }
@@ -214,6 +218,7 @@ void APlayerCharacterV2::ContinueAttack()
 {
 	if (ShouldContinueFastAttack)
 	{
+		/* Damage Multiplier */ WeaponDamageMultiplier = FastAttackMultiplier;
 		if (GetMesh()->GetAnimInstance()->Montage_IsPlaying(StrongAttackAnimation))
 		{
 			StopAnimMontage(StrongAttackAnimation);
@@ -231,6 +236,7 @@ void APlayerCharacterV2::ContinueAttack()
 	}
 	else if (ShouldContinueStrongAttack)
 	{
+		/* Damage Multiplier */ WeaponDamageMultiplier = StrongAttackMultiplier;
 		if (GetMesh()->GetAnimInstance()->Montage_IsPlaying(FastAttackAnimation))
 		{
 			StopAnimMontage(FastAttackAnimation);
@@ -268,6 +274,7 @@ void APlayerCharacterV2::TransToStrongAttack()
 
 	if (StrongAttackAnimation)
 	{
+		/* Damage Multiplier */ WeaponDamageMultiplier = StrongAttackMultiplier;
 		if (CurrentFastAttackSectionCache == TEXT("Attack1") || CurrentFastAttackSectionCache == TEXT("Attack3"))
 		{
 			PlayAnimMontage(StrongAttackAnimation, 1.0f, TEXT("Attack2"));
@@ -288,6 +295,7 @@ void APlayerCharacterV2::TransToFastAttack()
 
 	if (FastAttackAnimation)
 	{
+		/* Damage Multiplier */ WeaponDamageMultiplier = FastAttackMultiplier;
 		// Transition to different attacks depending on Transitioner's section (Attacks should flow together).
 		if (CurrentStrongAttackSectionCache == TEXT("Attack1") || CurrentStrongAttackSectionCache == TEXT("Attack3"))
 		{
@@ -312,6 +320,8 @@ void APlayerCharacterV2::EndAttack()
 	StrongAttackCoolingDown = true;
 
 	CanOrientToStickInput = true;
+
+	/* Damage Multiplier */ WeaponDamageMultiplier = FastAttackMultiplier;
 
 	/* Debug */ if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 4.0f, FColor::Green, TEXT("AttackEnd"));
 }

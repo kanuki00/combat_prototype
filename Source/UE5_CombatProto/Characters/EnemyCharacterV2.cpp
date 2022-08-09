@@ -7,6 +7,7 @@
 #include "BrainComponent.h"
 //#include "Engine/EngineTypes.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "../GameMacros.h"
 
 AEnemyCharacterV2::AEnemyCharacterV2()
 {
@@ -40,6 +41,26 @@ void AEnemyCharacterV2::Tick(float DeltaTime)
 	// Enemy's movement input is current velocity. 
 	MovementInput = GetVelocity().GetSafeNormal();
 	MovementInput *= CharMovComp->MaxWalkSpeed / DefaultMaxWalkSpeed;
+
+	FlipBoolAfterDelay(CanRandomLeftRight, false, RandomLeftRightCooldownTimer, RandomLeftRightCooldown, DeltaTime);
+
+	if (Left)
+	{
+		DEBUG_MESSAGE(-1, DeltaTime, FColor::Red, TEXT("Left"))
+	}
+	else
+	{
+		DEBUG_MESSAGE(-1, DeltaTime, FColor::Blue, TEXT("Right"))
+	}
+	//*/ // Testing AI's left right choosing.
+}
+
+void AEnemyCharacterV2::RandomLeftRight()
+{
+	if (!CanRandomLeftRight) return;
+	CanRandomLeftRight = false;
+	RandomLeftRightCooldown = UKismetMathLibrary::RandomFloatInRange(15.0f, 25.0f);
+	Left = UKismetMathLibrary::RandomBool();
 }
 
 void AEnemyCharacterV2::RotateToActor(AActor* Actor, float DeltaTime, float Speed)

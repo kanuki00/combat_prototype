@@ -46,6 +46,14 @@ public:
 	bool CanStartAttack = true;
 	void StartAttack();
 
+	// Random left or right.
+	bool CanRandomLeftRight = true;
+	float RandomLeftRightCooldown = 20.0f;
+	float RandomLeftRightCooldownTimer = 0.0f;
+	void RandomLeftRight();
+
+	bool Left = true;
+
 protected:
 	void UniqueTakeDamage(AActor* DamageCauser) override;
 	void UniqueDeath() override;

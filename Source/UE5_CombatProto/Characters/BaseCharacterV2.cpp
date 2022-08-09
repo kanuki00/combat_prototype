@@ -79,25 +79,30 @@ float ABaseCharacterV2::TakeDamage(float DamageAmount, FDamageEvent const& Damag
 {
 	Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 
-	/* Debug */if (GEngine && false) GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, TEXT("Took Damage"));
-
 	if (!CanTakeDamage || TakeDamageCoolingDown) return 0.0f;
 
 	// Start counting how much time has passed since this damage was taken.
 	CountSecsSinceLastDamage = true;
 	SecondsSinceLastDamage = 0.0f;
 	
+	// Playing damage animation
+	if (TakeDamageAnimation) StopAnimMontage(); PlayAnimMontage(TakeDamageAnimation);
+
+	// Subtraction damage amount from health
 	TakeDamageCoolingDown = true;
 	Health -= DamageAmount; 
 	UniqueTakeDamage(DamageCauser);
+
+	// Calling death
 	if (Health <= 0.0f)
 	{
 		Death();
 	}
+	/*
 	// Calling blueprint event.
 	UDamageType* DT = nullptr;
 	ReceiveAnyDamage(DamageAmount, DT, EventInstigator, DamageCauser);
-
+	*/
 	return DamageAmount;
 }
 

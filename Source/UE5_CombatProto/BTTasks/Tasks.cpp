@@ -257,9 +257,14 @@ void UFindCautiousLocation::InitializeFromAsset(UBehaviorTree& Asset)
 EBTNodeResult::Type UFindCautiousLocation::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	AActor* Actor = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(ActorToBeCautiousOfKey.GetSelectedKeyID()));
-	APawn* ControlledPawn = OwnerComp.GetAIOwner()->GetPawn();
+	AEnemyCharacterV2* ControlledPawn = Cast<AEnemyCharacterV2>(OwnerComp.GetAIOwner()->GetPawn());
+
+	// Telling pawn that it can start attacking again.
+	ControlledPawn->CanStartAttack = true;
 
 	float Distance = FVector::Distance(Actor->GetActorLocation(), ControlledPawn->GetActorLocation());
+
+	float MaxMove = SafeDistanceMax - SafeDistanceMin;
 
 	if (Distance < SafeDistanceMin)
 	{
@@ -267,7 +272,7 @@ EBTNodeResult::Type UFindCautiousLocation::ExecuteTask(UBehaviorTreeComponent& O
 		FVector Away = ControlledPawn->GetActorLocation() - Actor->GetActorLocation();
 		Away = Away.GetSafeNormal();
 		OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(MoveLocationKey.GetSelectedKeyID(), 
-			ControlledPawn->GetActorLocation() + Away * 200.0f);
+			ControlledPawn->GetActorLocation() + Away * MaxMove);
 	}
 	else if (Distance > SafeDistanceMax)
 	{
@@ -275,10 +280,25 @@ EBTNodeResult::Type UFindCautiousLocation::ExecuteTask(UBehaviorTreeComponent& O
 		FVector Towards = Actor->GetActorLocation() - ControlledPawn->GetActorLocation();
 		Towards = Towards.GetSafeNormal();
 		OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(MoveLocationKey.GetSelectedKeyID(),
-			ControlledPawn->GetActorLocation() + Towards * 200.0f);
+			ControlledPawn->GetActorLocation() + Towards * MaxMove);
 	}
+	// if in safe distance from target, pawn will circle target.
 	else 
 	{
+		ControlledPawn->RandomLeftRight();
+
+		if (ControlledPawn->Left)
+		{
+			FVector ToLeft = -ControlledPawn->GetActorRightVector();
+			OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(MoveLocationKey.GetSelectedKeyID(),
+				ControlledPawn->GetActorLocation() + ToLeft * MaxMove);
+		}
+		else
+		{
+			FVector ToRight = ControlledPawn->GetActorRightVector();
+			OwnerComp.GetBlackboardComponent()->SetValue<UBlackboardKeyType_Vector>(MoveLocationKey.GetSelectedKeyID(),
+				ControlledPawn->GetActorLocation() + ToRight * MaxMove);
+		}
 		//DEBUG_MESSAGE(-1, 1, FColor::Cyan, TEXT("Just right."));
 	}
 

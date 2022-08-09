@@ -11,6 +11,8 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "../Characters/EnemyCharacterV2.h"
 
+#include "Kismet/KismetMathLibrary.h"
+
 #include "../GameMacros.h"
 
 AEnemyAICV2::AEnemyAICV2()
@@ -75,8 +77,9 @@ void AEnemyAICV2::Tick(float DeltaTime)
 	{
 		GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)EReactionToEnemy::ERTE_Flee);
 	}
-	// if time since last damage is 7 secs and health is less than half, be cautious.
-	else if (ControlledCharacter->SecondsSinceLastDamage < 7.0f && ControlledCharacter->GetHealth() / ControlledCharacter->GetMaxHealth() <= 0.5f)
+	// if time since last damage is 10 secs and health is less than half, be cautious.
+	else if (ControlledCharacter->SecondsSinceLastDamage < 10.0f
+		&& ControlledCharacter->GetHealth() / ControlledCharacter->GetMaxHealth() <= 0.5f)
 	{
 		GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)EReactionToEnemy::ERTE_Caution);
 	}
@@ -85,6 +88,9 @@ void AEnemyAICV2::Tick(float DeltaTime)
 	{
 		GetBlackboardComponent()->SetValueAsEnum(FName("Reaction"), (uint8)EReactionToEnemy::ERTE_Attack);
 	}
+
+
+	
 
 
 	/* DEBUG SECTION */
@@ -97,6 +103,7 @@ void AEnemyAICV2::Tick(float DeltaTime)
 	if (ControlledCharacter->IsDead) { DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, TEXT("IsDead = true" )); }
 	else							 { DEBUG_MESSAGE(-1, DeltaTime, FColor::Orange, TEXT("IsDead = false")); }
 }
+
 
 ETeamAttitude::Type AEnemyAICV2::GetTeamAttitudeTowards(const AActor& Other) const
 {
@@ -238,4 +245,5 @@ void AEnemyAICV2::LostTarget()
 	// start searching for target upon losing it.
 	GetBlackboardComponent()->SetValueAsBool(FName("ShouldSearch"), true);
 }
+
 

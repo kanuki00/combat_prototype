@@ -105,6 +105,9 @@ protected:
 	// Pointer that stores whichever weapon that the character is holding.
 	AActor* Weapon = nullptr;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+		UAnimMontage* TakeDamageAnimation = nullptr;
+
 	UPROPERTY(BlueprintReadOnly)
 		bool IsArmed = false;
 

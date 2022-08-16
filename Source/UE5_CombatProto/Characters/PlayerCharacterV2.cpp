@@ -42,7 +42,7 @@ void APlayerCharacterV2::Tick(float DeltaTime)
 	if (SprintRollTimer >= SprintRollThresh) 
 	{
 		IsSprinting = true;
-		CharMovComp->MaxWalkSpeed = 700.0f;
+		CharMovComp->MaxWalkSpeed = 900.0f;
 		OrientSpeed = 240.0f;
 	}
 	else {

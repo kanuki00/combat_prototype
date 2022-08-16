@@ -74,6 +74,8 @@ public:
 
 	float WeaponDamageMultiplier = 1.0f;
 
+	UCharacterMovementComponent* CharMovComp;
+
 protected:
 	// Character implements something unique to do upon taking damage.
 	virtual void UniqueTakeDamage(AActor* DamageCauser);
@@ -93,7 +95,7 @@ protected:
 	float S_A_CooldownTimer = 0.0f;
 	float S_A_Cooldown = 0.8f;
 
-	UCharacterMovementComponent* CharMovComp;
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
 		// If charactershould spawn with weapon in hand.

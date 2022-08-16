@@ -47,3 +47,11 @@ void UResetEnemyAtkCooldownNotify::Notify(USkeletalMeshComponent* MeshComp, UAni
 		EnemyV2->CanStartAttack = true;
 	}
 }
+
+void UHitEndNotify::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, const FAnimNotifyEventReference& EventReference)
+{
+	AEnemyCharacterV2* Char = Cast<AEnemyCharacterV2>(MeshComp->GetOwner());
+	if (Char == nullptr) return;
+	Char->CharMovComp->SetMovementMode(EMovementMode::MOVE_Walking);
+	Char->CanStartAttack = true;
+}

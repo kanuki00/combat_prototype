@@ -44,6 +44,7 @@ void AEnemyCharacterV2::Tick(float DeltaTime)
 
 	FlipBoolAfterDelay(CanRandomLeftRight, false, RandomLeftRightCooldownTimer, RandomLeftRightCooldown, DeltaTime);
 
+	/*
 	if (Left)
 	{
 		DEBUG_MESSAGE(-1, DeltaTime, FColor::Red, TEXT("Left"))
@@ -84,6 +85,9 @@ void AEnemyCharacterV2::UniqueTakeDamage(AActor* DamageCauser)
 	// Focus the controller on damage causer when receiving damage.
 	AAIController* AIC = Cast<AAIController>(GetController());
 	AIC->SetFocus(DamageCauser, EAIFocusPriority::Gameplay);
+	// Disabling movement when damage is taken. Will be re-enabled soon by hit animation.
+	//CharMovComp->DisableMovement();
+	//CharMovComp->SetMovementMode(EMovementMode::MOVE_Walking);
 }
 
 void AEnemyCharacterV2::UniqueDeath()

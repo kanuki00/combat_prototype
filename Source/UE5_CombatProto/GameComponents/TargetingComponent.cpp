@@ -5,8 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
-#include "../Characters/V1/BaseCharacter.h"
-#include "../Characters/BaseCharacterV2.h"
+#include "../Characters/PlayerCharacterV2.h"
 
 UTargetingComponent::UTargetingComponent()
 {
@@ -86,8 +85,13 @@ void UTargetingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 void UTargetingComponent::GetNewTarget()
 {
 	if (AllVisibleTargets.Num() == 0) return;
-	if(AllVisibleTargets[0]) Target = AllVisibleTargets[0];
+	if (AllVisibleTargets[0]) Target = AllVisibleTargets[0];
 	IsTargeting = true;
+
+	APlayerCharacterV2* PlayerOwner = Cast<APlayerCharacterV2>(GetOwner());
+	if (!Target || PlayerOwner == nullptr) return;
+	PlayerOwner->SuccessfullTargeting();
+
 }
 
 void UTargetingComponent::ClearTarget()

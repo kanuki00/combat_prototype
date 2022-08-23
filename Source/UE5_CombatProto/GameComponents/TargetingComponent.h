@@ -6,6 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "TargetingComponent.generated.h"
 
+class USoundCue;
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class UE5_COMBATPROTO_API UTargetingComponent : public UActorComponent
 {
@@ -57,5 +59,8 @@ public:
 
 	void GetNewTarget();
 	void ClearTarget();
+
+	UPROPERTY(EditAnywhere)
+		USoundCue* TargetingSound;
 
 };

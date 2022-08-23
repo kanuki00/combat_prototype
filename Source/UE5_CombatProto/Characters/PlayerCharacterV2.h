@@ -105,8 +105,8 @@ public:
 	FName CurrentFastAttackSectionCache;
 
 
-	UFUNCTION(BlueprintImplementableEvent)
-		void SuccessfullTargeting();
+	//UFUNCTION(BlueprintImplementableEvent)
+	//	void SuccessfullTargeting();
 
 protected:
 	virtual void UniqueDeath() override;

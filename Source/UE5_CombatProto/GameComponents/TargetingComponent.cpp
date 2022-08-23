@@ -6,6 +6,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "../Characters/PlayerCharacterV2.h"
+#include "Sound/SoundCue.h"
 
 UTargetingComponent::UTargetingComponent()
 {
@@ -88,9 +89,14 @@ void UTargetingComponent::GetNewTarget()
 	if (AllVisibleTargets[0]) Target = AllVisibleTargets[0];
 	IsTargeting = true;
 
+	/*
 	APlayerCharacterV2* PlayerOwner = Cast<APlayerCharacterV2>(GetOwner());
 	if (!Target || PlayerOwner == nullptr) return;
 	PlayerOwner->SuccessfullTargeting();
+	*/
+	// Better approach:
+	if (!Target) return;
+	if(TargetingSound) UGameplayStatics::PlaySound2D(GetWorld(), TargetingSound);
 
 }
 
